@@ -52,4 +52,56 @@ module.exports = {
 ```
 
 # 4.修改router，实现自动加载路由
+注意路由的name不能出现重复
 
+路由编写格式：
+
+编写一级路由
+```
+
+import Register from './register.vue'
+export default {
+  path: '/register',
+  name: 'register',
+  pname: '',
+  level: 1, // 一级路由
+  component: Register,
+  children: [
+  ]
+}
+
+```
+
+编写二级路由
+```
+
+import List from './list.vue'
+export default {
+  path: 'bookslist',
+  name: 'bookslist',
+  pname: 'main',
+  level: 2, // 二级路由
+  component: List,
+  children: [
+  ]
+}
+
+
+```
+编写三级路由
+```
+
+import Create from './create.vue'
+export default {
+  path: 'create',
+  name: 'create',
+  pname: 'goodslist',
+  level: 3, // 3级路由
+  component: Create,
+  children: [
+  ]
+}
+
+
+```
+# 5.
