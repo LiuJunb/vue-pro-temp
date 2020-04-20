@@ -23,7 +23,33 @@ mock
 该项目公共组件全局注册
 
 
-# 1.修改eslint的配置
+# 1.修改.eslintrc.js的配置
 
 
-# 2.
+# 2.修改index.html
+
+1.添加进度  2.添加了统一标签的样式normalize.css  3.添加mete标签
+
+# 3.添加vue.config.js
+
+```
+
+const path = require('path')
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+// https://cli.vuejs.org/zh/config/
+module.exports = {
+  lintOnSave: true,
+  chainWebpack: (config) => {
+    // 起别名
+    config.resolve.alias
+      .set('@', resolve('src'))
+      .set('@components', resolve('src/components'))
+  }
+}
+
+```
+
+# 4.修改router，实现自动加载路由
+

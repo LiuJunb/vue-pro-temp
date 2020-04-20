@@ -3,15 +3,150 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 1.首先强制浏览器使用webkit内核（极速内核）,
+     如果浏览器没有webkit内核，则按照用户浏览器所支持的最新的ie的trident内核渲染页面（ie兼容内核）,否则按照当前浏览器的标准内核渲染（ie标准内核） -->
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <!-- http://192.168.45.2:8080/normalize/normalize/css -->
+    <link rel="stylesheet" href="<%= BASE_URL %>normalize/normalize.css">
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <div id="app">
+      <!-- 在app这个标签覆盖之前显示下面的加载进度 -->
+      <div>
+        <div class="lds-spinner" style="width:100%;height:100%;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+        </div>
+        <style type="text/css">
+                @keyframes lds-spinner {
+                  0% {
+                    opacity: 1;
+                  }
+                  100% {
+                    opacity: 0;
+                  }
+                }
+                @-webkit-keyframes lds-spinner {
+                  0% {
+                    opacity: 1;
+                  }
+                  100% {
+                    opacity: 0;
+                  }
+                }
+                .lds-spinner {
+                  position: relative;
+                }
+                .lds-spinner div {
+                  left: 94px;
+                  top: 48px;
+                  position: absolute;
+                  -webkit-animation: lds-spinner linear 0.9s infinite;
+                  animation: lds-spinner linear 0.9s infinite;
+                  background: #4165ED;
+                  width: 12px;
+                  height: 24px;
+                  border-radius: 40%;
+                  -webkit-transform-origin: 6px 52px;
+                  transform-origin: 6px 52px;
+                }
+                .lds-spinner div:nth-child(1) {
+                  -webkit-transform: rotate(0deg);
+                  transform: rotate(0deg);
+                  -webkit-animation-delay: -0.825s;
+                  animation-delay: -0.825s;
+                }
+                .lds-spinner div:nth-child(2) {
+                  -webkit-transform: rotate(30deg);
+                  transform: rotate(30deg);
+                  -webkit-animation-delay: -0.75s;
+                  animation-delay: -0.75s;
+                }
+                .lds-spinner div:nth-child(3) {
+                  -webkit-transform: rotate(60deg);
+                  transform: rotate(60deg);
+                  -webkit-animation-delay: -0.675s;
+                  animation-delay: -0.675s;
+                }
+                .lds-spinner div:nth-child(4) {
+                  -webkit-transform: rotate(90deg);
+                  transform: rotate(90deg);
+                  -webkit-animation-delay: -0.6s;
+                  animation-delay: -0.6s;
+                }
+                .lds-spinner div:nth-child(5) {
+                  -webkit-transform: rotate(120deg);
+                  transform: rotate(120deg);
+                  -webkit-animation-delay: -0.525s;
+                  animation-delay: -0.525s;
+                }
+                .lds-spinner div:nth-child(6) {
+                  -webkit-transform: rotate(150deg);
+                  transform: rotate(150deg);
+                  -webkit-animation-delay: -0.45s;
+                  animation-delay: -0.45s;
+                }
+                .lds-spinner div:nth-child(7) {
+                  -webkit-transform: rotate(180deg);
+                  transform: rotate(180deg);
+                  -webkit-animation-delay: -0.375s;
+                  animation-delay: -0.375s;
+                }
+                .lds-spinner div:nth-child(8) {
+                  -webkit-transform: rotate(210deg);
+                  transform: rotate(210deg);
+                  -webkit-animation-delay: -0.3s;
+                  animation-delay: -0.3s;
+                }
+                .lds-spinner div:nth-child(9) {
+                  -webkit-transform: rotate(240deg);
+                  transform: rotate(240deg);
+                  -webkit-animation-delay: -0.225s;
+                  animation-delay: -0.225s;
+                }
+                .lds-spinner div:nth-child(10) {
+                  -webkit-transform: rotate(270deg);
+                  transform: rotate(270deg);
+                  -webkit-animation-delay: -0.15s;
+                  animation-delay: -0.15s;
+                }
+                .lds-spinner div:nth-child(11) {
+                  -webkit-transform: rotate(300deg);
+                  transform: rotate(300deg);
+                  -webkit-animation-delay: -0.075s;
+                  animation-delay: -0.075s;
+                }
+                .lds-spinner div:nth-child(12) {
+                  -webkit-transform: rotate(330deg);
+                  transform: rotate(330deg);
+                  -webkit-animation-delay: 0s;
+                  animation-delay: 0s;
+                }
+                .lds-spinner {
+                  width: 200px !important;
+                  height: 200px !important;
+                  -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+                  transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+                }
+        </style>
+      </div>
+    </div>
     <!-- built files will be auto injected -->
   </body>
 </html>
