@@ -111,4 +111,18 @@ export default {
 
 3.添加config的配置
 
+# 6.添加devServer 实现跨越的功能
+直接添加下面的配置，不用安装webpack-dev-server，默认脚手架已经安装了的
+```
 
+  devServer: {
+    proxy: {
+      '/station': {
+        target: 'http://172.16.119.213:9090',
+        ws: true,
+        changeOrigin: true
+      }
+    }
+  }
+
+```

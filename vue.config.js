@@ -21,15 +21,15 @@ module.exports = {
       'vue-router': 'VueRouter',
       axios: 'axios'
     }
+  },
+  // 代理 http
+  devServer: {
+    proxy: {
+      '/station': {
+        target: 'http://172.16.119.213:9090',
+        ws: true,
+        changeOrigin: true
+      }
+    }
   }
-  // http://192.168.99.252
-  // devServer: {
-  //   proxy: {
-  //     '/api': {
-  //       target: 'https://news-at.zhihu.com',
-  //       ws: true,
-  //       changeOrigin: true
-  //     }
-  //   }
-  // }
 }

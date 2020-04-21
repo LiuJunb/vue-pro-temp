@@ -1,2 +1,2 @@
 // 拼接在api的前面
-export const baseURL = '/api'
+export const baseURL = '/station'
