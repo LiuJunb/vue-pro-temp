@@ -62,7 +62,7 @@ module.exports = {
 import Register from './register.vue'
 export default {
   path: '/register',
-  name: 'register',
+  name: 'register', // 最好不能出现重复
   pname: '',
   level: 1, // 一级路由
   component: Register,
