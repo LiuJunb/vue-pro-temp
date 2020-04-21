@@ -19,6 +19,7 @@ module.exports = {
       vue: 'Vue', // key 是 require 的包名，value 是全局的变量
       vuex: 'Vuex',
       'vue-router': 'VueRouter',
+      // 'core-js': 'core', // 包好了es6和es7等新的语法，要放在程序的入口处加载
       axios: 'axios'
     }
   },
