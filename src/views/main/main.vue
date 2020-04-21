@@ -11,11 +11,21 @@
 </template>
 
 <script>
-
+import {
+  httpGet
+} from '@/http/index.js'
 export default {
   name: 'Main',
   components: {
 
+  },
+  created() {
+    httpGet('/home', {
+      age: '20',
+      name: '刘军'
+    }).then((res) => {
+      console.log(res.data)
+    })
   }
 }
 </script>

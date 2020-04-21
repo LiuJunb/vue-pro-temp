@@ -4,7 +4,6 @@ vue-pro-temp 是 vue 的模板项目，该项目默认集成了：
 
 vue
 vuex
-axios
 router
 sass
 eslint
@@ -104,4 +103,12 @@ export default {
 
 
 ```
-# 5.
+# 5.添加axios框架和封装axios请求
+
+1.使用cdn的方式添加axios框架
+
+2.封装了axios的请求
+
+3.添加config的配置
+
+
