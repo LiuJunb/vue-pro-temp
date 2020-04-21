@@ -1,7 +1,7 @@
 const routes = []
 const allRoute = require.context('@/views/', true, /route\.(js|ts)$/)
 // ["./login/route.js", "./main/goods/list/route.js", "./main/route.js", "./no-find/route.js", "./register/route.js"]
-console.log('allRoute=', allRoute.keys())
+// console.log('allRoute=', allRoute.keys())
 allRoute.keys().forEach((item, index, array) => {
   // item = ./login/route.js => login/route.js
   const router_path = item.substr(2)

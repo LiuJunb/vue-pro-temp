@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import ARoutes from './register-routes.js'
-console.log('Routes=', ARoutes)
+// console.log('Routes=', ARoutes)
 
 Vue.use(VueRouter)
 

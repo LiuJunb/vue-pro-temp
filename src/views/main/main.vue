@@ -12,7 +12,8 @@
 
 <script>
 import {
-  httpGet
+  // httpGet,
+  httpPost
 } from '@/http/index.js'
 export default {
   name: 'Main',
@@ -20,9 +21,21 @@ export default {
 
   },
   created() {
-    httpGet('/home', {
-      age: '20',
-      name: '刘军'
+    // httpGet('/home1', {
+    //   name: '刘云',
+    //   age: 20
+    // }).then((res) => {
+    //   console.log(res.data)
+    // })
+
+    httpPost('/home2', {
+      age: '202',
+      name: '刘军2'
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      }
     }).then((res) => {
       console.log(res.data)
     })

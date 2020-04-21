@@ -111,8 +111,10 @@ export default {
 
 3.添加config的配置
 
-# 6.添加devServer 实现跨越的功能
+# 6.添加 devServer 实现跨越的功能
+
 直接添加下面的配置，不用安装webpack-dev-server，默认脚手架已经安装了的
+
 ```
 
   devServer: {
@@ -126,3 +128,14 @@ export default {
   }
 
 ```
+
+# 7.添加 mockjs 实现后台接口的模拟
+
+1.安装mockjs
+
+2.编写mock接口 并在main.js中引入
+
+3.注意不能模拟上传文件，get请求使用正则匹配url
+
+
+
