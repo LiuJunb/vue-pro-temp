@@ -26,24 +26,34 @@ export default {
     }
   },
   created() {
-    httpGet('/home1', {
-      name: '刘云',
-      age: 20
-    }).then((res) => {
-      console.log(res.data)
-    })
-
-    httpPost('/home2', {
-      age: '202',
-      name: '刘军2'
+    // this.testHttp()
+    // this.testStore()
+  },
+  methods: {
+    testStore() {
+      this.$store.dispatch('login/data', [1, 2, 3, 4])
+      console.log(this.$store.getters['login/data'])
     },
-    {
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8'
-      }
-    }).then((res) => {
-      console.log(res.data)
-    })
+    testHttp() {
+      httpGet('/home1', {
+        name: '刘云',
+        age: 20
+      }).then((res) => {
+        console.log(res.data)
+      })
+
+      httpPost('/home2', {
+        age: '202',
+        name: '刘军2'
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        }
+      }).then((res) => {
+        console.log(res.data)
+      })
+    }
   }
 }
 </script>

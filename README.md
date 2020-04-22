@@ -191,9 +191,68 @@ export default {
 
 dist\js\chunk-vendors.d3a9f9e8.js        181.28 KiB       65.23 KiB 
 
-突然变大是因为 mockjs 也打包进去了
+突然变大是因为 mockjs 也打包进去了,解决方案：
+
+```
+
+// 导入mockjs
+import { startMock } from '@/config/index.js'
+// 必须是测试环境 才打包该 mockjs 库( 下面的代码顺序不能调整,否则会打包就项目里面去 )
+process.env.NODE_ENV === 'development' && startMock && require('../../mockjs/index.js')
+
+
+```
+
+附加：此时打包的大小：
+
+```
+
+  File                                     Size             Gzipped  
+
+  dist\core-js-26\core-js.min.js           116.19 KiB       32.99 KiB
+  dist\vue-26\vue.runtime.min.js           63.37 KiB        22.90 KiB
+  dist\vue-router-303\vue-router.min.js    23.60 KiB        8.43 KiB 
+  dist\axios-018\axios.min.js              12.65 KiB        4.59 KiB
+  dist\vuex-31\vuex.min.js                 11.05 KiB        3.37 KiB
+  dist\js\chunk-vendors.00bc79c9.js        45.15 KiB        16.18 KiB
+  dist\js\app.5a47ff7c.js                  14.17 KiB        3.33 KiB
+  dist\normalize\normalize.css             6.38 KiB         1.79 KiB
+  dist\css\app.e6e72d52.css                0.15 KiB         0.13 KiB
+
+```
 
 # 8.封装store层
+
+1.编写modules模块（ 里面的目录跟views里面的目录一样 ）
+
+2.编写load-modules.js 自定注册其它模块路由
+
+3.其它模块路由的命名规范是：安装目录结构命名
+
+例如：
+login
+main_goods
+main_books
+register
+
+
+附加：此时打包的大小：
+
+```
+
+  File                                     Size             Gzipped
+
+  dist\core-js-26\core-js.min.js           116.19 KiB       32.99 KiB
+  dist\vue-26\vue.runtime.min.js           63.37 KiB        22.90 KiB
+  dist\vue-router-303\vue-router.min.js    23.60 KiB        8.43 KiB
+  dist\axios-018\axios.min.js              12.65 KiB        4.59 KiB
+  dist\vuex-31\vuex.min.js                 11.05 KiB        3.37 KiB
+  dist\js\chunk-vendors.c492ea40.js        51.85 KiB        18.47 KiB
+  dist\js\app.3c18f43b.js                  17.11 KiB        3.97 KiB
+  dist\normalize\normalize.css             6.38 KiB         1.79 KiB
+  dist\css\app.e6e72d52.css                0.15 KiB         0.13 KiB
+
+```
 
 
 

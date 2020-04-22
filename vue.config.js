@@ -5,6 +5,7 @@ function resolve(dir) {
 }
 // https://cli.vuejs.org/zh/config/
 module.exports = {
+  productionSourceMap: false, // 仅仅在dev环境使用SourceMap
   lintOnSave: true,
   chainWebpack: (config) => {
     // 起别名

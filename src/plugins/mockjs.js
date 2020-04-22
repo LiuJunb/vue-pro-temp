@@ -1,6 +1,4 @@
 // 导入mockjs
-import { startMock, isDevelopment } from '@/config/index.js'
-// import '../../mockjs/index.js'
-// console.log(startMock)
-// console.log(isDevelopment)
-startMock && isDevelopment && require('../../mockjs/index.js')
+import { startMock } from '@/config/index.js'
+// 必须是测试环境 才打包该 mockjs 库( 下面的代码顺序不能调整 )
+process.env.NODE_ENV === 'development' && startMock && require('../../mockjs/index.js')
