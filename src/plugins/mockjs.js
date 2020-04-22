@@ -1,6 +1,6 @@
 // 导入mockjs
-import { startMock } from '@/config/index.js'
+import { startMock, isDevelopment } from '@/config/index.js'
 // import '../../mockjs/index.js'
-if (startMock) {
-  require('../../mockjs/index.js')
-}
+// console.log(startMock)
+// console.log(isDevelopment)
+startMock && isDevelopment && require('../../mockjs/index.js')

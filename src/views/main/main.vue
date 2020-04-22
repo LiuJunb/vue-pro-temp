@@ -12,7 +12,7 @@
 
 <script>
 import {
-  // httpGet,
+  httpGet,
   httpPost
 } from '@/http/index.js'
 export default {
@@ -20,13 +20,18 @@ export default {
   components: {
 
   },
+  data() {
+    return {
+
+    }
+  },
   created() {
-    // httpGet('/home1', {
-    //   name: '刘云',
-    //   age: 20
-    // }).then((res) => {
-    //   console.log(res.data)
-    // })
+    httpGet('/home1', {
+      name: '刘云',
+      age: 20
+    }).then((res) => {
+      console.log(res.data)
+    })
 
     httpPost('/home2', {
       age: '202',
