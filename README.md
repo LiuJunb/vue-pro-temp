@@ -254,10 +254,54 @@ register
 
 ```
 
+# 9.封装service层
+
+编写好了 service 层：
+
+1.service 层的文件夹命名跟views中的一样
+
+2.service 层 默认是给store层调用，也可以直接被组件调用
 
 
+```
+
+import { httpGet } from '@/http/index.js'
+
+export const login_api = {
+  login: '/home1'
+}
+
+export default {
+
+  login: (name, password) => {
+    return httpGet(login_api.login, { name, password })
+  },
+
+  loginout: (name) => {
+    console.log(name)
+  }
+
+}
 
 
+```
+
+附加：此时打包的大小：
+
+```
+  File                                     Size             Gzipped  
+
+  dist\core-js-26\core-js.min.js           116.19 KiB       32.99 KiB
+  dist\vue-26\vue.runtime.min.js           63.37 KiB        22.90 KiB
+  dist\vue-router-303\vue-router.min.js    23.60 KiB        8.43 KiB
+  dist\axios-018\axios.min.js              12.65 KiB        4.59 KiB
+  dist\vuex-31\vuex.min.js                 11.05 KiB        3.37 KiB
+  dist\js\chunk-vendors.418728bf.js        58.38 KiB        20.63 KiB
+  dist\js\app.a8f374db.js                  17.93 KiB        4.23 KiB
+  dist\normalize\normalize.css             6.38 KiB         1.79 KiB
+  dist\css\app.60167145.css                0.15 KiB         0.13 KiB
+
+```
 
 
 

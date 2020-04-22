@@ -27,12 +27,15 @@ export default {
   },
   created() {
     // this.testHttp()
-    // this.testStore()
+    this.testStore()
   },
   methods: {
     testStore() {
-      this.$store.dispatch('login/data', [1, 2, 3, 4])
-      console.log(this.$store.getters['login/data'])
+      this.$store.dispatch('login/login', { name: '刘军', age: 12 })
+        .then((res) => {
+          console.log(res)
+        })
+      // console.log(this.$store.getters['login/user'])
     },
     testHttp() {
       httpGet('/home1', {
