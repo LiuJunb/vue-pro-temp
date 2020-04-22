@@ -5,6 +5,8 @@ import store from './store'
 
 // 导入插件
 import '@/plugins/index.js'
+// 导入全局样式
+import '@/styles/global.scss'
 
 Vue.config.productionTip = false
 new Vue({

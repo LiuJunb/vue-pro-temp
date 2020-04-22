@@ -26,7 +26,7 @@ export default {
     }
   },
   created() {
-    // this.testHttp()
+    this.testHttp()
     this.testStore()
   },
   methods: {

@@ -456,10 +456,26 @@ module.exports = {
 
 ```
 
-# 11. 编写自动部署的脚本
+# 11. 编写gulp自动部署的脚本
+
+安装开发环境的  "gulp": "4.0.0",
+安装开发环境的  "gulp-ssh": "0.7.0",
+
+添加gulpfile.config.js
+添加gulpfile.js
+
+
+# 12.添加了按钮的权限控制 和 utils工具类
+
+permissions
+  index.js
+  permissions-config.js 
+
+utils
 
 
 # 12.编写自动生成页面的脚本指令
+
 
 # 13.
 
