@@ -3,6 +3,7 @@ const path = require('path')
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
+const isDevelopment = process.env.NODE_ENV === 'development'
 // https://cli.vuejs.org/zh/config/
 module.exports = {
   productionSourceMap: false, // 仅仅在dev环境使用SourceMap
@@ -14,14 +15,18 @@ module.exports = {
       .set('@components', resolve('src/components'))
   },
   configureWebpack: (config) => {
-    // 1.排除哪些库不需要打包 import Vue from 'vue'
-    // 用cdn方式引入
-    config.externals = {
-      vue: 'Vue', // key 是 require 的包名，value 是全局的变量
-      vuex: 'Vuex',
-      'vue-router': 'VueRouter',
-      // 'core-js': 'core', // 包好了es6和es7等新的语法，要放在程序的入口处加载
-      axios: 'axios'
+    if (isDevelopment) {
+
+    } else {
+      // 1.排除哪些库不需要打包 import Vue from 'vue'
+      // 用cdn方式引入
+      config.externals = {
+        vue: 'Vue', // key 是 require 的包名，value 是全局的变量
+        vuex: 'Vuex',
+        'vue-router': 'VueRouter',
+        // 'core-js': 'core', // 包好了es6和es7等新的语法，要放在程序的入口处加载
+        axios: 'axios'
+      }
     }
   },
   // 代理 http

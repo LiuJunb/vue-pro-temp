@@ -147,11 +147,16 @@
         </style>
       </div>
     </div>
+
+    <!-- 如果是生成环境，使用cdn导入下面的库 -->
+    <% if(process.env.NODE_ENV === 'production'){ %>
     <!-- <script src="/core-js-26/core-js.min.js"></script> -->
     <script src="/vue-26/vue.runtime.min.js"></script>
     <script src="/vuex-31/vuex.min.js"></script>
     <script src="/vue-router-303/vue-router.min.js"></script>
     <script src="/axios-018/axios.min.js"></script>
+    <%}%>
+
     <!-- built files will be auto injected -->
   </body>
 </html>

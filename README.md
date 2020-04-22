@@ -304,6 +304,169 @@ export default {
 ```
 
 
+# 10.添加 vue-bus 插件
+
+1.编写插件
+```
+
+/**
+ * 编写一个vue-bus的插件
+ * @param {} Vue
+ */
+const install = function(Vue) {
+  const Bus = new Vue({
+    methods: {
+      emit(event, ...args) {
+        this.$emit(event, ...args)
+      },
+      on(evnet, callback) {
+        this.$on(evnet, callback)
+      },
+      off(evnet, callback) {
+        this.$on(evnet, callback)
+      }
+    }
+  })
+  Vue.prototype.$bus = Bus
+}
+export default install
+
+```
+
+2.注册插件
+
+```
+  import Vue from 'vue'
+  import VueBus from './vue-bus.js'
+  // 1.添加mockjs插件
+  import './mockjs.js'
+  // 2.添加一个 eventbus 插件
+  Vue.use(VueBus)
+
+
+```
+
+```
+
+  File                                     Size             Gzipped  
+
+  dist\core-js-26\core-js.min.js           116.19 KiB       32.99 KiB
+  dist\vue-26\vue.runtime.min.js           63.37 KiB        22.90 KiB
+  dist\vue-router-303\vue-router.min.js    23.60 KiB        8.43 KiB
+  dist\axios-018\axios.min.js              12.65 KiB        4.59 KiB
+  dist\vuex-31\vuex.min.js                 11.05 KiB        3.37 KiB
+  dist\js\chunk-vendors.418728bf.js        58.38 KiB        20.63 KiB
+  dist\js\app.c75b2856.js                  18.20 KiB        4.35 KiB
+  dist\normalize\normalize.css             6.38 KiB         1.79 KiB
+  dist\css\app.60167145.css                0.15 KiB         0.13 KiB
+
+```
+
+发现devtools中的vue调试功能不起作用（默认新建项目就可以用的）
+因为在开发环境使用cdn的的方法引用了vue 和 vuex 等，应该改成生成环境下才使用cdn
+的方式
+
+修改vue.config.js
+
+```
+
+const path = require('path')
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+const isDevelopment = process.env.NODE_ENV === 'development'
+// https://cli.vuejs.org/zh/config/
+module.exports = {
+  productionSourceMap: false, // 仅仅在dev环境使用SourceMap
+  lintOnSave: true,
+  chainWebpack: (config) => {
+    // 起别名
+    config.resolve.alias
+      .set('@', resolve('src'))
+      .set('@components', resolve('src/components'))
+  },
+  configureWebpack: (config) => {
+    if (isDevelopment) {
+
+    } else {
+      // 1.排除哪些库不需要打包 import Vue from 'vue'
+      // 用cdn方式引入
+      config.externals = {
+        vue: 'Vue', // key 是 require 的包名，value 是全局的变量
+        vuex: 'Vuex',
+        'vue-router': 'VueRouter',
+        // 'core-js': 'core', // 包好了es6和es7等新的语法，要放在程序的入口处加载
+        axios: 'axios'
+      }
+    }
+  },
+  // 代理 http
+  devServer: {
+    proxy: {
+      '/station': {
+        target: 'http://172.16.119.213:9090',
+        ws: true,
+        changeOrigin: true
+      }
+    }
+  }
+}
+
+```
+
+修改index.html
+```
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 1.首先强制浏览器使用webkit内核（极速内核）,
+     如果浏览器没有webkit内核，则按照用户浏览器所支持的最新的ie的trident内核渲染页面（ie兼容内核）,否则按照当前浏览器的标准内核渲染（ie标准内核） -->
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <!-- http://192.168.45.2:8080/normalize/normalize/css -->
+    <link rel="stylesheet" href="<%= BASE_URL %>normalize/normalize.css">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app">
+      <!-- 在app这个标签覆盖之前显示下面的加载进度 -->
+        
+    </div>
+    <!-- 如果是生成环境，使用cdn导入下面的库 -->
+    <% if(process.env.NODE_ENV === 'production'){ %>
+    <!-- <script src="/core-js-26/core-js.min.js"></script> -->
+    <script src="/vue-26/vue.runtime.min.js"></script>
+    <script src="/vuex-31/vuex.min.js"></script>
+    <script src="/vue-router-303/vue-router.min.js"></script>
+    <script src="/axios-018/axios.min.js"></script>
+    <%}%>
+
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+
+
+
+```
+
+# 11. 编写自动部署的脚本
+
+
+# 12.编写自动生成页面的脚本指令
+
+# 13.
+
+
+
+
+
 
 
 
