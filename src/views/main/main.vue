@@ -26,8 +26,8 @@ export default {
     }
   },
   created() {
-    this.testHttp()
-    this.testStore()
+    // this.testHttp()
+    // this.testStore()
   },
   methods: {
     testStore() {

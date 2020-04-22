@@ -1,4 +1,5 @@
-import Register from './register.vue'
+// import Register from './register.vue'
+const Register = () => import('./register.vue')
 export default {
   path: '/register',
   name: 'register',

@@ -1,4 +1,5 @@
-import List from './list.vue'
+// import List from './list.vue'
+const List = () => import('./list.vue')
 export default {
   path: 'bookslist',
   name: 'bookslist',

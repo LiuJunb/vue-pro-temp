@@ -1,4 +1,5 @@
-import NoFind from './no-find.vue'
+// import NoFind from './no-find.vue'
+const NoFind = () => import('./no-find.vue')
 export default {
   path: '/nofind',
   name: 'nofind',

@@ -1,4 +1,5 @@
-import Detail from './detail.vue'
+// import Detail from './detail.vue'
+const Detail = () => import('./detail.vue')
 export default {
   path: 'goodsdetail',
   name: 'goodsdetail',

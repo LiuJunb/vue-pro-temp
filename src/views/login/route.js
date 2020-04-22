@@ -1,4 +1,5 @@
-import Login from './login.vue'
+// import Login from './login.vue'
+const Login = () => import('./login.vue')
 export default {
   path: '/login',
   name: 'login',

@@ -157,6 +157,13 @@
     <script src="/axios-018/axios.min.js"></script>
     <%}%>
 
+    <!-- 使用CDN的JS文件 -->
+    <% for (var i in htmlWebpackPlugin.options.cdn &&
+    htmlWebpackPlugin.options.cdn.js) { %>
+    <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
+    <% } %>
+    <!-- 使用CDN的JS文件 -->
+
     <!-- built files will be auto injected -->
   </body>
 </html>

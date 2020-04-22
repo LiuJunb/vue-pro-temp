@@ -1,4 +1,5 @@
-import Main from './main.vue'
+// import Main from './main.vue'
+const Main = () => import('./main.vue')
 export default {
   path: '/main',
   name: 'main',
