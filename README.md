@@ -598,7 +598,18 @@ File                                     Size             Gzipped
   dist\css\chunk-56638406.0e433876.css     0.00 KiB         0.02 KiB
 
 ```
-
+  // 这个是登录的路由
+  dist\js\login.d8fcb38b.js                0.42 KiB         0.29 KiB
+  dist\css\login.0e433876.css              0.00 KiB         0.02 KiB
+  // 下面这8个是其它懒加载的路由（因为没有起名，使用系统默认生成的名字）
+  dist\js\chunk-6930fb1a.dd6c5d07.js       0.57 KiB         0.38 KiB 
+  dist\js\chunk-182a5f71.4ac84c11.js       0.56 KiB         0.38 KiB 
+  dist\js\chunk-58b92e9c.f1ed18aa.js       0.56 KiB         0.38 KiB 
+  dist\js\chunk-6c17baac.60ccd56e.js       0.55 KiB         0.38 KiB 
+  dist\js\chunk-0f58772a.a7431789.js       0.44 KiB         0.32 KiB 
+  dist\js\chunk-cb9138ee.51a4f94c.js       0.44 KiB         0.32 KiB 
+  dist\js\chunk-c98d0ff0.7f32c716.js       0.44 KiB         0.33 KiB
+  dist\js\chunk-56638406.3974d94a.js       0.44 KiB         0.32 KiB
 
 ## 2.代码分片
 
@@ -924,7 +935,11 @@ Use Ctrl+C to close it
 ```
 
 
-# 14.编写自动生成页面的脚本指令
+# 14.添加polifly
+
+
+
+# 15.编写自动生成页面的脚本指令
 
 
 # 15.

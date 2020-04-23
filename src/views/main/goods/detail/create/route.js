@@ -1,5 +1,5 @@
-// import Create from './create.vue'
-const Create = () => import('./create.vue')
+import Create from './create.vue'
+// const Create = () => import('./create.vue')
 export default {
   path: 'create',
   name: 'goodscreate',
