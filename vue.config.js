@@ -44,46 +44,46 @@ module.exports = {
       // 1.排除哪些库不需要打包 import Vue from 'vue'
       // 用cdn方式引入
       config.externals = {
-        // vue: 'Vue', // key 是 require 的包名，value 是全局的变量
-        // vuex: 'Vuex',
-        // 'vue-router': 'VueRouter',
-        // // 'core-js': 'core', // 包好了es6和es7等新的语法，要放在程序的入口处加载
-        // axios: 'axios'
+        vue: 'Vue', // key 是 require 的包名，value 是全局的变量
+        vuex: 'Vuex',
+        'vue-router': 'VueRouter',
+        // 'core-js': 'core', // 包好了es6和es7等新的语法，要放在程序的入口处加载
+        axios: 'axios'
       }
       // 2.公共代码的抽取
       config.optimization = {
         // https://juejin.im/post/5e7c83b4e51d455c6c269608
-        splitChunks: {
-          cacheGroups: {
-            vendor: {
-              chunks: 'all',
-              test: /node_modules/,
-              name: 'vendor',
-              minChunks: 1,
-              maxInitialRequests: 5,
-              minSize: 0,
-              priority: 100
-            },
-            common: {
-              chunks: 'all',
-              test: /[\\/]src[\\/]js[\\/]/,
-              name: 'common',
-              minChunks: 2,
-              maxInitialRequests: 5,
-              minSize: 0,
-              priority: 60
-            },
-            styles: {
-              name: 'styles',
-              test: /\.(sa|sc|c)ss$/,
-              chunks: 'all',
-              enforce: true
-            },
-            runtimeChunk: {
-              name: 'manifest'
-            }
-          }
-        }
+        // splitChunks: {
+        //   cacheGroups: {
+        //     vendor: {
+        //       chunks: 'all',
+        //       test: /node_modules/,
+        //       name: 'vendor',
+        //       minChunks: 1,
+        //       maxInitialRequests: 5,
+        //       minSize: 0,
+        //       priority: 100
+        //     },
+        //     common: {
+        //       chunks: 'all',
+        //       test: /[\\/]src[\\/]js[\\/]/,
+        //       name: 'common',
+        //       minChunks: 2,
+        //       maxInitialRequests: 5,
+        //       minSize: 0,
+        //       priority: 60
+        //     },
+        //     styles: {
+        //       name: 'styles',
+        //       test: /\.(sa|sc|c)ss$/,
+        //       chunks: 'all',
+        //       enforce: true
+        //     },
+        //     runtimeChunk: {
+        //       name: 'manifest'
+        //     }
+        //   }
+        // }
       }
     }
   },

@@ -1,5 +1,5 @@
 // import NoFind from './no-find.vue'
-const NoFind = () => import('./no-find.vue')
+const NoFind = () => import(/* webpackChunkName: "no-find" */ './no-find.vue')
 export default {
   path: '/nofind',
   name: 'nofind',

@@ -9,10 +9,12 @@ allModules.keys().forEach((item, index, array) => {
   // item = ./login/index.js => login/index.js
   // item = ./main/books/index.js => main/books/index.js
   const module_path = item.substr(2)
-  const module = require(`@/store/modules/${module_path}`)
   const moduleNames = module_path.split('/') // [login, index.js] - [main, books, index.js]
   moduleNames.pop()
   const key = moduleNames.join('_')
+
+  // const module = require(`@/store/modules/${module_path}`)
+  const module = allModules(item)
   modules[key] = module.default
 })
 /**

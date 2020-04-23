@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import ARoutes from './register-routes.js'
+// import ARoutes from '../views/load-routes.js'
 Vue.use(VueRouter)
-
 const routes = [
   {
     path: '/',

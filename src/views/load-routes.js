@@ -1,11 +1,10 @@
 const routes = []
+// allRoute 是一个函数
 const allRoute = require.context('@/views/', true, /route\.(js|ts)$/)
 // ["./login/route.js", "./main/goods/list/route.js", "./main/route.js", "./no-find/route.js", "./register/route.js"]
 // console.log('allRoute=', allRoute.keys())
-allRoute.keys().forEach((item, index, array) => {
-  // item = ./login/route.js => login/route.js
-  const router_path = item.substr(2)
-  const route = require(`@/views/${router_path}`)
+allRoute.keys().forEach((file_path, index, array) => {
+  const route = allRoute(file_path)
   routes.push(route.default) // router.default 拿到的才是导出的对象，router是模块对象
 })
 /**

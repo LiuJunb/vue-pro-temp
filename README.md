@@ -22,6 +22,16 @@ mock
 该项目公共组件全局注册
 
 
+```
+
+  默认打包：
+
+  dist\js\chunk-vendors.19ef9041.js    126.08 KiB         43.68 KiB
+  dist\js\app.423484b0.js              6.08 KiB           2.28 KiB
+  dist\js\about.f8445343.js            0.44 KiB           0.31 KiB  // 路由懒加载
+  dist\css\app.877b7338.css            0.42 KiB           0.26 KiB
+
+```
 # 1.修改.eslintrc.js的配置
 
 
@@ -57,8 +67,9 @@ module.exports = {
 
 编写一级路由
 ```
-
+// 这里暂时没有使用路由懒加载
 import Register from './register.vue'
+// const Create = () => import(/* webpackChunkName: "create" */ './create.vue')
 export default {
   path: '/register',
   name: 'register', // 最好不能出现重复
@@ -73,7 +84,7 @@ export default {
 
 编写二级路由
 ```
-
+// 这里暂时没有使用路由懒加载
 import List from './list.vue'
 export default {
   path: 'bookslist',
@@ -89,7 +100,7 @@ export default {
 ```
 编写三级路由
 ```
-
+// 这里暂时没有使用路由懒加载
 import Create from './create.vue'
 export default {
   path: 'create',
@@ -345,7 +356,7 @@ export default install
 
 
 ```
-
+附加：此时打包的大小：
 ```
 
   File                                     Size             Gzipped  
@@ -363,6 +374,7 @@ export default install
 ```
 
 发现devtools中的vue调试功能不起作用（默认新建项目就可以用的）
+
 因为在开发环境使用cdn的的方法引用了vue 和 vuex 等，应该改成生成环境下才使用cdn
 的方式
 
@@ -474,9 +486,102 @@ permissions
 utils
 
 
+
+
 # 13.Vue Cli3 项目打包优化
 
+1.使用路由懒加载
 
+
+route.js
+
+```
+
+// 懒加载 路由( 异步组件 )
+const Login = () => import(/* webpackChunkName: "login" */ './login.vue')
+export default {
+  path: '/login',
+  name: 'login',
+  pname: '', // 父亲路由的名称
+  level: 1, // 一级路由
+  component: Login,
+  children: [
+  ]
+}
+
+
+```
+
+load-routes.js
+
+```
+
+const routes = []
+// allRoute 是一个函数
+const allRoute = require.context('@/views/', true, /route\.(js|ts)$/)
+// ["./login/route.js", "./main/goods/list/route.js", "./main/route.js", "./no-find/route.js", "./register/route.js"]
+// console.log('allRoute=', allRoute.keys())
+allRoute.keys().forEach((file_path, index, array) => {
+  const route = allRoute(file_path) // 相当于require('xxxx')
+  routes.push(route.default) // router.default 拿到的才是导出的对象，router是模块对象
+})
+/**
+ * routes:[
+    {
+      path: '/main',
+      name: 'main',
+      level: 1,
+      pname:'',
+      component: ()=>Promise.resove({}),
+      children: [
+      ]
+    }
+ * ]
+ */
+export default routes || []
+
+```
+
+附加：此时打包的大小：
+
+```
+File                                     Size             Gzipped  
+
+  dist\core-js-26\core-js.min.js           116.19 KiB       32.99 KiB
+  dist\vue-26\vue.runtime.min.js           63.37 KiB        22.90 KiB
+  dist\vue-router-303\vue-router.min.js    23.60 KiB        8.43 KiB 
+  dist\axios-018\axios.min.js              12.65 KiB        4.59 KiB 
+  dist\vuex-31\vuex.min.js                 11.05 KiB        3.37 KiB 
+
+  dist\js\app.72609e0d.js                  69.20 KiB        23.89 KiB
+  dist\js\main.250b7115.js                 1.24 KiB         0.60 KiB 
+  dist\js\chunk-6930fb1a.dd6c5d07.js       0.57 KiB         0.38 KiB 
+  dist\js\chunk-182a5f71.4ac84c11.js       0.56 KiB         0.38 KiB 
+  dist\js\chunk-58b92e9c.f1ed18aa.js       0.56 KiB         0.38 KiB 
+  dist\js\chunk-6c17baac.60ccd56e.js       0.55 KiB         0.38 KiB 
+  dist\js\chunk-0f58772a.a7431789.js       0.44 KiB         0.32 KiB 
+  dist\js\chunk-cb9138ee.51a4f94c.js       0.44 KiB         0.32 KiB 
+  dist\js\chunk-c98d0ff0.7f32c716.js       0.44 KiB         0.33 KiB
+  dist\js\chunk-56638406.3974d94a.js       0.44 KiB         0.32 KiB
+  dist\js\register.70b5676f.js             0.43 KiB         0.29 KiB
+  dist\js\no-find.ec24ff0e.js              0.42 KiB         0.29 KiB
+  dist\js\login.d8fcb38b.js                0.42 KiB         0.29 KiB
+  dist\normalize\normalize.css             6.38 KiB         1.79 KiB
+  dist\css\app.e8da0b44.css                0.58 KiB         0.34 KiB
+  dist\css\chunk-6c17baac.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-cb9138ee.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-c98d0ff0.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-182a5f71.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\register.0e433876.css           0.00 KiB         0.02 KiB
+  dist\css\chunk-6930fb1a.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\no-find.0e433876.css            0.00 KiB         0.02 KiB
+  dist\css\chunk-58b92e9c.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\main.0e433876.css               0.00 KiB         0.02 KiB
+  dist\css\chunk-0f58772a.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\login.0e433876.css              0.00 KiB         0.02 KiB
+  dist\css\chunk-56638406.0e433876.css     0.00 KiB         0.02 KiB
+
+```
 
 
 # 13.编写自动生成页面的脚本指令
