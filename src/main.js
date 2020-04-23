@@ -7,7 +7,10 @@ import store from './store'
 import '@/plugins/index.js'
 // 导入全局样式
 import '@/styles/global.scss'
-
+console.log('liujun--')
+console.log('liujun--')
+console.log('liujun--')
+console.log('liujun--')
 Vue.config.productionTip = false
 new Vue({
   router,

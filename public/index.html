@@ -150,14 +150,13 @@
 
     <!-- 如果是生成环境，使用cdn导入下面的库 -->
     <% if(process.env.NODE_ENV === 'production'){ %>
-    <!-- <script src="/core-js-26/core-js.min.js"></script> -->
     <script src="/vue-26/vue.runtime.min.js"></script>
     <script src="/vuex-31/vuex.min.js"></script>
     <script src="/vue-router-303/vue-router.min.js"></script>
     <script src="/axios-018/axios.min.js"></script>
     <%}%>
 
-    <!-- 使用CDN的JS文件 -->
+    <!-- 使用CDN的JS文件,如果cdn为true然后遍历cdn.js这个数组 -->
     <% for (var i in htmlWebpackPlugin.options.cdn &&
     htmlWebpackPlugin.options.cdn.js) { %>
     <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>

@@ -485,12 +485,28 @@ permissions
 
 utils
 
+附加：此时打包的大小：
 
+```
+
+  File                                     Size             Gzipped  
+
+  dist\core-js-26\core-js.min.js           116.19 KiB       32.99 KiB
+  dist\vue-26\vue.runtime.min.js           63.37 KiB        22.90 KiB
+  dist\vue-router-303\vue-router.min.js    23.60 KiB        8.43 KiB
+  dist\axios-018\axios.min.js              12.65 KiB        4.59 KiB
+  dist\vuex-31\vuex.min.js                 11.05 KiB        3.37 KiB
+  dist\js\chunk-vendors.418728bf.js        58.38 KiB        20.63 KiB
+  dist\js\app.95604ffc.js                  18.24 KiB        4.36 KiB
+  dist\normalize\normalize.css             6.38 KiB         1.79 KiB
+  dist\css\app.1b73d7a6.css                0.58 KiB         0.34 KiB
+
+```
 
 
 # 13.Vue Cli3 项目打包优化
 
-1.使用路由懒加载
+## 1.使用路由懒加载
 
 
 route.js
@@ -584,11 +600,340 @@ File                                     Size             Gzipped
 ```
 
 
-# 13.编写自动生成页面的脚本指令
+## 2.代码分片
+
+https://juejin.im/post/5e7c83b4e51d455c6c269608
+
+splitChunks 代码拆分：
+
+vue.config.js 的配置如下（不适用cdn引用）
+```
+
+  configureWebpack: (config) => {
+    if (isDevelopment) {
+
+    } else {
+      // 1.排除哪些库不需要打包 import Vue from 'vue'
+      // 用cdn方式引入
+      config.externals = {
+        // vue: 'Vue', // key 是 require 的包名，value 是全局的变量
+        // vuex: 'Vuex',
+        // 'vue-router': 'VueRouter',
+        // // 'core-js': 'core', // 包好了es6和es7等新的语法，要放在程序的入口处加载
+        // axios: 'axios'
+      }
+      // 2.公共代码的抽取
+      config.optimization = {
+        // https://juejin.im/post/5e7c83b4e51d455c6c269608  代码拆分
+        splitChunks: {
+          // 表示选择哪些 chunks 进行分割，可选值有：async，initial和all
+          // chunks: 'all', // 表示新分离出的chunk必须大于等于minSize，默认为30000，约30kb。
+          // minSize: 30000, // 表示一个模块至少应被minChunks个chunk所包含才能分割。默认为1。
+          // minChunks: 1, // 表示按需加载文件时，并行请求的最大数目。默认为5。
+          // maxAsyncRequests: 5, // 表示加载入口文件时，并行请求的最大数目。默认为3。
+          // maxInitialRequests: 3, // 表示拆分出的chunk的名称连接符。默认为~。如chunk~vendors.js
+          // automaticNameDelimiter: '~', // 设置chunk的文件名。默认为true。当为true时，splitChunks基于chunk和cacheGroups的key自动命名。
+
+          // cacheGroups 下可以可以配置多个组，每个组根据test设置条件，符合test条件的模块，就分配到该组。
+          // 模块可以被多个组引用，但最终会根据priority来决定打包到哪个组中。
+          // 默认将所有来自 node_modules目录的模块打包至vendors组，
+          // 将两个以上的chunk所共享的模块打包至default组。
+          cacheGroups: {
+            vendor: {
+              chunks: 'all', // 表示选择哪些 chunks 进行分割，可选值有：async，initial和all
+              test: /node_modules/,
+              name: 'vendor', // 设置chunk的文件名。默认为true。当为true时，splitChunks基于chunk和cacheGroups的key自动命名。
+              minChunks: 1, // 表示一个模块至少应被minChunks个chunk所包含才能分割。默认为1。
+              maxInitialRequests: 5, // 表示加载入口文件时，并行请求的最大数目。默认为3。
+              maxAsyncRequests: 5, // 表示按需加载文件时，并行请求的最大数目。默认为5。
+              minSize: 20000, // 表示新分离出的chunk必须大于等于minSize，默认为30000，约30kb。
+              automaticNameDelimiter: '~', // 表示拆分出的chunk的名称连接符。默认为~。如chunk~vendors.js
+              priority: 100
+            },
+            common: {
+              chunks: 'all',
+              test: /[\\/]src[\\/]js[\\/]/,
+              name: 'common',
+              minChunks: 2, // 将两个以上的chunk所共享的模块打包至common组。
+              maxInitialRequests: 5,
+              minSize: 20000,
+              maxAsyncRequests: 5,
+              automaticNameDelimiter: '~',
+              priority: 60
+            }
+            // styles: {
+            //   name: 'styles',
+            //   test: /\.(sa|sc|c)ss$/,
+            //   chunks: 'all',
+            //   enforce: true
+            // },
+            // runtimeChunk: {
+            //   name: 'manifest'
+            // }
+          }
+        }
+      }
+    }
+  },
+
+```
+
+附加：此时打包的大小：
+
+```
+
+  File                                     Size             Gzipped  
+
+  dist\core-js-26\core-js.min.js           116.19 KiB       32.99 KiB
+  dist\vue-26\vue.runtime.min.js           63.37 KiB        22.90 KiB
+  dist\vue-router-303\vue-router.min.js    23.60 KiB        8.43 KiB 
+  dist\axios-018\axios.min.js              12.65 KiB        4.59 KiB 
+  dist\vuex-31\vuex.min.js                 11.05 KiB        3.37 KiB 
+  // 这个包这么大是因为：chunks: 'initial' 入口中包含非异步加载的库多了，可以使用cdn来减少这种库的打包
+  dist\js\vendor.40642981.js               173.71 KiB       59.95 KiB
+  dist\js\app.b048d244.js                  11.74 KiB        3.91 KiB 
+  dist\js\main.e67cf0ab.js                 1.24 KiB         0.60 KiB 
+  dist\js\chunk-6930fb1a.16db2dd4.js       0.57 KiB         0.38 KiB 
+  dist\js\chunk-182a5f71.063a84bf.js       0.56 KiB         0.38 KiB 
+  dist\js\chunk-58b92e9c.0d00470e.js       0.56 KiB         0.38 KiB 
+  dist\js\chunk-6c17baac.ecb94a7a.js       0.55 KiB         0.38 KiB 
+  dist\js\chunk-cb9138ee.ad5e82ab.js       0.44 KiB         0.32 KiB 
+  dist\js\chunk-c98d0ff0.3dccbd59.js       0.44 KiB         0.33 KiB 
+  dist\js\chunk-0f58772a.c526a665.js       0.44 KiB         0.32 KiB 
+  dist\js\chunk-56638406.bf9d8b7d.js       0.44 KiB         0.32 KiB
+  dist\js\register.6df61983.js             0.43 KiB         0.29 KiB
+  dist\js\no-find.2d4ce762.js              0.42 KiB         0.29 KiB
+  dist\js\login.3599c90d.js                0.42 KiB         0.29 KiB
+  dist\normalize\normalize.css             6.38 KiB         1.79 KiB
+  dist\css\app.0cd0943b.css                0.58 KiB         0.34 KiB
+  dist\css\login.0e433876.css              0.00 KiB         0.02 KiB
+  dist\css\chunk-cb9138ee.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-c98d0ff0.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-182a5f71.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-6c17baac.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\no-find.0e433876.css            0.00 KiB         0.02 KiB
+  dist\css\register.0e433876.css           0.00 KiB         0.02 KiB
+  dist\css\chunk-6930fb1a.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-58b92e9c.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-0f58772a.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\main.0e433876.css               0.00 KiB         0.02 KiB
+  dist\css\chunk-56638406.0e433876.css     0.00 KiB         0.02 KiB
+
+```
+dist\js\vendor.40642981.js               173.71 KiB       59.95 KiB
+
+这个包这么大是因为：chunks: 'initial' 入口中包含非异步加载的库多了，可以使用cdn来减少这种库的打包。
+例如index.js中加载的：vue, vue-router, axios, vuex .... 
+  
+
+## 3.使用cdn减少vendor.40642981.js包大小
+
+```
+
+  configureWebpack: (config) => {
+    if (isDevelopment) {
+
+    } else {
+      // 1.排除哪些库不需要打包 import Vue from 'vue'
+      // 用cdn方式引入
+      config.externals = {
+        vue: 'Vue', // key 是 require 的包名，value 是全局的变量
+        vuex: 'Vuex',
+        'vue-router': 'VueRouter',
+        // 'core-js': 'core', // 包好了es6和es7等新的语法，要放在程序的入口处加载
+        axios: 'axios'
+      }
+   }
+
+```
+
+附加：此时打包的大小：
+
+```
+
+  File                                     Size             Gzipped  
+
+  dist\core-js-26\core-js.min.js           116.19 KiB       32.99 KiB
+  dist\vue-26\vue.runtime.min.js           63.37 KiB        22.90 KiB
+  dist\vue-router-303\vue-router.min.js    23.60 KiB        8.43 KiB 
+  dist\axios-018\axios.min.js              12.65 KiB        4.59 KiB 
+  dist\vuex-31\vuex.min.js                 11.05 KiB        3.37 KiB 
+
+    dist\js\vendor.aa6861b8.js               57.97 KiB        20.34 KiB
+    dist\js\app.af50a084.js                  11.91 KiB        3.97 KiB 
+  dist\js\main.bfbd4fcd.js                 1.24 KiB         0.60 KiB 
+  dist\js\chunk-6930fb1a.31e36961.js       0.57 KiB         0.38 KiB
+  dist\js\chunk-182a5f71.16cf518a.js       0.56 KiB         0.38 KiB
+  dist\js\chunk-58b92e9c.2644cc1a.js       0.56 KiB         0.38 KiB
+  dist\js\chunk-6c17baac.581bd655.js       0.55 KiB         0.38 KiB
+  dist\js\chunk-cb9138ee.90dce432.js       0.44 KiB         0.32 KiB
+  dist\js\chunk-c98d0ff0.38c08bdd.js       0.44 KiB         0.33 KiB
+  dist\js\chunk-0f58772a.53080146.js       0.44 KiB         0.32 KiB
+  dist\js\chunk-56638406.7e043990.js       0.44 KiB         0.32 KiB
+  dist\js\register.93201715.js             0.43 KiB         0.29 KiB
+  dist\js\no-find.50e66738.js              0.42 KiB         0.29 KiB
+  dist\js\login.1cb6e8f4.js                0.42 KiB         0.29 KiB
+  dist\normalize\normalize.css             6.38 KiB         1.79 KiB
+    dist\css\app.0cd0943b.css                0.58 KiB         0.34 KiB
+  dist\css\login.0e433876.css              0.00 KiB         0.02 KiB
+  dist\css\chunk-cb9138ee.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-c98d0ff0.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-182a5f71.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-6c17baac.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\no-find.0e433876.css            0.00 KiB         0.02 KiB
+  dist\css\register.0e433876.css           0.00 KiB         0.02 KiB
+  dist\css\chunk-6930fb1a.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-58b92e9c.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-0f58772a.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\main.0e433876.css               0.00 KiB         0.02 KiB
+  dist\css\chunk-56638406.0e433876.css     0.00 KiB         0.02 KiB
+
+```
+
+其中入口文件大小：（ 180k ）
+    dist\js\vendor.aa6861b8.js               57.97 KiB        20.34 KiB
+    dist\js\app.af50a084.js                  11.91 KiB        3.97 KiB 
+    dist\css\app.0cd0943b.css                0.58 KiB         0.34 KiB
+  dist\vue-26\vue.runtime.min.js           63.37 KiB        22.90 KiB
+  dist\vue-router-303\vue-router.min.js    23.60 KiB        8.43 KiB 
+  dist\axios-018\axios.min.js              12.65 KiB        4.59 KiB 
+  dist\vuex-31\vuex.min.js                 11.05 KiB        3.37 KiB 
 
 
-# 13.
 
+## 4.使用js和cs的压缩功能
+
+npm i -D uglifyjs-webpack-plugin
+
+"uglifyjs-webpack-plugin": "^2.2.0",
+
+```
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+
+      // 3.代码压缩  config.plugins 只有在configureWebpack这里才有该函数
+      config.plugins.push(
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            // 生产环境自动删除console
+            compress: {
+              drop_debugger: true,
+              drop_console: true,
+              pure_funcs: ['console.log']
+            }
+          },
+          sourceMap: false,
+          parallel: true
+        })
+      )
+
+```
+
+## 5.对js和cs进行GZIP打包
+
+"compression-webpack-plugin": "^2.0.0",
+
+```
+
+const CompressionPlugin = require('compression-webpack-plugin')
+
+      // 启用GZip压缩 只有在configureWebpack这里才有config.plugins该函数
+      const productionGzipExtensions = ['js', 'css']
+      config.plugins.push(
+        new CompressionPlugin({
+          filename: '[path].gz[query]',
+          algorithm: 'gzip',
+          test: new RegExp(
+            '\\.(' + productionGzipExtensions.join('|') + ')$'
+          ),
+          threshold: 10240, // 只有大小大于该值的资源会被处理 10240
+          minRatio: 0.8, // 只有压缩率小于这个值的资源才会被处理
+          deleteOriginalAssets: false // 删除原文件
+        })
+      )
+```
+
+
+## 6.启用打包分析功能
+
+"webpack-bundle-analyzer": "^3.3.2"
+
+```
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
+      // 2.在chainWebpack中启用Analyzer分析打包后的大小
+      config
+        .plugin('webpack-bundle-analyzer')
+        .use(BundleAnalyzerPlugin)
+
+```
+
+最后一旦执行 npm run build 就是启动一个新的分析打包页面
+
+
+附加：此时打包的大小：
+```
+
+Webpack Bundle Analyzer is started at http://127.0.0.1:8888
+Use Ctrl+C to close it
+  File                                     Size             Gzipped  
+
+  dist\core-js-26\core-js.min.js           116.19 KiB       32.99 KiB
+  dist\vue-26\vue.runtime.min.js           63.37 KiB        22.90 KiB
+  dist\vue-router-303\vue-router.min.js    23.60 KiB        8.43 KiB 
+  dist\axios-018\axios.min.js              12.65 KiB        4.59 KiB 
+  dist\vuex-31\vuex.min.js                 11.05 KiB        3.37 KiB 
+
+  // 该文件主要还是core-js比较大，其实也可以使用cdn加载core-js
+  dist\js\vendor.5e2a53ce.js               57.48 KiB        20.39 KiB
+  dist\js\app.0b9f72ff.js                  11.82 KiB        3.95 KiB 
+  dist\js\main.fa7b7a87.js                 1.17 KiB         0.59 KiB 
+  dist\js\chunk-6930fb1a.e3f47c5f.js       0.55 KiB         0.38 KiB 
+  dist\js\chunk-182a5f71.8d4a1aa8.js       0.55 KiB         0.38 KiB 
+  dist\js\chunk-58b92e9c.277ff484.js       0.54 KiB         0.38 KiB 
+  dist\js\chunk-6c17baac.7d173482.js       0.53 KiB         0.38 KiB 
+  dist\js\chunk-cb9138ee.30d0dcf0.js       0.44 KiB         0.32 KiB
+  dist\js\chunk-c98d0ff0.37344ae4.js       0.44 KiB         0.33 KiB
+  dist\js\chunk-0f58772a.8e3bd9d1.js       0.44 KiB         0.32 KiB
+  dist\js\chunk-56638406.00a8d23a.js       0.43 KiB         0.32 KiB
+  dist\js\register.478ebd5d.js             0.42 KiB         0.29 KiB
+  dist\js\no-find.3da5011b.js              0.42 KiB         0.29 KiB
+  dist\js\login.bcc5680a.js                0.41 KiB         0.29 KiB
+  dist\normalize\normalize.css             6.38 KiB         1.79 KiB
+  dist\css\app.0cd0943b.css                0.58 KiB         0.34 KiB
+  dist\css\login.0e433876.css              0.00 KiB         0.02 KiB
+  dist\css\chunk-cb9138ee.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-c98d0ff0.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-182a5f71.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-6c17baac.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\no-find.0e433876.css            0.00 KiB         0.02 KiB
+  dist\css\register.0e433876.css           0.00 KiB         0.02 KiB
+  dist\css\chunk-6930fb1a.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-58b92e9c.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-cb9138ee.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-c98d0ff0.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-182a5f71.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-6c17baac.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\no-find.0e433876.css            0.00 KiB         0.02 KiB
+  dist\css\register.0e433876.css           0.00 KiB         0.02 KiB
+  dist\css\chunk-6930fb1a.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-58b92e9c.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-0f58772a.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\main.0e433876.css               0.00 KiB         0.02 KiB
+  dist\css\chunk-56638406.0e433876.css     0.00 KiB         0.02 KiB
+
+```
+
+
+# 14.编写自动生成页面的脚本指令
+
+
+# 15.
+
+
+# 16.
+
+
+# 17.
 
 
 
