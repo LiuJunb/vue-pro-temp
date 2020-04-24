@@ -941,7 +941,62 @@ Use Ctrl+C to close it
 
 # 15.编写自动生成页面的脚本指令
 
-  
+1.安装下面的插件
+
+npm install chalk@1.1.0 --save-dev
+
+npm install ejs@3.1.2 --save-dev
+
+npm install argparse@1.0.10 --save-dev
+
+// 安装本地的库
+npm i -D file:./generater
+
+
+2.新建 generater 的文件夹与及目录
+  generater
+    template
+      service
+      store
+      views
+    index.js
+    package.json
+
+3.修改 package.json
+```
+
+  "bin": {
+    "cre-cli": "index.js"
+  },
+
+```
+
+4.安装库 
+
+// 1.安装本地的库
+npm i -D file:./generater  // 这个是安装到项目中，不能直接执行，需要在package.json中配置脚本
+
+执行package.json中配置脚本默认回到node_modules中查找先
+
+```
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "cre": "cre-cli -dir demo1",
+    "lint": "vue-cli-service lint"
+  },
+```
+
+执行：
+npm run cre
+
+// 2.全部安装
+
+npm link  // 相当于全局安装的该工具
+
+执行： cre-cli -dir demo1
+
+5.
 
 # 15.
 
@@ -950,6 +1005,9 @@ Use Ctrl+C to close it
 
 
 # 17.
+
+
+
 
 
 
