@@ -1,3 +1,4 @@
+
 <%_ if (component) { _%>
 <template>
   <div class="<%= component.name %>">
@@ -7,16 +8,20 @@
 
 <script>
 export default {
-  name: '<%= component.name %>',
+  name: '<%= component.humpName %>',
   components: {
 
   },
   data() {
     return {
-      name: '<%= component.name %>'
+      name: '<%= component.humpName %>'
     }
   }
 }
 </script>
-<%- component.style %>
+<style lang="scss">
+.<%- component.name %>{
+
+}
+</style>
 <%_ } _%>

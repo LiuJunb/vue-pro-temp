@@ -1,0 +1,23 @@
+<%_ if (component) { _%>
+import { httpGet, httpPost } from '@/http/index.js'
+
+export const <%= component.name %>_api = {
+  dataUrl: '/home1',
+  listUrl: '/home1',
+  detailUrl: '/home1'
+}
+
+export default {
+
+  getData: (payload) => {
+    return httpPost(<%= component.name %>_api.dataUrl, payload)
+  },
+  getList: (payload) => {
+    return httpPost(<%= component.name %>_api.listUrl, payload)
+  },
+  getDetail: (payload) => {
+    return httpGet(<%= component.name %>_api.detailUrl, payload)
+  }
+
+}
+<%_ } _%>

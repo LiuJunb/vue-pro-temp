@@ -1219,10 +1219,27 @@ function otherQuestion() {
 
 ```
 
-# 15.
+# 16.编写自动生成页面的模板
+  generater
+    template
+      service
+      store
+      views
+        index.ejs // index.vue
+    index.js // 编写自动生成vue页面组件的脚本
+    package.json
+
+index.ejs // index.vue 文件
+
+注意：vs code 需要安装 .ejs  的插件
+
+```
+
+  
+```
 
 
-# 16.
+# 17.完善自动生成页面的脚本指令
 
 
 # 17.

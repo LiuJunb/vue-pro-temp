@@ -1,5 +1,5 @@
-import Main from './main.vue'
-// const Main = () => import(/* webpackChunkName: "main" */ './main.vue')
+import Main from './index.vue'
+// const Main = () => import(/* webpackChunkName: "main" */ './index.vue')
 export default {
   path: '/main',
   name: 'main',

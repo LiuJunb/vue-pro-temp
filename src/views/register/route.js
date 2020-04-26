@@ -1,5 +1,5 @@
-// import Register from './register.vue'
-const Register = () => import(/* webpackChunkName: "register" */ './register.vue')
+// import Register from './index.vue'
+const Register = () => import(/* webpackChunkName: "register" */ './index.vue')
 export default {
   path: '/register',
   name: 'register',

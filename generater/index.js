@@ -8,7 +8,15 @@ const chalk = require('chalk')
 const ejs = require('ejs')
 const fs = require('fs')
 const path = require('path')
-const readline = require('readline')
+// const readline = require('readline')
+const {
+  getDirPath,
+  getComponentDirName,
+  getComponentName,
+  getComponentNameFirLow,
+  getRouteLevel,
+  getParentRouteName
+} = require('./utils.js')
 var ArgumentParser = require('argparse').ArgumentParser
 
 // 获取绝对路径（就是这个文件所在的路径）
@@ -20,6 +28,17 @@ const log = message => console.log(chalk.green(`${message}`))
 // 红色
 const errorLog = error => console.log(chalk.red(`${error}`))
 
+// 定义模板的参数
+const templateData = {
+  dirPath: '', // 新建组件的路劲
+  name: '', // 组件的名称（小写） demo1-btn
+  humpName: '', // 组件的名称（首字母大写并驼峰命名） Demo1Btn
+  firLowName: '', // 组件的名称（首字母小写，其它字符首字符大写）demo1Btn
+  routeLevel: '', // 组件路由的级别（1,2,3）
+  parentRouteName: '' // 组件父亲路由的名称
+
+}
+console.log(templateData)
 var parser = new ArgumentParser({
   version: '0.0.1',
   addHelp: true,
@@ -47,20 +66,14 @@ parser.addArgument(
 const args = parser.parseArgs()
 console.dir(args) // { dir: null, remove:null }
 
-const unloadChar = '-'
-const loadedChar = '='
-// 样式模板
-const styleTemp = (className) => `
-<style lang="scss">
-.${className}{
+// 监听控制台输入
+// const unloadChar = '-'
+// const loadedChar = '='
+// const rl = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout
+// })
 
-}
-</style>
-`
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-})
 // console.log('pageVue=', pageVue)
 // 获取目标views文件夹的绝对路径
 const generateViewsPath = resolveReallyPath('../src/views/' + args.dir)
@@ -68,9 +81,9 @@ const generateViewsPath = resolveReallyPath('../src/views/' + args.dir)
 const generateStorePath = resolveReallyPath('../src/store/modules/' + args.dir)
 // 获取目标service文件夹的绝对路径
 const generateServicePath = resolveReallyPath('../src/service/' + args.dir)
-console.log('generateViewsPath=', generateViewsPath)
-console.log('generateStorePath=', generateStorePath)
-console.log('generateServicePath=', generateServicePath)
+// console.log('generateViewsPath=', generateViewsPath)
+// console.log('generateStorePath=', generateStorePath)
+// console.log('generateServicePath=', generateServicePath)
 
 // 递归新建目录（已存在不用管，不存在就新建）
 function mkdirsSync(dirname) {
@@ -121,52 +134,62 @@ if (args.dir) {
   mkdirsSync(generateViewsPath)
   mkdirsSync(generateStorePath)
   mkdirsSync(generateServicePath)
+
+  // 准备模板的参数
+  // args.dir = demo1btn 或者 demo/demo1btn 或者 demo/demo1-btn
+  templateData.dirPath = getDirPath(args.dir) // 新建组件的路劲
+  templateData.name = getComponentDirName(args.dir) // demo1btn 或者  demo1btn 或者 demo1-btn
+  templateData.humpName = getComponentName(args.dir) // Demo1btn 或者  Demo1btn 或者 Demo1Btn
+  templateData.firLowName = getComponentNameFirLow(args.dir) // Demo1btn 或者  Demo1btn 或者 Demo1Btn
+  templateData.firLowName = getComponentNameFirLow(args.dir) // Demo1btn 或者  Demo1btn 或者 Demo1Btn
+  templateData.routeLevel = getRouteLevel(args.dir) // Demo1btn 或者  Demo1btn 或者 Demo1Btn
+  templateData.parentRouteName = getParentRouteName(args.dir) // Demo1btn 或者  Demo1btn 或者 Demo1Btn
+
   // 2.生成vue组件(把template中对应的文件拷贝到项目对应的文件夹中)
-  ejs.renderFile(resolveReallyPath('template/views/index.vue'), { component: { name: 'demo1', style: styleTemp('demo1') }}, {}, (err, str) => {
+  ejs.renderFile(resolveReallyPath('template/views/index.ejs'), { component: templateData }, {}, (err, str) => {
     if (!err) {
       generateFile(generateViewsPath + '/index.vue', str)
         .then(() => {
-
+          log(generateViewsPath + '/index.vue生成完成')
         })
     }
   })
   // 3.生成组件的route
-  ejs.renderFile(resolveReallyPath('template/views/route.js'), { component: { name: 'demo1' }}, {}, (err, str) => {
+  ejs.renderFile(resolveReallyPath('template/views/route.ejs'), { component: templateData }, {}, (err, str) => {
     if (!err) {
       generateFile(generateViewsPath + '/route.js', str)
         .then(() => {
-
+          log(generateViewsPath + '/route.js生成完成')
         })
     }
   })
   // 4.生成页面的store
-  ejs.renderFile(resolveReallyPath('template/store/modules/index.js'), { component: { name: 'demo1' }}, {}, (err, str) => {
+  ejs.renderFile(resolveReallyPath('template/store/modules/index.ejs'), { component: templateData }, {}, (err, str) => {
     if (!err) {
       generateFile(generateStorePath + '/index.js', str)
         .then(() => {
-
+          log(generateStorePath + '/index.js生成完成')
         })
     }
   })
   // 5.生成页面的store
-  ejs.renderFile(resolveReallyPath('template/store/modules/types.js'), { component: { name: 'demo1' }}, {}, (err, str) => {
+  ejs.renderFile(resolveReallyPath('template/store/modules/types.ejs'), { component: templateData }, {}, (err, str) => {
     if (!err) {
       generateFile(generateStorePath + '/types.js', str)
         .then(() => {
-
+          log(generateStorePath + '/types.js生成完成')
         })
     }
   })
   // 6.生成store对应的service
-  ejs.renderFile(resolveReallyPath('template/service/index.js'), { component: { name: 'demo1' }}, {}, (err, str) => {
+  ejs.renderFile(resolveReallyPath('template/service/index.ejs'), { component: templateData }, {}, (err, str) => {
     if (!err) {
       generateFile(generateServicePath + '/index.js', str)
         .then(() => {
-
+          log(generateServicePath + '/index.js生成完成')
         })
     }
   })
-
 // 2.代表是删除文件
 } else if (args.remove) {
 
@@ -191,16 +214,16 @@ if (args.dir) {
 //   }, 200)
 // })
 
-function renderProgress(text, step) {
-  const PERCENT = Math.round(step * 10)
-  const COUNT = 2
-  const unloadStr = new Array(COUNT * (10 - step)).fill(unloadChar).join('')
-  const loadedStr = new Array(COUNT * (step)).fill(loadedChar).join('')
-  process.stdout.write(`${text}:【${loadedStr}${unloadStr}|${PERCENT}%】`)
-}
+// function renderProgress(text, step) {
+//   const PERCENT = Math.round(step * 10)
+//   const COUNT = 2
+//   const unloadStr = new Array(COUNT * (10 - step)).fill(unloadChar).join('')
+//   const loadedStr = new Array(COUNT * (step)).fill(loadedChar).join('')
+//   process.stdout.write(`${text}:【${loadedStr}${unloadStr}|${PERCENT}%】`)
+// }
 
-function otherQuestion() {
-  rl.question(chalk.green('你想对谁说声hello2？ '), answer => {
-    process.exit(0)
-  })
-}
+// function otherQuestion() {
+//   rl.question(chalk.green('你想对谁说声hello2？ '), answer => {
+//     process.exit(0)
+//   })
+// }

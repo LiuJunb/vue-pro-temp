@@ -1,6 +1,8 @@
 <template>
   <div class="create">
-    create 放三级路由
+    detail 放三级路由 <br>
+    <router-link to="/main/goodsdetail/create">create</router-link> |
+    <router-view/>
   </div>
 </template>
 

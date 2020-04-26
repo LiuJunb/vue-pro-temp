@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "cre": "cre-cli -dir demo1",
+    "cre": "cre-cli -dir main/warning",
+    "cre2": "cre-cli -dir borading",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

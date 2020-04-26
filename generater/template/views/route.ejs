@@ -1,0 +1,20 @@
+
+<%_ if (component) { _%>
+// 普通加载路由
+// import <%= component.name %> from './<%= component.name %>.vue'
+// 懒加载路由
+const <%= component.humpName %> = () => import(/* webpackChunkName: "<%= component.name %>" */ './index.vue')
+export default {
+  <%_ if (component.routeLevel === 1) { _%>
+  path: '/<%= component.name %>',
+  <%_ } else { _%>
+  path: '<%= component.name %>',
+  <%_ } _%>
+  name: '<%= component.name %>',
+  pname: '<%= component.parentRouteName %>', // 父亲路由的名称
+  level: <%= component.routeLevel %>, // 一级路由
+  component: <%= component.humpName %>,
+  children: [
+  ]
+}
+<%_ } _%>

@@ -1,5 +1,6 @@
+<%_ if (component) { _%>
 import Types from './types.js'
-// import loginService from '@/service/login/index.js'
+import <%= component.firLowName %>Service from '@/service/<%= component.dirPath %>/index.js'
 export default {
   // 1.启用命名空间
   namespaced: true,
@@ -24,16 +25,20 @@ export default {
   },
   // 4.提交action，来修改状态
   actions: {
-    data(context, payload) {
-      // context 对象 与 store对象有相同的方法；context != store
-      // 注意：局部状态通过 context.state 暴露出来，根节点状态则为 context.rootState
-      context.commit(Types.data, payload)
+    async data(context, payload) {
+      const result = await <%= component.firLowName %>Service.getData(payload)
+      context.commit(Types.data, result.data)
+      return Promise.resolve(result.data)
     },
-    list(context, payload) {
-      context.commit(Types.list, payload)
+    async list(context, payload) {
+      const result = await <%= component.firLowName %>Service.getList(payload)
+      context.commit(Types.list, result.data)
+      return Promise.resolve(result.data)
     },
-    detail(context, payload) {
-      context.commit(Types.detail, payload)
+    async detail(context, payload) {
+      const result = await <%= component.firLowName %>Service.getDetail(payload)
+      context.commit(Types.detail, result.data)
+      return Promise.resolve(result.data)
     }
   },
   // 5.获取定义的状态, 通过store.getters获取里面的函数,例如：store.getters.count
@@ -67,3 +72,4 @@ export default {
     this.$store.getters['login/data']
     this.$store.getters['login/add'](100)
  */
+<%_ } _%>

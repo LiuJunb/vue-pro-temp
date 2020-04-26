@@ -13,7 +13,7 @@ module.exports = {
     'vue'
   ],
   rules: {
-    'vue/no-parsing-error':'off',
+    // 'vue/no-parsing-error':'off',
     // no-console error 代表存在console就会报错， off 代表时关闭，on代表时开启
     'no-console': process.env.NODE_ENV === 'production' ? 'off' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
