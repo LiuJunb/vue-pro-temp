@@ -1226,18 +1226,96 @@ function otherQuestion() {
       store
       views
         index.ejs // index.vue
+        route.ejs // route.js
     index.js // 编写自动生成vue页面组件的脚本
     package.json
 
-index.ejs // index.vue 文件
 
 注意：vs code 需要安装 .ejs  的插件
 
+index.ejs // index.vue 文件
 ```
+
+
+<%_ if (component) { _%>
+<template>
+  <div class="<%= component.name %>">
+    {{name}}
+  </div>
+</template>
+
+<script>
+export default {
+  name: '<%= component.humpName %>',
+  components: {
+
+  },
+  data() {
+    return {
+      name: '<%= component.humpName %>'
+    }
+  }
+}
+</script>
+<style lang="scss">
+.<%- component.name %>{
+
+}
+</style>
+<%_ } _%>
 
   
 ```
 
+route.ejs // route.js
+
+```
+
+<%_ if (component) { _%>
+// 普通加载路由
+// import <%= component.name %> from './<%= component.name %>.vue'
+// 懒加载路由
+const <%= component.humpName %> = () => import(/* webpackChunkName: "<%= component.name %>" */ './index.vue')
+export default {
+  <%_ if (component.routeLevel === 1) { _%>
+  path: '/<%= component.name %>',
+  <%_ } else { _%>
+  path: '<%= component.name %>',
+  <%_ } _%>
+  name: '<%= component.name %>',
+  pname: '<%= component.parentRouteName %>', // 父亲路由的名称
+  level: <%= component.routeLevel %>, // 一级路由
+  component: <%= component.humpName %>,
+  children: [
+  ]
+}
+<%_ } _%>
+
+```
+
+附加：控制台打包输出：
+```
+
+  File                                     Size             Gzipped  
+
+  dist\vue-26\vue.runtime.min.js           63.37 KiB        22.90 KiB
+  dist\vue-router-303\vue-router.min.js    23.60 KiB        8.43 KiB 
+  dist\axios-018\axios.min.js              14.95 KiB        4.89 KiB 
+  dist\vuex-31\vuex.min.js                 11.05 KiB        3.37 KiB 
+  // 主要是core.js文件比较大
+  dist\js\vendor.5e2a53ce.js               57.48 KiB        20.39 KiB
+  dist\js\app.a0b8e2eb.js                  13.57 KiB        4.27 KiB 
+  dist\js\chunk-72be0fab.43a0f643.js       0.55 KiB         0.37 KiB 
+  dist\js\chunk-66b3ff16.f01ad7a4.js       0.54 KiB         0.38 KiB 
+  dist\js\chunk-713f3940.30d8f44e.js       0.44 KiB         0.33 KiB 
+  dist\js\chunk-cff4d5c8.95e10add.js       0.44 KiB         0.32 KiB
+  dist\js\register.2a9c49b7.js             0.42 KiB         0.28 KiB
+  dist\js\no-find.448a1eb1.js              0.42 KiB         0.29 KiB
+  dist\js\login.7a04cac5.js                0.41 KiB         0.28 KiB
+  dist\normalize\normalize.css             6.38 KiB         1.79 KiB
+  dist\css\app.da63b255.css                0.58 KiB         0.34 KiB
+
+```
 
 # 17.完善自动生成页面的脚本指令
 
@@ -1307,17 +1385,17 @@ index.ejs // index.vue 文件
 
 ## 可优化点
 
-1. 可优化打包的结果（减少包的体积大小）
+1. *可优化打包的结果（减少包的体积大小）
 
-2. 可优化 自动注册路由, store, service
+2. *可优化 自动注册路由, store, service
 
 3. 可优化公共组件单独导出，自动注册公共组件
 
-4. 可优化减少了重复发送的网络请求(统一获取配置信息)
+4. *可优化减少了重复发送的网络请求(统一获取配置信息)
 
 5. 可优化字体图标最好使用svg
 
-6. 可以使用nodejs实现自动生成/删除：页面组件，路由配置，store层，service层，api层的代码
+6. *可以使用nodejs实现自动生成/删除：页面组件，路由配置，store层，service层，api层的代码
 
 
 
