@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "local": "node ./server/index.js",
     "build": "vue-cli-service build",
     "cre": "cre-cli -dir main/warning",
     "cre2": "cre-cli -dir borading",
@@ -26,6 +27,7 @@
     "chalk": "^4.0.0",
     "compression": "^1.7.4",
     "compression-webpack-plugin": "^2.0.0",
+    "connect-history-api-fallback": "^1.6.0",
     "ejs": "^3.1.2",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
