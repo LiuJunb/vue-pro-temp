@@ -1,4 +1,6 @@
 // 这里导入的库会影响打包大小(要么按需导入，要么使用cdn)
+// npm install @babel/polyfill@7.8.7 --save
+import '@babel/polyfill'
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
