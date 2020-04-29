@@ -1,5 +1,5 @@
-import List from './index.vue'
-// const List = () => import('./index.vue')
+import List from './list.vue'
+// const List = () => import('./list.vue')
 export default {
   path: 'goodslist',
   name: 'goodslist',

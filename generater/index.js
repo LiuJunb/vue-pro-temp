@@ -30,12 +30,12 @@ const errorLog = error => console.log(chalk.red(`${error}`))
 
 // 定义模板的参数
 const templateData = {
-  dirPath: '', // 新建组件的路劲
+  dirPath: '', // 新建组件的路劲 demo/demo1-btn
   name: '', // 组件的名称（小写） demo1-btn
   humpName: '', // 组件的名称（首字母大写并驼峰命名） Demo1Btn
   firLowName: '', // 组件的名称（首字母小写，其它字符首字符大写）demo1Btn
   routeLevel: '', // 组件路由的级别（1,2,3）
-  parentRouteName: '' // 组件父亲路由的名称
+  parentRouteName: '' // 组件父亲路由的名称 main 、 ''  、
 
 }
 console.log(templateData)
@@ -148,9 +148,9 @@ if (args.dir) {
   // 2.生成vue组件(把template中对应的文件拷贝到项目对应的文件夹中)
   ejs.renderFile(resolveReallyPath('template/views/index.ejs'), { component: templateData }, {}, (err, str) => {
     if (!err) {
-      generateFile(generateViewsPath + '/index.vue', str)
+      generateFile(generateViewsPath + '/' + templateData.name + '.vue', str)
         .then(() => {
-          log(generateViewsPath + '/index.vue生成完成')
+          log(generateViewsPath + '/' + templateData.name + '.vue生成完成')
         })
     }
   })

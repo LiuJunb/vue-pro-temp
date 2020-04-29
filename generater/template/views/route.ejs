@@ -3,7 +3,7 @@
 // 普通加载路由
 // import <%= component.name %> from './<%= component.name %>.vue'
 // 懒加载路由
-const <%= component.humpName %> = () => import(/* webpackChunkName: "<%= component.name %>" */ './index.vue')
+const <%= component.humpName %> = () => import(/* webpackChunkName: "<%= component.name %>" */ './<%= component.name %>.vue')
 export default {
   <%_ if (component.routeLevel === 1) { _%>
   path: '/<%= component.name %>',

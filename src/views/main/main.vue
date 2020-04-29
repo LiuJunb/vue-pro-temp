@@ -1,5 +1,7 @@
 <template>
   <div class="main">
+    <!-- 使用base-ui的公共组件 -->
+    <b-button></b-button>
     main 放二级路由 <br>
     <router-link to="/main/goodslist">goodslist</router-link> |
     <router-link to="/main/goodsdetail">goodsdetail</router-link>
