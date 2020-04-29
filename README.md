@@ -1565,8 +1565,86 @@ if (args.dir) {
 
 # 18. 编写公共组件(base-ui)的方法
 
+1.目录结构：
+```
+src  
+  base-ui  # 公共组件库项目
+    src  # 组件源码
+      components # 存放各个组件源码
+        button-groups # 按钮组-组件
+          src   # 按钮组-组件 源码
+            button-groups.vue
+          index.js # 暴露组件的接口
+      style # 存放公共样式(字体图标,统一样式...)
+        reset.css
+      index.js # 统一暴露接口
+    readme.md # 项目的说明文件
+
+```
+
+2.本地导入
+
+在插件plugins中编写写base-ui.js
+
+```
+import Vue from 'vue'
+
+// 1.本地方式加载
+import BaseUI from '../base-ui/src'
+// 安装antdUi插件
+Vue.use(BaseUI)
 
 
+```
+
+3.项目中直接使用（全局组件）
+
+```
+
+<template>
+  <div class="main">
+    <!-- 使用base-ui的公共组件 -->
+    <b-button></b-button>
+    main 放二级路由 <br>
+    .....
+    .....
+  </div>
+</template>
+
+
+```
+
+附加：控制台打包输出：
+
+```
+
+  File                                     Size             Gzipped  
+
+  dist\vue-26\vue.runtime.min.js           63.37 KiB        22.90 KiB
+  dist\vue-router-303\vue-router.min.js    23.60 KiB        8.43 KiB 
+  dist\axios-018\axios.min.js              14.95 KiB        4.89 KiB 
+  dist\vuex-31\vuex.min.js                 11.05 KiB        3.37 KiB 
+  
+  dist\js\vendor.5e2a53ce.js               57.48 KiB        20.39 KiB
+  dist\js\app.e1ca228a.js                  13.98 KiB        4.38 KiB 
+  dist\js\chunk-182a5f71.2487a52a.js       0.55 KiB         0.38 KiB
+  dist\js\chunk-6c17baac.507a2f3d.js       0.53 KiB         0.38 KiB
+  dist\js\chunk-c98d0ff0.258fee2b.js       0.44 KiB         0.33 KiB
+  dist\js\chunk-56638406.eefb331f.js       0.43 KiB         0.32 KiB
+  dist\js\register.e4b15ec8.js             0.42 KiB         0.29 KiB
+  dist\js\no-find.4e450855.js              0.42 KiB         0.29 KiB
+  dist\js\login.5fcedbd4.js                0.41 KiB         0.29 KiB
+  dist\normalize\normalize.css             6.38 KiB         1.79 KiB
+  dist\css\app.28a9a658.css                0.58 KiB         0.34 KiB
+  dist\css\no-find.0e433876.css            0.00 KiB         0.02 KiB
+  dist\css\chunk-c98d0ff0.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\login.0e433876.css              0.00 KiB         0.02 KiB
+  dist\css\register.0e433876.css           0.00 KiB         0.02 KiB
+  dist\css\chunk-56638406.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-182a5f71.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-6c17baac.0e433876.css     0.00 KiB         0.02 KiB
+
+```
 
 # 19.项目的本地部署
 

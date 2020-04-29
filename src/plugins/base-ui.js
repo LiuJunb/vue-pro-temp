@@ -29,5 +29,3 @@ Vue.use(BaseUI)
 // import antdUi from 'antd-ui'
 // import 'antd-ui/dist/style.css'
 // Vue.use(antdUi)
-
-Vue.use(BaseUI)
