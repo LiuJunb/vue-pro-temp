@@ -128,7 +128,7 @@ export default {
   dist\normalize\normalize.css             6.38 KiB         1.79 KiB
   dist\css\app.38144b40.css                0.15 KiB         0.13 KiB
 
-``` 
+```
 
 # 5.添加axios框架和封装axios请求
 
@@ -176,7 +176,7 @@ export default {
 # 7.添加 mockjs 实现后台接口的模拟
 
 1.安装mockjs  
- 
+
   npm install mockjs --save-dev
 
 2.编写mock接口 并在main.js中引入
@@ -232,7 +232,7 @@ process.env.NODE_ENV === 'development' && startMock && require('../../mockjs/ind
 
 ```
 
-# 8.封装store层
+# 8.封装store层，自动注册模块
 
 1.编写modules模块（ 里面的目录跟views里面的目录一样 ）
 
@@ -735,7 +735,7 @@ dist\js\vendor.40642981.js               173.71 KiB       59.95 KiB
 
 这个包这么大是因为：chunks: 'initial' 入口中包含非异步加载的库多了，可以使用cdn来减少这种库的打包。
 例如index.js中加载的：vue, vue-router, axios, vuex .... 
-  
+
 
 ## 3.使用cdn减少vendor.40642981.js包大小
 
@@ -952,7 +952,6 @@ npm install argparse@1.0.10 --save-dev
 // 安装本地的库
 npm i -D file:./generater
 
-
 2.新建 generater 的文件夹与及目录
   generater
     template
@@ -963,6 +962,7 @@ npm i -D file:./generater
     package.json
 
 3.修改 package.json
+
 ```
 
   "bin": {

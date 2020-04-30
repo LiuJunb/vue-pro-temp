@@ -50,7 +50,7 @@ parser.addArgument(
   {
     help: '组件存放的目录（根目录是views）',
     // nargs: 0, // 使用该指令不需要传递参数
-    nargs: '?', // 使用该指令不需要传递参数 获取一个参数
+    nargs: '?', // 使用该指令不需要传递参数 或者一个参数
     defaultValue: null // 没有使用该指令的默认值
   }
 )

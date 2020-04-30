@@ -8,6 +8,7 @@
     "build": "vue-cli-service build",
     "cre": "cre-cli -dir main/warning",
     "cre2": "cre-cli -dir borading",
+    "help": "cre-cli -h",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
