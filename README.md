@@ -32,6 +32,19 @@ mock
   dist\css\app.877b7338.css            0.42 KiB           0.26 KiB
 
 ```
+
+该项目扩展了：
+1）集成了mockjs
+2）集成了axios
+3）devServe 反向代理
+4)gulp自动部署的功能
+5)按钮权限控制
+6）vue-cli3的打包优化
+7）自动加载：路由，store
+8）自动生成组件的命令
+9）公共组件base-ui全局注册
+10)本地的部署
+
 # 1.修改.eslintrc.js的配置
 
 
