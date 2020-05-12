@@ -23,7 +23,15 @@ module.exports = {
   css: {
     loaderOptions: {
       less: {
-
+        // prependData
+        modifyVars: {
+          'font-size-sm': '13px',
+          'font-size-md': '15px',
+          'font-size-lg': '17px',
+          'button-default-background-color': 'pink',
+          'goods-action-button-danger-color': '#7232dd',
+          'goods-action-button-warning-color': '#3eaf7c'
+        }
       },
       // 配置每个vue组件自动导入base.scss文件
       sass: {

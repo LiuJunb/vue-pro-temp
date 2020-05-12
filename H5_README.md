@@ -1,4 +1,100 @@
 
+# 4.定制vant ui 主题
+
+// 安装这个配置主题的方式，暂时没有找到如何配置
+npm install less-loader6.1.0 --save-dev
+
+1.安装依赖
+
+// 这个配置主题方式跟以前一样
+npm install less-loader@5.0.0 --save-dev
+npm install less@3.11.1 --save-dev
+
+2.修改babel.config.js的配置
+
+定制主题时，需要引入组件对应的 Less 样式文件，支持按需引入和手动引入两种方式。
+
+```
+
+module.exports = {
+  presets: [
+    '@vue/cli-plugin-babel/preset'
+  ],
+  plugins: [
+    ['import', {
+      libraryName: 'vant',
+      libraryDirectory: 'es',
+      // 不需要引入组件对应的 Less 样式文件
+      // style: true
+      // 需要引入组件对应的 Less 样式文件
+      style: name => `${name}/style/less`
+    },
+    'vant'
+    ]
+  ]
+}
+
+```
+
+3.修改vue.config.js的配置
+
+```
+module.exports = {
+  productionSourceMap: false, // 仅仅在dev环境使用SourceMap
+  css: {
+    loaderOptions: {
+      less: {
+        // prependData
+        modifyVars: {
+          'font-size-sm': '13px',
+          'font-size-md': '15px',
+          'font-size-lg': '17px',
+          'button-default-background-color': 'pink',
+          'goods-action-button-danger-color': '#7232dd',
+          'goods-action-button-warning-color': '#3eaf7c'
+        }
+      },
+      // 配置每个vue组件自动导入base.scss文件
+      sass: {
+        // 引入全局变量样式,@使我们设置的别名,执行src目录
+        // 旧版是data , 新版是 prependData
+        prependData: `
+        @import "@/styles/base.scss";
+        // 自定义scss的函数 width:pxToRem(100)
+        @function pxToRem($px) {
+          @return $px/$htmlFintSize*1rem;
+        }
+        `
+      }
+    }
+  },
+}
+
+```
+
+附加，项目打包的大小：
+
+  File                                     Size             Gzipped  
+
+  dist\vue-26\vue.runtime.min.js           63.37 KiB        22.90 KiB
+  dist\vue-router-303\vue-router.min.js    23.60 KiB        8.43 KiB 
+  dist\axios-018\axios.min.js              14.95 KiB        4.89 KiB 
+  dist\vuex-31\vuex.min.js                 11.05 KiB        3.37 KiB 
+  
+  dist\js\vendor.54033a51.js               65.58 KiB        23.96 KiB
+  dist\js\app.02148659.js                  14.38 KiB        4.53 KiB 
+  dist\js\chunk-182a5f71.1816c0f3.js       0.55 KiB         0.38 KiB 
+  dist\js\chunk-6c17baac.a699022c.js       0.53 KiB         0.38 KiB 
+  dist\js\chunk-c98d0ff0.5b1b0686.js       0.44 KiB         0.33 KiB 
+  dist\js\chunk-56638406.e324868b.js       0.43 KiB         0.32 KiB
+  dist\js\register.0c2efcc5.js             0.42 KiB         0.29 KiB
+  dist\js\no-find.9b6b0d4d.js              0.42 KiB         0.29 KiB
+  dist\js\login.49b7e599.js                0.41 KiB         0.29 KiB
+  dist\css\vendor.a5a48f36.css             20.81 KiB        3.95 KiB
+  dist\normalize\normalize.css             6.38 KiB         1.79 KiB
+  dist\css\app.6412a1be.css                0.88 KiB         0.44 KiB
+
+
 # 3.集成移动端的UI框架 vant
 
 1.安装依赖
@@ -23,6 +119,7 @@ module.exports = {
 };
 
 ```
+> style: true, 代表不需要引入less的源文件，当使用了自定义主题以后就需要修改这里
 
 3.按需引入
 
