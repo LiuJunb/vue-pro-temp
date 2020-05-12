@@ -959,6 +959,10 @@ Use Ctrl+C to close it
 
 ```
 
+body {
+  font-size: 20px; /* 网页默认字体 */
+}
+
 //  540px > deviceWidth >= 0px 手机
 html {
   font-size: 20px;
