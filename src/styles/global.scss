@@ -8,7 +8,9 @@ body,html{
   height: 100%;
   color: #5B6171; /* 正文字体 */
 }
-
+body {
+  font-size: 20px; /* 默认字体 */
+}
 //  540px > deviceWidth >= 0px 手机
 html {
   // 默认字体大小
