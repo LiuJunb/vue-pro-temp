@@ -20,6 +20,25 @@ const cdn = {
 // https://cli.vuejs.org/zh/config/
 module.exports = {
   productionSourceMap: false, // 仅仅在dev环境使用SourceMap
+  css: {
+    loaderOptions: {
+      less: {
+
+      },
+      // 配置每个vue组件自动导入base.scss文件
+      sass: {
+        // 引入全局变量样式,@使我们设置的别名,执行src目录
+        // 旧版是data , 新版是 prependData
+        prependData: `
+        @import "@/styles/base.scss";
+        // 自定义scss的函数 width:pxToRem(100)
+        @function pxToRem($px) {
+          @return $px/$htmlFintSize*1rem;
+        }
+        `
+      }
+    }
+  },
   lintOnSave: true,
   chainWebpack: (config) => {
     // 起别名
