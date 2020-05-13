@@ -1,3 +1,42 @@
+
+# 4.
+
+# 3.自定义element-ui的主题
+
+1.在项目中改变 SCSS 变量
+
+在项目中新建一个theme-chalk.scss文件
+```
+
+/* 改变主题色变量 */
+$--color-primary: #409EFF;
+$--color-success: #67C23A;
+
+/* 改变 icon 字体路径变量，下面两个是必需引入的 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+@import "~element-ui/packages/theme-chalk/src/index";
+
+```
+
+2.引入theme-chalk.scss文件
+
+```
+import Vue from 'vue'
+import {
+  Button,
+  Select
+} from 'element-ui'
+// 引入自定义主题会导致编译变慢
+import '../styles/theme-chalk.scss'
+Vue.use(Button)
+Vue.use(Select)
+// 或者使用下面来注册组件
+// Vue.component(Button.name, Button)
+// Vue.component(Select.name, Select)
+
+```
+
+
 # 2.集成element-ui框架
 
 1.安装element-ui框架
@@ -248,3 +287,9 @@ import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 
 ```
+
+# 注意事项
+
+1）项目文件和文件夹都是小写
+2）views store service  mockjs 的目录结构保持一样
+3）所有的插件都放在plugins文件夹
