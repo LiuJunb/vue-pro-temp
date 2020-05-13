@@ -2,7 +2,7 @@
   <div class="main">
     <!-- 使用base-ui的公共组件 -->
     <b-button></b-button>
-    main 放二级路由 <br>
+    main 放二级路<span class="test-span">由</span> <br>
     <router-link to="/main/goodslist">goodslist</router-link> |
     <router-link to="/main/goodsdetail">goodsdetail</router-link>
     <br>
@@ -65,6 +65,11 @@ export default {
 
 <style lang="scss">
 .main{
-
+   .test-span{
+    display: inline-block;
+    height: pxToRem(100); // 不需要px单位
+    width: pxToRem(200);
+    background: pink;
+  }
 }
 </style>

@@ -6,9 +6,32 @@ body,html{
   
   width: 100%;
   height: 100%;
-  font-size: 14px; /* 默认字体 */
   color: #5B6171; /* 正文字体 */
 }
+body {
+  font-size: 20px; /* 默认字体 */
+}
+//  540px > deviceWidth >= 0px 手机
+html {
+  font-size: 20px;
+  font-size: 5.33333vw;
+}
+
+// 这个媒体查询的顺序不能乱
+//  1080px > deviceWidth >= 540px ipad
+@media screen and (min-width: 540px){
+  html {
+    font-size: 28.8px;
+  }
+}
+
+// deviceWidth >= 1080px pc
+@media screen and (min-width: 1080px){
+  html{
+    font-size: 57.6px;
+  }
+}
+
 
 /* 2.清除浮动-用在父亲元素中 */
 .clearfix:after{ /*伪元素是行内元素 正常浏览器清除浮动方法*/
