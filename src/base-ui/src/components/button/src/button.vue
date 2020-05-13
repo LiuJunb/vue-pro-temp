@@ -1,6 +1,6 @@
 <template>
   <div class="b-button">
-    BButton
+    b-button
   </div>
 </template>
 
@@ -10,7 +10,20 @@ export default {
   name: 'BButton',
   components: {
 
+  },
+  props: {
+    btnName: {
+      type: String,
+      default: 'btn'
+    }
+
+  },
+  data: function() {
+    return {
+
+    }
   }
+
 }
 </script>
 

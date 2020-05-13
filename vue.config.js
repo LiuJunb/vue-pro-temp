@@ -33,7 +33,7 @@ module.exports = {
         @import "@/styles/base.scss";
         // 自定义scss的函数 width:pxToRem(100)
         @function pxToRem($px) {
-          @return $px/$htmlFintSize*1rem;
+          @return $px/$htmlFontSize*1rem;
         }
         `
       }
