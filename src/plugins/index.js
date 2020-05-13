@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueBus from './vue-bus.js'
+// 4.添加element-ui公共组件库
+import './element-ui.js'
 // 3.添加BaseUI公共组件库
 import './base-ui.js'
 // 1.添加mockjs插件
