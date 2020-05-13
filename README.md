@@ -1330,7 +1330,7 @@ html {
 // 例如目标设计稿的尺寸：iphone6,7,8 -> 375px
 $targetDeviceWidth:3.75;
 // 在设计稿为375屏幕上，根标签html字体的大小 20px
-$htmlFintSize:$targetDeviceWidth * 5.3333
+$htmlFontSize:$targetDeviceWidth * 5.3333
 
 ```
 
@@ -1353,7 +1353,7 @@ module.exports = {
         @import "@/styles/base.scss";
         // 自定义scss的函数 width:pxToRem(100)
         @function pxToRem($px) {
-          @return $px/$htmlFintSize*1rem;
+          @return $px/$htmlFontSize*1rem;
         }
         `
       }
