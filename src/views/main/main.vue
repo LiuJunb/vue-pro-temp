@@ -73,9 +73,15 @@ export default {
 
 <style lang="scss">
 .main{
+<<<<<<< HEAD
   .test-span{
     display: inline-block;
     height: pxToRem(100);
+=======
+   .test-span{
+    display: inline-block;
+    height: pxToRem(100); // 不需要px单位
+>>>>>>> master
     width: pxToRem(200);
     background: pink;
   }

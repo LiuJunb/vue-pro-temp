@@ -15,7 +15,7 @@ module.exports = {
   rules: {
     // 'vue/no-parsing-error':'off',
     // no-console error 代表存在console就会报错， off 代表时关闭，on代表时开启
-    'no-console': process.env.NODE_ENV === 'production' ? 'off' : 'off',
+    'no-console': 0,
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'accessor-pairs': 2,
     'arrow-spacing': [2, {
@@ -185,7 +185,63 @@ module.exports = {
     'object-curly-spacing': [2, 'always', {
       objectsInObjects: false
     }],
-    'array-bracket-spacing': [2, 'never']
+    'array-bracket-spacing': [2, 'never'],
+    // 追加vue的编码规范
+    "vue/max-attributes-per-line": ["error", { // 标签的属性必须在单独一行
+      "singleline": 1,
+      "multiline": {
+        "max": 1,
+        "allowFirstLine": false
+      }
+    }], 
+    "vue/order-in-components": ["error", { // 规定组件的属性顺序
+      "order": [
+        "el",
+        "name",
+        "parent",
+        "functional",
+        ["delimiters", "comments"],
+        ["components", "directives", "filters"],
+        "extends",
+        "mixins",
+        "inheritAttrs",
+        "model",
+        ["props", "propsData"],
+        "data",
+        "computed",
+        "watch",
+        "LIFECYCLE_HOOKS",
+        "methods",
+        ["template", "render"],
+        "renderError"
+      ]
+    }],
+    "vue/v-bind-style": ["error", "shorthand"], // v-bind: 和 : 统一使用:
+    "vue/v-on-style": ["error", "shorthand"], // v-on 和 @ 统一使用@
+    "vue/name-property-casing": ["error", "PascalCase"], // 组件明大写
+    "vue/component-name-in-template-casing": ["error", "kebab-case", {// 模板的组件使用小写加-
+      "registeredComponentsOnly": false,
+      "ignores": []
+    }],
+    "vue/this-in-template": ["error", "never"], // 禁止templent上使用this
+    "vue/attributes-order": ["error", { // 指定标签上属性的顺序
+      "order": [
+        "DEFINITION",
+        "LIST_RENDERING",
+        "CONDITIONALS", 
+        "RENDER_MODIFIERS",
+        "GLOBAL", 
+        "UNIQUE", 
+        "TWO_WAY_BINDING", 
+        "OTHER_DIRECTIVES", 
+        "OTHER_ATTR", 
+        "EVENTS", 
+        "CONTENT"
+      ]
+    }],
+    "vue/require-default-prop": ["error"], // 定义的属性必须要给默认属性
+    "vue/prop-name-casing": ["error", "camelCase"], // 属性的名称的命名方式
+    
   },
   parserOptions: {
     parser: 'babel-eslint'
