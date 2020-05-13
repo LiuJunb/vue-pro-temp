@@ -15,6 +15,7 @@ const cdn = {
   // cdn的js链接
   js: [
     // 'https://cdn.staticfile.org/vue/2.6.10/vue.min.js',
+    // '/axios-018/axios.min.js',
   ]
 }
 // https://cli.vuejs.org/zh/config/
