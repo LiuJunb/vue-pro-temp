@@ -39,6 +39,7 @@ module.exports = {
       }
     }
   },
+  // 是否开始eslint检察(没效果,可能是关闭控制台的检查)
   lintOnSave: true,
   chainWebpack: (config) => {
     // 起别名
