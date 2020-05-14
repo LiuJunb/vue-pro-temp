@@ -1,4 +1,5 @@
 
+// 按需打包base-ui的组件库
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const friendlyFommater = require('eslint-friendly-formatter')

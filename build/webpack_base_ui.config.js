@@ -1,4 +1,5 @@
 
+// 全量打包base-ui的组件库
 const path = require('path')
 const config = require('./config')
 // const webpack = require('webpack')
