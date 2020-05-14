@@ -3,11 +3,12 @@
     <!-- 使用base-ui的公共组件 -->
     <b-button></b-button>
     <!-- element-ui框架组件 -->
-     <el-button type="primary">主要按钮</el-button>
-    <el-button type="success">成功按钮</el-button>
-    <el-button type="info">信息按钮</el-button>
-    <el-button type="warning">警告按钮</el-button>
-    <el-button type="danger">危险按钮</el-button>
+    <el-checkbox
+      class="aa"
+      label="备选项1"
+      border
+    >
+    </el-checkbox>
     main 放二级路<span class="test-span">由</span> <br>
     <router-link to="/main/goodslist">goodslist</router-link> |
     <router-link to="/main/goodsdetail">goodsdetail</router-link>
@@ -69,7 +70,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .main{
    .test-span{
     display: inline-block;

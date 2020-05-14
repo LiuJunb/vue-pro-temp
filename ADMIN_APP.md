@@ -1,11 +1,58 @@
 
-# 4.
+# 4.重写element-ui框架的样式
+
+下面是重写element-ui框架 checkbox 组件的样式
+
+1）全局修改
+
+style标签中不需要添加scoped属性
+
+```
+
+<style lang="scss">
+.main{
+   .checkbox .el-checkbox__input{
+     position: static;
+     .el-checkbox__inner{
+       position: absolute;
+       right: 2px;
+       top:2px;
+     }
+   }
+}
+
+```
+
+2）使用vue-loader中的样式的穿透：/deep/ 深度选择器
+
+style标签添加scoped属性
+
+```
+
+<style scoped lang="scss">
+.main{
+
+   .checkbox /deep/ .el-checkbox__input{
+     position: static;
+     .el-checkbox__inner{
+       position: absolute;
+       right: 2px;
+       top:2px;
+     }
+   }
+}
+
+```
+
 
 # 3.自定义element-ui的主题
+
+> 以测试在ie8以上都可以跑以来
 
 1.在项目中改变 SCSS 变量
 
 在项目中新建一个theme-chalk.scss文件
+
 ```
 
 /* 改变主题色变量 */
