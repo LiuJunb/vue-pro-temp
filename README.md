@@ -2710,6 +2710,36 @@ import 'base-ui/dist/style.css'
 
 Vue.component(Button.name, Button)
 
+附加，该项目的打包的大小：
+
+Webpack Bundle Analyzer is started at http://127.0.0.1:8888
+Use Ctrl+C to close it
+  File                                     Size             Gzipped  
+
+  dist\vue-26\vue.runtime.min.js           63.37 KiB        22.90 KiB
+  dist\vue-router-303\vue-router.min.js    23.60 KiB        8.43 KiB 
+  dist\axios-018\axios.min.js              14.95 KiB        4.89 KiB 
+  dist\vuex-31\vuex.min.js                 11.05 KiB        3.37 KiB 
+
+  dist\js\vendor.5e2a53ce.js               57.48 KiB        20.39 KiB
+  dist\js\app.2497c771.js                  14.11 KiB        4.43 KiB 
+  dist\js\chunk-182a5f71.779e087e.js       0.55 KiB         0.38 KiB 
+  dist\js\chunk-6c17baac.062e7563.js       0.53 KiB         0.38 KiB 
+  dist\js\chunk-c98d0ff0.a66037d3.js       0.44 KiB         0.33 KiB 
+  dist\js\chunk-56638406.1d746503.js       0.43 KiB         0.32 KiB 
+  dist\js\register.dc7abc84.js             0.42 KiB         0.29 KiB 
+  dist\js\no-find.398ac298.js              0.42 KiB         0.29 KiB
+  dist\js\login.2e41d1e9.js                0.41 KiB         0.29 KiB
+  dist\normalize\normalize.css             6.38 KiB         1.79 KiB
+  dist\css\app.69217f2a.css                0.90 KiB         0.45 KiB
+  dist\css\no-find.0e433876.css            0.00 KiB         0.02 KiB
+  dist\css\chunk-c98d0ff0.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\login.0e433876.css              0.00 KiB         0.02 KiB
+  dist\css\register.0e433876.css           0.00 KiB         0.02 KiB
+  dist\css\chunk-56638406.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-182a5f71.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-6c17baac.0e433876.css     0.00 KiB         0.02 KiB
+
 
 
 # 22.编写base-ui组件库注意事项
