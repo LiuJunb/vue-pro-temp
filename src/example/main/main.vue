@@ -4,7 +4,8 @@
       <el-header>Header</el-header>
       <el-container>
         <el-aside width="null">
-          <b-aside-menu>
+          <b-aside-menu
+          width='230'>
           </b-aside-menu>
         </el-aside>
         <el-container>

@@ -12,6 +12,7 @@
       :class="['b-el-menu-vertical']"
       :style="getUncollapseStyle"
       :collapse="isCollapse"
+      v-bind="$attrs"
       @select="handleSelect"
       @open="handleOpen"
       @close="handleClose">
@@ -82,6 +83,7 @@ export default {
   components: {
 
   },
+  // 定义 menu 菜单不存在的属性，如果存在则使用不用的名称
   props: {
     menuList: {
       type: Array,
