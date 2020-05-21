@@ -1,4 +1,5 @@
-import AllRoute from '@/views/load-routes.js'
+// import AllRoute from '@/views/load-routes.js'
+import AllRoute from '@/example/load-routes.js'
 // 获取一级路由
 const aRoutes = AllRoute.filter((route) => {
   return route.level === 1

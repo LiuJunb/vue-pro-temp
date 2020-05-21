@@ -2471,6 +2471,537 @@ module.exports = app.listen(port, function(err) {
 
 ```
 
+# 20.配置基础组件库全量打包的webpack.config.js
+
+## 1.新建一个build的文件夹
+
+1）新建一个config.js文件
+```
+const path = require('path')
+
+/**
+ * 给导入起了别名的配置, __dirname 是获取当前文件所在的路径
+ */
+exports.alias = {
+  '@': path.resolve(__dirname, '../src'),
+  'base-ui': path.resolve(__dirname, '../src/base-ui'),
+  '@base-ui': path.resolve(__dirname, 'base-ui'),
+  // eslint-disable-next-line quote-props
+  'components': path.resolve(__dirname, '../src/base-ui/src/components')
+}
+
+```
+
+2) 新建webpack_base_ui.config.js文件
+
+需要安装的依赖：
+npm install webpack-node-externals@1.7.2 --save-dev
+npm install eslint-friendly-formatter@4.0.1 --save-dev
+npm install mini-css-extract-plugin@0.9.0 --save-dev
+npm install webpack-cli@3.3.11 --save-dev
+
+```
+
+const path = require('path')
+const config = require('./config')
+// const webpack = require('webpack')
+const nodeExternals = require('webpack-node-externals')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const friendlyFommater = require('eslint-friendly-formatter')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+function resolve(dir) {
+  return path.resolve(__dirname, dir)
+}
+
+module.exports = {
+  mode: 'production', // production development
+  entry: {
+    // 打包入口文件
+    index: resolve('../src/base-ui/src/index.js')
+  },
+  /**
+   * base-ui中的输出的目录结构：
+   * dist
+   *  assets
+   *    fontawesome-webfont.eot
+   *  index.js
+   *  style.css
+   */
+  output: {
+    path: resolve('../src/base-ui/dist'),
+    filename: '[name].js',
+    library: 'BaseUI',
+    libraryTarget: 'umd',
+    libraryExport: 'default',
+    umdNamedDefine: true,
+    globalObject: 'typeof self !== \'undefined\' ? self : this'
+  },
+  stats: {
+    assets: true,
+    assetsSort: '!size',
+    builtAt: true,
+    cached: false,
+    cachedAssets: false,
+    children: false,
+    chunks: false,
+    chunkGroups: false,
+    chunkModules: false,
+    chunkOrigins: false,
+    colors: true,
+    depth: false,
+    entrypoints: false,
+    env: false,
+    errors: true,
+    errorDetails: true,
+    hash: false,
+    modules: false,
+    moduleTrace: false,
+    modulesSort: '!size',
+    maxModules: 10,
+    performance: true,
+    providedExports: false,
+    publicPath: true,
+    reasons: false,
+    source: false,
+    timings: false,
+    usedExports: false,
+    version: true,
+    warnings: true
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js|vue$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [resolve('src'), resolve('test')],
+        exclude: /node_nodules/,
+        options: {
+          formatter: friendlyFommater,
+          emitWarnings: true,
+          emitError: true
+        }
+      },
+      {
+        test: /\.vue$/,
+        exclude: /node_modules/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.s?css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'file-loader',
+        options: {
+          name: 'assets/[name].[ext]'
+          // publicPath: '/'
+        }
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    // 起导入的别名
+    alias: config.alias
+  },
+  // 不需要打包的库
+  externals: Object.assign({}, nodeExternals(), {
+    vue: {
+      root: 'Vue',
+      commonjs: 'vue',
+      commonjs2: 'vue',
+      amd: 'vue'
+    }
+  }),
+  optimization: {
+    minimize: false,
+    sideEffects: false
+  },
+  plugins: [
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'style.css'
+    })
+  ]
+}
+
+
+
+```
+
+3.编写执行打包的脚本
+
+```
+
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "local": "node ./server/index.js",
+    "build": "vue-cli-service build",
+    "cre": "cre-cli -dir main/warning",
+    "cre2": "cre-cli -dir borading",
+    "lint": "vue-cli-service lint",
+    "base-ui": "npx webpack --config ./build/webpack_base_ui.config.js",
+    "base-ui-comps": "npx webpack --config ./build/webpack_base_ui_comps_config.js"
+  },
+
+```
+
+4.执行打包后的输出
+
+npm run base-ui
+
+```
+
+PS E:\liujun\workspace\vue-base\vue-pro-temp> npm run base-ui
+
+> vue-pro-temp@0.1.0 base-ui E:\liujun\workspace\vue-base\vue-pro-temp
+> npx webpack --config ./build/webpack_base_ui.config.js
+
+Version: webpack 4.42.1
+Built at: 2020-05-14 10:43:33
+    Asset      Size  Chunks             Chunk Names
+ index.js  44.9 KiB       0  [emitted]  index
+style.css  23 bytes       0  [emitted]  index
+
+```
+
+5.使用打包后的库
+
+1）cdn使用
+
+```
+// 1.index.html
+  <link rel="stylesheet" href="<%= BASE_URL %>dist/style.css">
+
+  <!-- 使用CDN的JS文件 -->
+  <script src="/dist/index.js"></script>
+
+// 2.vue.config.js
+  configureWebpack: (config) => {
+    if (isDevelopment) {
+      // 用cdn方式引入
+      config.externals = {
+        BaseUI: 'BaseUI' // key 是 require 的包名，value 是全局的变量
+      }
+    }
+  }
+
+// 3.base-ui.js 全局注册
+
+import Vue from 'vue'
+
+// 1.cdn方式加载
+import BaseUI from 'BaseUI'
+// 安装BaseUI插件
+Vue.use(BaseUI)
+
+
+```
+2）npm使用
+3）
+
+
+
+# 21.配置按需打包base-ui组件库的webpack.config.js的配置
+
+1.新建webpack_base_ui_comps_config.js文件
+
+```
+
+
+const path = require('path')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const friendlyFommater = require('eslint-friendly-formatter')
+const nodeExternals = require('webpack-node-externals')
+
+const config = require('./config')
+// console.log(config.components)
+module.exports = {
+  mode: 'production',
+  /**
+   * {
+   *  'lib/button-groups':'xxx\\xxx\\src\\components\\button-groups',
+   *  'lib/button':'xxx\\xxx\\src\\components\\button',
+   *  'helpers/dom':'xxx\\xxx\\src\\helpers\\dom.js',
+   *  ......
+   * }
+   */
+  entry: Object.assign({},
+    config.components
+    // config.directives,
+    // config.helpers,
+    // config.theme
+  ),
+  /**
+   * dist
+   *  assets
+   *    fontawesome-webfont.eot
+   *    ...
+   *  directives
+   *    index.js
+   *  helper
+   *    dom.js
+   *  lib
+   *    button-groups.js ( js ,css div )
+   *    ....
+   *  theme.js
+   */
+  output: {
+    path: path.resolve(__dirname, '../src/antd-ui/dist/'),
+    // publicPath: '/dist/',
+    pathinfo: false,
+    filename: '[name].js',
+    libraryTarget: 'commonjs2'
+  },
+  stats: {
+    assets: true,
+    assetsSort: '!size',
+    builtAt: true,
+    cached: false,
+    cachedAssets: false,
+    children: false,
+    chunks: false,
+    chunkGroups: false,
+    chunkModules: false,
+    chunkOrigins: false,
+    colors: true,
+    depth: false,
+    entrypoints: false,
+    env: false,
+    errors: true,
+    errorDetails: true,
+    hash: false,
+    modules: false,
+    moduleTrace: false,
+    modulesSort: '!size',
+    maxModules: 10,
+    performance: true,
+    providedExports: false,
+    publicPath: true,
+    reasons: false,
+    source: false,
+    timings: false,
+    usedExports: false,
+    version: true,
+    warnings: true
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js|vue$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [path.resolve(__dirname, '../src'), path.resolve(__dirname, '../tests')],
+        exclude: /node_nodules/,
+        options: {
+          formatter: friendlyFommater,
+          emitWarnings: true,
+          emitError: true
+        }
+      },
+      {
+        test: /\.vue$/,
+        exclude: /node_modules/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.s?css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'file-loader',
+        options: {
+          name: 'assets/[name].[ext]',
+          publicPath: 'assets'
+        }
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: config.alias
+  },
+  // 不用打包的文件，nodeExternals 是排除 node_module 中的文件不需要打包
+  externals: Object.assign({},
+    config.externals,
+    nodeExternals()
+  ),
+  optimization: {
+    minimize: false,
+    sideEffects: false
+  },
+  plugins: [
+    new VueLoaderPlugin()
+  ]
+
+}
+
+
+
+```
+
+
+2.编写config.js的配置
+```
+
+const path = require('path')
+const fs = require('fs')
+// 获取antd-ui 下所有的文件(数组)
+const components = fs.readdirSync(path.resolve(__dirname, '../src/base-ui/src/components'))
+
+/**
+ * 给导入起了别名的配置, __dirname 是获取当前文件所在的路径
+ */
+exports.alias = {
+  '@': path.resolve(__dirname, '../src'),
+  'base-ui': path.resolve(__dirname, '../src/base-ui'),
+  '@base-ui': path.resolve(__dirname, 'base-ui'),
+  // eslint-disable-next-line quote-props
+  'components': path.resolve(__dirname, '../src/base-ui/src/components')
+}
+
+/**
+ * {
+ *  'lib/breadcrumb':'E:\\liujun\\workspace\\test-ui\\admin-ui\\src\\admin-ui\\src\\components\\button-groups'
+ *  'lib/button':'E:\\liujun\\workspace\\test-ui\\admin-ui\\src\\admin-ui\\src\\components\\button'
+ *  ......
+ * }
+ */
+// 2.components 数组转 {} 对象
+exports.components = components.reduce((last, curr) => {
+  // last[lib/button-groups] = E:\\liujun\\workspace\\test-ui\\antd-ui\\src\\antd-ui\\src\\components\\button-groups
+  last[`lib/${curr}`] = path.resolve(__dirname, `../src/base-ui/src/components/${curr}`)
+  return last
+}, {})
+
+/**
+ * 3.不用打包的文件。
+ * 在组件库中使用了 import vue from 'vue'
+ * 或者 import ButtonGroups from 'components/button-groups'  都从外部引入
+ * {
+ *  vue:'vue',
+ *  'components/button-groups':'base-ui/dist/lib/button-groups'
+ *  'components/button':'base-ui/dist/lib/button'
+ *  'components/cascading':'base-ui/dist/lib/cascading',
+ *  'components/select': 'base-ui/dist/lib/select'
+ * }
+ */
+let externals = {}
+components.forEach(name => {
+  // externals[components/button-groups] = base-ui/dist/lib/button-groups
+  // externals[`components/${name}`] = `BaseUI/dist/lib/${name}`
+  // 在base-ui库的组件中引用本库的组件不需要打包； 在base-ui库的组件中vue也不需要打包
+  externals[`components/${name}`] = `base-ui/dist/lib/${name}`
+})
+
+// directives.forEach(name => {
+//   name = name.substring(0, name.lastIndexOf('.'))
+//   externals[`directives/${name}`] = `admin-ui/dist/directives/${name}`
+// })
+
+externals = Object.assign({
+  vue: 'vue'
+}, externals)
+exports.externals = externals // base-ui组件库中引用的vue不需要打包，引用自身的组件不需要打包
+
+// export {
+//   alias,
+//   components,
+//   externals
+// }
+
+
+```
+
+3.执行打包命令
+ 
+npm run base-ui-comps
+
+```
+
+PS E:\liujun\workspace\vue-base\vue-pro-temp> npm run base-ui-comps
+
+> vue-pro-temp@0.1.0 base-ui-comps E:\liujun\workspace\vue-base\vue-pro-temp
+> npx webpack --config ./build/webpack_base_ui_comps_config.js
+
+Version: webpack 4.42.1
+Built at: 2020-05-14 11:15:18
+        Asset      Size  Chunks             Chunk Names
+
+// 这个文件中包含了该组件的局部样式 
+lib/button.js  20.5 KiB       0  [emitted]  lib/button
+PS E:\liujun\workspace\vue-base\vue-pro-temp>
+
+```
+
+4.测试按需打包的功能
+
+需要发布到npm后才能测试
+
+// 1.全局按需注册( base-ui 是package.json中的name )
+import Button from 'base-ui/dist/lib/button'
+import 'base-ui/dist/style.css'
+
+Vue.component(Button.name, Button)
+
+附加，该项目的打包的大小：
+
+Webpack Bundle Analyzer is started at http://127.0.0.1:8888
+Use Ctrl+C to close it
+  File                                     Size             Gzipped  
+
+  dist\vue-26\vue.runtime.min.js           63.37 KiB        22.90 KiB
+  dist\vue-router-303\vue-router.min.js    23.60 KiB        8.43 KiB 
+  dist\axios-018\axios.min.js              14.95 KiB        4.89 KiB 
+  dist\vuex-31\vuex.min.js                 11.05 KiB        3.37 KiB 
+
+  dist\js\vendor.5e2a53ce.js               57.48 KiB        20.39 KiB
+  dist\js\app.2497c771.js                  14.11 KiB        4.43 KiB 
+  dist\js\chunk-182a5f71.779e087e.js       0.55 KiB         0.38 KiB 
+  dist\js\chunk-6c17baac.062e7563.js       0.53 KiB         0.38 KiB 
+  dist\js\chunk-c98d0ff0.a66037d3.js       0.44 KiB         0.33 KiB 
+  dist\js\chunk-56638406.1d746503.js       0.43 KiB         0.32 KiB 
+  dist\js\register.dc7abc84.js             0.42 KiB         0.29 KiB 
+  dist\js\no-find.398ac298.js              0.42 KiB         0.29 KiB
+  dist\js\login.2e41d1e9.js                0.41 KiB         0.29 KiB
+  dist\normalize\normalize.css             6.38 KiB         1.79 KiB
+  dist\css\app.69217f2a.css                0.90 KiB         0.45 KiB
+  dist\css\no-find.0e433876.css            0.00 KiB         0.02 KiB
+  dist\css\chunk-c98d0ff0.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\login.0e433876.css              0.00 KiB         0.02 KiB
+  dist\css\register.0e433876.css           0.00 KiB         0.02 KiB
+  dist\css\chunk-56638406.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-182a5f71.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\chunk-6c17baac.0e433876.css     0.00 KiB         0.02 KiB
+
+
+
+# 22.编写base-ui组件库注意事项
+
+
+
 ### 注意事项
 
 1. 少了全局的网络请求(一些全局使用的接口，需要在项目启动的时候就加载)。
