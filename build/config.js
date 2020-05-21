@@ -54,7 +54,8 @@ components.forEach(name => {
 // })
 
 externals = Object.assign({
-  vue: 'vue'
+  vue: 'vue',
+  'element-ui': 'element-ui'
 }, externals)
 exports.externals = externals // base-ui组件库中引用的vue不需要打包，引用自身的组件不需要打包
 

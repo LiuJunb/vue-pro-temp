@@ -1,11 +1,13 @@
 import Button from './components/button'
+import AsiderMenu from './components/aside-menu'
 // import Icon from './components/icon'
 // import ButtonGroups from './components/button-groups'
 
 // import { ButtonGroups } from '@/BaseUI/src'  // 局部导入组件
 export {
   // Icon,
-  Button
+  Button,
+  AsiderMenu
   // ButtonGroups
 }
 
@@ -14,14 +16,16 @@ export {
 // const { ButtonGroups } = BaseUI  // 2.局部导入组件（解构也可以获取）
 const BaseUI = {
   // Icon,
-  Button
+  Button,
+  AsiderMenu
   // ButtonGroups
 }
 
 // 需要被全局注册的组件
 export const components = [
   // Icon,
-  Button
+  Button,
+  AsiderMenu
   // ButtonGroups
 ]
 

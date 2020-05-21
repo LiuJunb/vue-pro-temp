@@ -3,14 +3,19 @@
     <el-container>
       <el-header>Header</el-header>
       <el-container>
-        <el-aside width="200px">Aside</el-aside>
+        <el-aside width="null">
+          <b-aside-menu>
+          </b-aside-menu>
+        </el-aside>
         <el-container>
-          <el-main>Main</el-main>
+          <el-main>
+            Main
+            <router-view/>
+          </el-main>
           <el-footer>Footer</el-footer>
         </el-container>
       </el-container>
     </el-container>
-    <!-- <router-view/> -->
   </div>
 </template>
 
@@ -67,11 +72,49 @@ export default {
 
 <style lang="scss">
 .main{
-   .test-span{
-    display: inline-block;
-    height: pxToRem(100); // 不需要px单位
-    width: pxToRem(200);
-    background: pink;
+  height: 100%;
+  .el-container{
+    height: 100%;
+  }
+
+  .el-header{
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: $headerHeight;
+  }
+  .el-footer{
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: $footerHeight;
+  }
+
+  .el-aside {
+    background-color: #D3DCE6;
+    color: #333;
+    // text-align: center;
+    height: $asideHeight;
+  }
+
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    height: $mainHeight;
+  }
+
+  body > .el-container {
+    margin-bottom: 40px;
+  }
+
+  .el-container:nth-child(5) .el-aside,
+  .el-container:nth-child(6) .el-aside {
+    line-height: 260px;
+  }
+
+  .el-container:nth-child(7) .el-aside {
+    line-height: 320px;
   }
 }
 </style>

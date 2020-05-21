@@ -1,4 +1,11 @@
 // 例如目标设计稿的尺寸：iphone6,7,8 -> 375px
 $targetDeviceWidth:3.75;
 // 在设计稿为375屏幕上，根标签html字体的大小 20px
-$htmlFontSize:$targetDeviceWidth * 5.3333
+$htmlFontSize:$targetDeviceWidth * 5.3333;
+
+
+$headerHeight:60px;
+$footerHeight:60px;
+$asideWidth:20px;
+$asideHeight:calc(100% - $headerHeight);
+$mainHeight:calc(100% - $headerHeight - $footerHeight);
