@@ -5,12 +5,12 @@
       <el-container>
         <el-aside width="null">
           <b-aside-menu
-          width='230'>
+            :menuList="menuList"
+            :width='230'>
           </b-aside-menu>
         </el-aside>
         <el-container>
           <el-main>
-            Main
             <router-view/>
           </el-main>
           <el-footer>Footer</el-footer>
@@ -25,6 +25,9 @@ import {
   httpGet,
   httpPost
 } from '@/http/index.js'
+import {
+  menuList
+} from '@/utils/asider-menu.js'
 export default {
   name: 'Main',
   components: {
@@ -32,7 +35,7 @@ export default {
   },
   data() {
     return {
-
+      menuList
     }
   },
   created() {
@@ -92,8 +95,8 @@ export default {
   }
 
   .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
+    // background-color: #D3DCE6;
+    // color: #333;
     // text-align: center;
     height: $asideHeight;
   }

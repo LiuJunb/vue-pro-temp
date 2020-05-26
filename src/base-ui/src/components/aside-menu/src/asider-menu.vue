@@ -1,12 +1,19 @@
 <template>
-  <div class="b-asider-menu">
-    <el-checkbox-group
-      v-model="isCollapse"
-      size="small">
-      <el-checkbox-button :label="false">
-        {{isCollapse?'展开':'收起'}}
-      </el-checkbox-button>
-    </el-checkbox-group>
+  <div
+    class="b-asider-menu">
+    <div
+      class="btn-collapse"
+      @click="handleCollapse">
+     <i
+       v-if="isCollapse"
+       class="el-icon-s-unfold">
+     </i>
+     <i
+       v-if="!isCollapse"
+       class="el-icon-s-fold">
+     </i>
+    </div>
+
     <el-menu
       :default-active="defaultActive"
       :class="['b-el-menu-vertical']"
@@ -207,23 +214,62 @@ export default {
     }
   },
   methods: {
+    // 根据 key 递归获取 menu
+    getMenuByIdStr(idStr) {
+      let menu = null
+      if (idStr) {
+        // ['1', '21']
+        const ids = idStr.split('-')
+        const id = parseInt(ids.pop()) // 21
+        menu = this.getMenuById(id, this.menuList)
+      }
+      return menu
+    },
+    // 根据id 递归获取 menu
+    getMenuById(id, menuList) {
+      if (menuList === undefined || menuList === null) return null
+      for (const aMenu of menuList) {
+        if (aMenu.id === id) {
+          return aMenu
+        } else if (aMenu.children && aMenu.children.length > 0) {
+          const bMenu = this.getMenuById(id, aMenu.children)
+          if (bMenu) {
+            return bMenu
+          }
+        }
+      }
+      return null
+    },
+    handleCollapse() {
+      this.isCollapse = !this.isCollapse
+    },
     handleSelect(key, keyPath) {
-      console.log('select=', key, keyPath)
+      const menu = this.getMenuByIdStr(key)
+      this.$router.push(menu.url)
     },
     handleOpen(key, keyPath) {
-      console.log('open=', key, keyPath)
+      // console.log('open=', key, keyPath)
     },
     handleClose(key, keyPath) {
-      console.log('close=', key, keyPath)
+      // console.log('close=', key, keyPath)
     }
   }
 
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .b-asider-menu{
   height: 100%;
+  max-width: 350px;
+  .btn-collapse{
+    line-height: 32px;
+    padding: 5px 10px 5px 20px;
+    // border-right: 1px solid #e6e6e6;
+    &>i{
+      font-size: 26px;
+    }
+  }
   // 菜单展开的样式
   // .b-el-menu-vertical:not(.el-menu--collapse) {
   //   width: 200px;

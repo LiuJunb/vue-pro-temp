@@ -141,7 +141,6 @@ if (args.dir) {
   templateData.name = getComponentDirName(args.dir) // demo1btn 或者  demo1btn 或者 demo1-btn
   templateData.humpName = getComponentName(args.dir) // Demo1btn 或者  Demo1btn 或者 Demo1Btn
   templateData.firLowName = getComponentNameFirLow(args.dir) // Demo1btn 或者  Demo1btn 或者 Demo1Btn
-  templateData.firLowName = getComponentNameFirLow(args.dir) // Demo1btn 或者  Demo1btn 或者 Demo1Btn
   templateData.routeLevel = getRouteLevel(args.dir) // Demo1btn 或者  Demo1btn 或者 Demo1Btn
   templateData.parentRouteName = getParentRouteName(args.dir) // Demo1btn 或者  Demo1btn 或者 Demo1Btn
 
