@@ -2,16 +2,21 @@
   <div
     class="b-asider-menu">
     <div
+      v-if="showBtn"
       class="btn-collapse"
       @click="handleCollapse">
-     <i
-       v-if="isCollapse"
-       class="el-icon-s-unfold">
-     </i>
-     <i
-       v-if="!isCollapse"
-       class="el-icon-s-fold">
-     </i>
+      <slot
+        name="menu-btn"
+      >
+        <i
+          v-if="isCollapse"
+          class="el-icon-s-unfold">
+        </i>
+        <i
+          v-if="!isCollapse"
+          class="el-icon-s-fold">
+        </i>
+      </slot>
     </div>
 
     <el-menu
@@ -69,6 +74,7 @@
         </el-submenu>
       </template>
     </el-menu>
+
   </div>
 </template>
 
@@ -80,9 +86,16 @@
  *@date: 2020-05-14 10:08:55
  *@version V0.1.0
  *@API:
- *@ 参数
- *
- *@ 事件
+  @ 参数
+    menuList:[] 菜单列表
+    defaultSelect：'1-11-111' 默认选中
+    width：200 菜单的宽
+    collapse：false 是否收起
+    showBtn:true 是否显示折叠 button
+  @slot
+    v-slot: menu-btn 自定义按钮
+
+  @ 事件
  *
 */
 export default {
@@ -102,7 +115,7 @@ export default {
             level: 1,
             name: '导航一',
             type: 'dir',
-            url: '/main/detainees/inmates',
+            url: '/main/xxx/xxx',
             children: [
               {
                 icon: 'el-icon-setting',
@@ -110,7 +123,7 @@ export default {
                 level: 2,
                 name: '选项一',
                 type: 'menu',
-                url: '/main/detainees/inmates',
+                url: '',
                 children: []
               },
               {
@@ -119,7 +132,7 @@ export default {
                 level: 2,
                 name: '菜单一',
                 type: 'dir',
-                url: '/main/detainees/inmates',
+                url: '',
                 children: [
                   {
                     icon: 'el-icon-setting',
@@ -127,7 +140,7 @@ export default {
                     level: 3,
                     name: '选项一',
                     type: 'dir',
-                    url: '/main/detainees/inmates',
+                    url: '',
                     children: []
                   }
                 ]
@@ -140,7 +153,7 @@ export default {
             level: 1,
             name: '导航二',
             type: 'dir',
-            url: '/main/detainees/inmates',
+            url: '',
             children: []
           },
           {
@@ -149,7 +162,7 @@ export default {
             level: 1,
             name: '导航三',
             type: 'dir',
-            url: '/main/detainees/inmates',
+            url: '/main/xxx',
             children: [
               {
                 icon: 'el-icon-setting',
@@ -157,7 +170,7 @@ export default {
                 level: 2,
                 name: '选项一',
                 type: 'dir',
-                url: '/main/detainees/inmates',
+                url: '',
                 children: []
               },
               {
@@ -166,7 +179,7 @@ export default {
                 level: 2,
                 name: '选项二',
                 type: 'dir',
-                url: '/main/detainees/inmates',
+                url: '',
                 children: []
               }
             ]
@@ -185,6 +198,10 @@ export default {
     collapse: {
       type: Boolean,
       default: false
+    },
+    showBtn: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -245,7 +262,9 @@ export default {
     },
     handleSelect(key, keyPath) {
       const menu = this.getMenuByIdStr(key)
-      this.$router.push(menu.url)
+      if (menu.url) {
+        this.$router.push(menu.url)
+      }
     },
     handleOpen(key, keyPath) {
       // console.log('open=', key, keyPath)
@@ -262,9 +281,9 @@ export default {
 .b-asider-menu{
   height: 100%;
   max-width: 350px;
+  text-align: left;
   .btn-collapse{
-    line-height: 32px;
-    padding: 5px 10px 5px 20px;
+    padding: 5px 10px 2px 20px;
     // border-right: 1px solid #e6e6e6;
     &>i{
       font-size: 26px;

@@ -1,6 +1,15 @@
 <template>
   <div class="m-asider-menu">
     m-asider-menu
+
+    <b-aside-menu
+      :menuList="menuList"
+      :width='230'>
+      <!-- <template v-slot:menu-btn>
+        <a href="#">aaaaaaaaaaaaaaa</a>
+      </template> -->
+    </b-aside-menu>
+
   </div>
 </template>
 

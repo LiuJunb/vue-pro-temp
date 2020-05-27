@@ -1,5 +1,6 @@
 import Button from './components/button'
 import AsiderMenu from './components/aside-menu'
+import AdvancedSearch from './components/advanced-search'
 // import Icon from './components/icon'
 // import ButtonGroups from './components/button-groups'
 
@@ -7,7 +8,8 @@ import AsiderMenu from './components/aside-menu'
 export {
   // Icon,
   Button,
-  AsiderMenu
+  AsiderMenu,
+  AdvancedSearch
   // ButtonGroups
 }
 
@@ -17,7 +19,8 @@ export {
 const BaseUI = {
   // Icon,
   Button,
-  AsiderMenu
+  AsiderMenu,
+  AdvancedSearch
   // ButtonGroups
 }
 
@@ -25,7 +28,8 @@ const BaseUI = {
 export const components = [
   // Icon,
   Button,
-  AsiderMenu
+  AsiderMenu,
+  AdvancedSearch
   // ButtonGroups
 ]
 

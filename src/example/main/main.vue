@@ -1,22 +1,29 @@
 <template>
   <div class="main">
     <el-container>
-      <el-header>Header</el-header>
+      <el-header>
+        <span class="title">HYZS Admin BaseUI</span>
+      </el-header>
       <el-container>
         <el-aside width="null">
           <b-aside-menu
             :menuList="menuList"
             :width='230'>
+            <!-- <template v-slot:menu-btn>
+              <a href="#">aaaaaaaaaaaaaaa</a>
+            </template> -->
           </b-aside-menu>
         </el-aside>
-        <el-container>
+        <el-container class="scrollbar__wrap">
           <el-main>
             <router-view/>
           </el-main>
-          <el-footer>Footer</el-footer>
+          <el-footer></el-footer>
         </el-container>
       </el-container>
     </el-container>
+
+    <el-backtop target=".main .scrollbar__wrap"></el-backtop>
   </div>
 </template>
 
@@ -79,32 +86,43 @@ export default {
   height: 100%;
   .el-container{
     height: 100%;
+    // 不能滚动
+    overflow: hidden;
+    background: white;
+    .is-vertical{
+      background: $bgColor;
+    }
   }
 
   .el-header{
-    background-color: #B3C0D1;
+    background-color: $theme;
     color: #333;
     text-align: center;
     line-height: $headerHeight;
+    .title{
+      color: white;
+    }
   }
   .el-footer{
-    background-color: #B3C0D1;
+    background-color: $contentBgColor;
     color: #333;
+    margin: 0px 20px;
+    padding: 0px;
     text-align: center;
     line-height: $footerHeight;
+    height: $footerHeight !important;
   }
 
   .el-aside {
-    // background-color: #D3DCE6;
-    // color: #333;
-    // text-align: center;
     height: $asideHeight;
   }
 
   .el-main {
-    background-color: #E9EEF3;
+    margin: 20px 0px 20px 20px;
+    padding: 0px;
+    background-color: white;
     color: #333;
-    text-align: center;
+    // text-align: center;
     height: $mainHeight;
   }
 

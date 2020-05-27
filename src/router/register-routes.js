@@ -27,6 +27,6 @@ aRoutes.forEach(element1 => {
     }
   })
 })
-console.log(aRoutes)
+// console.log(aRoutes)
 export default aRoutes
 

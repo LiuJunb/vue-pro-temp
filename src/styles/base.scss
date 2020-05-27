@@ -5,7 +5,13 @@ $htmlFontSize:$targetDeviceWidth * 5.3333;
 
 
 $headerHeight:60px;
-$footerHeight:60px;
+$footerHeight:1px;
 $asideWidth:20px;
 $asideHeight:calc(100% - $headerHeight);
 $mainHeight:calc(100% - $headerHeight - $footerHeight);
+
+
+// 主题色
+$theme:#409EFF;
+$bgColor:#F2F6FC;
+$contentBgColor:#FFFFFF;
