@@ -21,7 +21,12 @@
       </template>
     </b-button-group>
     <br>
-    <b-button-group :btnList="btnList2"></b-button-group>
+    <b-button-group
+      :btnList="btnList2"
+      maxWidth="160px"
+    >
+
+    </b-button-group>
     <br>
   </div>
 </template>
@@ -116,6 +121,27 @@ export default {
         },
         {
           name: '删除',
+          type: 'text',
+          // size: 'small',
+          color: 'red',
+          btnPerm: ''
+        },
+        {
+          name: '删除1',
+          type: 'text',
+          // size: 'small',
+          color: 'red',
+          btnPerm: ''
+        },
+        {
+          name: '删除2',
+          type: 'text',
+          // size: 'small',
+          color: 'red',
+          btnPerm: ''
+        },
+        {
+          name: '删除3',
           type: 'text',
           // size: 'small',
           color: 'red',

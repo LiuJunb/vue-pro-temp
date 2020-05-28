@@ -4,8 +4,8 @@
     :style="{maxWidth:maxWidth}"
   >
     <template
-      v-for="(item, index) in btnList"
-    >
+      v-for="(item, index) in btnList">
+
       <el-button
         v-if="showBtn(item)&&!item.upload"
         :key="index"
@@ -129,6 +129,7 @@ export default {
 
     }
   },
+
   computed: {
     // 是否修该按钮背景颜色
     hasBgColor() {
