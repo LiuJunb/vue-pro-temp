@@ -1,7 +1,11 @@
 const SearchType = {
   default: 1,
+
   select: 2,
-  selectDataAndTime: 3
+  selectDate: 3,
+  selectDateRange: 4,
+
+  selectDataAndTime: 13
 }
 /**
  *
@@ -47,7 +51,7 @@ const getFormFieldIds = (formItems) => {
       }
     })
   }
-  console.log('val_1=', val)
+  // console.log('val_1=', val)
   return val
 }
 
@@ -71,7 +75,7 @@ const getFormRules = (formItems) => {
       }
     })
   }
-  console.log('val_2=', val)
+  // console.log('val_2=', val)
   return val
 }
 

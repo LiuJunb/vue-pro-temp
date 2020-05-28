@@ -2,11 +2,11 @@
   <div class="advanced-search">
 
     <b-advanced-search
-      :formItems="adSearchConfig"
        label-width="90px"
        :inline="true"
        size="small"
-      @handleSubmit="handleSubmit"
+       :showBtn="false"
+       @handleSubmit="handleSubmit"
     >
     </b-advanced-search>
 
@@ -14,15 +14,16 @@
        label-width="90px"
        :inline="true"
        size="small"
+       @handleSubmit="handleSubmit"
     >
-     <template v-slot:form-subit="slotProps">
+     <!-- <template v-slot:form-subit="slotProps">
           <el-button
             type="default"
             @click="slotProps.refForm.onReset()"
             >
             重置
           </el-button>
-     </template>
+     </template> -->
     </b-advanced-search>
   </div>
 </template>

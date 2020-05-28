@@ -12,7 +12,7 @@ export const adSearchConfig = [
     labelName: '活动1',
 
     rules: [
-      { required: true, message: '请输入活动名称', trigger: 'blur' },
+      { required: false, message: '请输入活动名称', trigger: 'blur' },
       { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
     ],
     placeholder: null
@@ -24,7 +24,7 @@ export const adSearchConfig = [
     labelName: '活动区域2',
 
     rules: [
-      { required: true, message: '请选择活动区域', trigger: 'change' }
+      { required: false, message: '请选择活动区域', trigger: 'change' }
     ],
     placeholder: null,
     style: {
@@ -45,7 +45,7 @@ export const adSearchConfig = [
   {
     type: SearchType.selectDataAndTime,
     labelName: '活动时间3',
-    required: true, // 显示红点
+    required: false, // 显示红点
     formItem_1: {
       fieldId: 'data1',
       defaultValue: null,
