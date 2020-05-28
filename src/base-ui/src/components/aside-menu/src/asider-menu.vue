@@ -54,19 +54,20 @@
             <el-menu-item
               v-if="bmenu.children.length<=0"
               :key="bmenu.id+''"
-              :index="menu.id + '-' + bmenu.id">
+              :index="bmenu.id+''">
               {{bmenu.name}}
             </el-menu-item>
             <!-- else 三级目录-->
             <el-submenu
               v-else
               :key="bmenu.id+''"
-              :index="menu.id + '-' + bmenu.id">
+              :index="bmenu.id+''">
               <span slot="title">{{bmenu.name}}</span>
+              <!-- 三级菜单 -->
               <el-menu-item
                 v-for="(cmenu) in bmenu.children"
-                :key="menu.id + '-' + bmenu.id +'-' + cmenu.id"
-                :index="menu.id + '-' + bmenu.id +'-' + cmenu.id">
+                :key="cmenu.id+''"
+                :index="cmenu.id+''">
                 {{cmenu.name}}
               </el-menu-item>
             </el-submenu>
@@ -189,7 +190,7 @@ export default {
     },
     defaultSelect: {
       type: String,
-      default: '1-12-121'
+      default: '11'
     },
     width: {
       type: Number,
@@ -224,32 +225,29 @@ export default {
   },
   watch: {
     defaultSelect: function(newV, oldV) {
-      this.defaultActive = newV
+      this.changeSelect(newV)
     },
     collapse: function(newV, oldV) {
       this.isCollapse = newV
+    },
+    $route(to, from) {
+      // console.log(from.path)
+      // console.log(to.path)
+      const menu = this.getMenuByKey('url', to.path, this.menuList)
+      if (menu) {
+        this.changeSelect(menu.id + '')
+      }
     }
   },
   methods: {
-    // 根据 key 递归获取 menu
-    getMenuByIdStr(idStr) {
-      let menu = null
-      if (idStr) {
-        // ['1', '21']
-        const ids = idStr.split('-')
-        const id = parseInt(ids.pop()) // 21
-        menu = this.getMenuById(id, this.menuList)
-      }
-      return menu
-    },
-    // 根据id 递归获取 menu
-    getMenuById(id, menuList) {
+    // 根据key 和 value 来递归获取 menu
+    getMenuByKey(key, value, menuList) {
       if (menuList === undefined || menuList === null) return null
       for (const aMenu of menuList) {
-        if (aMenu.id === id) {
+        if (aMenu[key] === value) {
           return aMenu
         } else if (aMenu.children && aMenu.children.length > 0) {
-          const bMenu = this.getMenuById(id, aMenu.children)
+          const bMenu = this.getMenuByKey(key, value, aMenu.children)
           if (bMenu) {
             return bMenu
           }
@@ -257,11 +255,16 @@ export default {
       }
       return null
     },
+    // id 是字符串类型
+    changeSelect(id) {
+      this.defaultActive = id
+    },
     handleCollapse() {
       this.isCollapse = !this.isCollapse
     },
     handleSelect(key, keyPath) {
-      const menu = this.getMenuByIdStr(key)
+      // console.log('select=', key, keyPath)
+      const menu = this.getMenuByKey('id', parseInt(key), this.menuList)
       if (menu.url) {
         this.$router.push(menu.url)
       }

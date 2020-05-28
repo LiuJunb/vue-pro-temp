@@ -44,7 +44,8 @@ const menuList = [
         name: 'BAsiderMunu',
         type: 'menu',
         url: '/main/asider-menu',
-        children: []
+        children: [
+        ]
       },
       {
         icon: 'el-icon-setting',

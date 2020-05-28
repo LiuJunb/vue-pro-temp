@@ -1,4 +1,4 @@
-const Type = {
+const SearchType = {
   default: 1,
   select: 2,
   selectDataAndTime: 3
@@ -76,7 +76,7 @@ const getFormRules = (formItems) => {
 }
 
 export {
-  Type,
+  SearchType,
   getFormFieldIds,
   getFormRules
 }

@@ -1,6 +1,20 @@
 <template>
   <div class="advanced-search">
-    <b-advanced-search>
+
+    <b-advanced-search
+      :formItems="adSearchConfig"
+       label-width="90px"
+       :inline="true"
+       size="small"
+      @handleSubmit="handleSubmit"
+    >
+    </b-advanced-search>
+
+    <b-advanced-search
+       label-width="90px"
+       :inline="true"
+       size="small"
+    >
      <template v-slot:form-subit="slotProps">
           <el-button
             type="default"
@@ -14,6 +28,9 @@
 </template>
 
 <script>
+import {
+  adSearchConfig
+} from './page-config'
 export default {
   name: 'AdvancedSearch',
   components: {
@@ -28,7 +45,7 @@ export default {
   },
   data: function() {
     return {
-
+      adSearchConfig
     }
   },
   computed: {
@@ -44,7 +61,10 @@ export default {
 
   },
   methods: {
-
+    handleSubmit(formData) {
+      console.log(new Date(formData.data1).toLocaleString())
+      console.log(formData)
+    }
   }
 
 }

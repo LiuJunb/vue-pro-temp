@@ -7,16 +7,13 @@
       :ref="formName"
       :model="formData"
       :rules="formRules"
-      :inline="true"
-      label-width="80px"
-      size="mini"
       class="b-search-form-inline"
       v-bind="$attrs"
       >
       <template v-for="(formItem, index) in formItems">
-        <!-- 1.Type.default 默认输入框 -->
+        <!-- 1.SearchType.default 默认输入框 -->
         <el-form-item
-          v-if="formItem.type === Type.default"
+          v-if="formItem.type === SearchType.default"
           :key="index"
           :label="formItem.labelName"
           :prop="formItem.fieldId">
@@ -27,15 +24,16 @@
           </el-input>
         </el-form-item>
 
-        <!-- 2.Type.select 默认select选着输入框 -->
+        <!-- 2.SearchType.select 默认select选着输入框 -->
         <el-form-item
-          v-if="formItem.type === Type.select"
+          v-if="formItem.type === SearchType.select"
           :key="index"
           :label="formItem.labelName"
           :prop="formItem.fieldId">
           <el-select
             v-model="formData[formItem.fieldId]"
             :style="formItem.style"
+            :clearable="formItem.clearable"
             :placeholder="formItem.placeholder">
             <el-option
               v-for="(item,index) in formItem.selectList"
@@ -46,9 +44,9 @@
           </el-select>
         </el-form-item>
 
-        <!-- 3.Type.selectDataAndTime 默认select选着输入框 -->
+        <!-- 3.SearchType.selectDataAndTime 默认select选着输入框 -->
         <el-form-item
-          v-if="formItem.type === Type.selectDataAndTime"
+          v-if="formItem.type === SearchType.selectDataAndTime"
           :key="index"
           :required="formItem.required"
           :label="formItem.labelName">
@@ -105,11 +103,24 @@
 </template>
 
 <script>
+/*
+ *@description:
+ *@author: liujun
+ *@email: liujun2son@163.com
+ *@date: 2020-05-28 10:00:36
+ *@version V0.1.0
+ *@API:
+  @ 参数
+
+  @ 事件
+  this.$emit('handleSubmit', this.formData) // @handleSubmit="handleSubmit"
+ *
+*/
 import {
-  Type,
+  SearchType,
   getFormFieldIds,
   getFormRules
-} from './search-types'
+} from './search-type'
 export default {
   name: 'BAdvancedSearch',
   components: {
@@ -122,10 +133,10 @@ export default {
       default: function() {
         return [
           {
-            type: Type.default,
-            fieldId: 'user1',
+            type: SearchType.default,
+            fieldId: 'user',
             defaultValue: undefined,
-            labelName: '活动1',
+            labelName: '活动',
 
             rules: [
               { required: true, message: '请输入活动名称', trigger: 'blur' },
@@ -134,55 +145,7 @@ export default {
             placeholder: null
           },
           {
-            type: Type.default,
-            fieldId: 'user2',
-            defaultValue: undefined,
-            labelName: '活动2',
-
-            rules: [
-              { required: true, message: '请输入活动名称', trigger: 'blur' },
-              { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-            ],
-            placeholder: null
-          },
-          {
-            type: Type.default,
-            fieldId: 'user3',
-            defaultValue: undefined,
-            labelName: '活动3',
-
-            rules: [
-              { required: true, message: '请输入活动名称', trigger: 'blur' },
-              { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-            ],
-            placeholder: null
-          },
-          {
-            type: Type.default,
-            fieldId: 'user4',
-            defaultValue: undefined,
-            labelName: '活动4',
-
-            rules: [
-              { required: true, message: '请输入活动名称', trigger: 'blur' },
-              { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-            ],
-            placeholder: null
-          },
-          {
-            type: Type.default,
-            fieldId: 'user5',
-            defaultValue: undefined,
-            labelName: '活动5',
-
-            rules: [
-              { required: true, message: '请输入活动名称', trigger: 'blur' },
-              { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-            ],
-            placeholder: null
-          },
-          {
-            type: Type.select,
+            type: SearchType.select,
             fieldId: 'region',
             defaultValue: null,
             labelName: '活动区域',
@@ -190,6 +153,7 @@ export default {
             rules: [
               { required: true, message: '请选择活动区域', trigger: 'change' }
             ],
+            clearable: true,
             placeholder: null,
             style: {
               width: '100%'
@@ -207,7 +171,7 @@ export default {
             ]
           },
           {
-            type: Type.selectDataAndTime,
+            type: SearchType.selectDataAndTime,
             labelName: '活动时间',
             required: true, // 显示红点
             formItem_1: {
@@ -235,7 +199,6 @@ export default {
               }
             }
           }
-
         ]
       }
     },
@@ -255,7 +218,7 @@ export default {
   },
   data: function() {
     return {
-      Type,
+      SearchType,
       formName: 'adsForm',
       formData: getFormFieldIds(this.formItems),
       formRules: getFormRules(this.formItems)
@@ -281,7 +244,8 @@ export default {
       // console.log(this.formData)
       this.$refs[this.formName].validate((valid) => {
         if (valid) {
-          console.log(this.formData)
+          // console.log(this.formData)
+          this.$emit('handleSubmit', this.formData)
         } else {
           console.log('error submit!!')
           return false
