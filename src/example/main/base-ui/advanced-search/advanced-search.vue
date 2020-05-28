@@ -1,14 +1,14 @@
 <template>
   <div class="advanced-search">
     <b-advanced-search>
-     <!-- <template v-slot:form-subit="slotProps">
+     <template v-slot:form-subit="slotProps">
           <el-button
             type="default"
             @click="slotProps.refForm.onReset()"
             >
             重置
           </el-button>
-     </template> -->
+     </template>
     </b-advanced-search>
   </div>
 </template>
