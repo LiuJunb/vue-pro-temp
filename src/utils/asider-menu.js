@@ -56,6 +56,16 @@ const menuList = [
         url: '/main/advanced-search',
         children: [
         ]
+      },
+      {
+        icon: 'el-icon-setting',
+        id: 23,
+        level: 2,
+        name: 'button-group',
+        type: 'dir',
+        url: '/main/button-group',
+        children: [
+        ]
       }
     ]
   }

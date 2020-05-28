@@ -1,3 +1,45 @@
+# 5.使用了element-ui部分组件
+
+1）使用layout布局
+2）编写了菜单组件
+3）编写了高级搜索组件
+4）编写按钮组组件
+
+注意：使用cacl() 函数时，函数中不能有scss变量，不然打包失败
+
+附加打包大小：
+
+Webpack Bundle Analyzer is started at http://127.0.0.1:8888
+Use Ctrl+C to close it
+  File                                      Size             Gzipped
+
+  dist\vue-26\vue.runtime.min.js            63.37 KiB        22.90 KiB
+  dist\vue-router-303\vue-router.min.js     23.60 KiB        8.43 KiB
+  dist\axios-018\axios.min.js               14.95 KiB        4.89 KiB
+  dist\vuex-31\vuex.min.js                  11.05 KiB        3.37 KiB
+  
+  // node_modules中的依赖大小( core-js:111k , element-ui/lib 308k, ployfill:8k)
+  dist\js\vendor.70c23529.js                476.90 KiB       129.26 KiB
+  dist\js\app.0c044d24.js                   29.62 KiB        8.52 KiB
+  dist\js\introduce.1963ace2.js             2.19 KiB         0.40 KiB
+  dist\js\advanced-search.ec96ab28.js       1.75 KiB         0.83 KiB
+  dist\js\code-specification.79ba3742.js    0.64 KiB         0.39 KiB
+  dist\js\operation-group.5f460183.js       0.63 KiB         0.39 KiB
+  dist\js\icon-group.e9f1c66c.js            0.61 KiB         0.38 KiB
+  dist\js\button-group.b50adb31.js          0.60 KiB         0.37 KiB
+  dist\js\asider-menu.bf7fd3f5.js           0.55 KiB         0.36 KiB
+  dist\css\app.c78d418e.css                 208.32 KiB       32.84 KiB
+  dist\css\vendor.e8d8759a.css              98.98 KiB        15.29 KiB
+  dist\normalize\normalize.css              6.38 KiB         1.79 KiB
+  dist\css\operation-group.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\code-specification.0e433876.c    0.00 KiB         0.02 KiB
+  ss
+  dist\css\icon-group.0e433876.css          0.00 KiB         0.02 KiB
+  dist\css\advanced-search.0e433876.css     0.00 KiB         0.02 KiB
+  dist\css\asider-menu.0e433876.css         0.00 KiB         0.02 KiB
+  dist\css\button-group.0e433876.css        0.00 KiB         0.02 KiB
+  dist\css\introduce.0e433876.css           0.00 KiB         0.02 KiB
+
 
 # 4.重写element-ui框架的样式
 
