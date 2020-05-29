@@ -1,12 +1,19 @@
 <template>
-  <div class="operation-group">
-    <h1>{{ msg }} Page</h1>
+  <div class="advanced-table">
+    <b-advanced-table>
+      <template v-slot:date="slotProps">
+        <a href="#">{{slotProps.row.date}}</a>
+      </template>
+      <template v-slot:address-header="">
+        <a href="#">adress</a>
+      </template>
+    </b-advanced-table>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'OperationGroup',
+  name: 'AdvancedTable',
   components: {
 
   },
@@ -14,7 +21,7 @@ export default {
   props: {
     msg: {
       type: String,
-      default: 'OperationGroup'
+      default: 'AdvancedTable'
     }
   },
   data: function() {
@@ -43,7 +50,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.operation-group{
+.advanced-table{
 
 }
 </style>

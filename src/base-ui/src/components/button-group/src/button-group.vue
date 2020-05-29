@@ -5,17 +5,20 @@
   >
     <template
       v-for="(item, index) in btnList">
-
       <el-button
         v-if="showBtn(item)&&!item.upload"
         :key="index"
+        class="b-btn-ground"
         :type="item.type"
         :icon="item.icon"
         :size="item.size"
         :disabled="item.disabled"
-        :style="[hasBgColor(item), {color:item.color}]"
+        :circle="item.circle"
+        :style="getBtnStyle(item)"
         @click="handleBtnClick(item)">
-        {{item.name}}
+        <template v-if="item.name">
+          {{item.name}}
+        </template>
       </el-button>
 
       <slot
@@ -30,10 +33,13 @@
           >
           <el-button
             :type="item.type"
+            class="b-btn-ground"
             :icon="item.icon"
             :size="item.size"
+            :circle="item.circle"
             :disabled="item.disabled"
-            :style="hasBgColor(item)">
+            :style="getBtnStyle(item)"
+            >
             {{item.name}}
           </el-button>
         </el-upload>
@@ -132,14 +138,42 @@ export default {
 
   computed: {
     // 是否修该按钮背景颜色
-    hasBgColor() {
+    getBtnStyle() {
       return function(item) {
-        // 如果没有bgColor直接返回
-        if (!item.bgColor) return {}
-        return {
-          backgroundColor: item.bgColor,
-          borderColor: item.bgColor
+        const sty = {}
+        // 如果有bgColor返回
+        if (item.bgColor) {
+          sty.backgroundColor = item.bgColor
+          sty.borderColor = item.bgColor
+          return sty
         }
+        // 添加字体的颜色
+        if (item.color) {
+          sty.color = item.color
+        }
+
+        // 如果是文本按钮，修改按钮margin的样式
+        if (item.type === 'text') {
+          sty.margin = '0px 5px'
+          sty.padding = '6px 0px'
+        }
+
+        // 是否需要浮动
+        if (item.float) {
+          sty.float = item.float
+        }
+
+        // 如果是不需要边框按钮
+        if (item.noborder) {
+          sty.border = '0px'
+        }
+
+        // 设计字体大小
+        if (item.fontSize) {
+          sty.fontSize = item.fontSize
+        }
+
+        return sty
       }
     },
     showBtn() {
@@ -174,9 +208,14 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .button-group{
+  .b-btn-ground:hover,
+  .b-btn-ground:focus{
+    opacity: 0.7;
+  }
   .btn-upload{
     display: inline-block;
     margin: 0px 10px;
+
   }
 }
 </style>

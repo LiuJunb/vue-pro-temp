@@ -1,5 +1,6 @@
 <template>
   <div class="button-group">
+    <br>
     <b-button-group></b-button-group>
     <br>
     <b-button-group
@@ -23,11 +24,16 @@
     <br>
     <b-button-group
       :btnList="btnList2"
-      maxWidth="160px"
+      maxWidth='200px'
     >
-
     </b-button-group>
     <br>
+    <b-button-group
+      :btnList="btnList3"
+    >
+    </b-button-group>
+    <br>
+
   </div>
 </template>
 
@@ -148,6 +154,38 @@ export default {
           btnPerm: ''
         }
 
+      ],
+      btnList3: [
+        {
+          name: '默认1',
+          bgColor: ''
+        },
+
+        {
+          icon: 'el-icon-refresh',
+          circle: true
+        },
+        {
+          icon: 'el-icon-refresh',
+          size: 'small',
+          circle: true
+        },
+        {
+          icon: 'el-icon-refresh',
+          circle: true,
+          noborder: true,
+          fontSize: '17px'
+        },
+        {
+          icon: 'el-icon-refresh',
+          circle: false,
+          float: 'right'
+        },
+        {
+          icon: 'el-icon-upload2',
+          circle: true,
+          float: 'right'
+        }
       ]
     }
   },

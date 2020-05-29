@@ -41,7 +41,7 @@ const menuList = [
         icon: 'el-icon-setting',
         id: 21,
         level: 2,
-        name: 'BAsiderMunu',
+        name: 'b-asider-menu',
         type: 'menu',
         url: '/main/asider-menu',
         children: [
@@ -51,8 +51,8 @@ const menuList = [
         icon: 'el-icon-setting',
         id: 22,
         level: 2,
-        name: 'AdvancedSearch',
-        type: 'dir',
+        name: 'b-advanced-search',
+        type: 'menu',
         url: '/main/advanced-search',
         children: [
         ]
@@ -61,12 +61,23 @@ const menuList = [
         icon: 'el-icon-setting',
         id: 23,
         level: 2,
-        name: 'button-group',
-        type: 'dir',
+        name: 'b-button-group',
+        type: 'menu',
         url: '/main/button-group',
         children: [
         ]
+      },
+      {
+        icon: 'el-icon-setting',
+        id: 24,
+        level: 2,
+        name: 'b-advanced-table',
+        type: 'menu',
+        url: '/main/advanced-table',
+        children: [
+        ]
       }
+
     ]
   }
 ]
