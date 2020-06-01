@@ -1,12 +1,12 @@
 import Vue from 'vue'
 
 import {
-// Pagination,
-// Dialog,
-// Autocomplete,
-// Dropdown,
-// DropdownMenu,
-// DropdownItem,
+  Pagination,
+  // Dialog,
+  // Autocomplete,
+  // Dropdown,
+  // DropdownMenu,
+  // DropdownItem,
   Menu,
   Submenu,
   MenuItem,
@@ -81,7 +81,7 @@ import {
 } from 'element-ui'
 // 引入自定义主题会导致编译变慢
 import '../styles/theme-chalk.scss'
-// Vue.use(Pagination)
+Vue.use(Pagination)
 // Vue.use(Dialog)
 // Vue.use(Autocomplete)
 // Vue.use(Dropdown)
