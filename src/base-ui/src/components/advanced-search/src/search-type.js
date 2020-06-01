@@ -5,7 +5,10 @@ const SearchType = {
   selectDate: 3,
   selectDateRange: 4,
 
-  selectDataAndTime: 13
+  selectAndInput: 12,
+  selectDataAndTime: 13,
+
+  custom: 14
 }
 /**
  *

@@ -25,6 +25,23 @@
           </el-button>
      </template> -->
     </b-advanced-search>
+
+    <br>
+    <b-advanced-search
+       label-width="90px"
+       :inline="true"
+       :formItems="adSearchConfig"
+       @handleSubmit="handleSubmit"
+    >
+     <template v-slot:custom1="slotProps">
+       <el-input
+        v-model="slotProps.data[slotProps.row.fieldId]"
+        placeholder="请输入内容">
+        <template slot="prepend">Http://</template>
+      </el-input>
+     </template>
+
+    </b-advanced-search>
   </div>
 </template>
 
@@ -47,6 +64,7 @@ export default {
   data: function() {
     return {
       adSearchConfig
+
     }
   },
   computed: {

@@ -100,7 +100,52 @@
           </el-date-picker>
         </el-form-item>
 
-        <!-- x.SearchType.selectDataAndTime 默认select选着输入框 -->
+        <!-- 9.SearchType.selectAndInput 默认select选着输入框 -->
+        <el-form-item
+          v-if="formItem.type === SearchType.selectAndInput"
+          :key="index"
+          :required="formItem.required"
+          class="liujun"
+          :label="formItem.labelName"
+          :label-width="formItem.labelWidth">
+          <el-row :style="formItem.style">
+            <el-form-item
+              :label="formItem.formItem_2.labelName"
+              :label-width="formItem.formItem_2.labelWidth"
+              :prop="formItem.formItem_2.fieldId">
+              <el-input
+                v-model="formData[formItem.formItem_2.fieldId]"
+                :style="formItem.formItem_2.style"
+                :placeholder="formItem.formItem_2.placeholder"
+                @input="handleInputChange($event,formItem.formItem_2)">
+                <!-- 下面这select放在input的前面 -->
+                <el-form-item
+                slot="prepend"
+                :style="{margin:'-1px'}"
+                :prop="formItem.formItem_1.fieldId">
+                  <el-select
+                      v-model="formData[formItem.formItem_1.fieldId]"
+                      filterable
+                      :multiple="formItem.formItem_1.multiple?formItem.formItem_1.multiple:false"
+                      :style="formItem.formItem_1.style"
+                      :clearable="formItem.formItem_1.clearable"
+                      :placeholder="formItem.formItem_1.placeholder"
+                      @input="handleSelectChange($event,formItem.formItem_1)">
+                      <el-option
+                        v-for="(itemData, index) in formItem.formItem_1.selectList"
+                        :key="index"
+                        :label="itemData.label"
+                        :value="itemData.value">
+                      </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-input>
+            </el-form-item>
+          </el-row>
+
+        </el-form-item>
+
+        <!-- 10.SearchType.selectDataAndTime 默认select选着输入框 -->
         <el-form-item
           v-if="formItem.type === SearchType.selectDataAndTime"
           :key="index"
@@ -136,6 +181,22 @@
               </el-form-item>
             </el-col>
           </el-row>
+        </el-form-item>
+
+        <!-- 自定义item的布局 SearchType.custom -->
+        <el-form-item
+          v-if="formItem.type === SearchType.custom"
+          :key="index"
+          :label="formItem.labelName"
+          :label-width="formItem.labelWidth"
+          :prop="formItem.fieldId">
+          <slot
+            :name="formItem.customSlot"
+            :row="formItem"
+            :data="formData"
+          >
+          <span>请完成自定布局</span>
+          </slot>
         </el-form-item>
 
       </template>
@@ -303,6 +364,44 @@ export default {
                 value: 'beijing2'
               }
             ]
+          },
+          {
+            type: SearchType.selectAndInput,
+            labelName: '名称',
+            formItem_1: {
+              fieldId: 'sel_1',
+
+              rules: [
+                { required: false, message: '请选择活动区域', trigger: 'change' }
+              ],
+              clearable: false,
+              placeholder: null,
+              style: {
+                width: '100px'
+              },
+              selectList: [
+                {
+                  label: '区域一',
+                  value: 'shanghai'
+                },
+                {
+                  label: '区域二',
+                  value: 'beijing'
+                }
+              ]
+            },
+            formItem_2: {
+              fieldId: 'input_1',
+              defaultValue: null,
+
+              rules: [
+                { required: false, message: '请输入名称', trigger: 'blur' }
+              ],
+              placeholder: null,
+              style: {
+                width: '300px'
+              }
+            }
           },
           {
             type: SearchType.selectDate,
