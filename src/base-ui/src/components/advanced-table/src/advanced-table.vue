@@ -5,10 +5,10 @@
       stripe
       border
       height="500"
-       style="width: 100%"
+      style="width: 100%"
       @selection-change="handleSelectionChange">
+      <!-- 第一列的选择框 -->
       <template>
-        <!-- 第一列的选择框 -->
         <el-table-column
           type="selection"
           width="55">
@@ -20,9 +20,8 @@
           :key="index"
           :prop="columnData.prop"
           :label="columnData.label"
-
           :width="columnData.width">
-          <!-- 自定义列布局 -->
+          <!-- 自定义-列布局 -->
            <template
             slot-scope="scope">
             <slot
@@ -32,7 +31,7 @@
             </slot>
           </template>
 
-          <!-- 自定义该列的头部 -->
+          <!-- 自定义-该列-头部 -->
           <template
             v-if="columnData.slotColHeader"
             slot="header">
