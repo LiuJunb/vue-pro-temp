@@ -76,6 +76,26 @@ const menuList = [
         url: '/main/advanced-table',
         children: [
         ]
+      },
+      {
+        icon: 'el-icon-setting',
+        id: 25,
+        level: 2,
+        name: 'b-status-text',
+        type: 'menu',
+        url: '/main/status-text',
+        children: [
+        ]
+      },
+      {
+        icon: 'el-icon-setting',
+        id: 26,
+        level: 2,
+        name: 'b-tag-group',
+        type: 'menu',
+        url: '/main/tag-group',
+        children: [
+        ]
       }
 
     ]

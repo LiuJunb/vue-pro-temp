@@ -3,6 +3,8 @@ import AsiderMenu from './components/aside-menu'
 import AdvancedSearch from './components/advanced-search'
 import ButtonGroup from './components/button-group'
 import AdvancedTable from './components/advanced-table'
+import StatusText from './components/status-text'
+import TagGroup from './components/tag-group'
 // import Icon from './components/icon'
 // import ButtonGroups from './components/button-groups'
 
@@ -13,7 +15,9 @@ export {
   AsiderMenu,
   AdvancedSearch,
   ButtonGroup,
-  AdvancedTable
+  AdvancedTable,
+  StatusText,
+  TagGroup
   // ButtonGroups
 }
 
@@ -26,7 +30,9 @@ const BaseUI = {
   AsiderMenu,
   AdvancedSearch,
   ButtonGroup,
-  AdvancedTable
+  AdvancedTable,
+  StatusText,
+  TagGroup
   // ButtonGroups
 }
 
@@ -37,7 +43,9 @@ export const components = [
   AsiderMenu,
   AdvancedSearch,
   ButtonGroup,
-  AdvancedTable
+  AdvancedTable,
+  StatusText,
+  TagGroup
   // ButtonGroups
 ]
 

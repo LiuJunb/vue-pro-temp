@@ -13,8 +13,8 @@ import {
   MenuItemGroup,
   Input,
   // InputNumber,
-  // Radio,
-  // RadioGroup,
+  Radio,
+  RadioGroup,
   // RadioButton,
   Checkbox,
   CheckboxButton,
@@ -38,7 +38,7 @@ import {
   FormItem,
   // Tabs,
   // TabPane,
-  // Tag,
+  Tag,
   // Tree,
   // Alert,
   // Slider,
@@ -93,8 +93,8 @@ Vue.use(MenuItem)
 Vue.use(MenuItemGroup)
 Vue.use(Input)
 // Vue.use(InputNumber)
-// Vue.use(Radio)
-// Vue.use(RadioGroup)
+Vue.use(Radio)
+Vue.use(RadioGroup)
 // Vue.use(RadioButton)
 Vue.use(Checkbox)
 Vue.use(CheckboxButton)
@@ -118,7 +118,7 @@ Vue.use(Form)
 Vue.use(FormItem)
 // Vue.use(Tabs)
 // Vue.use(TabPane)
-// Vue.use(Tag)
+Vue.use(Tag)
 // Vue.use(Tree)
 // Vue.use(Alert)
 // Vue.use(Slider)
