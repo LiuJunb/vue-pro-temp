@@ -231,6 +231,7 @@ export default {
       this.isCollapse = newV
     },
     $route(to, from) {
+      // console.log('----------0')
       // console.log(from.path)
       // console.log(to.path)
       const menu = this.getMenuByKey('url', to.path, this.menuList)

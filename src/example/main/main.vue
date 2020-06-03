@@ -7,7 +7,9 @@
       <el-container>
         <el-aside width="null">
           <b-aside-menu
+            ref='asideMenu'
             :menuList="menuList"
+            :defaultSelect="defaultSelect"
             :width='230'>
             <!-- <template v-slot:menu-btn>
               <a href="#">aaaaaaaaaaaaaaa</a>
@@ -42,14 +44,26 @@ export default {
   },
   data() {
     return {
-      menuList
+      menuList,
+      defaultSelect: null
     }
   },
   created() {
     this.testHttp()
     this.testStore()
   },
+  mounted() {
+    this.initMenuSelect()
+  },
   methods: {
+    initMenuSelect() {
+      if (this.$refs.asideMenu) {
+        const menu = this.$refs.asideMenu.getMenuByKey('url', this.$route.path, this.menuList)
+        if (menu) {
+          this.defaultSelect = menu.id + ''
+        }
+      }
+    },
     testStore() {
       this.$store.dispatch('login/login', { name: '刘军', age: 12 })
         .then((res) => {
