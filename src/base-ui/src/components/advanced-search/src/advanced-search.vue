@@ -149,7 +149,8 @@
           :prop="formItem.fieldId">
           <el-checkbox-group
             v-model="formData[formItem.fieldId]"
-            :style="formItem.style">
+            :style="formItem.style"
+            @change="handleSelectChange($event,formItem)">
             <el-checkbox
               v-for="(cbox, index) in formItem.checkboxList"
               :key="index"
@@ -168,7 +169,8 @@
           :prop="formItem.fieldId">
           <el-radio-group
             v-model="formData[formItem.fieldId]"
-            :style="formItem.style">
+            :style="formItem.style"
+            @change="handleSelectChange($event,formItem)">
             <el-radio
               v-for="(rad, index) in formItem.radioList"
               :key="index"
