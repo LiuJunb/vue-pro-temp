@@ -5,7 +5,7 @@ import {
 const { SearchType } = AdvancedSearch
 export const adSearchConfig = [
   {
-    type: SearchType.custom,
+    ItemType: SearchType.custom,
     customSlot: 'custom1',
     fieldId: 'custom1',
     defaultValue: undefined,
@@ -18,7 +18,7 @@ export const adSearchConfig = [
   },
 
   {
-    type: SearchType.selectAndInput,
+    ItemType: SearchType.selectAndInput,
     labelName: '名称',
     formItem_1: {
       fieldId: 'sel_1',
@@ -28,6 +28,7 @@ export const adSearchConfig = [
       ],
       clearable: false,
       placeholder: null,
+      defaultValue: '区域二',
       style: {
         width: '100px'
       },
@@ -55,8 +56,9 @@ export const adSearchConfig = [
       // }
     }
   },
+
   {
-    type: SearchType.default,
+    ItemType: SearchType.default,
     fieldId: 'user',
 
     defaultValue: undefined,
@@ -69,7 +71,7 @@ export const adSearchConfig = [
     placeholder: null
   },
   {
-    type: SearchType.select,
+    ItemType: SearchType.select,
     fieldId: 'region',
     defaultValue: null,
     labelName: '活动区域2',
@@ -94,7 +96,7 @@ export const adSearchConfig = [
     ]
   },
   {
-    type: SearchType.selectDataAndTime,
+    ItemType: SearchType.selectDataAndTime,
     labelName: '活动时间3',
     required: false, // 显示红点
     formItem_1: {

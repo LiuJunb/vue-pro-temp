@@ -1,7 +1,11 @@
 <template>
   <div class="button-group">
     <br>
-    <b-button-group></b-button-group>
+    <b-button-group
+      pull="center"
+    >
+
+    </b-button-group>
     <br>
     <b-button-group
       :btnList="btnList1">

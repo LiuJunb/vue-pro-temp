@@ -13,15 +13,35 @@
       <template v-for="(formItem, index) in formItems">
         <!-- 1.SearchType.default 默认输入框 -->
         <el-form-item
-          v-if="formItem.type === SearchType.default"
+          v-if="formItem.ItemType === SearchType.default"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
+          <!--
+            :style="formItem.style"
+
+            :type="formItem.inputType"
+            :row="formItem.rows"
+            :autosize="formItem.autosize"
+            :maxlength="formItem.maxlength"
+            :show-word-limit="formItem.maxlength"
+
+            :prefix-icon="formItem.prefixIcon"
+            :suffix-icon="formItem.suffixIcon"
+
+            :show-password="formItem.showPassword"
+            :clearable="formItem.clearable"
+
+            :placeholder="formItem.placeholder"
+
+            or
+
+            v-bind="formItem"
+           -->
           <el-input
             v-model="formData[formItem.fieldId]"
-            :style="formItem.style"
-            :placeholder="formItem.placeholder"
+            v-bind="formItem"
             @input="handleInputChange($event,formItem)">
             <template
               v-if="formItem.tooltip"
@@ -44,18 +64,26 @@
 
         <!-- 2.SearchType.select 默认select选着输入框 -->
         <el-form-item
-          v-if="formItem.type === SearchType.select"
+          v-if="formItem.ItemType === SearchType.select"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
+          <!--
+            :style="formItem.style"
+
+            :multiple="formItem.multiple?formItem.multiple:false"
+            :clearable="formItem.clearable"
+            :placeholder="formItem.placeholder"
+
+            or
+
+            v-bind="formItem"
+           -->
           <el-select
             v-model="formData[formItem.fieldId]"
             filterable
-            :multiple="formItem.multiple?formItem.multiple:false"
-            :style="formItem.style"
-            :clearable="formItem.clearable"
-            :placeholder="formItem.placeholder"
+            v-bind="formItem"
             @input="handleSelectChange($event,formItem)">
             <el-option
               v-for="(item,index) in formItem.selectList"
@@ -68,41 +96,90 @@
 
         <!-- 3.SearchType.selectDate -->
         <el-form-item
-          v-if="formItem.type === SearchType.selectDate"
+          v-if="formItem.ItemType === SearchType.selectDate"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
-          <el-date-picker
-            v-model="formData[formItem.fieldId]"
-            :type="formItem.dateType?formItem.dateType:'date'"
+          <!--
             :placeholder="formItem.placeholder"
             :style="formItem.style"
+            or
+            v-bind="formItem"
+           -->
+          <el-date-picker
+            v-model="formData[formItem.fieldId]"
+            :type="formItem.type?formItem.type:'date'"
+            v-bind="formItem"
             @input="handleDateSelectChange($event,formItem)">
           </el-date-picker>
         </el-form-item>
 
         <!-- 4.SearchType.selectDateRange -->
         <el-form-item
-          v-if="formItem.type === SearchType.selectDateRange"
+          v-if="formItem.ItemType === SearchType.selectDateRange"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
+          <!--
+            :style="formItem.style"
+            or
+            v-bind="formItem"
+           -->
           <el-date-picker
             v-model="formData[formItem.fieldId]"
-            :type="formItem.dateType?formItem.dateType:'daterange'"
-            :style="formItem.style"
+            :type="formItem.type?formItem.type:'daterange'"
+
             range-separator="至"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
+
+            v-bind="formItem"
             @input="handleDateSelectChange($event,formItem)">
           </el-date-picker>
         </el-form-item>
 
+        <!-- 5.SearchType.checkboxs -->
+        <el-form-item
+          v-if="formItem.ItemType === SearchType.checkboxs"
+          :key="index"
+          :label="formItem.labelName"
+          :label-width="formItem.labelWidth"
+          :prop="formItem.fieldId">
+          <el-checkbox-group
+            v-model="formData[formItem.fieldId]"
+            :style="formItem.style">
+            <el-checkbox
+              v-for="(cbox, index) in formItem.checkboxList"
+              :key="index"
+              :label="cbox.label"
+              :name="formItem.fieldId">
+            </el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+
+        <!-- 6.SearchType.radios -->
+        <el-form-item
+          v-if="formItem.ItemType === SearchType.radios"
+          :key="index"
+          :label="formItem.labelName"
+          :label-width="formItem.labelWidth"
+          :prop="formItem.fieldId">
+          <el-radio-group
+            v-model="formData[formItem.fieldId]"
+            :style="formItem.style">
+            <el-radio
+              v-for="(rad, index) in formItem.radioList"
+              :key="index"
+              :label="rad.label">
+            </el-radio>
+          </el-radio-group>
+        </el-form-item>
+
         <!-- 9.SearchType.selectAndInput 默认select选着输入框 -->
         <el-form-item
-          v-if="formItem.type === SearchType.selectAndInput"
+          v-if="formItem.ItemType === SearchType.selectAndInput"
           :key="index"
           :required="formItem.required"
           class="liujun"
@@ -113,23 +190,33 @@
               :label="formItem.formItem_2.labelName"
               :label-width="formItem.formItem_2.labelWidth"
               :prop="formItem.formItem_2.fieldId">
-              <el-input
-                v-model="formData[formItem.formItem_2.fieldId]"
+              <!--
                 :style="formItem.formItem_2.style"
                 :placeholder="formItem.formItem_2.placeholder"
+                or
+                v-bind="formItem.formItem_2"
+               -->
+              <el-input
+                v-model="formData[formItem.formItem_2.fieldId]"
+                v-bind="formItem.formItem_2"
                 @input="handleInputChange($event,formItem.formItem_2)">
                 <!-- 下面这select放在input的前面 -->
                 <el-form-item
                 slot="prepend"
                 :style="{margin:'-1px'}"
                 :prop="formItem.formItem_1.fieldId">
-                  <el-select
-                      v-model="formData[formItem.formItem_1.fieldId]"
-                      filterable
+                <!--
                       :multiple="formItem.formItem_1.multiple?formItem.formItem_1.multiple:false"
                       :style="formItem.formItem_1.style"
                       :clearable="formItem.formItem_1.clearable"
                       :placeholder="formItem.formItem_1.placeholder"
+                      or
+                      v-bind="formItem.formItem_1"
+                 -->
+                  <el-select
+                      v-model="formData[formItem.formItem_1.fieldId]"
+                      filterable
+                      v-bind="formItem.formItem_1"
                       @input="handleSelectChange($event,formItem.formItem_1)">
                       <el-option
                         v-for="(itemData, index) in formItem.formItem_1.selectList"
@@ -147,7 +234,7 @@
 
         <!-- 10.SearchType.selectDataAndTime 默认select选着输入框 -->
         <el-form-item
-          v-if="formItem.type === SearchType.selectDataAndTime"
+          v-if="formItem.ItemType === SearchType.selectDataAndTime"
           :key="index"
           :required="formItem.required"
           class="liujun"
@@ -158,11 +245,15 @@
               <el-form-item
                 :style="{marginRight:'0px'}"
                 :prop="formItem.formItem_1.fieldId">
+                <!--
+                  :placeholder="formItem.formItem_1.placeholder"
+                 -->
                 <el-date-picker
                   v-model="formData[formItem.formItem_1.fieldId]"
                   type="date"
-                  :placeholder="formItem.formItem_1.placeholder"
                   :style="formItem.formItem_2.style?formItem.formItem_2.style:{width: '100%'}"
+
+                  v-bind="formItem.formItem_2"
                   @input="handleDateSelectChange($event,formItem)">
                 </el-date-picker>
             </el-form-item>
@@ -172,10 +263,13 @@
               :span="2">-</el-col>
             <el-col :span="11">
               <el-form-item :prop="formItem.formItem_2.fieldId">
+                <!--
+                  :placeholder="formItem.formItem_2.placeholder"
+                 -->
                 <el-time-picker
                   v-model="formData[formItem.formItem_2.fieldId]"
-                  :placeholder="formItem.formItem_2.placeholder"
                   :style="formItem.formItem_2.style?formItem.formItem_2.style:{width: '100%'}"
+                  v-bind="formItem.formItem_2"
                   @input="handleDateSelectChange($event,formItem)">
                 </el-time-picker>
               </el-form-item>
@@ -185,7 +279,7 @@
 
         <!-- 自定义item的布局 SearchType.custom -->
         <el-form-item
-          v-if="formItem.type === SearchType.custom"
+          v-if="formItem.ItemType === SearchType.custom"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
@@ -257,7 +351,7 @@ export default {
       default: function() {
         return [
           {
-            type: SearchType.default,
+            ItemType: SearchType.default,
             fieldId: 'user1',
             defaultValue: undefined,
             labelName: '活动1',
@@ -269,7 +363,7 @@ export default {
             placeholder: null
           },
           {
-            type: SearchType.default,
+            ItemType: SearchType.default,
             fieldId: 'user2',
             defaultValue: undefined,
             labelName: '活动2',
@@ -286,7 +380,7 @@ export default {
             placeholder: null
           },
           {
-            type: SearchType.default,
+            ItemType: SearchType.default,
             fieldId: 'user3',
             defaultValue: undefined,
             labelName: '活动3',
@@ -300,7 +394,7 @@ export default {
             placeholder: null
           },
           {
-            type: SearchType.default,
+            ItemType: SearchType.default,
             fieldId: 'user4',
             defaultValue: undefined,
             labelName: '活动4-活动4-活动4',
@@ -313,7 +407,7 @@ export default {
             placeholder: null
           },
           {
-            type: SearchType.select,
+            ItemType: SearchType.select,
             fieldId: 'region1',
             defaultValue: null,
             labelName: '活动区域1',
@@ -340,7 +434,7 @@ export default {
             ]
           },
           {
-            type: SearchType.select,
+            ItemType: SearchType.select,
             fieldId: 'region2',
             defaultValue: [],
             labelName: '活动区域2',
@@ -366,7 +460,7 @@ export default {
             ]
           },
           {
-            type: SearchType.selectAndInput,
+            ItemType: SearchType.selectAndInput,
             labelName: '名称',
             formItem_1: {
               fieldId: 'sel_1',
@@ -404,7 +498,53 @@ export default {
             }
           },
           {
-            type: SearchType.selectDate,
+            ItemType: SearchType.checkboxs,
+            fieldId: 'check_box_1',
+            defaultValue: [],
+            labelName: '活动性质',
+            style: {
+              width: '100%'
+            },
+            checkboxList: [
+              {
+                label: '美食/餐厅线上活动'
+              },
+              {
+                label: '地推活动'
+              },
+              {
+                label: '线下主题活动'
+              }
+            ],
+            rules: [
+              { type: 'array', required: false, message: '请至少选择一个活动性质', trigger: 'change' }
+            ],
+            placeholder: null
+          },
+          {
+            ItemType: SearchType.radios,
+            fieldId: 'radios_11',
+            defaultValue: '',
+            labelName: '请选择活动资源',
+            labelWidth: '150px',
+            style: {
+              width: '100%'
+            },
+            radioList: [
+              {
+                label: '线上品牌商赞助'
+              },
+              {
+                label: '线下场地免费'
+              }
+            ],
+            rules: [
+              { required: true, message: '请选择活动资源', trigger: 'change' }
+            ],
+            placeholder: null
+          },
+          {
+            ItemType: SearchType.selectDate,
             fieldId: 'startDate',
             defaultValue: null,
             labelName: '时间1',
@@ -419,12 +559,12 @@ export default {
             }
           },
           {
-            type: SearchType.selectDate,
+            ItemType: SearchType.selectDate,
             fieldId: 'dateTime',
             defaultValue: null,
             labelName: '时间2',
 
-            dateType: 'datetime',
+            type: 'datetime',
             rules: [
               { type: 'date', required: false, message: '请选择时间', trigger: 'change' }
             ],
@@ -434,13 +574,13 @@ export default {
             // }
           },
           {
-            type: SearchType.selectDateRange,
+            ItemType: SearchType.selectDateRange,
             fieldId: 'startDateTime1',
             defaultValue: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)],
             labelName: '时间范围1',
             // labelWidth: '150px',
 
-            dateType: 'daterange',
+            type: 'daterange',
             rules: [
               { required: false, message: '请选择时间', trigger: 'change' }
             ],
@@ -450,12 +590,12 @@ export default {
             }
           },
           {
-            type: SearchType.selectDateRange,
+            ItemType: SearchType.selectDateRange,
             fieldId: 'startDateTime2',
             defaultValue: '',
             labelName: '时间范围2',
 
-            dateType: 'datetimerange',
+            type: 'datetimerange',
             rules: [
               { required: false, message: '请选择时间', trigger: 'change' }
             ],
@@ -466,7 +606,7 @@ export default {
           },
 
           {
-            type: SearchType.selectDataAndTime,
+            ItemType: SearchType.selectDataAndTime,
             labelName: '活动时间',
             required: false, // 显示红点
             // labelWidth: '150px',

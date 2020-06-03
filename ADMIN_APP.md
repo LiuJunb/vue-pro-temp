@@ -10,7 +10,8 @@
 
 2）v-bind="pagination"
 
-该指令是把 pagination 对象中的属性和值自动绑定到该组件上
+该指令是把 pagination 对象中的属性和值自动绑定到该组件上,
+如果属性使用了驼峰命名，在绑定的时候会自动转成 - ,例如：showPassword:true => show-password:true
 
 
 # 5.使用了element-ui部分组件

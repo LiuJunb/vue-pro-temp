@@ -5,10 +5,13 @@ const SearchType = {
   selectDate: 3,
   selectDateRange: 4,
 
-  selectAndInput: 12,
-  selectDataAndTime: 13,
+  selectAndInput: 5,
+  selectDataAndTime: 6,
 
-  custom: 14
+  checkboxs: 7,
+  radios: 9,
+
+  custom: 10
 }
 /**
  *

@@ -1,7 +1,7 @@
 <template>
   <el-row
     class="button-group"
-    :style="{maxWidth:maxWidth}"
+    :style="{maxWidth:maxWidth, textAlign:pull}"
   >
     <template
       v-for="(item, index) in btnList">
@@ -112,6 +112,10 @@ export default {
           }
         ]
       }
+    },
+    pull: {
+      type: String,
+      default: 'left' // left, right, center
     },
     maxWidth: {
       type: String,
