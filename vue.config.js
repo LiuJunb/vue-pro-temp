@@ -1,11 +1,12 @@
 
-const path = require('path')
+// const path = require('path')
+const conf = require('./build/config')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-function resolve(dir) {
-  return path.join(__dirname, dir)
-}
+// function resolve(dir) {
+//   return path.join(__dirname, dir)
+// }
 const startAnalyzerPlugin = true
 const isDevelopment = process.env.NODE_ENV === 'development'
 // cdn链接
@@ -42,9 +43,9 @@ module.exports = {
   lintOnSave: true,
   chainWebpack: (config) => {
     // 起别名
-    config.resolve.alias
-      .set('@', resolve('src'))
-      .set('@components', resolve('src/components'))
+    // config.resolve.alias
+    //   .set('@', resolve('src'))
+    //   .set('@components', resolve('src/components'))
     if (isDevelopment) {
 
     } else {
@@ -68,6 +69,10 @@ module.exports = {
     }
   },
   configureWebpack: (config) => {
+    // 起别名
+    config.resolve = {
+      alias: conf.alias
+    }
     if (isDevelopment) {
 
     } else {
