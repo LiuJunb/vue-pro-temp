@@ -99,6 +99,12 @@
             >
             重置
           </el-button>
+          <el-button
+            type="default"
+            @click="handleInitData(slotProps.refForm)"
+            >
+            回显
+          </el-button>
       </template>
     </b-advanced-search>
 
@@ -146,6 +152,17 @@ export default {
 
   },
   methods: {
+    handleInitData(advancedSearch) {
+    // 回显表单的值
+      advancedSearch.initFormData({
+        username: '刘军',
+        password_1: '123',
+        select_1: '广州',
+        select_2: '男',
+        select_3: ['跑步', '听歌'],
+        textarea_1: 'haha'
+      })
+    },
     handleSubmit(formData) {
       console.log(new Date(formData.data1).toLocaleString())
       console.log(formData)

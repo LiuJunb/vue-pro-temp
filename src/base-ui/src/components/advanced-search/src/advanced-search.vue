@@ -299,7 +299,8 @@
       <el-form-item v-if="showBtn">
         <slot
           name="form-subit"
-          :refForm="this">
+          :refForm="this"
+          >
           <el-button
             v-if="showSearch"
             type="primary"
@@ -683,6 +684,17 @@ export default {
 
   },
   methods: {
+    /**
+     * {
+     *  username:'刘军'
+     * }
+     */
+    initFormData(fieldIds) {
+      Object.keys(fieldIds).forEach((key) => {
+        // this.formData.username = fieldIds.username
+        this.formData[key] = fieldIds[key]
+      })
+    },
     onSubmit() {
       // console.log(this.formData)
       this.$refs[this.formName].validate((valid) => {
