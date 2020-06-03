@@ -1,13 +1,15 @@
 <template>
   <div class="button-group">
     <br>
+    <!-- 默认 -->
     <b-button-group
       pull="center"
     >
-
     </b-button-group>
     <br>
+    <!-- 控制按钮权限 -->
     <b-button-group
+      :permissions="permissions"
       :btnList="btnList1">
       <template v-slot:upload-1="slotProps">
         <el-upload
@@ -56,11 +58,15 @@ export default {
   },
   data: function() {
     return {
+      permissions: [
+        'pp.list',
+        'pp.detail'
+      ],
       btnList1: [
         {
           name: '默认1',
           bgColor: '',
-          btnPerm: ''
+          btnPerm: 'pp.list1'
         },
         {
           name: '默认2',

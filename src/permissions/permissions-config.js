@@ -1,3 +1,4 @@
+// 给按钮组使用的
 export const AllBtnPermissions = {
   // 列表
   Pploglist: {

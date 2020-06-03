@@ -50,6 +50,18 @@
 </template>
 
 <script>
+/*
+ *@description:
+ *@author: liujun
+ *@email: liujun2son@163.com
+ *@date: 2020-06-03 15:56:32
+ *@version V0.1.0
+ *@API:
+ *@ 参数
+ *
+ *@ 事件
+ *   this.$emit('handleBtnClick', item)
+*/
 export default {
   name: 'BButtonGroup',
   components: {
@@ -122,17 +134,17 @@ export default {
       default: function() {
         return '100%'
       }
-    }
+    },
     // 用户所拥有的权限
-    // permissions: {
-    //   type: Array,
-    //   default: function() {
-    //     return [
-    //       'pp.list',
-    //       'pp.detail'
-    //     ]
-    //   }
-    // }
+    permissions: {
+      type: Array,
+      default: function() {
+        return [
+          // 'pp.list',
+          // 'pp.detail'
+        ]
+      }
+    }
   },
   data: function() {
     return {
@@ -182,10 +194,28 @@ export default {
     },
     showBtn() {
       return (item) => {
-        const result = true
-        // 该按钮有权限控制 todo ...
-        if (item.btnPerm) {
+        let result = true
 
+        // sessionStorage.setItem('permissions', JSON.stringify(
+        //   [
+        //     'pp.list',
+        //     'pp.detail'
+        //   ]
+        // ))
+
+        // 该按钮有权限控制
+        if (item.btnPerm) {
+          if (this.permissions && this.permissions.length > 0) {
+            // 使用传递进来的权限组
+            result = this.hasPermission(this.permissions, item.btnPerm)
+          } else {
+            // 使用sessionStorage中permissions的权限
+            let pss = sessionStorage.getItem('permissions')
+            if (pss) {
+              pss = JSON.parse(pss)
+            }
+            result = this.hasPermission(pss, item.btnPerm)
+          }
         }
         return result
       }
@@ -202,7 +232,24 @@ export default {
   },
   methods: {
     handleBtnClick(item) {
-      console.log('value=', item)
+      // console.log('value=', item)
+      this.$emit('handleBtnClick', item)
+    },
+    /**
+     * 判断按钮是否有权限(默认是没有的)
+     * @param permissions 登录后拿到所有的 permissions: ['','']
+     * @param {} btnPermission 该按钮对应的权限:''
+     */
+    hasPermission(permissions, btnPermission) {
+      permissions = permissions || []
+      let result = false
+      permissions.forEach((element, index) => {
+        // 用户拥有该 btnPermission 的权限
+        if (btnPermission === element) {
+          result = true
+        }
+      })
+      return result
     }
   }
 
