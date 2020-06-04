@@ -10,6 +10,7 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <!-- http://192.168.45.2:8080/normalize/normalize.css -->
     <link rel="stylesheet" href="<%= BASE_URL %>normalize/normalize.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>base-ui/style.css">
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
@@ -148,7 +149,7 @@
       </div>
     </div>
 
-    <!-- 如果是生成环境，使用cdn导入下面的库 -->
+    <!-- 1.如果是生成环境，使用cdn导入下面的库 -->
     <% if(process.env.NODE_ENV === 'production'){ %>
     <script src="/vue-26/vue.runtime.min.js"></script>
     <script src="/vuex-31/vuex.min.js"></script>
@@ -156,12 +157,14 @@
     <script src="/axios-018/axios.min.js"></script>
     <%}%>
 
-    <!-- 使用CDN的JS文件,如果cdn为true然后遍历cdn.js这个数组 -->
+    <!-- 2.如果是生成环境，使用CDN的JS文件,如果cdn为true然后遍历cdn.js这个数组 -->
     <% for (var i in htmlWebpackPlugin.options.cdn &&
     htmlWebpackPlugin.options.cdn.js) { %>
     <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
     <% } %>
-    <!-- 使用CDN的JS文件 -->
+
+    <!-- 3.如果是测试/生成环境 都需要加载 -->
+    <script src="/base-ui/index.js"></script>
 
     <!-- built files will be auto injected -->
   </body>

@@ -9,13 +9,14 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 // }
 const startAnalyzerPlugin = true
 const isDevelopment = process.env.NODE_ENV === 'development'
-// cdn链接
+// 正式环境会添加：cdn链接( 测试环境不会 )
 const cdn = {
   // cdn的css链接
   css: [],
   // cdn的js链接
   js: [
     // 'https://cdn.staticfile.org/vue/2.6.10/vue.min.js',
+    // '/base-ui/index.js'
   ]
 }
 // https://cli.vuejs.org/zh/config/
@@ -75,7 +76,9 @@ module.exports = {
       alias: conf.alias
     }
     if (isDevelopment) {
-
+      config.externals = {
+        BaseUI: 'BaseUI'
+      }
     } else {
       // 1.排除哪些库不需要打包 import Vue from 'vue'
       // 用cdn方式引入
@@ -83,7 +86,8 @@ module.exports = {
         vue: 'Vue', // key 是 require 的包名，value 是全局的变量
         vuex: 'Vuex',
         'vue-router': 'VueRouter',
-        axios: 'axios'
+        axios: 'axios',
+        BaseUI: 'BaseUI'
       }
       // 2.公共代码的抽取
       config.optimization = {
