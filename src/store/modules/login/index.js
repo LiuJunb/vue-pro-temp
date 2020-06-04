@@ -1,5 +1,6 @@
 import Types from './types.js'
-import loginService from '@/service/login/index.js'
+import allService from '@/service/load_services.js'
+const { loginService } = allService
 export default {
   // 1.启用命名空间
   namespaced: true,

@@ -3001,6 +3001,83 @@ Use Ctrl+C to close it
 # 22.编写base-ui组件库注意事项
 
 
+1.组件库中引用组件时需要注意引入的方式
+
+
+
+
+
+# 23.添加service的自动加载功能
+
+在service文件夹下新建一个load_services.js文件
+
+```
+/**
+ * 自动加载 services
+ */
+const services = {}
+const allServices = require.context('@/service/', true, /index\.(js|ts)$/)
+// console.log('allServices=', allServices.keys()) // ['./login/index.js']
+allServices.keys().forEach((item, index, array) => {
+  // item = ./login/index.js => login/index.js
+  const module_path = item.substr(2)
+  const module = require(`@/service/${module_path}`) // @/service/login/index.js
+  const serviceObj = module.default
+  const serviceName = module_path.split('/') // ['login', 'index.js']
+  services[serviceName[serviceName.length - 2] + 'Service'] = serviceObj
+  // const ServiceFunc = module.default // 拿到了 class == func
+  // console.log(new ServiceFunc()) // 新建对象
+  // const serviceName = module_path.split('/') // [interrogaterecord, index.js]
+  // services[serviceName[serviceName.length - 2] + 'Service'] = new ServiceFunc() // s_router.default 拿到的才是导出的对象，s_router是模块对象
+})
+/**
+ * services:{
+    interrogaterecordService：new ServiceFunc()
+ * }
+ */
+// console.log(services)
+export default services || {}
+
+```
+
+
+在store中使用
+```
+import allService from '@/service/load_services.js'
+const { loginService } = allService
+
+```
+
+# 24.修改vue.config.js起别名的方式
+
+1.因为base-ui库组件之间会重复引用，为了防止重复打包（base-ui组件中引用组件需要取别名）
+
+2.修改vue.config.js
+```
+// const path = require('path')
+const conf = require('./build/config')
+......
+......
+// function resolve(dir) {
+//   return path.join(__dirname, dir)
+// }
+
+
+  chainWebpack: (config) => {
+    // 起别名
+    // config.resolve.alias
+    //   .set('@', resolve('src'))
+    //   .set('@components', resolve('src/components'))
+  }
+
+  configureWebpack: (config) => {
+    // 起别名
+    config.resolve = {
+      alias: conf.alias
+    }
+  }
+```
+
 
 ### 注意事项
 
