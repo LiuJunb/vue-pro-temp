@@ -2745,6 +2745,11 @@ Use Ctrl+C to close it
 # 22.编写base-ui组件库注意事项
 
 
+1.组件库中引用组件时需要注意引入的方式
+
+
+
+
 
 # 23.添加service的自动加载功能
 
@@ -2786,6 +2791,37 @@ import allService from '@/service/load_services.js'
 const { loginService } = allService
 
 ```
+
+# 24.修改vue.config.js起别名的方式
+
+1.因为base-ui库组件之间会重复引用，为了防止重复打包（base-ui组件中引用组件需要取别名）
+
+2.修改vue.config.js
+```
+// const path = require('path')
+const conf = require('./build/config')
+......
+......
+// function resolve(dir) {
+//   return path.join(__dirname, dir)
+// }
+
+
+  chainWebpack: (config) => {
+    // 起别名
+    // config.resolve.alias
+    //   .set('@', resolve('src'))
+    //   .set('@components', resolve('src/components'))
+  }
+
+  configureWebpack: (config) => {
+    // 起别名
+    config.resolve = {
+      alias: conf.alias
+    }
+  }
+```
+
 
 ### 注意事项
 
