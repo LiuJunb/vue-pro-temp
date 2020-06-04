@@ -15,7 +15,9 @@
 
         </el-aside>
         <el-container class="scrollbar__wrap">
-          <el-main>Main</el-main>
+          <el-main>
+            <router-view/>
+          </el-main>
           <el-footer></el-footer>
         </el-container>
       </el-container>
