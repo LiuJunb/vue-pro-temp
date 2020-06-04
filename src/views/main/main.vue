@@ -1,6 +1,26 @@
 <template>
   <div class="main">
+    <el-container>
+      <el-header>
+        <span class="title">Header</span>
+      </el-header>
+      <el-container>
+        <el-aside width="null">
+          <b-aside-menu
+            ref='asideMenu'
+            :menuList="menuList"
+            :defaultSelect="defaultSelect"
+            :width='BaseStyle.$navWidth'>
+          </b-aside-menu>
 
+        </el-aside>
+        <el-container class="scrollbar__wrap">
+          <el-main>Main</el-main>
+          <el-footer></el-footer>
+        </el-container>
+      </el-container>
+    </el-container>
+    <el-backtop target=".main .scrollbar__wrap"></el-backtop>
   </div>
 </template>
 
@@ -9,6 +29,11 @@ import {
   httpGet,
   httpPost
 } from '@/http/index.js'
+import BaseStyle from '@/styles/base.js'
+import {
+  menuList
+} from '@/utils/asider-menu.js'
+
 export default {
   name: 'Main',
   components: {
@@ -16,14 +41,28 @@ export default {
   },
   data() {
     return {
-
+      BaseStyle,
+      menuList,
+      defaultSelect: null
     }
   },
   created() {
     this.testHttp()
     this.testStore()
   },
+  mounted() {
+    this.initMenuSelect()
+  },
+
   methods: {
+    initMenuSelect() {
+      if (this.$refs.asideMenu) {
+        const menu = this.$refs.asideMenu.getMenuByKey('url', this.$route.path, this.menuList)
+        if (menu) {
+          this.defaultSelect = menu.id + ''
+        }
+      }
+    },
     testStore() {
       this.$store.dispatch('login/login', { name: '刘军', age: 12 })
         .then((res) => {
@@ -57,11 +96,57 @@ export default {
 
 <style scoped lang="scss">
 .main{
-   .test-span{
-    display: inline-block;
-    height: pxToRem(100); // 不需要px单位
-    width: pxToRem(200);
-    background: pink;
+ height: 100%;
+  .el-container{
+    height: 100%;
+    // 不能滚动
+    overflow: hidden;
+    background: white;
+    .is-vertical{
+      background: $bgColorF0;
+    }
+  }
+
+  .el-header{
+    background-color: $themeColor;
+    text-align: center;
+    line-height: $headerHeight;
+    .title{
+      color: white;
+    }
+  }
+  .el-footer{
+    // background-color: green;
+    margin: 0px 20px;
+    padding: 0px;
+    text-align: center;
+    line-height: $footerHeight;
+    height: $footerHeight !important;
+  }
+
+  .el-aside {
+    height: $asideHeight;
+  }
+
+  .el-main {
+    margin: 20px 0px 20px 20px;
+    padding: 0px;
+    background-color: white;
+    // text-align: center;
+    height: $mainHeight;
+  }
+
+  body > .el-container {
+    margin-bottom: 40px;
+  }
+
+  .el-container:nth-child(5) .el-aside,
+  .el-container:nth-child(6) .el-aside {
+    line-height: 260px;
+  }
+
+  .el-container:nth-child(7) .el-aside {
+    line-height: 320px;
   }
 }
 </style>
