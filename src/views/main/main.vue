@@ -1,21 +1,6 @@
 <template>
   <div class="main">
-    <!-- 使用base-ui的公共组件 -->
-    <b-button></b-button>
-    <!-- element-ui框架组件 -->
-    <el-checkbox
-      class="aa"
-      label="备选项1"
-      border
-    >
-    </el-checkbox>
-    main 放二级路<span class="test-span">由</span> <br>
-    <router-link to="/main/goodslist">goodslist</router-link> |
-    <router-link to="/main/goodsdetail">goodsdetail</router-link>
-    <br>
-    <router-link to="/main/bookslist">bookslist</router-link> |
-    <router-link to="/main/bookslist">booksdetail</router-link>
-    <router-view/>
+
   </div>
 </template>
 

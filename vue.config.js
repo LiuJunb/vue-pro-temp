@@ -1,12 +1,11 @@
 
-// const path = require('path')
-const conf = require('./build/config')
+const path = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-// function resolve(dir) {
-//   return path.join(__dirname, dir)
-// }
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
 const startAnalyzerPlugin = true
 const isDevelopment = process.env.NODE_ENV === 'development'
 // 正式环境会添加：cdn链接( 测试环境不会 )
@@ -45,9 +44,9 @@ module.exports = {
   lintOnSave: true,
   chainWebpack: (config) => {
     // 起别名
-    // config.resolve.alias
-    //   .set('@', resolve('src'))
-    //   .set('@components', resolve('src/components'))
+    config.resolve.alias
+      .set('@', resolve('src'))
+      .set('@components', resolve('src/components'))
     if (isDevelopment) {
 
     } else {
@@ -71,10 +70,6 @@ module.exports = {
     }
   },
   configureWebpack: (config) => {
-    // 起别名
-    config.resolve = {
-      alias: conf.alias
-    }
     if (isDevelopment) {
       config.externals = {
         BaseUI: 'BaseUI'
