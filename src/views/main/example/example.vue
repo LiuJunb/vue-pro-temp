@@ -18,6 +18,7 @@
 
     <!-- 按钮组 -->
     <b-button-group
+      :style="{margin:'15px 0px'}"
       :permissions="permissions"
       :btnList="btnListConfig"
       @handleBtnClick="handleBtnListClick">
@@ -37,6 +38,8 @@
         </el-upload>
       </template>
     </b-button-group>
+
+    <!-- 分界线 -->
 
     <!-- 表格 -->
     <!-- height="600" max-height=''-->
