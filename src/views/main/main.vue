@@ -2,7 +2,22 @@
   <div class="main">
     <el-container>
       <el-header>
-        <span class="title">Header</span>
+        <el-row :gutter="20">
+          <el-col :span="3">
+            <b-logo
+              :src="logo3_img"
+              height='38px'
+              width='120px'
+            >
+            </b-logo>
+          </el-col>
+          <el-col :span="18">
+            华云中盛-后台系统
+          </el-col>
+          <el-col :span="3">
+            admin
+          </el-col>
+        </el-row>
       </el-header>
       <el-container>
         <el-aside width="null">
@@ -47,8 +62,8 @@ import {
 import {
   otherList
 } from '@/config/index.js'
+import logo3_img from '@/assets/logo3.png'
 const { MenuUtils } = AsiderMenu
-
 export default {
   name: 'Main',
   components: {
@@ -56,6 +71,7 @@ export default {
   },
   data() {
     return {
+      logo3_img,
       BaseStyle,
       menuList,
       otherList,
@@ -134,9 +150,11 @@ export default {
     background-color: $themeColor;
     text-align: center;
     line-height: $headerHeight;
-    .title{
-      color: white;
+    color: white;
+    .logo {
+      margin: 8px 0px;
     }
+
   }
   .el-footer{
     // background-color: green;
@@ -152,7 +170,7 @@ export default {
   }
   // 面包屑
   .smart-breadcrumb{
-    padding: 10px 20px;
+    padding: 12px 20px;
   }
   // 可以滚动的内容
   .el-main {

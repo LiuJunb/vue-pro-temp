@@ -15,7 +15,8 @@
       </el-input>
      </template>
     </b-advanced-search>
-
+    <!-- 分界线 -->
+    <b-divider-line :style="{margin:'0px -20px'}"></b-divider-line>
     <!-- 按钮组 -->
     <b-button-group
       :style="{margin:'15px 0px'}"
@@ -39,15 +40,12 @@
       </template>
     </b-button-group>
 
-    <!-- 分界线 -->
-
     <!-- 表格 -->
     <!-- height="600" max-height=''-->
     <b-advanced-table
       style="width: 100%"
       border
       stripe
-      :header-cell-style="getHeaderStyle"
       :tabColumn="tabColumnConfig"
       :tabData="tabData"
       :paginationConf="paginationConfig"
@@ -168,11 +166,6 @@ export default {
     }
   },
   computed: {
-    getHeaderStyle() {
-      return {
-        'background-color': '#f5f5f9'
-      }
-    }
   },
   watch: {
 
