@@ -3,7 +3,7 @@ export const btnListConfig = [
   {
     name: '新建1',
     bgColor: '',
-    type: 'primary',
+    // type: 'primary',
     btnPerm: 'pp.list'
   },
   {

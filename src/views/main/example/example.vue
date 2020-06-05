@@ -1,6 +1,6 @@
 <template>
   <div class="example">
-    <hr>
+    <!-- 高级搜索 -->
     <b-advanced-search
        label-width="90px"
        :inline="true"
@@ -15,7 +15,8 @@
       </el-input>
      </template>
     </b-advanced-search>
-    <hr>
+
+    <!-- 按钮组 -->
     <b-button-group
       :permissions="permissions"
       :btnList="btnListConfig"
@@ -36,8 +37,9 @@
         </el-upload>
       </template>
     </b-button-group>
-    <hr>
-    <!-- height="600" -->
+
+    <!-- 表格 -->
+    <!-- height="600" max-height=''-->
     <b-advanced-table
       style="width: 100%"
       border

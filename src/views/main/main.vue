@@ -157,7 +157,7 @@ export default {
   // 可以滚动的内容
   .el-main {
     margin: 0px 0px 20px 20px;
-    padding: 0px;
+    padding: 20px;
     background-color: white;
     // text-align: center;
     height: $mainHeight;
