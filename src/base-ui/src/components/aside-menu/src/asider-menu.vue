@@ -55,6 +55,7 @@
               v-if="bmenu.children.length<=0"
               :key="bmenu.id+''"
               :index="bmenu.id+''">
+              <!-- <i :class="bmenu.icon"></i> -->
               {{bmenu.name}}
             </el-menu-item>
             <!-- else 三级目录-->
@@ -62,12 +63,18 @@
               v-else
               :key="bmenu.id+''"
               :index="bmenu.id+''">
-              <span slot="title">{{bmenu.name}}</span>
+              <span slot="title">
+                <i
+                  :class="bmenu.icon"
+                  :style="{paddingBottom:'5px'}"></i>
+                {{bmenu.name}}
+              </span>
               <!-- 三级菜单 -->
               <el-menu-item
                 v-for="(cmenu) in bmenu.children"
                 :key="cmenu.id+''"
                 :index="cmenu.id+''">
+                <!-- <i :class="bmenu.icon"></i> -->
                 {{cmenu.name}}
               </el-menu-item>
             </el-submenu>
@@ -97,8 +104,10 @@
     v-slot: menu-btn 自定义按钮
 
   @ 事件
+  this.$emit('handleClickCurrentMenu', menu)
  *
 */
+import MenuUtils from './menu-utils'
 export default {
   name: 'BAsideMenu',
   components: {
@@ -115,6 +124,7 @@ export default {
             id: 1,
             level: 1,
             name: '导航一',
+            parentId: 0,
             type: 'dir',
             url: '/main/xxx/xxx',
             children: [
@@ -123,6 +133,7 @@ export default {
                 id: 11,
                 level: 2,
                 name: '选项一',
+                parentId: 1,
                 type: 'menu',
                 url: '',
                 children: []
@@ -132,6 +143,7 @@ export default {
                 id: 12,
                 level: 2,
                 name: '菜单一',
+                parentId: 1,
                 type: 'dir',
                 url: '',
                 children: [
@@ -140,6 +152,7 @@ export default {
                     id: 121,
                     level: 3,
                     name: '选项一',
+                    parentId: 12,
                     type: 'dir',
                     url: '',
                     children: []
@@ -153,6 +166,7 @@ export default {
             id: 2,
             level: 1,
             name: '导航二',
+            parentId: 0,
             type: 'dir',
             url: '',
             children: []
@@ -162,6 +176,7 @@ export default {
             id: 3,
             level: 1,
             name: '导航三',
+            parentId: 0,
             type: 'dir',
             url: '/main/xxx',
             children: [
@@ -170,6 +185,7 @@ export default {
                 id: 31,
                 level: 2,
                 name: '选项一',
+                parentId: 3,
                 type: 'dir',
                 url: '',
                 children: []
@@ -179,6 +195,7 @@ export default {
                 id: 32,
                 level: 2,
                 name: '选项二',
+                parentId: 3,
                 type: 'dir',
                 url: '',
                 children: []
@@ -234,28 +251,15 @@ export default {
       // console.log('----------0')
       // console.log(from.path)
       // console.log(to.path)
-      const menu = this.getMenuByKey('url', to.path, this.menuList)
+      const menu = MenuUtils.getMenuByKey('url', to.path, this.menuList)
       if (menu) {
         this.changeSelect(menu.id + '')
+      } else {
+        // 没有找到，不需要更新选中菜单
       }
     }
   },
   methods: {
-    // 根据key 和 value 来递归获取 menu
-    getMenuByKey(key, value, menuList) {
-      if (menuList === undefined || menuList === null) return null
-      for (const aMenu of menuList) {
-        if (aMenu[key] === value) {
-          return aMenu
-        } else if (aMenu.children && aMenu.children.length > 0) {
-          const bMenu = this.getMenuByKey(key, value, aMenu.children)
-          if (bMenu) {
-            return bMenu
-          }
-        }
-      }
-      return null
-    },
     // id 是字符串类型
     changeSelect(id) {
       this.defaultActive = id
@@ -263,11 +267,16 @@ export default {
     handleCollapse() {
       this.isCollapse = !this.isCollapse
     },
+    // 菜单item的点击事件
     handleSelect(key, keyPath) {
       // console.log('select=', key, keyPath)
-      const menu = this.getMenuByKey('id', parseInt(key), this.menuList)
+      const menu = MenuUtils.getMenuByKey('id', parseInt(key), this.menuList)
       if (menu.url) {
-        this.$router.push(menu.url)
+        if (menu.url !== this.$route.path) {
+          this.$router.push(menu.url)
+        } else {
+          this.$emit('handleClickCurrentMenu', menu)
+        }
       }
     },
     handleOpen(key, keyPath) {

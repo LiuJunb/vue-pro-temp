@@ -18,6 +18,10 @@
         </el-aside>
         <el-container class="scrollbar__wrap">
           <el-main>
+            <b-smart-breadcrumb
+              :menuList="menuList"
+              :otherList="otherList">
+            </b-smart-breadcrumb>
             <router-view/>
           </el-main>
           <el-footer></el-footer>
@@ -37,6 +41,13 @@ import {
 import {
   menuList
 } from '@/utils/asider-menu.js'
+import {
+  otherList
+} from '@/config/index.js'
+import {
+  AsiderMenu
+} from '@/base-ui/src'
+const { MenuUtils } = AsiderMenu
 export default {
   name: 'Main',
   components: {
@@ -45,6 +56,7 @@ export default {
   data() {
     return {
       menuList,
+      otherList,
       defaultSelect: null
     }
   },
@@ -58,9 +70,18 @@ export default {
   methods: {
     initMenuSelect() {
       if (this.$refs.asideMenu) {
-        const menu = this.$refs.asideMenu.getMenuByKey('url', this.$route.path, this.menuList)
+        const menu = MenuUtils.getMenuByKey('url', this.$route.path, this.menuList)
         if (menu) {
           this.defaultSelect = menu.id + ''
+        } else {
+          // 刷新的时候没有找到，那么找菜单的上一级
+          const otherMenu = MenuUtils.getMenuByKey('url', this.$route.path, this.otherList)
+          if (otherMenu) {
+            const othMenu = MenuUtils.getMenuByKey('url', otherMenu.parentUrl, this.menuList)
+            if (othMenu) {
+              this.defaultSelect = othMenu.id + ''
+            }
+          }
         }
       }
     },
@@ -104,7 +125,7 @@ export default {
     overflow: hidden;
     background: white;
     .is-vertical{
-      background: $bgColor;
+      background: $bgColorF0;
     }
   }
 
