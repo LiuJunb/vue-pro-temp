@@ -6,6 +6,8 @@ import AdvancedTable from './components/advanced-table'
 import StatusText from './components/status-text'
 import TagGroup from './components/tag-group'
 import SmartBreadcrumb from './components/smart-breadcrumb'
+import DividerLine from './components/divider-line'
+import Logo from './components/logo'
 // import Icon from './components/icon'
 // import ButtonGroups from './components/button-groups'
 
@@ -19,7 +21,9 @@ export {
   AdvancedTable,
   StatusText,
   TagGroup,
-  SmartBreadcrumb
+  SmartBreadcrumb,
+  DividerLine,
+  Logo
   // ButtonGroups
 }
 
@@ -35,7 +39,9 @@ const BaseUI = {
   AdvancedTable,
   StatusText,
   TagGroup,
-  SmartBreadcrumb
+  SmartBreadcrumb,
+  DividerLine,
+  Logo
   // ButtonGroups
 }
 
@@ -49,7 +55,9 @@ export const components = [
   AdvancedTable,
   StatusText,
   TagGroup,
-  SmartBreadcrumb
+  SmartBreadcrumb,
+  DividerLine,
+  Logo
   // ButtonGroups
 ]
 

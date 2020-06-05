@@ -2,7 +2,25 @@
   <div class="main">
     <el-container>
       <el-header>
-        <span class="title">HYZS Admin BaseUI</span>
+        <span class="title">
+          <el-row :gutter="20">
+            <el-col :span="3">
+              <b-logo
+                :src="logo3_img"
+                height='38px'
+                width='120px'
+              >
+              </b-logo>
+            </el-col>
+            <el-col :span="18">
+              HYZS Admin BaseUI
+            </el-col>
+            <el-col :span="3">
+              4
+            </el-col>
+          </el-row>
+
+          </span>
       </el-header>
       <el-container>
         <el-aside width="null">
@@ -47,6 +65,7 @@ import {
 import {
   AsiderMenu
 } from '@/base-ui/src'
+import logo3_img from '@/assets/logo3.png'
 const { MenuUtils } = AsiderMenu
 export default {
   name: 'Main',
@@ -57,6 +76,7 @@ export default {
     return {
       menuList,
       otherList,
+      logo3_img,
       defaultSelect: null
     }
   },
@@ -136,6 +156,9 @@ export default {
     line-height: $headerHeight;
     .title{
       color: white;
+    }
+    .logo {
+      margin: 10px 0px;
     }
   }
   .el-footer{

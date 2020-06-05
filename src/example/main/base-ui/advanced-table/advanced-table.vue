@@ -5,6 +5,7 @@
       :border="true"
       height="300"
       style="width: 100%"
+      :header-cell-style="{color:'white',backgroundColor:'#31B989'}"
     >
     </b-advanced-table>
 

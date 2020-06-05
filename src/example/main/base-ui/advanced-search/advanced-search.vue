@@ -9,8 +9,8 @@
        @handleSubmit="handleSubmit"
     >
     </b-advanced-search>
-
-   <!-- 默认 -->
+    <b-divider-line></b-divider-line>
+    <!-- 默认 -->
     <b-advanced-search
        label-width="90px"
        :inline="true"
@@ -19,7 +19,7 @@
     >
     </b-advanced-search>
 
-    <br>
+   <b-divider-line></b-divider-line>
 
     <!-- 自定义配置 -->
     <b-advanced-search
@@ -38,7 +38,7 @@
 
     </b-advanced-search>
 
-    <br>
+    <b-divider-line></b-divider-line>
     <!-- 登录表单 -->
     <b-advanced-search
        :formItems="adLogin"
@@ -55,7 +55,7 @@
           </el-button>
       </template>
     </b-advanced-search>
-
+<b-divider-line></b-divider-line>
     <!-- 普通表单1 -->
     <b-advanced-search
        :formItems="adForm"
@@ -78,7 +78,7 @@
           </el-button>
       </template>
     </b-advanced-search>
-
+<b-divider-line></b-divider-line>
     <!-- 普通表单2 -->
     <b-advanced-search
        :formItems="adForm2"

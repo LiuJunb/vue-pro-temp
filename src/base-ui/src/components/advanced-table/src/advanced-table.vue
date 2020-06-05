@@ -4,6 +4,7 @@
      <el-table
       :data="tableData"
       v-bind="$attrs"
+      :header-cell-style="headerCellStyle"
       @selection-change="handleSelectionChange">
       <!-- 第一列的选择框 -->
       <template v-if="hasSelection">
@@ -84,6 +85,14 @@ export default {
   },
   mixins: [],
   props: {
+    headerCellStyle: {
+      type: Object,
+      default: function() {
+        return {
+          backgroundColor: '#f5f5f9'
+        }
+      }
+    },
     hasSelection: {
       type: Boolean,
       default: false
