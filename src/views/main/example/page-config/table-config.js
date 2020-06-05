@@ -33,11 +33,3 @@ export const tabColumnConfig = [
   }
 
 ]
-
-export const paginationConfig = {
-  'current-page': 1, // 重 1 开始
-  'page-sizes': [10, 20, 30, 40],
-  'page-size': 100,
-  layout: 'total, sizes, prev, pager, next, jumper',
-  total: 14
-}

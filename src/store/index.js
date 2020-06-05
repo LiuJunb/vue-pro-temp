@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 import Types from './types.js'
 import otherModules from './load-modules.js'
 Vue.use(Vuex)
-
 export default new Vuex.Store({
   state: {
     detps: [],
@@ -35,7 +34,7 @@ export default new Vuex.Store({
   },
   modules: {
     ...otherModules
-    // home: {
+    // main_example: {
     //   namespaced: ''
     //   state: {
     //   },

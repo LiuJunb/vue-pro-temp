@@ -31,6 +31,7 @@ export default {
       return Promise.resolve(result.data)
     },
     async list(context, payload) {
+      console.log('payload=', payload)
       const result = await exampleService.getList(payload)
       context.commit(Types.list, result.data)
       return Promise.resolve(result.data)
@@ -49,6 +50,14 @@ export default {
     },
     list(state, getters, rootState, rootGetters) {
       return state.list
+    },
+    listPaginatonConfig(state, getters, rootState, rootGetters) {
+      return {
+        'current-page': 1, // 当前第几页, 从 1 开始
+        'page-sizes': [10, 20, 30, 40], // 可选择一页显示多少条
+        'page-size': 10, // 一页显示多少条
+        total: 0 // 总共有多少条
+      }
     },
     detail(state, getters, rootState, rootGetters) {
       return state.list

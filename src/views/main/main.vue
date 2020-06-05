@@ -33,7 +33,7 @@
           <!-- 面包屑 -->
            <b-smart-breadcrumb
               :menuList="menuList"
-              :otherList="otherList">
+              :otherList="OtherList">
            </b-smart-breadcrumb>
 
           <el-main class="scrollbar__wrap">
@@ -48,10 +48,6 @@
 </template>
 
 <script>
-import {
-  httpGet,
-  httpPost
-} from '@/http/index.js'
 import BaseStyle from '@/styles/base.js'
 import {
   menuList
@@ -60,7 +56,7 @@ import {
   AsiderMenu
 } from 'BaseUI'
 import {
-  otherList
+  OtherList
 } from '@/config/index.js'
 import logo3_img from '@/assets/logo3.png'
 const { MenuUtils } = AsiderMenu
@@ -74,13 +70,11 @@ export default {
       logo3_img,
       BaseStyle,
       menuList,
-      otherList,
+      OtherList,
       defaultSelect: null
     }
   },
   created() {
-    this.testHttp()
-    this.testStore()
   },
   mounted() {
     this.initMenuSelect()
@@ -93,7 +87,7 @@ export default {
         this.defaultSelect = menu.id + ''
       } else {
         // 刷新的时候没有找到，那么找菜单的上一级
-        const otherMenu = MenuUtils.getMenuByKey('url', this.$route.path, this.otherList)
+        const otherMenu = MenuUtils.getMenuByKey('url', this.$route.path, this.OtherList)
         if (otherMenu) {
           const othMenu = MenuUtils.getMenuByKey('url', otherMenu.parentUrl, this.menuList)
           if (othMenu) {
@@ -101,33 +95,6 @@ export default {
           }
         }
       }
-    },
-    testStore() {
-      this.$store.dispatch('login/login', { name: '刘军', age: 12 })
-        .then((res) => {
-          console.log(res)
-        })
-      // console.log(this.$store.getters['login/user'])
-    },
-    testHttp() {
-      httpGet('/home1', {
-        name: '刘云',
-        age: 20
-      }).then((res) => {
-        console.log(res.data)
-      })
-
-      httpPost('/home2', {
-        age: '202',
-        name: '刘军2'
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8'
-        }
-      }).then((res) => {
-        console.log(res.data)
-      })
     }
   }
 }

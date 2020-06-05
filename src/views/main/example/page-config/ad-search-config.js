@@ -24,8 +24,8 @@ export const adSearchConfig = [
         { required: false, message: '请选择活动区域', trigger: 'change' }
       ],
       clearable: false,
-      placeholder: '',
-      defaultValue: '广州',
+      placeholder: '选城市',
+      defaultValue: undefined,
       style: {
         width: '100px'
       },
@@ -60,20 +60,6 @@ export const adSearchConfig = [
 
     defaultValue: undefined,
     labelName: '用户名称',
-    style: {
-      width: '280px'
-    },
-    rules: [
-      { required: false, message: '请输入用户名称', trigger: 'blur' }
-    ],
-    placeholder: '请输入用户名称'
-  },
-  {
-    ItemType: SearchType.default,
-    fieldId: 'user1',
-
-    defaultValue: undefined,
-    labelName: '用户名称1',
     style: {
       width: '280px'
     },

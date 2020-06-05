@@ -2,10 +2,11 @@
   <div class="example">
     <!-- 高级搜索 -->
     <b-advanced-search
+       ref='advanced-search'
        label-width="90px"
        :inline="true"
        :formItems="adSearchConfig"
-       @handleSubmit="handleSubmit"
+       @handleSubmit="handleSubmitClick"
     >
      <template v-slot:url="slotProps">
        <el-input
@@ -46,9 +47,12 @@
       style="width: 100%"
       border
       stripe
+      :hasSelection="true"
       :tabColumn="tabColumnConfig"
       :tabData="tabData"
       :paginationConf="paginationConfig"
+      @handleSelectionChange="handleSelectionClick"
+      @handlePaginatonChange="handlePaginatonClick"
     >
      <template v-slot:operation="slotProps">
         <b-button-group
@@ -65,9 +69,12 @@ import {
   adSearchConfig,
   btnListConfig,
   btnOperationConfig,
-  tabColumnConfig,
-  paginationConfig
+  tabColumnConfig
 } from './page-config'
+import {
+  PaginatonDefaultConfig,
+  CurSearchParams
+} from '@/config/index.js'
 export default {
   name: 'Example',
   components: {
@@ -86,10 +93,11 @@ export default {
       btnListConfig,
       btnOperationConfig,
       tabColumnConfig,
-      paginationConfig,
+      pageListActions: 'main_example/list',
       permissions: [
         'pp.list'
       ],
+
       tabData: [
         {
           name: '刘军1',
@@ -162,29 +170,61 @@ export default {
           address: '上海市普陀区金沙江路 1518 弄'
         }
 
-      ]
+      ],
+      paginationConfig: { ...PaginatonDefaultConfig },
+      curSearchParams: { ...CurSearchParams }
     }
   },
   computed: {
+    tabData1() {
+      const list = this.$store.getters[this.pageListActions] || []
+      return list
+    },
+    paginationConfig1() {
+      const pagConfig = this.$store.getters[this.pageListActions + 'PaginatonConfig'] || this.paginationConfig
+      return pagConfig
+    }
   },
   watch: {
 
   },
   created() {
-
+    this.getList(this.curSearchParams, null)
   },
   mounted() {
 
   },
   methods: {
-    handleSubmit(valuse) {
-      console.log(valuse)
+    getList(searchParams, valuse) {
+      // searchParams.data的数据需要过滤掉 null， undefined, '', [] 的情况
+      if (valuse) {
+        searchParams.data = valuse // todo ...
+      } else {
+        // 重置表单
+        if (this.$refs['advanced-search']) {
+          this.$refs['advanced-search'].onReset()
+        }
+      }
+      this.$store.dispatch(this.pageListActions, searchParams)
+    },
+    handleSubmitClick(valuse) {
+      // console.log(valuse)
+      this.getList(this.curSearchParams, valuse)
     },
     handleBtnListClick(item) {
       console.log(item)
+      if (item.icon === 'el-icon-refresh') {
+        this.getList(this.curSearchParams, null)
+      }
     },
     handleBtnOperClick(item, row) {
       console.log(item, row)
+    },
+    handleSelectionClick(rows) {
+      console.log(rows)
+    },
+    handlePaginatonClick(pagination) {
+      console.log(pagination)
     }
   }
 
