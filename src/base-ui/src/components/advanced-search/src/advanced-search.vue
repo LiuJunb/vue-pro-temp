@@ -738,5 +738,9 @@ export default {
   .line{
     text-align: center;
   }
+
+  .liujun{
+    margin-bottom: 0px;
+  }
 }
 </style>
