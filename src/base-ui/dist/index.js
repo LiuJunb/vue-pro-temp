@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 85);
+/******/ 	return __webpack_require__(__webpack_require__.s = 87);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -112,7 +112,7 @@ module.exports =
   // eslint-disable-next-line no-new-func
   Function('return this')();
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(47)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(48)))
 
 /***/ }),
 /* 1 */
@@ -165,8 +165,8 @@ module.exports = function (it) {
 
 "use strict";
 
-var $ = __webpack_require__(25);
-var forEach = __webpack_require__(42);
+var $ = __webpack_require__(26);
+var forEach = __webpack_require__(43);
 
 // `Array.prototype.forEach` method
 // https://tc39.github.io/ecma262/#sec-array.prototype.foreach
@@ -181,7 +181,7 @@ $({ target: 'Array', proto: true, forced: [].forEach != forEach }, {
 
 var DESCRIPTORS = __webpack_require__(2);
 var definePropertyModule = __webpack_require__(7);
-var createPropertyDescriptor = __webpack_require__(26);
+var createPropertyDescriptor = __webpack_require__(27);
 
 module.exports = DESCRIPTORS ? function (object, key, value) {
   return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
@@ -196,9 +196,9 @@ module.exports = DESCRIPTORS ? function (object, key, value) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(2);
-var IE8_DOM_DEFINE = __webpack_require__(28);
+var IE8_DOM_DEFINE = __webpack_require__(29);
 var anObject = __webpack_require__(8);
-var toPrimitive = __webpack_require__(21);
+var toPrimitive = __webpack_require__(22);
 
 var nativeDefineProperty = Object.defineProperty;
 
@@ -235,8 +235,8 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(0);
-var DOMIterables = __webpack_require__(68);
-var forEach = __webpack_require__(42);
+var DOMIterables = __webpack_require__(69);
+var forEach = __webpack_require__(43);
 var createNonEnumerableProperty = __webpack_require__(6);
 
 for (var COLLECTION_NAME in DOMIterables) {
@@ -297,13 +297,19 @@ for (var COLLECTION_NAME in DOMIterables) {
 /* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var DESCRIPTORS = __webpack_require__(2);
-var propertyIsEnumerableModule = __webpack_require__(48);
-var createPropertyDescriptor = __webpack_require__(26);
-var toIndexedObject = __webpack_require__(18);
-var toPrimitive = __webpack_require__(21);
+var propertyIsEnumerableModule = __webpack_require__(49);
+var createPropertyDescriptor = __webpack_require__(27);
+var toIndexedObject = __webpack_require__(19);
+var toPrimitive = __webpack_require__(22);
 var has = __webpack_require__(3);
-var IE8_DOM_DEFINE = __webpack_require__(28);
+var IE8_DOM_DEFINE = __webpack_require__(29);
 
 var nativeGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 
@@ -320,12 +326,12 @@ exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnProper
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // toObject with fallback for non-array-like ES3 strings
-var IndexedObject = __webpack_require__(27);
-var requireObjectCoercible = __webpack_require__(20);
+var IndexedObject = __webpack_require__(28);
+var requireObjectCoercible = __webpack_require__(21);
 
 module.exports = function (it) {
   return IndexedObject(requireObjectCoercible(it));
@@ -333,7 +339,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -344,7 +350,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 // `RequireObjectCoercible` abstract operation
@@ -356,7 +362,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(4);
@@ -376,7 +382,7 @@ module.exports = function (input, PREFERRED_STRING) {
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(0);
@@ -392,14 +398,14 @@ module.exports = function (key, value) {
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports) {
 
 module.exports = {};
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
 // IE8- don't enum bug keys
@@ -415,16 +421,16 @@ module.exports = [
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(0);
-var getOwnPropertyDescriptor = __webpack_require__(17).f;
+var getOwnPropertyDescriptor = __webpack_require__(18).f;
 var createNonEnumerableProperty = __webpack_require__(6);
-var redefine = __webpack_require__(30);
-var setGlobal = __webpack_require__(22);
-var copyConstructorProperties = __webpack_require__(52);
-var isForced = __webpack_require__(41);
+var redefine = __webpack_require__(31);
+var setGlobal = __webpack_require__(23);
+var copyConstructorProperties = __webpack_require__(53);
+var isForced = __webpack_require__(42);
 
 /*
   options.target      - name of the target object
@@ -475,7 +481,7 @@ module.exports = function (options, source) {
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports) {
 
 module.exports = function (bitmap, value) {
@@ -489,11 +495,11 @@ module.exports = function (bitmap, value) {
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var fails = __webpack_require__(1);
-var classof = __webpack_require__(19);
+var classof = __webpack_require__(20);
 
 var split = ''.split;
 
@@ -508,12 +514,12 @@ module.exports = fails(function () {
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(2);
 var fails = __webpack_require__(1);
-var createElement = __webpack_require__(29);
+var createElement = __webpack_require__(30);
 
 // Thank's IE8 for his funny defineProperty
 module.exports = !DESCRIPTORS && !fails(function () {
@@ -524,7 +530,7 @@ module.exports = !DESCRIPTORS && !fails(function () {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(0);
@@ -540,15 +546,15 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(0);
 var createNonEnumerableProperty = __webpack_require__(6);
 var has = __webpack_require__(3);
-var setGlobal = __webpack_require__(22);
-var inspectSource = __webpack_require__(31);
-var InternalStateModule = __webpack_require__(49);
+var setGlobal = __webpack_require__(23);
+var inspectSource = __webpack_require__(32);
+var InternalStateModule = __webpack_require__(50);
 
 var getInternalState = InternalStateModule.get;
 var enforceInternalState = InternalStateModule.enforce;
@@ -580,10 +586,10 @@ var TEMPLATE = String(String).split('String');
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var store = __webpack_require__(32);
+var store = __webpack_require__(33);
 
 var functionToString = Function.toString;
 
@@ -598,11 +604,11 @@ module.exports = store.inspectSource;
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(0);
-var setGlobal = __webpack_require__(22);
+var setGlobal = __webpack_require__(23);
 
 var SHARED = '__core-js_shared__';
 var store = global[SHARED] || setGlobal(SHARED, {});
@@ -611,11 +617,11 @@ module.exports = store;
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var shared = __webpack_require__(34);
-var uid = __webpack_require__(35);
+var shared = __webpack_require__(35);
+var uid = __webpack_require__(36);
 
 var keys = shared('keys');
 
@@ -625,11 +631,11 @@ module.exports = function (key) {
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var IS_PURE = __webpack_require__(51);
-var store = __webpack_require__(32);
+var IS_PURE = __webpack_require__(52);
+var store = __webpack_require__(33);
 
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
@@ -641,7 +647,7 @@ var store = __webpack_require__(32);
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports) {
 
 var id = 0;
@@ -653,10 +659,10 @@ module.exports = function (key) {
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var path = __webpack_require__(54);
+var path = __webpack_require__(55);
 var global = __webpack_require__(0);
 
 var aFunction = function (variable) {
@@ -670,11 +676,11 @@ module.exports = function (namespace, method) {
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var internalObjectKeys = __webpack_require__(38);
-var enumBugKeys = __webpack_require__(24);
+var internalObjectKeys = __webpack_require__(39);
+var enumBugKeys = __webpack_require__(25);
 
 var hiddenKeys = enumBugKeys.concat('length', 'prototype');
 
@@ -686,13 +692,13 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var has = __webpack_require__(3);
-var toIndexedObject = __webpack_require__(18);
-var indexOf = __webpack_require__(55).indexOf;
-var hiddenKeys = __webpack_require__(23);
+var toIndexedObject = __webpack_require__(19);
+var indexOf = __webpack_require__(56).indexOf;
+var hiddenKeys = __webpack_require__(24);
 
 module.exports = function (object, names) {
   var O = toIndexedObject(object);
@@ -709,10 +715,10 @@ module.exports = function (object, names) {
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(40);
+var toInteger = __webpack_require__(41);
 
 var min = Math.min;
 
@@ -724,7 +730,7 @@ module.exports = function (argument) {
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports) {
 
 var ceil = Math.ceil;
@@ -738,7 +744,7 @@ module.exports = function (argument) {
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var fails = __webpack_require__(1);
@@ -765,14 +771,14 @@ module.exports = isForced;
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $forEach = __webpack_require__(58).forEach;
-var arrayMethodIsStrict = __webpack_require__(65);
-var arrayMethodUsesToLength = __webpack_require__(66);
+var $forEach = __webpack_require__(59).forEach;
+var arrayMethodIsStrict = __webpack_require__(66);
+var arrayMethodUsesToLength = __webpack_require__(67);
 
 var STRICT_METHOD = arrayMethodIsStrict('forEach');
 var USES_TO_LENGTH = arrayMethodUsesToLength('forEach');
@@ -785,10 +791,10 @@ module.exports = (!STRICT_METHOD || !USES_TO_LENGTH) ? function forEach(callback
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var requireObjectCoercible = __webpack_require__(20);
+var requireObjectCoercible = __webpack_require__(21);
 
 // `ToObject` abstract operation
 // https://tc39.github.io/ecma262/#sec-toobject
@@ -798,7 +804,7 @@ module.exports = function (argument) {
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var fails = __webpack_require__(1);
@@ -811,11 +817,11 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var internalObjectKeys = __webpack_require__(38);
-var enumBugKeys = __webpack_require__(24);
+var internalObjectKeys = __webpack_require__(39);
+var enumBugKeys = __webpack_require__(25);
 
 // `Object.keys` method
 // https://tc39.github.io/ecma262/#sec-object.keys
@@ -825,12 +831,12 @@ module.exports = Object.keys || function keys(O) {
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(25);
-var toObject = __webpack_require__(43);
-var nativeKeys = __webpack_require__(45);
+var $ = __webpack_require__(26);
+var toObject = __webpack_require__(44);
+var nativeKeys = __webpack_require__(46);
 var fails = __webpack_require__(1);
 
 var FAILS_ON_PRIMITIVES = fails(function () { nativeKeys(1); });
@@ -845,7 +851,7 @@ $({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES }, {
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports) {
 
 var g;
@@ -871,7 +877,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -891,16 +897,16 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var NATIVE_WEAK_MAP = __webpack_require__(50);
+var NATIVE_WEAK_MAP = __webpack_require__(51);
 var global = __webpack_require__(0);
 var isObject = __webpack_require__(4);
 var createNonEnumerableProperty = __webpack_require__(6);
 var objectHas = __webpack_require__(3);
-var sharedKey = __webpack_require__(33);
-var hiddenKeys = __webpack_require__(23);
+var sharedKey = __webpack_require__(34);
+var hiddenKeys = __webpack_require__(24);
 
 var WeakMap = global.WeakMap;
 var set, get, has;
@@ -958,11 +964,11 @@ module.exports = {
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(0);
-var inspectSource = __webpack_require__(31);
+var inspectSource = __webpack_require__(32);
 
 var WeakMap = global.WeakMap;
 
@@ -970,19 +976,19 @@ module.exports = typeof WeakMap === 'function' && /native code/.test(inspectSour
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports) {
 
 module.exports = false;
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var has = __webpack_require__(3);
-var ownKeys = __webpack_require__(53);
-var getOwnPropertyDescriptorModule = __webpack_require__(17);
+var ownKeys = __webpack_require__(54);
+var getOwnPropertyDescriptorModule = __webpack_require__(18);
 var definePropertyModule = __webpack_require__(7);
 
 module.exports = function (target, source) {
@@ -997,12 +1003,12 @@ module.exports = function (target, source) {
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getBuiltIn = __webpack_require__(36);
-var getOwnPropertyNamesModule = __webpack_require__(37);
-var getOwnPropertySymbolsModule = __webpack_require__(57);
+var getBuiltIn = __webpack_require__(37);
+var getOwnPropertyNamesModule = __webpack_require__(38);
+var getOwnPropertySymbolsModule = __webpack_require__(58);
 var anObject = __webpack_require__(8);
 
 // all object keys, includes non-enumerable and symbols
@@ -1014,7 +1020,7 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(0);
@@ -1023,12 +1029,12 @@ module.exports = global;
 
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toIndexedObject = __webpack_require__(18);
-var toLength = __webpack_require__(39);
-var toAbsoluteIndex = __webpack_require__(56);
+var toIndexedObject = __webpack_require__(19);
+var toLength = __webpack_require__(40);
+var toAbsoluteIndex = __webpack_require__(57);
 
 // `Array.prototype.{ indexOf, includes }` methods implementation
 var createMethod = function (IS_INCLUDES) {
@@ -1061,10 +1067,10 @@ module.exports = {
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(40);
+var toInteger = __webpack_require__(41);
 
 var max = Math.max;
 var min = Math.min;
@@ -1079,21 +1085,21 @@ module.exports = function (index, length) {
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports) {
 
 exports.f = Object.getOwnPropertySymbols;
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var bind = __webpack_require__(59);
-var IndexedObject = __webpack_require__(27);
-var toObject = __webpack_require__(43);
-var toLength = __webpack_require__(39);
-var arraySpeciesCreate = __webpack_require__(61);
+var bind = __webpack_require__(60);
+var IndexedObject = __webpack_require__(28);
+var toObject = __webpack_require__(44);
+var toLength = __webpack_require__(40);
+var arraySpeciesCreate = __webpack_require__(62);
 
 var push = [].push;
 
@@ -1157,10 +1163,10 @@ module.exports = {
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var aFunction = __webpack_require__(60);
+var aFunction = __webpack_require__(61);
 
 // optional / simple context binding
 module.exports = function (fn, that, length) {
@@ -1187,7 +1193,7 @@ module.exports = function (fn, that, length) {
 
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -1198,12 +1204,12 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(4);
-var isArray = __webpack_require__(62);
-var wellKnownSymbol = __webpack_require__(63);
+var isArray = __webpack_require__(63);
+var wellKnownSymbol = __webpack_require__(64);
 
 var SPECIES = wellKnownSymbol('species');
 
@@ -1224,10 +1230,10 @@ module.exports = function (originalArray, length) {
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof = __webpack_require__(19);
+var classof = __webpack_require__(20);
 
 // `IsArray` abstract operation
 // https://tc39.github.io/ecma262/#sec-isarray
@@ -1237,15 +1243,15 @@ module.exports = Array.isArray || function isArray(arg) {
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(0);
-var shared = __webpack_require__(34);
+var shared = __webpack_require__(35);
 var has = __webpack_require__(3);
-var uid = __webpack_require__(35);
-var NATIVE_SYMBOL = __webpack_require__(44);
-var USE_SYMBOL_AS_UID = __webpack_require__(64);
+var uid = __webpack_require__(36);
+var NATIVE_SYMBOL = __webpack_require__(45);
+var USE_SYMBOL_AS_UID = __webpack_require__(65);
 
 var WellKnownSymbolsStore = shared('wks');
 var Symbol = global.Symbol;
@@ -1260,10 +1266,10 @@ module.exports = function (name) {
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var NATIVE_SYMBOL = __webpack_require__(44);
+var NATIVE_SYMBOL = __webpack_require__(45);
 
 module.exports = NATIVE_SYMBOL
   // eslint-disable-next-line no-undef
@@ -1273,7 +1279,7 @@ module.exports = NATIVE_SYMBOL
 
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1290,7 +1296,7 @@ module.exports = function (METHOD_NAME, argument) {
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(2);
@@ -1323,7 +1329,7 @@ module.exports = function (METHOD_NAME, options) {
 
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(2);
@@ -1351,7 +1357,7 @@ if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports) {
 
 // iterable DOM collections
@@ -1392,7 +1398,7 @@ module.exports = {
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1402,25 +1408,25 @@ module.exports = {
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var DESCRIPTORS = __webpack_require__(2);
 var global = __webpack_require__(0);
-var isForced = __webpack_require__(41);
-var redefine = __webpack_require__(30);
+var isForced = __webpack_require__(42);
+var redefine = __webpack_require__(31);
 var has = __webpack_require__(3);
-var classof = __webpack_require__(19);
-var inheritIfRequired = __webpack_require__(71);
-var toPrimitive = __webpack_require__(21);
+var classof = __webpack_require__(20);
+var inheritIfRequired = __webpack_require__(72);
+var toPrimitive = __webpack_require__(22);
 var fails = __webpack_require__(1);
-var create = __webpack_require__(74);
-var getOwnPropertyNames = __webpack_require__(37).f;
-var getOwnPropertyDescriptor = __webpack_require__(17).f;
+var create = __webpack_require__(75);
+var getOwnPropertyNames = __webpack_require__(38).f;
+var getOwnPropertyDescriptor = __webpack_require__(18).f;
 var defineProperty = __webpack_require__(7).f;
-var trim = __webpack_require__(77).trim;
+var trim = __webpack_require__(78).trim;
 
 var NUMBER = 'Number';
 var NativeNumber = global[NUMBER];
@@ -1487,11 +1493,11 @@ if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumb
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(4);
-var setPrototypeOf = __webpack_require__(72);
+var setPrototypeOf = __webpack_require__(73);
 
 // makes subclassing work correct for wrapped built-ins
 module.exports = function ($this, dummy, Wrapper) {
@@ -1510,11 +1516,11 @@ module.exports = function ($this, dummy, Wrapper) {
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject = __webpack_require__(8);
-var aPossiblePrototype = __webpack_require__(73);
+var aPossiblePrototype = __webpack_require__(74);
 
 // `Object.setPrototypeOf` method
 // https://tc39.github.io/ecma262/#sec-object.setprototypeof
@@ -1540,7 +1546,7 @@ module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(4);
@@ -1553,16 +1559,16 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject = __webpack_require__(8);
-var defineProperties = __webpack_require__(75);
-var enumBugKeys = __webpack_require__(24);
-var hiddenKeys = __webpack_require__(23);
-var html = __webpack_require__(76);
-var documentCreateElement = __webpack_require__(29);
-var sharedKey = __webpack_require__(33);
+var defineProperties = __webpack_require__(76);
+var enumBugKeys = __webpack_require__(25);
+var hiddenKeys = __webpack_require__(24);
+var html = __webpack_require__(77);
+var documentCreateElement = __webpack_require__(30);
+var sharedKey = __webpack_require__(34);
 
 var GT = '>';
 var LT = '<';
@@ -1637,13 +1643,13 @@ module.exports = Object.create || function create(O, Properties) {
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(2);
 var definePropertyModule = __webpack_require__(7);
 var anObject = __webpack_require__(8);
-var objectKeys = __webpack_require__(45);
+var objectKeys = __webpack_require__(46);
 
 // `Object.defineProperties` method
 // https://tc39.github.io/ecma262/#sec-object.defineproperties
@@ -1659,20 +1665,20 @@ module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperti
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getBuiltIn = __webpack_require__(36);
+var getBuiltIn = __webpack_require__(37);
 
 module.exports = getBuiltIn('document', 'documentElement');
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var requireObjectCoercible = __webpack_require__(20);
-var whitespaces = __webpack_require__(78);
+var requireObjectCoercible = __webpack_require__(21);
+var whitespaces = __webpack_require__(79);
 
 var whitespace = '[' + whitespaces + ']';
 var ltrim = RegExp('^' + whitespace + whitespace + '*');
@@ -1702,7 +1708,7 @@ module.exports = {
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports) {
 
 // a string of all valid unicode whitespaces
@@ -1711,7 +1717,7 @@ module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1721,7 +1727,7 @@ module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_asider_menu_vue_vue_type_style_index_0_id_e8603edc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1731,7 +1737,7 @@ module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_advanced_search_vue_vue_type_style_index_0_id_b5167094_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1741,7 +1747,7 @@ module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_button_group_vue_vue_type_style_index_0_id_2e0cd204_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1751,7 +1757,7 @@ module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_advanced_table_vue_vue_type_style_index_0_id_1e0e5d24_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1761,7 +1767,7 @@ module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_status_text_vue_vue_type_style_index_0_id_e4d61fc0_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1771,7 +1777,17 @@ module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_tag_group_vue_vue_type_style_index_0_id_39f7fa68_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
-/* 85 */
+/* 86 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_smart_breadcrumb_vue_vue_type_style_index_0_id_e58a3e38_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(17);
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_smart_breadcrumb_vue_vue_type_style_index_0_id_e58a3e38_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_smart_breadcrumb_vue_vue_type_style_index_0_id_e58a3e38_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_sass_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_smart_breadcrumb_vue_vue_type_style_index_0_id_e58a3e38_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+/* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1780,19 +1796,20 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, "Button", function() { return /* reexport */ components_button; });
-__webpack_require__.d(__webpack_exports__, "AsiderMenu", function() { return /* reexport */ asider_menu; });
+__webpack_require__.d(__webpack_exports__, "AsiderMenu", function() { return /* reexport */ aside_menu; });
 __webpack_require__.d(__webpack_exports__, "AdvancedSearch", function() { return /* reexport */ components_advanced_search; });
 __webpack_require__.d(__webpack_exports__, "ButtonGroup", function() { return /* reexport */ button_group; });
 __webpack_require__.d(__webpack_exports__, "AdvancedTable", function() { return /* reexport */ advanced_table; });
 __webpack_require__.d(__webpack_exports__, "StatusText", function() { return /* reexport */ status_text; });
 __webpack_require__.d(__webpack_exports__, "TagGroup", function() { return /* reexport */ tag_group; });
+__webpack_require__.d(__webpack_exports__, "SmartBreadcrumb", function() { return /* reexport */ smart_breadcrumb; });
 __webpack_require__.d(__webpack_exports__, "components", function() { return /* binding */ components; });
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.for-each.js
 var es_array_for_each = __webpack_require__(5);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
-var es_function_name = __webpack_require__(67);
+var es_function_name = __webpack_require__(68);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
 var web_dom_collections_for_each = __webpack_require__(9);
@@ -1846,7 +1863,7 @@ render._withStripped = true
 // CONCATENATED MODULE: ./src/base-ui/src/components/button/src/button.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_buttonvue_type_script_lang_js_ = (buttonvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./src/base-ui/src/components/button/src/button.vue?vue&type=style&index=0&lang=scss&
-var buttonvue_type_style_index_0_lang_scss_ = __webpack_require__(69);
+var buttonvue_type_style_index_0_lang_scss_ = __webpack_require__(70);
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
@@ -2075,7 +2092,17 @@ var asider_menuvue_type_template_id_e8603edc_scoped_true_render = function() {
                                   _c(
                                     "span",
                                     { attrs: { slot: "title" }, slot: "title" },
-                                    [_vm._v(_vm._s(bmenu.name))]
+                                    [
+                                      _c("i", {
+                                        class: bmenu.icon,
+                                        style: { paddingBottom: "5px" }
+                                      }),
+                                      _vm._v(
+                                        "\n              " +
+                                          _vm._s(bmenu.name) +
+                                          "\n            "
+                                      )
+                                    ]
                                   ),
                                   _vm._v(" "),
                                   _vm._l(bmenu.children, function(cmenu) {
@@ -2118,7 +2145,7 @@ asider_menuvue_type_template_id_e8603edc_scoped_true_render._withStripped = true
 // CONCATENATED MODULE: ./src/base-ui/src/components/aside-menu/src/asider-menu.vue?vue&type=template&id=e8603edc&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
-var es_number_constructor = __webpack_require__(70);
+var es_number_constructor = __webpack_require__(71);
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
 function _arrayLikeToArray(arr, len) {
@@ -2196,9 +2223,56 @@ function _createForOfIteratorHelper(o) {
     }
   };
 }
+// CONCATENATED MODULE: ./src/base-ui/src/components/aside-menu/src/menu-utils.js
+
+
+// 根据key 和 value 来递归获取 menu
+var menu_utils_getMenuByKey = function getMenuByKey(key, value) {
+  var menuList = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+  var resultArrs = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : [];
+
+  var _iterator = _createForOfIteratorHelper(menuList),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var aMenu = _step.value;
+
+      if (aMenu[key] === value) {
+        // 找到了目标对象
+        resultArrs.push(aMenu);
+        return aMenu;
+      } else if (aMenu.children && aMenu.children.length > 0) {
+        var bMenu = getMenuByKey(key, value, aMenu.children, resultArrs);
+
+        if (bMenu) {
+          // 添加父亲
+          resultArrs.unshift(aMenu);
+          return bMenu;
+        }
+      }
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+
+  return null;
+};
+
+/* harmony default export */ var menu_utils = ({
+  getMenuByKey: menu_utils_getMenuByKey
+});
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/base-ui/src/components/aside-menu/src/asider-menu.vue?vue&type=script&lang=js&
 
-
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2298,8 +2372,10 @@ function _createForOfIteratorHelper(o) {
     v-slot: menu-btn 自定义按钮
 
   @ 事件
+  this.$emit('handleClickCurrentMenu', menu)
  *
 */
+
 /* harmony default export */ var asider_menuvue_type_script_lang_js_ = ({
   name: 'BAsideMenu',
   components: {},
@@ -2313,6 +2389,7 @@ function _createForOfIteratorHelper(o) {
           id: 1,
           level: 1,
           name: '导航一',
+          parentId: 0,
           type: 'dir',
           url: '/main/xxx/xxx',
           children: [{
@@ -2320,6 +2397,7 @@ function _createForOfIteratorHelper(o) {
             id: 11,
             level: 2,
             name: '选项一',
+            parentId: 1,
             type: 'menu',
             url: '',
             children: []
@@ -2328,6 +2406,7 @@ function _createForOfIteratorHelper(o) {
             id: 12,
             level: 2,
             name: '菜单一',
+            parentId: 1,
             type: 'dir',
             url: '',
             children: [{
@@ -2335,6 +2414,7 @@ function _createForOfIteratorHelper(o) {
               id: 121,
               level: 3,
               name: '选项一',
+              parentId: 12,
               type: 'dir',
               url: '',
               children: []
@@ -2345,6 +2425,7 @@ function _createForOfIteratorHelper(o) {
           id: 2,
           level: 1,
           name: '导航二',
+          parentId: 0,
           type: 'dir',
           url: '',
           children: []
@@ -2353,6 +2434,7 @@ function _createForOfIteratorHelper(o) {
           id: 3,
           level: 1,
           name: '导航三',
+          parentId: 0,
           type: 'dir',
           url: '/main/xxx',
           children: [{
@@ -2360,6 +2442,7 @@ function _createForOfIteratorHelper(o) {
             id: 31,
             level: 2,
             name: '选项一',
+            parentId: 3,
             type: 'dir',
             url: '',
             children: []
@@ -2368,6 +2451,7 @@ function _createForOfIteratorHelper(o) {
             id: 32,
             level: 2,
             name: '选项二',
+            parentId: 3,
             type: 'dir',
             url: '',
             children: []
@@ -2421,43 +2505,15 @@ function _createForOfIteratorHelper(o) {
       // console.log('----------0')
       // console.log(from.path)
       // console.log(to.path)
-      var menu = this.getMenuByKey('url', to.path, this.menuList);
+      var menu = menu_utils.getMenuByKey('url', to.path, this.menuList);
 
       if (menu) {
         this.changeSelect(menu.id + '');
+      } else {// 没有找到，不需要更新选中菜单
       }
     }
   },
   methods: {
-    // 根据key 和 value 来递归获取 menu
-    getMenuByKey: function getMenuByKey(key, value, menuList) {
-      if (menuList === undefined || menuList === null) return null;
-
-      var _iterator = _createForOfIteratorHelper(menuList),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var aMenu = _step.value;
-
-          if (aMenu[key] === value) {
-            return aMenu;
-          } else if (aMenu.children && aMenu.children.length > 0) {
-            var bMenu = this.getMenuByKey(key, value, aMenu.children);
-
-            if (bMenu) {
-              return bMenu;
-            }
-          }
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
-      return null;
-    },
     // id 是字符串类型
     changeSelect: function changeSelect(id) {
       this.defaultActive = id;
@@ -2465,12 +2521,17 @@ function _createForOfIteratorHelper(o) {
     handleCollapse: function handleCollapse() {
       this.isCollapse = !this.isCollapse;
     },
+    // 菜单item的点击事件
     handleSelect: function handleSelect(key, keyPath) {
       // console.log('select=', key, keyPath)
-      var menu = this.getMenuByKey('id', parseInt(key), this.menuList);
+      var menu = menu_utils.getMenuByKey('id', parseInt(key), this.menuList);
 
       if (menu.url) {
-        this.$router.push(menu.url);
+        if (menu.url !== this.$route.path) {
+          this.$router.push(menu.url);
+        } else {
+          this.$emit('handleClickCurrentMenu', menu);
+        }
       }
     },
     handleOpen: function handleOpen(key, keyPath) {// console.log('open=', key, keyPath)
@@ -2482,7 +2543,7 @@ function _createForOfIteratorHelper(o) {
 // CONCATENATED MODULE: ./src/base-ui/src/components/aside-menu/src/asider-menu.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_asider_menuvue_type_script_lang_js_ = (asider_menuvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./src/base-ui/src/components/aside-menu/src/asider-menu.vue?vue&type=style&index=0&id=e8603edc&lang=scss&scoped=true&
-var asider_menuvue_type_style_index_0_id_e8603edc_lang_scss_scoped_true_ = __webpack_require__(79);
+var asider_menuvue_type_style_index_0_id_e8603edc_lang_scss_scoped_true_ = __webpack_require__(80);
 
 // CONCATENATED MODULE: ./src/base-ui/src/components/aside-menu/src/asider-menu.vue
 
@@ -2509,7 +2570,11 @@ if (false) { var asider_menu_api; }
 asider_menu_component.options.__file = "src/base-ui/src/components/aside-menu/src/asider-menu.vue"
 /* harmony default export */ var asider_menu = (asider_menu_component.exports);
 // CONCATENATED MODULE: ./src/base-ui/src/components/aside-menu/index.js
+// export { default } from './src/asider-menu.vue'
 
+
+asider_menu.MenuUtils = menu_utils;
+/* harmony default export */ var aside_menu = (asider_menu);
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/base-ui/src/components/advanced-search/src/advanced-search.vue?vue&type=template&id=b5167094&scoped=true&
 var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function() {
   var _vm = this
@@ -3177,7 +3242,7 @@ advanced_searchvue_type_template_id_b5167094_scoped_true_render._withStripped = 
 // CONCATENATED MODULE: ./src/base-ui/src/components/advanced-search/src/advanced-search.vue?vue&type=template&id=b5167094&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
-var es_object_keys = __webpack_require__(46);
+var es_object_keys = __webpack_require__(47);
 
 // CONCATENATED MODULE: ./src/base-ui/src/components/advanced-search/src/search-type.js
 
@@ -4007,7 +4072,7 @@ var _this = undefined;
 // CONCATENATED MODULE: ./src/base-ui/src/components/advanced-search/src/advanced-search.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_advanced_searchvue_type_script_lang_js_ = (advanced_searchvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./src/base-ui/src/components/advanced-search/src/advanced-search.vue?vue&type=style&index=0&id=b5167094&scoped=true&lang=scss&
-var advanced_searchvue_type_style_index_0_id_b5167094_scoped_true_lang_scss_ = __webpack_require__(80);
+var advanced_searchvue_type_style_index_0_id_b5167094_scoped_true_lang_scss_ = __webpack_require__(81);
 
 // CONCATENATED MODULE: ./src/base-ui/src/components/advanced-search/src/advanced-search.vue
 
@@ -4379,7 +4444,7 @@ button_groupvue_type_template_id_2e0cd204_scoped_true_render._withStripped = tru
 // CONCATENATED MODULE: ./src/base-ui/src/components/button-group/src/button-group.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_button_groupvue_type_script_lang_js_ = (button_groupvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./src/base-ui/src/components/button-group/src/button-group.vue?vue&type=style&index=0&id=2e0cd204&scoped=true&lang=scss&
-var button_groupvue_type_style_index_0_id_2e0cd204_scoped_true_lang_scss_ = __webpack_require__(81);
+var button_groupvue_type_style_index_0_id_2e0cd204_scoped_true_lang_scss_ = __webpack_require__(82);
 
 // CONCATENATED MODULE: ./src/base-ui/src/components/button-group/src/button-group.vue
 
@@ -4752,7 +4817,7 @@ advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render._withStripped = t
 // CONCATENATED MODULE: ./src/base-ui/src/components/advanced-table/src/advanced-table.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_advanced_tablevue_type_script_lang_js_ = (advanced_tablevue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./src/base-ui/src/components/advanced-table/src/advanced-table.vue?vue&type=style&index=0&id=1e0e5d24&scoped=true&lang=scss&
-var advanced_tablevue_type_style_index_0_id_1e0e5d24_scoped_true_lang_scss_ = __webpack_require__(82);
+var advanced_tablevue_type_style_index_0_id_1e0e5d24_scoped_true_lang_scss_ = __webpack_require__(83);
 
 // CONCATENATED MODULE: ./src/base-ui/src/components/advanced-table/src/advanced-table.vue
 
@@ -4865,7 +4930,7 @@ status_textvue_type_template_id_e4d61fc0_scoped_true_render._withStripped = true
 // CONCATENATED MODULE: ./src/base-ui/src/components/status-text/src/status-text.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_status_textvue_type_script_lang_js_ = (status_textvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./src/base-ui/src/components/status-text/src/status-text.vue?vue&type=style&index=0&id=e4d61fc0&scoped=true&lang=scss&
-var status_textvue_type_style_index_0_id_e4d61fc0_scoped_true_lang_scss_ = __webpack_require__(83);
+var status_textvue_type_style_index_0_id_e4d61fc0_scoped_true_lang_scss_ = __webpack_require__(84);
 
 // CONCATENATED MODULE: ./src/base-ui/src/components/status-text/src/status-text.vue
 
@@ -5017,7 +5082,7 @@ tag_groupvue_type_template_id_39f7fa68_scoped_true_render._withStripped = true
 // CONCATENATED MODULE: ./src/base-ui/src/components/tag-group/src/tag-group.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_tag_groupvue_type_script_lang_js_ = (tag_groupvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./src/base-ui/src/components/tag-group/src/tag-group.vue?vue&type=style&index=0&id=39f7fa68&scoped=true&lang=scss&
-var tag_groupvue_type_style_index_0_id_39f7fa68_scoped_true_lang_scss_ = __webpack_require__(84);
+var tag_groupvue_type_style_index_0_id_39f7fa68_scoped_true_lang_scss_ = __webpack_require__(85);
 
 // CONCATENATED MODULE: ./src/base-ui/src/components/tag-group/src/tag-group.vue
 
@@ -5045,7 +5110,283 @@ tag_group_component.options.__file = "src/base-ui/src/components/tag-group/src/t
 /* harmony default export */ var tag_group = (tag_group_component.exports);
 // CONCATENATED MODULE: ./src/base-ui/src/components/tag-group/index.js
 
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/base-ui/src/components/smart-breadcrumb/src/smart-breadcrumb.vue?vue&type=template&id=e58a3e38&scoped=true&
+var smart_breadcrumbvue_type_template_id_e58a3e38_scoped_true_render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "smart-breadcrumb" },
+    [
+      _c(
+        "el-breadcrumb",
+        { attrs: { "separator-class": "el-icon-arrow-right" } },
+        _vm._l(_vm.breadcrumbs, function(item, index) {
+          return _c("el-breadcrumb-item", { key: index }, [
+            _vm.getToPath(item, index, _vm.breadcrumbs.length)
+              ? _c(
+                  "a",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.goBack()
+                      }
+                    }
+                  },
+                  [_vm._v("\n        " + _vm._s(item.name) + "\n      ")]
+                )
+              : _c("span", [_vm._v(_vm._s(item.name))])
+          ])
+        }),
+        1
+      )
+    ],
+    1
+  )
+}
+var smart_breadcrumbvue_type_template_id_e58a3e38_scoped_true_staticRenderFns = []
+smart_breadcrumbvue_type_template_id_e58a3e38_scoped_true_render._withStripped = true
+
+
+// CONCATENATED MODULE: ./src/base-ui/src/components/smart-breadcrumb/src/smart-breadcrumb.vue?vue&type=template&id=e58a3e38&scoped=true&
+
+// CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/base-ui/src/components/smart-breadcrumb/src/smart-breadcrumb.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var MenuUtils = aside_menu.MenuUtils;
+/* harmony default export */ var smart_breadcrumbvue_type_script_lang_js_ = ({
+  name: 'BSmartBreadcrumb',
+  components: {},
+  mixins: [],
+  props: {
+    menuList: {
+      type: Array,
+      default: function _default() {
+        return [{
+          icon: 'el-icon-location',
+          id: 1,
+          level: 1,
+          name: '项目简介',
+          parentId: 0,
+          type: 'dir',
+          url: '/main',
+          children: [{
+            icon: 'el-icon-setting',
+            id: 11,
+            level: 2,
+            name: '简介',
+            parentId: 1,
+            type: 'menu',
+            url: '/main/introduce',
+            children: []
+          }, {
+            icon: 'el-icon-setting',
+            id: 12,
+            level: 2,
+            name: '编写规范',
+            parentId: 1,
+            type: 'menu',
+            url: '/main/code-specification',
+            children: []
+          }]
+        }, {
+          icon: 'el-icon-document',
+          id: 2,
+          level: 1,
+          name: 'BaseUI组件',
+          parentId: 0,
+          type: 'dir',
+          url: '/main/detainees/inmates',
+          children: [{
+            icon: 'el-icon-setting',
+            id: 21,
+            level: 2,
+            name: 'b-asider-menu',
+            parentId: 2,
+            type: 'menu',
+            url: '/main/asider-menu',
+            children: []
+          }, {
+            icon: 'el-icon-setting',
+            id: 22,
+            level: 2,
+            name: 'b-advanced-search',
+            parentId: 2,
+            type: 'menu',
+            url: '/main/advanced-search',
+            children: []
+          }, {
+            icon: 'el-icon-setting',
+            id: 23,
+            level: 2,
+            name: 'b-button-group',
+            parentId: 2,
+            type: 'menu',
+            url: '/main/button-group',
+            children: []
+          }, {
+            icon: 'el-icon-setting',
+            id: 24,
+            level: 2,
+            name: 'b-advanced-table',
+            parentId: 2,
+            type: 'menu',
+            url: '/main/advanced-table',
+            children: []
+          }, {
+            icon: 'el-icon-setting',
+            id: 25,
+            level: 2,
+            name: 'b-status-text',
+            parentId: 2,
+            type: 'menu',
+            url: '/main/status-text',
+            children: []
+          }, {
+            icon: 'el-icon-setting',
+            id: 26,
+            level: 2,
+            name: 'b-tag-group',
+            parentId: 2,
+            type: 'menu',
+            url: '/main/tag-group',
+            children: []
+          }, {
+            icon: 'el-icon-setting',
+            id: 27,
+            level: 2,
+            name: 'smart-breadcrumb',
+            parentId: 2,
+            type: 'menu',
+            url: '/main/smart-breadcrumb',
+            children: []
+          }]
+        }];
+      }
+    },
+    // 不是在菜单列表的页面
+    otherList: {
+      type: Array,
+      default: function _default() {
+        return [{
+          icon: '0',
+          id: 0,
+          level: 0,
+          type: '0',
+          parentId: 0,
+          parentUrl: '/main/smart-breadcrumb',
+          url: '/main/smart-breadcrumb/detail',
+          name: '详情',
+          children: []
+        }];
+      }
+    }
+  },
+  data: function data() {
+    return {
+      breadcrumbs: []
+    };
+  },
+  computed: {},
+  watch: {
+    $route: function $route(to, from) {
+      this.initBreadcrumbs();
+    }
+  },
+  created: function created() {},
+  mounted: function mounted() {
+    this.initBreadcrumbs();
+  },
+  methods: {
+    initBreadcrumbs: function initBreadcrumbs() {
+      var resultArrs = [];
+      var currrentPath = this.$route.path;
+      MenuUtils.getMenuByKey('url', currrentPath, this.menuList, resultArrs);
+
+      if (resultArrs.length > 0) {
+        this.breadcrumbs = resultArrs;
+      } else {
+        resultArrs = []; // 没有找到，去otherList里面找
+
+        var otherMenu = MenuUtils.getMenuByKey('url', currrentPath, this.otherList);
+
+        if (otherMenu) {
+          MenuUtils.getMenuByKey('url', otherMenu.parentUrl, this.menuList, resultArrs);
+
+          if (resultArrs.length > 0) {
+            resultArrs.push(otherMenu);
+            this.breadcrumbs = resultArrs;
+          }
+        }
+      }
+    },
+    getToPath: function getToPath(menuItem, currentIndex, lastOne) {
+      // 是菜单并且是倒数第二个
+      if (menuItem.type === 'menu' && currentIndex === lastOne - 2) {
+        return {
+          path: menuItem.url
+        }; // 不是菜单 或者 不是倒数第二个都不可以点击
+      } else {
+        return null;
+      }
+    },
+    goBack: function goBack() {
+      this.$router.go(-1);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/base-ui/src/components/smart-breadcrumb/src/smart-breadcrumb.vue?vue&type=script&lang=js&
+ /* harmony default export */ var src_smart_breadcrumbvue_type_script_lang_js_ = (smart_breadcrumbvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/base-ui/src/components/smart-breadcrumb/src/smart-breadcrumb.vue?vue&type=style&index=0&id=e58a3e38&scoped=true&lang=scss&
+var smart_breadcrumbvue_type_style_index_0_id_e58a3e38_scoped_true_lang_scss_ = __webpack_require__(86);
+
+// CONCATENATED MODULE: ./src/base-ui/src/components/smart-breadcrumb/src/smart-breadcrumb.vue
+
+
+
+
+
+
+/* normalize component */
+
+var smart_breadcrumb_component = normalizeComponent(
+  src_smart_breadcrumbvue_type_script_lang_js_,
+  smart_breadcrumbvue_type_template_id_e58a3e38_scoped_true_render,
+  smart_breadcrumbvue_type_template_id_e58a3e38_scoped_true_staticRenderFns,
+  false,
+  null,
+  "e58a3e38",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var smart_breadcrumb_api; }
+smart_breadcrumb_component.options.__file = "src/base-ui/src/components/smart-breadcrumb/src/smart-breadcrumb.vue"
+/* harmony default export */ var smart_breadcrumb = (smart_breadcrumb_component.exports);
+// CONCATENATED MODULE: ./src/base-ui/src/components/smart-breadcrumb/index.js
+
 // CONCATENATED MODULE: ./src/base-ui/src/index.js
+
 
 
 
@@ -5066,17 +5407,18 @@ tag_group_component.options.__file = "src/base-ui/src/components/tag-group/src/t
 var BaseUI = {
   // Icon,
   Button: components_button,
-  AsiderMenu: asider_menu,
+  AsiderMenu: aside_menu,
   AdvancedSearch: components_advanced_search,
   ButtonGroup: button_group,
   AdvancedTable: advanced_table,
   StatusText: status_text,
-  TagGroup: tag_group // ButtonGroups
+  TagGroup: tag_group,
+  SmartBreadcrumb: smart_breadcrumb // ButtonGroups
 
 }; // 需要被全局注册的组件
 
 var components = [// Icon,
-components_button, asider_menu, components_advanced_search, button_group, advanced_table, status_text, tag_group // ButtonGroups
+components_button, aside_menu, components_advanced_search, button_group, advanced_table, status_text, tag_group, smart_breadcrumb // ButtonGroups
 ];
 
 BaseUI.install = function (Vue) {
