@@ -14,8 +14,14 @@
           </b-aside-menu>
 
         </el-aside>
-        <el-container class="scrollbar__wrap">
-          <el-main>
+        <el-container >
+          <!-- 面包屑 -->
+           <b-smart-breadcrumb
+              :menuList="menuList"
+              :otherList="otherList">
+           </b-smart-breadcrumb>
+
+          <el-main class="scrollbar__wrap">
             <router-view/>
           </el-main>
           <el-footer></el-footer>
@@ -35,6 +41,13 @@ import BaseStyle from '@/styles/base.js'
 import {
   menuList
 } from '@/utils/asider-menu.js'
+import {
+  AsiderMenu
+} from 'BaseUI'
+import {
+  otherList
+} from '@/config/index.js'
+const { MenuUtils } = AsiderMenu
 
 export default {
   name: 'Main',
@@ -45,6 +58,7 @@ export default {
     return {
       BaseStyle,
       menuList,
+      otherList,
       defaultSelect: null
     }
   },
@@ -58,10 +72,17 @@ export default {
 
   methods: {
     initMenuSelect() {
-      if (this.$refs.asideMenu) {
-        const menu = this.$refs.asideMenu.getMenuByKey('url', this.$route.path, this.menuList)
-        if (menu) {
-          this.defaultSelect = menu.id + ''
+      const menu = MenuUtils.getMenuByKey('url', this.$route.path, this.menuList)
+      if (menu) {
+        this.defaultSelect = menu.id + ''
+      } else {
+        // 刷新的时候没有找到，那么找菜单的上一级
+        const otherMenu = MenuUtils.getMenuByKey('url', this.$route.path, this.otherList)
+        if (otherMenu) {
+          const othMenu = MenuUtils.getMenuByKey('url', otherMenu.parentUrl, this.menuList)
+          if (othMenu) {
+            this.defaultSelect = othMenu.id + ''
+          }
         }
       }
     },
@@ -129,9 +150,13 @@ export default {
   .el-aside {
     height: $asideHeight;
   }
-
+  // 面包屑
+  .smart-breadcrumb{
+    padding: 10px 20px;
+  }
+  // 可以滚动的内容
   .el-main {
-    margin: 20px 0px 20px 20px;
+    margin: 0px 0px 20px 20px;
     padding: 0px;
     background-color: white;
     // text-align: center;

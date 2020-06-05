@@ -1,13 +1,70 @@
 <template>
   <div class="example">
-    <h1>{{ msg }} Page</h1>
+    <hr>
+    <b-advanced-search
+       label-width="90px"
+       :inline="true"
+       :formItems="adSearchConfig"
+       @handleSubmit="handleSubmit"
+    >
+     <template v-slot:url="slotProps">
+       <el-input
+        v-model="slotProps.data[slotProps.row.fieldId]"
+        placeholder="请输入内容">
+        <template slot="prepend">Http://</template>
+      </el-input>
+     </template>
+    </b-advanced-search>
+    <hr>
+    <b-button-group
+      :permissions="permissions"
+      :btnList="btnListConfig"
+      @handleBtnClick="handleBtnListClick">
+      <template v-slot:upload-1="slotProps">
+        <el-upload
+          :style="{display: 'inline-block',margin:'0px 10px'}"
+          action="https://jsonplaceholder.typicode.com/posts/"
+          >
+          <el-button
+            :type="slotProps.item.type"
+            :icon="slotProps.item.icon"
+            :size="slotProps.item.size"
+            :disabled="slotProps.item.disabled"
+          >
+            {{slotProps.item.name}}
+          </el-button>
+        </el-upload>
+      </template>
+    </b-button-group>
+    <hr>
+    <!-- height="600" -->
+    <b-advanced-table
+      style="width: 100%"
+      border
+      stripe
+      :header-cell-style="getHeaderStyle"
+      :tabColumn="tabColumnConfig"
+      :tabData="tabData"
+      :paginationConf="paginationConfig"
+    >
+     <template v-slot:operation="slotProps">
+        <b-button-group
+          :btnList="btnOperationConfig"
+          @handleBtnClick="handleBtnOperClick($event,slotProps.row)">
+        </b-button-group>
+      </template>
+    </b-advanced-table>
   </div>
 </template>
 
 <script>
-// import {
-//
-// } from './page-config'
+import {
+  adSearchConfig,
+  btnListConfig,
+  btnOperationConfig,
+  tabColumnConfig,
+  paginationConfig
+} from './page-config'
 export default {
   name: 'Example',
   components: {
@@ -22,11 +79,95 @@ export default {
   },
   data: function() {
     return {
+      adSearchConfig,
+      btnListConfig,
+      btnOperationConfig,
+      tabColumnConfig,
+      paginationConfig,
+      permissions: [
+        'pp.list'
+      ],
+      tabData: [
+        {
+          name: '刘军1',
+          age: 100,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄'
+        },
+        {
+          name: '小军2',
+          age: 10,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄'
+        },
+        {
+          name: '大军3',
+          age: 50,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄'
+        },
+        {
+          name: '大军4',
+          age: 50,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄'
+        },
+        {
+          name: '大军5',
+          age: 50,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄'
+        },
+        {
+          name: '大军6',
+          age: 50,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄'
+        },
+        {
+          name: '大军7',
+          age: 50,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄'
+        },
+        {
+          name: '大军8',
+          age: 50,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄'
+        },
+        {
+          name: '大军9',
+          age: 50,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄'
+        },
+        {
+          name: '大军10',
+          age: 50,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }
 
+      ]
     }
   },
   computed: {
-
+    getHeaderStyle() {
+      return {
+        'background-color': '#f5f5f9'
+      }
+    }
   },
   watch: {
 
@@ -38,7 +179,15 @@ export default {
 
   },
   methods: {
-
+    handleSubmit(valuse) {
+      console.log(valuse)
+    },
+    handleBtnListClick(item) {
+      console.log(item)
+    },
+    handleBtnOperClick(item, row) {
+      console.log(item, row)
+    }
   }
 
 }

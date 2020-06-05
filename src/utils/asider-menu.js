@@ -11,94 +11,14 @@ const menuList = [
         icon: 'el-icon-setting',
         id: 11,
         level: 2,
-        name: '简介',
+        name: '表格页面',
         type: 'menu',
-        url: '/main/introduce',
+        url: '/main/example',
         children: []
-      },
-      {
-        icon: 'el-icon-setting',
-        id: 12,
-        level: 2,
-        name: '编写规范',
-        type: 'dir',
-        url: '/main/code-specification',
-        children: [
-        ]
       }
-    ]
-  },
-  {
-    icon: 'el-icon-document',
-    id: 2,
-    level: 1,
-    name: 'BaseUI组件',
-    type: 'dir',
-    url: '/main/detainees/inmates',
-    children: [
-      {
-        icon: 'el-icon-setting',
-        id: 21,
-        level: 2,
-        name: 'b-asider-menu',
-        type: 'menu',
-        url: '/main/asider-menu',
-        children: [
-        ]
-      },
-      {
-        icon: 'el-icon-setting',
-        id: 22,
-        level: 2,
-        name: 'b-advanced-search',
-        type: 'menu',
-        url: '/main/advanced-search',
-        children: [
-        ]
-      },
-      {
-        icon: 'el-icon-setting',
-        id: 23,
-        level: 2,
-        name: 'b-button-group',
-        type: 'menu',
-        url: '/main/button-group',
-        children: [
-        ]
-      },
-      {
-        icon: 'el-icon-setting',
-        id: 24,
-        level: 2,
-        name: 'b-advanced-table',
-        type: 'menu',
-        url: '/main/advanced-table',
-        children: [
-        ]
-      },
-      {
-        icon: 'el-icon-setting',
-        id: 25,
-        level: 2,
-        name: 'b-status-text',
-        type: 'menu',
-        url: '/main/status-text',
-        children: [
-        ]
-      },
-      {
-        icon: 'el-icon-setting',
-        id: 26,
-        level: 2,
-        name: 'b-tag-group',
-        type: 'menu',
-        url: '/main/tag-group',
-        children: [
-        ]
-      }
-
     ]
   }
+
 ]
 
 export {
