@@ -4,6 +4,7 @@
     <b-advanced-search
        label-width="90px"
        :inline="true"
+       size='small'
        :formItems="adSearchConfig"
        @handleSubmit="handleSubmit"
     >

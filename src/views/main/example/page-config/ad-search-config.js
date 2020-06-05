@@ -47,10 +47,10 @@ export const adSearchConfig = [
       rules: [
         { required: false, message: '请输入详细地址', trigger: 'blur' }
       ],
-      placeholder: '请输入详细地址'
-      // style: {
-      //   width: '100%'
-      // }
+      placeholder: '请输入详细地址',
+      style: {
+        width: '280px'
+      }
     }
   },
 
@@ -60,7 +60,23 @@ export const adSearchConfig = [
 
     defaultValue: undefined,
     labelName: '用户名称',
+    style: {
+      width: '280px'
+    },
+    rules: [
+      { required: false, message: '请输入用户名称', trigger: 'blur' }
+    ],
+    placeholder: '请输入用户名称'
+  },
+  {
+    ItemType: SearchType.default,
+    fieldId: 'user1',
 
+    defaultValue: undefined,
+    labelName: '用户名称1',
+    style: {
+      width: '280px'
+    },
     rules: [
       { required: false, message: '请输入用户名称', trigger: 'blur' }
     ],
@@ -77,7 +93,7 @@ export const adSearchConfig = [
     ],
     placeholder: null,
     style: {
-      width: '100%'
+      width: '280px'
     },
 
     selectList: [
