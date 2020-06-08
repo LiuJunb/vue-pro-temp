@@ -26,18 +26,30 @@ export default {
   // 4.提交action，来修改状态
   actions: {
     async data(context, payload) {
-      const result = await exampleService.getData(payload)
+      const config = {
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        }
+      }
+      const result = await exampleService.getData(payload, config)
       context.commit(Types.data, result.data)
       return Promise.resolve(result.data)
     },
     async list(context, payload) {
-      console.log('payload=', payload)
-      const result = await exampleService.getList(payload)
+      // console.log('payload=', payload)
+      const config = {
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        }
+      }
+      const result = await exampleService.getList(payload, config)
       context.commit(Types.list, result.data)
       return Promise.resolve(result.data)
     },
     async detail(context, payload) {
-      const result = await exampleService.getDetail(payload)
+      const config = {
+      }
+      const result = await exampleService.getDetail(payload, config)
       context.commit(Types.detail, result.data)
       return Promise.resolve(result.data)
     }

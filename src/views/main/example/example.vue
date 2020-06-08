@@ -7,6 +7,7 @@
        :inline="true"
        :formItems="adSearchConfig"
        @handleSubmit="handleSubmitClick"
+       @handleReset="handleResetClick"
     >
      <template v-slot:url="slotProps">
        <el-input
@@ -75,6 +76,9 @@ import {
   PaginatonDefaultConfig,
   CurSearchParams
 } from '@/config/index.js'
+import {
+  filterNullValue
+} from '@/utils/common.js'
 export default {
   name: 'Example',
   components: {
@@ -94,6 +98,7 @@ export default {
       btnOperationConfig,
       tabColumnConfig,
       pageListActions: 'main_example/list',
+      sortBy: '',
       permissions: [
         'pp.list'
       ],
@@ -189,30 +194,45 @@ export default {
 
   },
   created() {
+    // 不需要缓存
     this.getList(this.curSearchParams, null)
   },
   mounted() {
 
   },
   methods: {
+    // 搜索参数，data参数
     getList(searchParams, valuse) {
-      // searchParams.data的数据需要过滤掉 null， undefined, '', [] 的情况
-      if (valuse) {
-        searchParams.data = valuse // todo ...
+      if (valuse && Object.keys(valuse).length > 0) {
+        searchParams.data = { ...valuse }
       } else {
+        // valuse 为 null
+        searchParams.data = {}
         // 重置表单
         if (this.$refs['advanced-search']) {
           this.$refs['advanced-search'].onReset()
         }
       }
+      searchParams.data.sortBy = this.sortBy
+      // searchParams.data的数据需要过滤掉 null， undefined, '', [] 的情况
+      searchParams.data = filterNullValue(searchParams.data)
+      // 可以解构多层
+      this.curSearchParams = { ...searchParams }
       this.$store.dispatch(this.pageListActions, searchParams)
     },
+    // 高级搜索
     handleSubmitClick(valuse) {
       // console.log(valuse)
+      // 需要缓存
       this.getList(this.curSearchParams, valuse)
+    },
+    handleResetClick() {
+      // 不需要缓存
+      this.getList(this.curSearchParams, null)
     },
     handleBtnListClick(item) {
       console.log(item)
+      // 刷新(不需要缓存)
       if (item.icon === 'el-icon-refresh') {
         this.getList(this.curSearchParams, null)
       }
@@ -224,7 +244,11 @@ export default {
       console.log(rows)
     },
     handlePaginatonClick(pagination) {
-      console.log(pagination)
+      // console.log(pagination)
+      this.curSearchParams.pageNum = pagination['current-page']
+      this.curSearchParams.pageSize = pagination['page-size']
+      // 需要缓存
+      this.getList(this.curSearchParams, { ...this.curSearchParams.data })
     }
   }
 

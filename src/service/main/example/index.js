@@ -8,14 +8,14 @@ export const example_api = {
 
 export default {
 
-  getData: (payload) => {
-    return httpPost(example_api.dataUrl, payload)
+  getData: (payload, config) => {
+    return httpPost(example_api.dataUrl, payload, config)
   },
-  getList: (payload) => {
-    return httpPost(example_api.listUrl, payload)
+  getList: (payload, config) => {
+    return httpPost(example_api.listUrl, payload, config)
   },
-  getDetail: (payload) => {
-    return httpGet(example_api.detailUrl, payload)
+  getDetail: (payload, config) => {
+    return httpGet(example_api.detailUrl, payload, config)
   }
 
 }

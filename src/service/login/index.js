@@ -6,11 +6,11 @@ export const login_api = {
 
 export default {
 
-  login: (name, password) => {
-    return httpGet(login_api.login, { name, password })
+  login: (name, password, config) => {
+    return httpGet(login_api.login, { name, password }, config)
   },
 
-  loginout: (name) => {
+  loginout: (name, config) => {
     console.log(name)
   }
 

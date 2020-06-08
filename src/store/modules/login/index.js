@@ -30,19 +30,46 @@ export default {
   // 4.提交action，来修改状态
   actions: {
     async login(context, { name, age }) {
-      const user = await loginService.login(name, age)
+      const config = {
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        }
+      }
+      const user = await loginService.login(name, age, config)
+      context.commit(Types.user, user.data)
+      return Promise.resolve(user.data)
+    },
+    async loginout(context, { name, age }) {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        }
+      }
+      const user = await loginService.loginout(name, age, config)
       context.commit(Types.user, user.data)
       return Promise.resolve(user.data)
     },
     data(context, payload) {
       // context 对象 与 store对象有相同的方法；context != store
       // 注意：局部状态通过 context.state 暴露出来，根节点状态则为 context.rootState
+      // const config = {
+      //   headers: {
+      //     'Content-Type': 'application/json;charset=utf-8'
+      //   }
+      // }
       context.commit(Types.data, payload)
     },
     list(context, payload) {
+      // const config = {
+      //   headers: {
+      //     'Content-Type': 'application/json;charset=utf-8'
+      //   }
+      // }
       context.commit(Types.list, payload)
     },
     detail(context, payload) {
+      // const config = {
+      // }
       context.commit(Types.detail, payload)
     }
   },

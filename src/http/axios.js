@@ -6,11 +6,10 @@ import {
 // 1.创建一个axios的实例
 const instance = axios.create({
   baseURL, //  /category ; /home/data?type=pop&page=1
-  timeout: 30000 // 30 s
+  timeout: 60000 // 60 s
 })
 // 2.添加默认的配置
 // instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-
 instance.defaults.transformRequest = [function(data, config) {
   if (!config['Content-Type']) {
     // 将对象 序列化成URL的形式，以&进行拼接
@@ -35,7 +34,7 @@ instance.defaults.transformRequest = [function(data, config) {
 
 // 3.拦截请求
 instance.interceptors.request.use(config => {
-  // 给所有的请求头：统一添加auth_token
+  // 给所有的请求头：统一添加自定义的 auth_token
   // config.headers.auth_token = accessToken
   return config
 }, error => {
