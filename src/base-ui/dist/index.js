@@ -3713,6 +3713,7 @@ var _this = undefined;
 
   @ 事件
   this.$emit('handleSubmit', this.formData) // @handleSubmit="handleSubmit"
+  this.$emit('handleRest', this)
   this.$emit('handleFormItemChange',value, formItem) // @handleFormItemChange="handleFormItemChange"
  *
 */
@@ -4085,6 +4086,7 @@ var _this = undefined;
     },
     onReset: function onReset() {
       this.$refs[this.formName].resetFields();
+      this.$emit('handleRest', this);
     },
     handleInputChange: function handleInputChange(value, formItem) {
       // console.log('val=', value)
@@ -4538,6 +4540,10 @@ var advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render = function() 
               ]
             : _vm._e(),
           _vm._v(" "),
+          _vm.hasIndex
+            ? [_c("el-table-column", { attrs: { type: "index", width: "50" } })]
+            : _vm._e(),
+          _vm._v(" "),
           _vm._l(_vm.tableColumn, function(columnData, index) {
             return [
               _c(
@@ -4699,6 +4705,13 @@ advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render._withStripped = t
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /*
  *@description:
@@ -4725,6 +4738,10 @@ advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render._withStripped = t
           backgroundColor: '#f5f5f9'
         };
       }
+    },
+    hasIndex: {
+      type: Boolean,
+      default: true
     },
     hasSelection: {
       type: Boolean,
@@ -4833,10 +4850,14 @@ advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render._withStripped = t
   },
   computed: {},
   watch: {
-    tableColumn: function tableColumn(newV, oldV) {
-      this.tableColumn = this.tabColumn;
-      this.tableData = this.tabData;
-      this.pagination = this.paginationConf;
+    tabColumn: function tabColumn(newV, oldV) {
+      this.tableColumn = newV;
+    },
+    tabData: function tabData(newV, oldV) {
+      this.tableData = newV;
+    },
+    paginationConf: function paginationConf(newV, oldV) {
+      this.pagination = newV;
     }
   },
   created: function created() {},
