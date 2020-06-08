@@ -214,10 +214,14 @@ export default {
 
   },
   watch: {
-    tableColumn: function(newV, oldV) {
-      this.tableColumn = this.tabColumn
-      this.tableData = this.tabData
-      this.pagination = this.paginationConf
+    tabColumn: function(newV, oldV) {
+      this.tableColumn = newV
+    },
+    tabData: function(newV, oldV) {
+      this.tableData = newV
+    },
+    paginationConf: function(newV, oldV) {
+      this.pagination = newV
     }
   },
   created() {
