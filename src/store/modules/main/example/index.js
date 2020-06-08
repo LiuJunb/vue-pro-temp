@@ -1,5 +1,8 @@
 import Types from './types.js'
 import allService from '@/service/load_services.js'
+import {
+  PaginatonDefaultConfig
+} from '@/config/index.js'
 const { exampleService } = allService
 export default {
   // 1.启用命名空间
@@ -43,8 +46,8 @@ export default {
         }
       }
       const result = await exampleService.getList(payload, config)
-      context.commit(Types.list, result.data)
-      return Promise.resolve(result.data)
+      context.commit(Types.list, result.data.data)
+      return Promise.resolve(result.data.data)
     },
     async detail(context, payload) {
       const config = {
@@ -61,7 +64,7 @@ export default {
       return state.data
     },
     list(state, getters, rootState, rootGetters) {
-      const data = state.list.data
+      const data = state.list
       if (data) {
         return data.content || []
       } else {
@@ -69,7 +72,7 @@ export default {
       }
     },
     listPaginatonConfig(state, getters, rootState, rootGetters) {
-      const data = state.list.data
+      const data = state.list
       if (data) {
         return {
           'current-page': data.pageNum + 1, // 当前第几页, 从 1 开始
@@ -78,13 +81,7 @@ export default {
           total: data.totalSize // 总共有多少条
         }
       } else {
-        return null
-        // return {
-        //   'current-page': 1, // 当前第几页, 从 1 开始
-        //   'page-sizes': [10, 20, 30, 40], // 可选择一页显示多少条
-        //   'page-size': 10, // 一页显示多少条
-        //   total: 0 // 总共有多少条
-        // }
+        return { ...PaginatonDefaultConfig }
       }
     },
     detail(state, getters, rootState, rootGetters) {

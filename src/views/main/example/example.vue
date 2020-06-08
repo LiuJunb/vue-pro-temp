@@ -49,8 +49,8 @@
       stripe
       :hasSelection="true"
       :tabColumn="tabColumnConfig"
-      :tabData="tabData1"
-      :paginationConf="paginationConfig1"
+      :tabData="tabData"
+      :paginationConf="paginationConfig"
       @handleSelectionChange="handleSelectionClick"
       @handlePaginatonChange="handlePaginatonClick"
     >
@@ -72,7 +72,7 @@ import {
   tabColumnConfig
 } from './page-config'
 import {
-  PaginatonDefaultConfig,
+  // PaginatonDefaultConfig,
   CurSearchParams
 } from '@/config/index.js'
 import {
@@ -102,93 +102,34 @@ export default {
         'pp.list'
       ],
 
-      tabData: [
-        {
-          name: '刘军1',
-          age: 100,
-          sex: '男',
-          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
-          address: '上海市普陀区金沙江路 1518 弄'
-        },
-        {
-          name: '小军2',
-          age: 10,
-          sex: '男',
-          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
-          address: '上海市普陀区金沙江路 1518 弄'
-        },
-        {
-          name: '大军3',
-          age: 50,
-          sex: '男',
-          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
-          address: '上海市普陀区金沙江路 1518 弄'
-        },
-        {
-          name: '大军4',
-          age: 50,
-          sex: '男',
-          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
-          address: '上海市普陀区金沙江路 1518 弄'
-        },
-        {
-          name: '大军5',
-          age: 50,
-          sex: '男',
-          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
-          address: '上海市普陀区金沙江路 1518 弄'
-        },
-        {
-          name: '大军6',
-          age: 50,
-          sex: '男',
-          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
-          address: '上海市普陀区金沙江路 1518 弄'
-        },
-        {
-          name: '大军7',
-          age: 50,
-          sex: '男',
-          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
-          address: '上海市普陀区金沙江路 1518 弄'
-        },
-        {
-          name: '大军8',
-          age: 50,
-          sex: '男',
-          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
-          address: '上海市普陀区金沙江路 1518 弄'
-        },
-        {
-          name: '大军9',
-          age: 50,
-          sex: '男',
-          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
-          address: '上海市普陀区金沙江路 1518 弄'
-        },
-        {
-          name: '大军10',
-          age: 50,
-          sex: '男',
-          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }
-
-      ],
-      paginationConfig: { ...PaginatonDefaultConfig },
+      // tabData1: [
+      //   {
+      //     name: '刘军1',
+      //     age: 100,
+      //     sex: '男',
+      //     content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+      //     address: '上海市普陀区金沙江路 1518 弄'
+      //   },
+      //   {
+      //     name: '小军2',
+      //     age: 10,
+      //     sex: '男',
+      //     content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+      //     address: '上海市普陀区金沙江路 1518 弄'
+      //   }
+      // ],
+      // paginationConfig1: { ...PaginatonDefaultConfig },
       curSearchParams: { ...CurSearchParams }
     }
   },
   computed: {
-    tabData1() {
-      const list = this.$store.getters[this.pageListActions] || []
-      console.log('list', list)
+    tabData() {
+      const list = this.$store.getters[this.pageListActions]
       return list
     },
-    paginationConfig1() {
-      const pagConfig = this.$store.getters[this.pageListActions + 'PaginatonConfig'] || this.paginationConfig
-      console.log('pagConfig=', pagConfig)
-      return pagConfig
+    paginationConfig() {
+      const paginatonConf = this.$store.getters[this.pageListActions + 'PaginatonConfig']
+      return paginatonConf
     }
   },
   watch: {

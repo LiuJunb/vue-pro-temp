@@ -23,7 +23,7 @@ export const adSearchConfig = [
       rules: [
         { required: false, message: '请选择活动区域', trigger: 'change' }
       ],
-      clearable: false,
+      clearable: true,
       placeholder: '选城市',
       defaultValue: undefined,
       style: {
@@ -73,7 +73,7 @@ export const adSearchConfig = [
     fieldId: 'sex',
     defaultValue: null,
     labelName: '性别',
-
+    clearable: true,
     rules: [
       { required: false, message: '请选择性别', trigger: 'change' }
     ],
