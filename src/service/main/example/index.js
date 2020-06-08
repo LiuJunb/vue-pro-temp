@@ -2,7 +2,7 @@ import { httpGet, httpPost } from '@/http/index.js'
 
 export const example_api = {
   dataUrl: '/home1',
-  listUrl: '/home1',
+  listUrl: '/tablelist',
   detailUrl: '/home1'
 }
 

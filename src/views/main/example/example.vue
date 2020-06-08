@@ -41,7 +41,6 @@
         </el-upload>
       </template>
     </b-button-group>
-
     <!-- 表格 -->
     <!-- height="600" max-height=''-->
     <b-advanced-table
@@ -50,8 +49,8 @@
       stripe
       :hasSelection="true"
       :tabColumn="tabColumnConfig"
-      :tabData="tabData"
-      :paginationConf="paginationConfig"
+      :tabData="tabData1"
+      :paginationConf="paginationConfig1"
       @handleSelectionChange="handleSelectionClick"
       @handlePaginatonChange="handlePaginatonClick"
     >
@@ -183,10 +182,12 @@ export default {
   computed: {
     tabData1() {
       const list = this.$store.getters[this.pageListActions] || []
+      console.log('list', list)
       return list
     },
     paginationConfig1() {
       const pagConfig = this.$store.getters[this.pageListActions + 'PaginatonConfig'] || this.paginationConfig
+      console.log('pagConfig=', pagConfig)
       return pagConfig
     }
   },
@@ -233,7 +234,7 @@ export default {
       this.getList(this.curSearchParams, null)
     },
     handleBtnListClick(item) {
-      console.log(item)
+      // console.log(item)
       // 刷新(不需要缓存)
       if (item._name === '刷新') {
         this.getList(this.curSearchParams, null)
@@ -267,10 +268,10 @@ export default {
       // console.log('from=', from)
       if ((from.params.type && from.params.type === 'detail')) {
         // 需要缓存(详情返回)
-        vm.getList(vm.curSearchParams, { ...vm.curSearchParams.data })
+        // vm.getList(vm.curSearchParams, { ...vm.curSearchParams.data })
       } else {
         // 不需要缓存（从其它菜单跳转这个页面）
-        vm.getList(vm.curSearchParams, null)
+        // vm.getList(vm.curSearchParams, null)
       }
     })
   }

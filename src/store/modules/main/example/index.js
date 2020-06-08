@@ -61,14 +61,30 @@ export default {
       return state.data
     },
     list(state, getters, rootState, rootGetters) {
-      return state.list
+      const data = state.list.data
+      if (data) {
+        return data.content || []
+      } else {
+        return []
+      }
     },
     listPaginatonConfig(state, getters, rootState, rootGetters) {
-      return {
-        'current-page': 1, // 当前第几页, 从 1 开始
-        'page-sizes': [10, 20, 30, 40], // 可选择一页显示多少条
-        'page-size': 10, // 一页显示多少条
-        total: 0 // 总共有多少条
+      const data = state.list.data
+      if (data) {
+        return {
+          'current-page': data.pageNum + 1, // 当前第几页, 从 1 开始
+          'page-sizes': [10, 20, 30, 40], // 可选择一页显示多少条
+          'page-size': data.pageSize, // 一页显示多少条
+          total: data.totalSize // 总共有多少条
+        }
+      } else {
+        return null
+        // return {
+        //   'current-page': 1, // 当前第几页, 从 1 开始
+        //   'page-sizes': [10, 20, 30, 40], // 可选择一页显示多少条
+        //   'page-size': 10, // 一页显示多少条
+        //   total: 0 // 总共有多少条
+        // }
       }
     },
     detail(state, getters, rootState, rootGetters) {
