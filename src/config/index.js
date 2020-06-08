@@ -17,6 +17,20 @@ export const OtherList = [
 
     children: [
     ]
+  },
+  {
+    icon: '0',
+    id: 0,
+    level: 0,
+    type: '0',
+    parentId: 0,
+
+    parentUrl: '/main/example',
+    url: '/main/example/detail',
+    name: '详情',
+
+    children: [
+    ]
   }
 ]
 

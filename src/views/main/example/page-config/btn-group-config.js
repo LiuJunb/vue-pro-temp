@@ -39,6 +39,7 @@ export const btnListConfig = [
     btnPerm: ''
   },
   {
+    _name: '刷新',
     icon: 'el-icon-refresh',
     btnPerm: '',
     // size: 'small',

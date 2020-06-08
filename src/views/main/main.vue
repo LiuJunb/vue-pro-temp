@@ -37,7 +37,11 @@
            </b-smart-breadcrumb>
 
           <el-main class="scrollbar__wrap">
-            <router-view/>
+              <!-- 二级路由占位符 ：:include=['DashBoard' 'xxx', 'xxx', 'xxx'] -->
+              <keep-alive :include="['Example']">
+                <!-- keep-alive会缓存不活动的组件(包含改组件的子组件)实例，而不是销毁它们 -->
+                <router-view></router-view>
+              </keep-alive>
           </el-main>
           <el-footer></el-footer>
         </el-container>

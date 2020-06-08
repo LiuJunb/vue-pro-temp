@@ -201,6 +201,7 @@ export default {
 
   },
   methods: {
+
     // 搜索参数，data参数
     getList(searchParams, valuse) {
       if (valuse && Object.keys(valuse).length > 0) {
@@ -220,6 +221,7 @@ export default {
       this.curSearchParams = { ...searchParams }
       this.$store.dispatch(this.pageListActions, searchParams)
     },
+
     // 高级搜索
     handleSubmitClick(valuse) {
       // console.log(valuse)
@@ -233,12 +235,20 @@ export default {
     handleBtnListClick(item) {
       console.log(item)
       // 刷新(不需要缓存)
-      if (item.icon === 'el-icon-refresh') {
+      if (item._name === '刷新') {
         this.getList(this.curSearchParams, null)
       }
     },
     handleBtnOperClick(item, row) {
-      console.log(item, row)
+      // console.log(item, row)
+      if (item.name === '查看') {
+        // this.$router.push({
+        //   name: 'example',
+        //   params: { type: 'detail' },
+        //   query: { id: 1 }
+        // })
+        this.$router.push(`/main/example/detail?id=${1}`)
+      }
     },
     handleSelectionClick(rows) {
       console.log(rows)
@@ -250,6 +260,19 @@ export default {
       // 需要缓存
       this.getList(this.curSearchParams, { ...this.curSearchParams.data })
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      // 通过 `vm` 访问组件实例
+      // console.log('from=', from)
+      if ((from.params.type && from.params.type === 'detail')) {
+        // 需要缓存(详情返回)
+        vm.getList(vm.curSearchParams, { ...vm.curSearchParams.data })
+      } else {
+        // 不需要缓存（从其它菜单跳转这个页面）
+        vm.getList(vm.curSearchParams, null)
+      }
+    })
   }
 
 }
