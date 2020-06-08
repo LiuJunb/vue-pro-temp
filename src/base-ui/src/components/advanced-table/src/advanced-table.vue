@@ -13,7 +13,14 @@
           width="55">
         </el-table-column>
       </template>
-      <!-- 第二，三，四... 列 -->
+     <!-- 第二列的索引 -->
+     <template v-if="hasIndex">
+      <el-table-column
+        type="index"
+        width="50">
+      </el-table-column>
+     </template>
+      <!-- 第三，四,五... 列 -->
       <template v-for="(columnData,index) in tableColumn">
         <el-table-column
           :key="index"
@@ -92,6 +99,10 @@ export default {
           backgroundColor: '#f5f5f9'
         }
       }
+    },
+    hasIndex: {
+      type: Boolean,
+      default: true
     },
     hasSelection: {
       type: Boolean,
