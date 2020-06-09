@@ -9,20 +9,20 @@ const menuList = [
     children: [
       {
         icon: 'el-icon-setting',
-        id: 11,
+        id: 12,
         level: 2,
-        name: '表格页面',
+        name: 'Demo页面',
         type: 'menu',
-        url: '/main/example',
+        url: '/main/demo',
         children: []
       },
       {
         icon: 'el-icon-setting',
-        id: 12,
+        id: 11,
         level: 2,
-        name: 'demo页面',
+        name: '基础表格页',
         type: 'menu',
-        url: '/main/demo',
+        url: '/main/example',
         children: []
       }
     ]

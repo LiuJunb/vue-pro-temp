@@ -53,6 +53,22 @@
       @handleSelectionChange="handleSelectionClick"
       @handlePaginatonChange="handlePaginatonClick"
     >
+     <!-- 年龄 => 配置 slotColName:'age'  -->
+     <template v-slot:age="slotProps">
+        <b-tag-group
+         :tagList="[ {name:slotProps.row.age, type:'success', size:'mini'} ]"
+        >
+        </b-tag-group>
+      </template>
+     <!-- 性别  => 配置 slotColName:'sex' -->
+     <template v-slot:sex="slotProps">
+        <b-status-text
+         :value="slotProps.row.sex"
+         :statusList="sexEnumList"
+        >
+        </b-status-text>
+      </template>
+      <!-- 操作 => 配置 slotColName:'operation' -->
      <template v-slot:operation="slotProps">
         <b-button-group
           :btnList="btnOperationConfig"
@@ -80,6 +96,9 @@ import {
 import {
   TableList
 } from '@/mixins/index.js'
+import {
+  Sex
+} from '@/enum/index.js'
 export default {
   name: 'Example',
   components: {
@@ -98,6 +117,7 @@ export default {
       btnListConfig,
       btnOperationConfig,
       tabColumnConfig,
+      sexEnumList: Sex,
 
       pageListActions: 'main_example/list',
       sortBy: 'name',

@@ -1,17 +1,16 @@
-export const InterviewRoom = {
-  Room1: {
-    value: 1,
-    text: '1号',
-    color: ''
+import BaseStyle from '@/styles/base.js'
+
+export const Sex = {
+  Man: {
+    value: '男',
+    label: '男',
+    color: BaseStyle.$themeColor,
+    id: ''
   },
-  Room2: {
-    value: 2,
-    text: '2号',
-    color: ''
-  },
-  Room3: {
-    value: 3,
-    text: '3号',
-    color: ''
+  Woman: {
+    value: '女',
+    label: '女',
+    color: BaseStyle.$successColor,
+    id: ''
   }
 }

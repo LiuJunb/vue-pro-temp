@@ -8,12 +8,14 @@ export const tabColumnConfig = [
     prop: 'age',
     label: '年龄',
     // width: '180px',
-    sortable: true
+    sortable: true,
+    slotColName: 'age' // 需要自定义列
   },
   {
     prop: 'sex',
-    label: '性别'
+    label: '性别',
     // width: '180px'
+    slotColName: 'sex' // 需要自定义列
   },
   {
     prop: 'remark',
@@ -29,7 +31,7 @@ export const tabColumnConfig = [
     prop: 'operation',
     label: '操作',
     // width: '200px',
-    slotColName: 'operation'
+    slotColName: 'operation' // 需要自定义列
   }
 
 ]
