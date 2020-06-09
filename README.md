@@ -24,7 +24,7 @@ npm run build
 
 ## 2.常用命令
 
-vue-temp-cli addPage detail -d src/views/main/example/detail
+vue-temp-cli addPage demo -d src/views/main/demo
 vue-temp-cli addStore example -d src/store/main/example
 vue-temp-cli addService example -d src/service/main/example
 

@@ -177,7 +177,7 @@ export default {
     },
     handleResetClick() {
       // 不需要缓存
-      this.getList({ ...CurSearchParams }, null)
+      // this.getList({ ...CurSearchParams }, null)
     },
     handleBtnListClick(item) {
       // console.log(item)

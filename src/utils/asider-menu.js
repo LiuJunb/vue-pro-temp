@@ -15,6 +15,15 @@ const menuList = [
         type: 'menu',
         url: '/main/example',
         children: []
+      },
+      {
+        icon: 'el-icon-setting',
+        id: 12,
+        level: 2,
+        name: 'demo页面',
+        type: 'menu',
+        url: '/main/demo',
+        children: []
       }
     ]
   }
