@@ -3713,7 +3713,7 @@ var _this = undefined;
 
   @ 事件
   this.$emit('handleSubmit', this.formData) // @handleSubmit="handleSubmit"
-  this.$emit('handleRest', this)
+  this.$emit('handleReset', this)
   this.$emit('handleFormItemChange',value, formItem) // @handleFormItemChange="handleFormItemChange"
  *
 */
@@ -4086,7 +4086,7 @@ var _this = undefined;
     },
     onReset: function onReset() {
       this.$refs[this.formName].resetFields();
-      this.$emit('handleRest', this);
+      this.$emit('handleReset', this);
     },
     handleInputChange: function handleInputChange(value, formItem) {
       // console.log('val=', value)

@@ -334,7 +334,7 @@
 
   @ 事件
   this.$emit('handleSubmit', this.formData) // @handleSubmit="handleSubmit"
-  this.$emit('handleRest', this)
+  this.$emit('handleReset', this)
   this.$emit('handleFormItemChange',value, formItem) // @handleFormItemChange="handleFormItemChange"
  *
 */
@@ -712,7 +712,7 @@ export default {
     },
     onReset() {
       this.$refs[this.formName].resetFields()
-      this.$emit('handleRest', this)
+      this.$emit('handleReset', this)
     },
     handleInputChange(value, formItem) {
       // console.log('val=', value)
