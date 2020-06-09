@@ -7,6 +7,7 @@
        size="small"
        :showBtn="false"
        @handleSubmit="handleSubmit"
+
     >
     </b-advanced-search>
     <b-divider-line></b-divider-line>
@@ -16,6 +17,7 @@
        :inline="true"
        size="small"
        @handleSubmit="handleSubmit"
+       @handleReset="handleReset"
     >
     </b-advanced-search>
 
@@ -166,6 +168,9 @@ export default {
     handleSubmit(formData) {
       console.log(new Date(formData.data1).toLocaleString())
       console.log(formData)
+    },
+    handleReset() {
+      console.log('handleReset')
     }
   }
 

@@ -4086,7 +4086,7 @@ var _this = undefined;
     },
     onReset: function onReset() {
       this.$refs[this.formName].resetFields();
-      this.$emit('handleReset', this);
+      this.$emit('handleReset', '');
     },
     handleInputChange: function handleInputChange(value, formItem) {
       // console.log('val=', value)
