@@ -16,13 +16,13 @@ export const tabColumnConfig = [
     // width: '180px'
   },
   {
-    prop: 'content',
+    prop: 'remark',
     label: '内容',
     // width: '380px',
     'show-overflow-tooltip': true
   },
   {
-    prop: 'address',
+    prop: 'addressNow',
     label: '地址'
   },
   {

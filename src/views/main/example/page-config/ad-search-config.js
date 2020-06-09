@@ -56,7 +56,7 @@ export const adSearchConfig = [
 
   {
     ItemType: SearchType.default,
-    fieldId: 'user',
+    fieldId: 'name',
 
     defaultValue: undefined,
     labelName: '用户名称',

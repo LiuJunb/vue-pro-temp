@@ -119,6 +119,7 @@ export default {
       //   }
       // ],
       // paginationConfig1: { ...PaginatonDefaultConfig },
+      isFirstRequest: true,
       curSearchParams: { ...CurSearchParams }
     }
   },
@@ -137,7 +138,7 @@ export default {
   },
   created() {
     // 不需要缓存
-    this.getList(this.curSearchParams, null)
+    this.getList({ ...CurSearchParams }, null)
   },
   mounted() {
 
@@ -162,23 +163,27 @@ export default {
       // 可以解构多层
       this.curSearchParams = { ...searchParams }
       this.$store.dispatch(this.pageListActions, searchParams)
+        .then((res) => {
+          this.isFirstRequest = false
+        })
     },
 
     // 高级搜索
     handleSubmitClick(valuse) {
       // console.log(valuse)
       // 需要缓存
+      this.curSearchParams.pageNum = 1
       this.getList(this.curSearchParams, valuse)
     },
     handleResetClick() {
       // 不需要缓存
-      this.getList(this.curSearchParams, null)
+      this.getList({ ...CurSearchParams }, null)
     },
     handleBtnListClick(item) {
       // console.log(item)
       // 刷新(不需要缓存)
       if (item._name === '刷新') {
-        this.getList(this.curSearchParams, null)
+        this.getList({ ...CurSearchParams }, null)
       }
     },
     handleBtnOperClick(item, row) {
@@ -206,13 +211,15 @@ export default {
   beforeRouteEnter(to, from, next) {
     next(vm => {
       // 通过 `vm` 访问组件实例
-      // console.log('from=', from)
+      console.log('from=', from)
       if ((from.params.type && from.params.type === 'detail')) {
         // 需要缓存(详情返回)
-        // vm.getList(vm.curSearchParams, { ...vm.curSearchParams.data })
+        vm.getList(vm.curSearchParams, { ...vm.curSearchParams.data })
       } else {
         // 不需要缓存（从其它菜单跳转这个页面）
-        // vm.getList(vm.curSearchParams, null)
+        if (!vm.isFirstRequest) { // 排除第一次初始化的请求
+          vm.getList({ ...CurSearchParams }, null)
+        }
       }
     })
   }

@@ -35,7 +35,7 @@ instance.defaults.transformRequest = [function(data, config) {
 // 3.拦截请求
 instance.interceptors.request.use(config => {
   // 给所有的请求头：统一添加自定义的 auth_token
-  // config.headers.auth_token = accessToken
+  config.headers.auth_token = '787afd9a-fe29-4b0d-a944-b59519928759'
   return config
 }, error => {
   return Promise.reject(error.data.error.message)
