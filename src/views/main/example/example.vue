@@ -11,7 +11,7 @@
      <template v-slot:url="slotProps">
        <el-input
         v-model="slotProps.data[slotProps.row.fieldId]"
-        placeholder="请输入内容">
+        v-bind="slotProps.row">
         <template slot="prepend">Http://</template>
       </el-input>
      </template>
@@ -206,7 +206,7 @@ export default {
   beforeRouteEnter(to, from, next) {
     next(vm => {
       // 通过 `vm` 访问组件实例
-      console.log('from=', from)
+      // console.log('from=', from)
       if ((from.params.type && from.params.type === 'detail')) {
         // 需要缓存(详情返回)
         vm.getList(vm.curSearchParams, { ...vm.curSearchParams.data })

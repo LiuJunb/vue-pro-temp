@@ -7,11 +7,15 @@ export const adSearchConfig = [
     fieldId: 'url',
     defaultValue: undefined,
     labelName: '网址',
+    // labelWidth: '70px',
 
+    style: {
+      width: '280px'
+    },
     rules: [
       { required: false, message: '请输入自定义名称', trigger: 'blur' }
     ],
-    placeholder: null
+    placeholder: '请输入内容'
   },
 
   {
