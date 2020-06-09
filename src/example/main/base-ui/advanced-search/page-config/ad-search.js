@@ -14,7 +14,7 @@ export const adSearchConfig = [
     rules: [
       { required: false, message: '请输入自定义名称', trigger: 'blur' }
     ],
-    placeholder: null
+    placeholder: '请输入内容'
   },
 
   {

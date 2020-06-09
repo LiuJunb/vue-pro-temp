@@ -184,6 +184,7 @@
           v-if="formItem.ItemType === SearchType.selectAndInput"
           :key="index"
           :required="formItem.required"
+          :style="{marginBottom:($attrs.size==='small'||$attrs.size==='mini')? '0px' :'20px'}"
           class="liujun"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth">
@@ -239,6 +240,7 @@
           v-if="formItem.ItemType === SearchType.selectDataAndTime"
           :key="index"
           :required="formItem.required"
+          :style="{marginBottom:($attrs.size==='small'||$attrs.size==='mini')? '0px' :'20px'}"
           class="liujun"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth">
@@ -741,8 +743,8 @@ export default {
     text-align: center;
   }
 
-  .liujun{
-    margin-bottom: 0px;
-  }
+  // .liujun{
+  //   margin-bottom: 20px;
+  // }
 }
 </style>

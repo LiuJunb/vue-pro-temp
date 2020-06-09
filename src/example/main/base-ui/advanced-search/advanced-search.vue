@@ -15,7 +15,7 @@
     <b-advanced-search
        label-width="90px"
        :inline="true"
-       size="small"
+       size="mini"
        @handleSubmit="handleSubmit"
        @handleReset="handleReset"
     >
@@ -33,7 +33,8 @@
      <template v-slot:custom1="slotProps">
        <el-input
         v-model="slotProps.data[slotProps.row.fieldId]"
-        placeholder="请输入内容">
+        v-bind="slotProps.row"
+        >
         <template slot="prepend">Http://</template>
       </el-input>
      </template>
