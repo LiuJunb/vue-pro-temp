@@ -7,7 +7,6 @@
        :inline="true"
        :formItems="adSearchConfig"
        @handleSubmit="handleSubmitClick"
-       @handleReset="handleResetClick"
     >
      <template v-slot:url="slotProps">
        <el-input
@@ -174,10 +173,6 @@ export default {
       // 需要缓存
       this.curSearchParams.pageNum = 1
       this.getList(this.curSearchParams, valuse)
-    },
-    handleResetClick() {
-      // 不需要缓存
-      // this.getList({ ...CurSearchParams }, null)
     },
     handleBtnListClick(item) {
       // console.log(item)
