@@ -3,6 +3,8 @@ import qs from 'qs'
 import {
   baseURL
 } from '@/config/index.js'
+import { Loading } from 'element-ui'
+let loading = null
 // 1.创建一个axios的实例
 const instance = axios.create({
   baseURL, //  /category ; /home/data?type=pop&page=1
@@ -34,16 +36,26 @@ instance.defaults.transformRequest = [function(data, config) {
 
 // 3.拦截请求
 instance.interceptors.request.use(config => {
+  loading = Loading.service({
+    fullscreen: true,
+    // background: 'rgba(0,0,0,0.2)',
+    background: 'transparent',
+    text: '加载中....'
+  })
   // 给所有的请求头：统一添加自定义的 auth_token
   config.headers.auth_token = '30599484-08eb-42a8-ad5d-06c21399059d'
   return config
-}, error => {
+},
+error => {
   return Promise.reject(error.data.error.message)
 })
 
 // 4.拦截响应
 instance.interceptors.response.use(response => {
   // const data = response.data
+  if (loading) {
+    loading.close()
+  }
   return response
 }, error => {
   // 判断错误url是否为请求接口*/

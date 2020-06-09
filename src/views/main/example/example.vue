@@ -74,15 +74,18 @@ import {
   // PaginatonDefaultConfig,
   CurSearchParams
 } from '@/config/index.js'
+// import {
+//   filterNullValue
+// } from '@/utils/common.js'
 import {
-  filterNullValue
-} from '@/utils/common.js'
+  TableList
+} from '@/mixins/index.js'
 export default {
   name: 'Example',
   components: {
 
   },
-  mixins: [],
+  mixins: [TableList],
   props: {
     msg: {
       type: String,
@@ -95,94 +98,82 @@ export default {
       btnListConfig,
       btnOperationConfig,
       tabColumnConfig,
+
       pageListActions: 'main_example/list',
-      sortBy: '',
+      sortBy: 'name',
       permissions: [
         'pp.list'
-      ],
+      ]
 
       // tabData1: [
-      //   {
-      //     name: '刘军1',
-      //     age: 100,
-      //     sex: '男',
-      //     content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
-      //     address: '上海市普陀区金沙江路 1518 弄'
-      //   },
-      //   {
-      //     name: '小军2',
-      //     age: 10,
-      //     sex: '男',
-      //     content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
-      //     address: '上海市普陀区金沙江路 1518 弄'
-      //   }
       // ],
       // paginationConfig1: { ...PaginatonDefaultConfig },
-      isFirstRequest: true,
-      curSearchParams: { ...CurSearchParams }
+
+      // isFirstRequest: true,
+      // curSearchParams: { ...CurSearchParams }
     }
   },
   computed: {
-    tabData() {
-      const list = this.$store.getters[this.pageListActions]
-      return list
-    },
-    paginationConfig() {
-      const paginatonConf = this.$store.getters[this.pageListActions + 'PaginatonConfig']
-      return paginatonConf
-    }
+    // tabData() {
+    //   const list = this.$store.getters[this.pageListActions]
+    //   return list
+    // },
+    // paginationConfig() {
+    //   const paginatonConf = this.$store.getters[this.pageListActions + 'PaginatonConfig']
+    //   return paginatonConf
+    // }
   },
   watch: {
 
   },
   created() {
     // 不需要缓存
-    this.getList({ ...CurSearchParams }, null)
+    // this.getList({ ...CurSearchParams }, null)
   },
   mounted() {
-
+    // console.log('mounted2')
   },
   methods: {
 
     // 搜索参数，data参数
-    getList(searchParams, valuse) {
-      if (valuse && Object.keys(valuse).length > 0) {
-        searchParams.data = { ...valuse }
-      } else {
-        // valuse 为 null
-        searchParams.data = {}
-        // 重置表单
-        if (this.$refs['advanced-search']) {
-          this.$refs['advanced-search'].onReset()
-        }
-      }
-      searchParams.data.sortBy = this.sortBy
-      // searchParams.data的数据需要过滤掉 null， undefined, '', [] 的情况
-      searchParams.data = filterNullValue(searchParams.data)
-      // 可以解构多层
-      this.curSearchParams = { ...searchParams }
-      this.$store.dispatch(this.pageListActions, searchParams)
-        .then((res) => {
-          this.isFirstRequest = false
-        })
-    },
+    // getList(searchParams, valuse) {
+    //   if (valuse && Object.keys(valuse).length > 0) {
+    //     searchParams.data = { ...valuse }
+    //   } else {
+    //     // valuse 为 null
+    //     searchParams.data = {}
+    //     // 重置表单
+    //     if (this.$refs['advanced-search']) {
+    //       this.$refs['advanced-search'].onReset()
+    //     }
+    //   }
+    //   searchParams.data.sortBy = this.sortBy
+    //   // searchParams.data的数据需要过滤掉 null， undefined, '', [] 的情况
+    //   searchParams.data = filterNullValue(searchParams.data)
+    //   // 可以解构多层
+    //   this.curSearchParams = { ...searchParams }
+    //   this.$store.dispatch(this.pageListActions, searchParams)
+    //     .then((res) => {
+    //       this.isFirstRequest = false
+    //     })
+    // },
 
-    // 高级搜索
-    handleSubmitClick(valuse) {
-      // console.log(valuse)
-      // 需要缓存
-      this.curSearchParams.pageNum = 1
-      this.getList(this.curSearchParams, valuse)
-    },
-    handleBtnListClick(item) {
-      // console.log(item)
-      // 刷新(不需要缓存)
-      if (item._name === '刷新') {
-        this.getList({ ...CurSearchParams }, null)
-      }
-    },
+    // // 高级搜索
+    // handleSubmitClick(valuse) {
+    //   // console.log(valuse)
+    //   // 需要缓存
+    //   this.curSearchParams.pageNum = 1
+    //   this.getList(this.curSearchParams, valuse)
+    // },
+    // // 按钮组
+    // handleBtnListClick(item) {
+    //   // console.log(item)
+    //   // 刷新(不需要缓存)
+    //   if (item._name === '刷新') {
+    //     this.getList({ ...CurSearchParams }, null)
+    //   }
+    // },
     handleBtnOperClick(item, row) {
-      // console.log(item, row)
       if (item.name === '查看') {
         // this.$router.push({
         //   name: 'example',
@@ -194,19 +185,18 @@ export default {
     },
     handleSelectionClick(rows) {
       console.log(rows)
-    },
-    handlePaginatonClick(pagination) {
-      // console.log(pagination)
-      this.curSearchParams.pageNum = pagination['current-page']
-      this.curSearchParams.pageSize = pagination['page-size']
-      // 需要缓存
-      this.getList(this.curSearchParams, { ...this.curSearchParams.data })
     }
+    // handlePaginatonClick(pagination) {
+    //   // console.log(pagination)
+    //   this.curSearchParams.pageNum = pagination['current-page']
+    //   this.curSearchParams.pageSize = pagination['page-size']
+    //   // 需要缓存
+    //   this.getList(this.curSearchParams, { ...this.curSearchParams.data })
+    // }
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      // 通过 `vm` 访问组件实例
-      // console.log('from=', from)
+      // 通过 `vm` 访问组件this实例
       if ((from.params.type && from.params.type === 'detail')) {
         // 需要缓存(详情返回)
         vm.getList(vm.curSearchParams, { ...vm.curSearchParams.data })
