@@ -2936,6 +2936,13 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                     {
                       key: index,
                       staticClass: "liujun",
+                      style: {
+                        marginBottom:
+                          _vm.$attrs.size === "small" ||
+                          _vm.$attrs.size === "mini"
+                            ? "0px"
+                            : "20px"
+                      },
                       attrs: {
                         required: formItem.required,
                         label: formItem.labelName,
@@ -3071,6 +3078,13 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                     {
                       key: index,
                       staticClass: "liujun",
+                      style: {
+                        marginBottom:
+                          _vm.$attrs.size === "small" ||
+                          _vm.$attrs.size === "mini"
+                            ? "0px"
+                            : "20px"
+                      },
                       attrs: {
                         required: formItem.required,
                         label: formItem.labelName,
@@ -3377,6 +3391,8 @@ var getFormRules = function getFormRules(formItems) {
 
 var _this = undefined;
 
+//
+//
 //
 //
 //
