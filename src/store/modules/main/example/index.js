@@ -85,7 +85,7 @@ export default {
       }
     },
     detail(state, getters, rootState, rootGetters) {
-      return state.list
+      return state.detail
     }
   }
 }

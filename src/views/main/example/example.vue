@@ -30,10 +30,7 @@
           action="https://jsonplaceholder.typicode.com/posts/"
           >
           <el-button
-            :type="slotProps.item.type"
-            :icon="slotProps.item.icon"
-            :size="slotProps.item.size"
-            :disabled="slotProps.item.disabled"
+            v-bind="slotProps.item"
           >
             {{slotProps.item.name}}
           </el-button>
