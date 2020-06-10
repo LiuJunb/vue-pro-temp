@@ -79,7 +79,8 @@ export default {
         },
         {
           prop: 'address',
-          label: '地址'
+          label: '地址',
+          fixed: 'right'
           // width: '200px'
         }
       ],
