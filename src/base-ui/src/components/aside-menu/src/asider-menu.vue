@@ -35,7 +35,7 @@
           :key="menu.id"
           :index="menu.id+''">
           <!-- 一级菜单 -->
-          <i :class="menu.icon"></i>
+          <i :class="[iconClass,menu.icon]"></i>
           <span slot="title">{{menu.name}}</span>
         </el-menu-item>
         <!-- else 是二级菜单-->
@@ -45,7 +45,7 @@
           :index="menu.id+''">
           <!-- 目录 -->
           <template slot="title">
-            <i :class="menu.icon"></i>
+            <i :class="[iconClass,menu.icon]"></i>
             <span slot="title">{{menu.name}}</span>
           </template>
 
@@ -65,7 +65,7 @@
               :index="bmenu.id+''">
               <span slot="title">
                 <i
-                  :class="bmenu.icon"
+                  :class="[iconClass,bmenu.icon]"
                   :style="{paddingBottom:'5px'}"></i>
                 {{bmenu.name}}
               </span>
@@ -220,6 +220,10 @@ export default {
     showBtn: {
       type: Boolean,
       default: true
+    },
+    iconClass: {
+      type: String,
+      default: null
     }
   },
   data() {

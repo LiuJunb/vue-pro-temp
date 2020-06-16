@@ -2078,7 +2078,7 @@ var asider_menuvue_type_template_id_e8603edc_scoped_true_render = function() {
                     "el-menu-item",
                     { key: menu.id, attrs: { index: menu.id + "" } },
                     [
-                      _c("i", { class: menu.icon }),
+                      _c("i", { class: [_vm.iconClass, menu.icon] }),
                       _vm._v(" "),
                       _c("span", { attrs: { slot: "title" }, slot: "title" }, [
                         _vm._v(_vm._s(menu.name))
@@ -2090,7 +2090,7 @@ var asider_menuvue_type_template_id_e8603edc_scoped_true_render = function() {
                     { key: menu.id + "", attrs: { index: menu.id + "" } },
                     [
                       _c("template", { slot: "title" }, [
-                        _c("i", { class: menu.icon }),
+                        _c("i", { class: [_vm.iconClass, menu.icon] }),
                         _vm._v(" "),
                         _c(
                           "span",
@@ -2128,7 +2128,7 @@ var asider_menuvue_type_template_id_e8603edc_scoped_true_render = function() {
                                     { attrs: { slot: "title" }, slot: "title" },
                                     [
                                       _c("i", {
-                                        class: bmenu.icon,
+                                        class: [_vm.iconClass, bmenu.icon],
                                         style: { paddingBottom: "5px" }
                                       }),
                                       _vm._v(
@@ -2508,6 +2508,10 @@ var menu_utils_getMenuByKey = function getMenuByKey(key, value) {
     showBtn: {
       type: Boolean,
       default: true
+    },
+    iconClass: {
+      type: String,
+      default: null
     }
   },
   data: function data() {
