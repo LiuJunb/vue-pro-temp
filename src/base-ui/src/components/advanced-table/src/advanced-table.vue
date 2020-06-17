@@ -16,6 +16,7 @@
      <!-- 第二列的索引 -->
      <template v-if="hasIndex">
       <el-table-column
+        label="序号"
         type="index"
         width="50">
       </el-table-column>

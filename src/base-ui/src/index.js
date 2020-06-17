@@ -8,6 +8,7 @@ import TagGroup from './components/tag-group'
 import SmartBreadcrumb from './components/smart-breadcrumb'
 import DividerLine from './components/divider-line'
 import Logo from './components/logo'
+import TitleTag from './components/title-tag'
 // import Icon from './components/icon'
 // import ButtonGroups from './components/button-groups'
 
@@ -23,7 +24,8 @@ export {
   TagGroup,
   SmartBreadcrumb,
   DividerLine,
-  Logo
+  Logo,
+  TitleTag
   // ButtonGroups
 }
 
@@ -41,7 +43,8 @@ const BaseUI = {
   TagGroup,
   SmartBreadcrumb,
   DividerLine,
-  Logo
+  Logo,
+  TitleTag
   // ButtonGroups
 }
 
@@ -57,7 +60,8 @@ export const components = [
   TagGroup,
   SmartBreadcrumb,
   DividerLine,
-  Logo
+  Logo,
+  TitleTag
   // ButtonGroups
 ]
 

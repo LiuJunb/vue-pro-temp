@@ -226,6 +226,16 @@ const menuList = [
         url: '/main/smart-breadcrumb',
         children: [
         ]
+      },
+      {
+        icon: 'el-icon-setting',
+        id: 28,
+        level: 2,
+        name: 'title-tag',
+        type: 'menu',
+        url: '/main/title-tag',
+        children: [
+        ]
       }
 
     ]

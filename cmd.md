@@ -1,4 +1,4 @@
-vue-temp-cli addPage smart-breadcrumb -d src/example/main/base-ui/smart-breadcrumb
+vue-temp-cli addPage title-tag -d src/example/main/base-ui/title-tag
 vue-temp-cli addPage detail -d src/example/main/base-ui/smart-breadcrumb/detail
 
 

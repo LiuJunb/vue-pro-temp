@@ -4,9 +4,15 @@
       :tagList="tagList"
     >
     </b-tag-group>
+    <br>
     <b-tag-group
       width='400px'
       :tagList="tagList"
+    >
+    </b-tag-group>
+    <br>
+    <b-tag-group
+      :tagList="tagList2"
     >
     </b-tag-group>
   </div>
@@ -60,6 +66,18 @@ export default {
             'border-color': 'red',
             color: 'white'
           }
+        }
+      ],
+      tagList2: [
+        {
+          name: '哈的',
+          type: 'success',
+          size: 'mini'
+        },
+        {
+          name: '哈的撒旦法1',
+          type: 'warning',
+          size: 'mini'
         }
       ]
     }
