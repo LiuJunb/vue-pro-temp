@@ -236,6 +236,16 @@ const menuList = [
         url: '/main/title-tag',
         children: [
         ]
+      },
+      {
+        icon: 'el-icon-setting',
+        id: 29,
+        level: 2,
+        name: 'grid-view',
+        type: 'menu',
+        url: '/main/grid-view',
+        children: [
+        ]
       }
 
     ]
