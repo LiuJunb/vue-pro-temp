@@ -138,6 +138,18 @@ export default {
 
   .el-aside {
     height: $asideHeight;
+    &::-webkit-scrollbar {
+      display:none
+    }
+    -ms-scroll-chaining: chained;
+    -ms-overflow-style: none;
+    -ms-content-zooming: zoom;
+    -ms-scroll-rails: none;
+    -ms-content-zoom-limit-min: 100%;
+    -ms-content-zoom-limit-max: 500%;
+    -ms-scroll-snap-type: proximity;
+    -ms-scroll-snap-points-x: snapList(100%, 200%, 300%, 400%, 500%);
+    -ms-overflow-style: none;
   }
   // 面包屑
   .smart-breadcrumb{
