@@ -68,6 +68,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import "../../../style/_vars.scss";
 .title-tag{
   border-bottom: 1px solid $tableBorderColor;
   padding: 8px 13px;

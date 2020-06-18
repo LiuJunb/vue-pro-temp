@@ -295,6 +295,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../../style/_vars.scss";
 .b-asider-menu{
   height: 100%;
   max-width: 350px;
@@ -318,7 +319,7 @@ export default {
     .el-menu-item:focus,
     .el-menu-item:hover,
     .el-menu-item.is-active{
-      background-color: #ecf5ff;
+      background-color: $menuSelColor;
       position: relative;
       &::before{
         content: '';

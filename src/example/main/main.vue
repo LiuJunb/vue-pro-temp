@@ -150,7 +150,7 @@ export default {
   }
 
   .el-header{
-    background-color: $theme;
+    background-color: $themeColor;
     color: #333;
     text-align: center;
     line-height: $headerHeight;
@@ -162,7 +162,7 @@ export default {
     }
   }
   .el-footer{
-    background-color: $contentBgColor;
+    background-color: $bgColorF0;
     color: #333;
     margin: 0px 20px;
     padding: 0px;
@@ -173,6 +173,19 @@ export default {
 
   .el-aside {
     height: $asideHeight;
+    // 隐藏滚动条
+    &::-webkit-scrollbar {
+      display:none
+    }
+    -ms-scroll-chaining: chained;
+    -ms-overflow-style: none;
+    -ms-content-zooming: zoom;
+    -ms-scroll-rails: none;
+    -ms-content-zoom-limit-min: 100%;
+    -ms-content-zoom-limit-max: 500%;
+    -ms-scroll-snap-type: proximity;
+    -ms-scroll-snap-points-x: snapList(100%, 200%, 300%, 400%, 500%);
+    -ms-overflow-style: none;
   }
 
   .el-main {
