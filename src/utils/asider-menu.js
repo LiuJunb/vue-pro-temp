@@ -246,6 +246,16 @@ const menuList = [
         url: '/main/grid-view',
         children: [
         ]
+      },
+      {
+        icon: 'el-icon-setting',
+        id: 30,
+        level: 2,
+        name: 'icon-group',
+        type: 'menu',
+        url: '/main/icon-group',
+        children: [
+        ]
       }
 
     ]

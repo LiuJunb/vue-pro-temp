@@ -62,6 +62,7 @@
  *@ 事件
  *   this.$emit('handleBtnClick', item)
 */
+import { hasPermission } from '../../../utils/permission.js'
 export default {
   name: 'BButtonGroup',
   components: {
@@ -207,14 +208,16 @@ export default {
         if (item.btnPerm) {
           if (this.permissions && this.permissions.length > 0) {
             // 使用传递进来的权限组
-            result = this.hasPermission(this.permissions, item.btnPerm)
+            // result = this.hasPermission(this.permissions, item.btnPerm)
+            result = hasPermission(this.permissions, item.btnPerm)
           } else {
             // 使用sessionStorage中permissions的权限
             let pss = sessionStorage.getItem('permissions')
             if (pss) {
               pss = JSON.parse(pss)
             }
-            result = this.hasPermission(pss, item.btnPerm)
+            // result = this.hasPermission(pss, item.btnPerm)
+            result = hasPermission(pss, item.btnPerm)
           }
         }
         return result
@@ -234,23 +237,23 @@ export default {
     handleBtnClick(item) {
       // console.log('value=', item)
       this.$emit('handleBtnClick', item)
-    },
+    }
     /**
      * 判断按钮是否有权限(默认是没有的)
      * @param permissions 登录后拿到所有的 permissions: ['','']
      * @param {} btnPermission 该按钮对应的权限:''
      */
-    hasPermission(permissions, btnPermission) {
-      permissions = permissions || []
-      let result = false
-      permissions.forEach((element, index) => {
-        // 用户拥有该 btnPermission 的权限
-        if (btnPermission === element) {
-          result = true
-        }
-      })
-      return result
-    }
+    // hasPermission(permissions, btnPermission) {
+    //   permissions = permissions || []
+    //   let result = false
+    //   permissions.forEach((element, index) => {
+    //     // 用户拥有该 btnPermission 的权限
+    //     if (btnPermission === element) {
+    //       result = true
+    //     }
+    //   })
+    //   return result
+    // }
   }
 
 }
