@@ -256,6 +256,16 @@ const menuList = [
         url: '/main/icon-group',
         children: [
         ]
+      },
+      {
+        icon: 'el-icon-setting',
+        id: 31,
+        level: 2,
+        name: 'print-table',
+        type: 'menu',
+        url: '/main/print-table',
+        children: [
+        ]
       }
 
     ]
@@ -270,7 +280,7 @@ const menuList = [
     children: [
       {
         icon: 'el-icon-setting',
-        id: 31,
+        id: 311,
         level: 2,
         name: '导出excel',
         type: 'menu',

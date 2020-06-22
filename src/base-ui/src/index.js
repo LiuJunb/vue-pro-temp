@@ -11,6 +11,10 @@ import Logo from './components/logo'
 import TitleTag from './components/title-tag'
 import GridView from './components/grid-view'
 import IconGroup from './components/icon-group'
+import PrintTable from './components/print-table'
+import RowItem from './components/row-item'
+import ColHead from './components/col-head'
+import ColContent from './components/col-content'
 // import Icon from './components/icon'
 // import ButtonGroups from './components/button-groups'
 
@@ -29,7 +33,11 @@ export {
   Logo,
   TitleTag,
   GridView,
-  IconGroup
+  IconGroup,
+  PrintTable,
+  RowItem,
+  ColHead,
+  ColContent
   // ButtonGroups
 }
 
@@ -50,7 +58,11 @@ const BaseUI = {
   Logo,
   TitleTag,
   GridView,
-  IconGroup
+  IconGroup,
+  PrintTable,
+  RowItem,
+  ColHead,
+  ColContent
   // ButtonGroups
 }
 
@@ -69,7 +81,11 @@ export const components = [
   Logo,
   TitleTag,
   GridView,
-  IconGroup
+  IconGroup,
+  PrintTable,
+  RowItem,
+  ColHead,
+  ColContent
   // ButtonGroups
 ]
 
