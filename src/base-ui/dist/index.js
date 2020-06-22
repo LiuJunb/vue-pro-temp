@@ -1886,7 +1886,7 @@ __webpack_require__.d(__webpack_exports__, "SmartBreadcrumb", function() { retur
 __webpack_require__.d(__webpack_exports__, "DividerLine", function() { return /* reexport */ divider_line; });
 __webpack_require__.d(__webpack_exports__, "Logo", function() { return /* reexport */ logo; });
 __webpack_require__.d(__webpack_exports__, "TitleTag", function() { return /* reexport */ title_tag; });
-__webpack_require__.d(__webpack_exports__, "BGridView", function() { return /* reexport */ grid_view; });
+__webpack_require__.d(__webpack_exports__, "GridView", function() { return /* reexport */ grid_view; });
 __webpack_require__.d(__webpack_exports__, "IconGroup", function() { return /* reexport */ icon_group; });
 __webpack_require__.d(__webpack_exports__, "components", function() { return /* binding */ components; });
 
@@ -6447,7 +6447,7 @@ var BaseUI = {
   DividerLine: divider_line,
   Logo: logo,
   TitleTag: title_tag,
-  BGridView: grid_view,
+  GridView: grid_view,
   IconGroup: icon_group // ButtonGroups
 
 }; // 需要被全局注册的组件

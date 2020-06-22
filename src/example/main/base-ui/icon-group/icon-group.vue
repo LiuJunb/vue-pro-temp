@@ -3,11 +3,13 @@
     <br>
     <b-icon-group
       :iconList="iconList1"
+      @handleIconClick="handleIconClick"
     >
     </b-icon-group>
     <br>
     <b-icon-group
       :iconList="iconList2"
+      @handleIconClick="handleIconClick"
     >
     </b-icon-group>
     <br>
@@ -15,6 +17,7 @@
       maxWidth='500px'
       pull="right"
       :iconList="iconList3"
+      @handleIconClick="handleIconClick"
     >
     </b-icon-group>
     <br>
@@ -23,6 +26,7 @@
       maxWidth='200px'
       iconClass="test"
       :permissions="[]"
+      @handleIconClick="handleIconClick"
     >
     </b-icon-group>
     <br>
@@ -186,7 +190,9 @@ export default {
 
   },
   methods: {
-
+    handleIconClick(item) {
+      console.log(item)
+    }
   }
 
 }

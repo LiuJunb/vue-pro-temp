@@ -9,7 +9,7 @@ import SmartBreadcrumb from './components/smart-breadcrumb'
 import DividerLine from './components/divider-line'
 import Logo from './components/logo'
 import TitleTag from './components/title-tag'
-import BGridView from './components/grid-view'
+import GridView from './components/grid-view'
 import IconGroup from './components/icon-group'
 // import Icon from './components/icon'
 // import ButtonGroups from './components/button-groups'
@@ -28,7 +28,7 @@ export {
   DividerLine,
   Logo,
   TitleTag,
-  BGridView,
+  GridView,
   IconGroup
   // ButtonGroups
 }
@@ -49,7 +49,7 @@ const BaseUI = {
   DividerLine,
   Logo,
   TitleTag,
-  BGridView,
+  GridView,
   IconGroup
   // ButtonGroups
 }
@@ -68,7 +68,7 @@ export const components = [
   DividerLine,
   Logo,
   TitleTag,
-  BGridView,
+  GridView,
   IconGroup
   // ButtonGroups
 ]
