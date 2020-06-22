@@ -1,8 +1,8 @@
 <template>
   <td
     class="col-content col-td"
-    :colspan="colspan"
-    :rowspan="rowspan"
+    :colspan="cols"
+    :rowspan="rows"
     :width="width"
   >
     <slot>{{value}}</slot>
@@ -78,5 +78,9 @@ export default {
   // color: #3B5471;
   // padding: 13px;
   // white-space: nowrap;
+
+  height: 30px;
+  min-width: 100px;
+  max-width: 500px;
 }
 </style>

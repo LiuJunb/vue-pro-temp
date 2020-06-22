@@ -32,7 +32,7 @@ export default {
     },
     border: {
       type: String,
-      default: '1px solid #EAEBEF'
+      default: ''
     }
 
   },
@@ -63,5 +63,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .row-item{
+  // border: 1px solid #EAEBEF;
 }
 </style>

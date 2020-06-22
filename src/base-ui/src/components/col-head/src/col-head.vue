@@ -1,8 +1,8 @@
 <template>
   <th
     class="col-head col-th"
-    :colspan="colspan"
-    :rowspan="rowspan"
+    :colspan="cols"
+    :rowspan="rows"
     :width="width"
   >
     <slot>{{name}}</slot>
@@ -78,7 +78,8 @@ export default {
   // color: #3B5471;
   // padding: 13px;
   // white-space: nowrap;
-
+  height: 30px;
+  min-width: 60px;
   .col-th{
     // overflow: hidden;
     // text-overflow: ellipsis;
