@@ -15,6 +15,7 @@ import PrintTable from './components/print-table'
 import RowItem from './components/row-item'
 import ColHead from './components/col-head'
 import ColContent from './components/col-content'
+import AdvancedInput from './components/advanced-input'
 // import Icon from './components/icon'
 // import ButtonGroups from './components/button-groups'
 
@@ -37,7 +38,8 @@ export {
   PrintTable,
   RowItem,
   ColHead,
-  ColContent
+  ColContent,
+  AdvancedInput
   // ButtonGroups
 }
 
@@ -62,7 +64,8 @@ const BaseUI = {
   PrintTable,
   RowItem,
   ColHead,
-  ColContent
+  ColContent,
+  AdvancedInput
   // ButtonGroups
 }
 
@@ -85,7 +88,8 @@ export const components = [
   PrintTable,
   RowItem,
   ColHead,
-  ColContent
+  ColContent,
+  AdvancedInput
   // ButtonGroups
 ]
 

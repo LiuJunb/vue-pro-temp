@@ -266,6 +266,16 @@ const menuList = [
         url: '/main/print-table',
         children: [
         ]
+      },
+      {
+        icon: 'el-icon-setting',
+        id: 32,
+        level: 2,
+        name: 'advanced-input',
+        type: 'menu',
+        url: '/main/advanced-input',
+        children: [
+        ]
       }
 
     ]
@@ -290,7 +300,7 @@ const menuList = [
       },
       {
         icon: 'el-icon-setting',
-        id: 32,
+        id: 322,
         level: 2,
         name: '导出pdf',
         type: 'menu',
@@ -300,7 +310,7 @@ const menuList = [
       },
       {
         icon: 'el-icon-setting',
-        id: 33,
+        id: 333,
         level: 2,
         name: '导出word',
         type: 'menu',
@@ -310,7 +320,7 @@ const menuList = [
       },
       {
         icon: 'el-icon-setting',
-        id: 34,
+        id: 344,
         level: 2,
         name: '打印',
         type: 'menu',
@@ -320,7 +330,7 @@ const menuList = [
       },
       {
         icon: 'el-icon-setting',
-        id: 35,
+        id: 355,
         level: 2,
         name: '下载',
         type: 'menu',

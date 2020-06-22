@@ -11,9 +11,9 @@
       v-bind="$attrs"
       >
       <template v-for="(formItem, index) in formItems">
-        <!-- 1.SearchType.default 默认输入框 -->
+        <!-- 1.InputType.default 默认输入框 -->
         <el-form-item
-          v-if="formItem.ItemType === SearchType.default"
+          v-if="formItem.ItemType === InputType.default"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
@@ -62,9 +62,9 @@
           </el-input>
         </el-form-item>
 
-        <!-- 2.SearchType.select 默认select选着输入框 -->
+        <!-- 2.InputType.select 默认select选着输入框 -->
         <el-form-item
-          v-if="formItem.ItemType === SearchType.select"
+          v-if="formItem.ItemType === InputType.select"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
@@ -94,9 +94,9 @@
           </el-select>
         </el-form-item>
 
-        <!-- 3.SearchType.selectDate -->
+        <!-- 3.InputType.selectDate -->
         <el-form-item
-          v-if="formItem.ItemType === SearchType.selectDate"
+          v-if="formItem.ItemType === InputType.selectDate"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
@@ -115,9 +115,9 @@
           </el-date-picker>
         </el-form-item>
 
-        <!-- 4.SearchType.selectDateRange -->
+        <!-- 4.InputType.selectDateRange -->
         <el-form-item
-          v-if="formItem.ItemType === SearchType.selectDateRange"
+          v-if="formItem.ItemType === InputType.selectDateRange"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
@@ -140,9 +140,9 @@
           </el-date-picker>
         </el-form-item>
 
-        <!-- 5.SearchType.checkboxs -->
+        <!-- 5.InputType.checkboxs -->
         <el-form-item
-          v-if="formItem.ItemType === SearchType.checkboxs"
+          v-if="formItem.ItemType === InputType.checkboxs"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
@@ -160,9 +160,9 @@
           </el-checkbox-group>
         </el-form-item>
 
-        <!-- 6.SearchType.radios -->
+        <!-- 6.InputType.radios -->
         <el-form-item
-          v-if="formItem.ItemType === SearchType.radios"
+          v-if="formItem.ItemType === InputType.radios"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
@@ -179,9 +179,9 @@
           </el-radio-group>
         </el-form-item>
 
-        <!-- 9.SearchType.selectAndInput 默认select选着输入框 -->
+        <!-- 9.InputType.selectAndInput 默认select选着输入框 -->
         <el-form-item
-          v-if="formItem.ItemType === SearchType.selectAndInput"
+          v-if="formItem.ItemType === InputType.selectAndInput"
           :key="index"
           :required="formItem.required"
           :style="{marginBottom:($attrs.size==='small'||$attrs.size==='mini')? '0px' :'20px'}"
@@ -235,9 +235,9 @@
 
         </el-form-item>
 
-        <!-- 10.SearchType.selectDataAndTime 默认select选着输入框 -->
+        <!-- 10.InputType.selectDataAndTime 默认select选着输入框 -->
         <el-form-item
-          v-if="formItem.ItemType === SearchType.selectDataAndTime"
+          v-if="formItem.ItemType === InputType.selectDataAndTime"
           :key="index"
           :required="formItem.required"
           :style="{marginBottom:($attrs.size==='small'||$attrs.size==='mini')? '0px' :'20px'}"
@@ -281,9 +281,9 @@
           </el-row>
         </el-form-item>
 
-        <!-- 自定义item的布局 SearchType.custom -->
+        <!-- 自定义item的布局 InputType.custom -->
         <el-form-item
-          v-if="formItem.ItemType === SearchType.custom"
+          v-if="formItem.ItemType === InputType.custom"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
@@ -341,10 +341,10 @@
  *
 */
 import {
-  SearchType,
+  InputType,
   getFormFieldIds,
   getFormRules
-} from './search-type'
+} from '../../../utils/input-type.js'
 export default {
   name: 'BAdvancedSearch',
   components: {
@@ -357,7 +357,7 @@ export default {
       default: function() {
         return [
           {
-            ItemType: SearchType.default,
+            ItemType: InputType.default,
             fieldId: 'user1',
             defaultValue: undefined,
             labelName: '活动1',
@@ -369,7 +369,7 @@ export default {
             placeholder: null
           },
           {
-            ItemType: SearchType.default,
+            ItemType: InputType.default,
             fieldId: 'user2',
             defaultValue: undefined,
             labelName: '活动2',
@@ -386,7 +386,7 @@ export default {
             placeholder: null
           },
           {
-            ItemType: SearchType.default,
+            ItemType: InputType.default,
             fieldId: 'user3',
             defaultValue: undefined,
             labelName: '活动3',
@@ -400,7 +400,7 @@ export default {
             placeholder: null
           },
           {
-            ItemType: SearchType.default,
+            ItemType: InputType.default,
             fieldId: 'user4',
             defaultValue: undefined,
             labelName: '活动4-活动4-活动4',
@@ -413,7 +413,7 @@ export default {
             placeholder: null
           },
           {
-            ItemType: SearchType.select,
+            ItemType: InputType.select,
             fieldId: 'region1',
             defaultValue: null,
             labelName: '活动区域1',
@@ -440,7 +440,7 @@ export default {
             ]
           },
           {
-            ItemType: SearchType.select,
+            ItemType: InputType.select,
             fieldId: 'region2',
             defaultValue: [],
             labelName: '活动区域2',
@@ -466,7 +466,7 @@ export default {
             ]
           },
           {
-            ItemType: SearchType.selectAndInput,
+            ItemType: InputType.selectAndInput,
             labelName: '名称',
             formItem_1: {
               fieldId: 'sel_1',
@@ -504,7 +504,7 @@ export default {
             }
           },
           {
-            ItemType: SearchType.checkboxs,
+            ItemType: InputType.checkboxs,
             fieldId: 'check_box_1',
             defaultValue: [],
             labelName: '活动性质',
@@ -528,7 +528,7 @@ export default {
             placeholder: null
           },
           {
-            ItemType: SearchType.radios,
+            ItemType: InputType.radios,
             fieldId: 'radios_11',
             defaultValue: '',
             labelName: '请选择活动资源',
@@ -550,7 +550,7 @@ export default {
             placeholder: null
           },
           {
-            ItemType: SearchType.selectDate,
+            ItemType: InputType.selectDate,
             fieldId: 'startDate',
             defaultValue: null,
             labelName: '时间1',
@@ -565,7 +565,7 @@ export default {
             }
           },
           {
-            ItemType: SearchType.selectDate,
+            ItemType: InputType.selectDate,
             fieldId: 'dateTime',
             defaultValue: null,
             labelName: '时间2',
@@ -580,7 +580,7 @@ export default {
             // }
           },
           {
-            ItemType: SearchType.selectDateRange,
+            ItemType: InputType.selectDateRange,
             fieldId: 'startDateTime1',
             defaultValue: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)],
             labelName: '时间范围1',
@@ -596,7 +596,7 @@ export default {
             }
           },
           {
-            ItemType: SearchType.selectDateRange,
+            ItemType: InputType.selectDateRange,
             fieldId: 'startDateTime2',
             defaultValue: '',
             labelName: '时间范围2',
@@ -612,7 +612,7 @@ export default {
           },
 
           {
-            ItemType: SearchType.selectDataAndTime,
+            ItemType: InputType.selectDataAndTime,
             labelName: '活动时间',
             required: false, // 显示红点
             // labelWidth: '150px',
@@ -667,7 +667,7 @@ export default {
   },
   data: function() {
     return {
-      SearchType,
+      InputType,
       formName: 'adsForm',
       formData: getFormFieldIds(this.formItems),
       formRules: getFormRules(this.formItems)
