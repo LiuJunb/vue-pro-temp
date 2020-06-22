@@ -1,6 +1,7 @@
 <template>
   <div class="advanced-search">
     <!-- 隐藏表单按钮 -->
+    <h4>1.隐藏表单按钮</h4>
     <b-advanced-search
        label-width="90px"
        :inline="true"
@@ -11,6 +12,7 @@
     >
     </b-advanced-search>
     <b-divider-line></b-divider-line>
+    <h4>2.默认</h4>
     <!-- 默认 -->
     <b-advanced-search
        label-width="90px"
@@ -24,6 +26,7 @@
    <b-divider-line></b-divider-line>
 
     <!-- 自定义配置 -->
+    <h4>3.自定义配置</h4>
     <b-advanced-search
        label-width="90px"
        :inline="true"
@@ -42,6 +45,7 @@
     </b-advanced-search>
 
     <b-divider-line></b-divider-line>
+    <h4>4.登录表单</h4>
     <!-- 登录表单 -->
     <b-advanced-search
        :formItems="adLogin"
@@ -58,7 +62,8 @@
           </el-button>
       </template>
     </b-advanced-search>
-<b-divider-line></b-divider-line>
+    <b-divider-line></b-divider-line>
+    <h4>5.普通表单1</h4>
     <!-- 普通表单1 -->
     <b-advanced-search
        :formItems="adForm"
@@ -81,7 +86,8 @@
           </el-button>
       </template>
     </b-advanced-search>
-<b-divider-line></b-divider-line>
+    <b-divider-line></b-divider-line>
+    <h4>6.普通表单2</h4>
     <!-- 普通表单2 -->
     <b-advanced-search
        :formItems="adForm2"

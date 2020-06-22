@@ -545,7 +545,7 @@ export default {
               }
             ],
             rules: [
-              { required: true, message: '请选择活动资源', trigger: 'change' }
+              { required: false, message: '请选择活动资源', trigger: 'change' }
             ],
             placeholder: null
           },
@@ -555,9 +555,10 @@ export default {
             defaultValue: null,
             labelName: '时间1',
             // labelWidth: '150px',
-
+            valueFormat: 'yyyy-MM-dd',
             rules: [
-              { type: 'date', required: false, message: '请选择时间', trigger: 'change' }
+              // { type: 'date', required: false, message: '请选择时间', trigger: 'change' }
+              { type: 'string', required: false, message: '请选择时间', trigger: 'change' }
             ],
             placeholder: null,
             style: {
@@ -582,9 +583,11 @@ export default {
           {
             ItemType: InputType.selectDateRange,
             fieldId: 'startDateTime1',
-            defaultValue: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)],
+            // defaultValue: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)],
+            defaultValue: ['2020-03-08', '2020-03-09'],
             labelName: '时间范围1',
             // labelWidth: '150px',
+            valueFormat: 'yyyy-MM-dd',
 
             type: 'daterange',
             rules: [
