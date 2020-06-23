@@ -221,7 +221,7 @@ const menuList = [
         icon: 'el-icon-setting',
         id: 27,
         level: 2,
-        name: 'smart-breadcrumb',
+        name: 'b-smart-breadcrumb',
         type: 'menu',
         url: '/main/smart-breadcrumb',
         children: [
@@ -231,7 +231,7 @@ const menuList = [
         icon: 'el-icon-setting',
         id: 28,
         level: 2,
-        name: 'title-tag',
+        name: 'b-title-tag',
         type: 'menu',
         url: '/main/title-tag',
         children: [
@@ -241,7 +241,7 @@ const menuList = [
         icon: 'el-icon-setting',
         id: 29,
         level: 2,
-        name: 'grid-view',
+        name: 'b-grid-view',
         type: 'menu',
         url: '/main/grid-view',
         children: [
@@ -251,7 +251,7 @@ const menuList = [
         icon: 'el-icon-setting',
         id: 30,
         level: 2,
-        name: 'icon-group',
+        name: 'b-icon-group',
         type: 'menu',
         url: '/main/icon-group',
         children: [
@@ -261,7 +261,7 @@ const menuList = [
         icon: 'el-icon-setting',
         id: 31,
         level: 2,
-        name: 'print-table',
+        name: 'b-print-table',
         type: 'menu',
         url: '/main/print-table',
         children: [
@@ -271,7 +271,7 @@ const menuList = [
         icon: 'el-icon-setting',
         id: 32,
         level: 2,
-        name: 'advanced-input',
+        name: 'b-advanced-input',
         type: 'menu',
         url: '/main/advanced-input',
         children: [

@@ -25,6 +25,27 @@ const formItem1 = [
       { required: true, message: '用户名', trigger: 'blur' }
     ],
     placeholder: null
+  },
+  {
+    ItemType: InputType.select,
+    fieldId: 'sex',
+    defaultValue: undefined,
+    labelName: '性别',
+    clearable: true,
+    selectList: [
+      {
+        label: '男',
+        value: '男'
+      },
+      {
+        label: '女',
+        value: '女'
+      }
+    ],
+    rules: [
+      { required: true, message: '性别', trigger: 'blur' }
+    ],
+    placeholder: null
   }
 ]
 export {

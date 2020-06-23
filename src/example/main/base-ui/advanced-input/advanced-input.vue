@@ -1,21 +1,30 @@
 <template>
   <div class="advanced-input">
+    <br>
+    <h4>1.自定义表单组件：advanced-input</h4>
     <el-form
       :ref="formName"
       :inline="true"
       :model="formData"
       :rules="formRules">
 
+      <div>custom other layout</div>
+
       <b-advanced-input
         :formItems="formItem1"
         :formData="formData"
       >
       </b-advanced-input>
+
+      <div>custom other layout</div>
+
       <b-advanced-input
         :formItems="formItem2"
         :formData="formData"
       >
       </b-advanced-input>
+
+      <div>custom other layout</div>
 
       <!-- 自定提交表单按钮 -->
       <el-form-item>

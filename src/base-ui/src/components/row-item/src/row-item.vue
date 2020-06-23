@@ -64,5 +64,6 @@ export default {
 <style scoped lang="scss">
 .row-item{
   // border: 1px solid #EAEBEF;
+  // 样式的兼容还没有做
 }
 </style>
