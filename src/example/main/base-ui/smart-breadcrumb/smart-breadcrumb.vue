@@ -1,5 +1,44 @@
 <template>
   <div class="smart-breadcrumb">
+    顶部
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
+    <h3>3</h3>
     <el-button
      type="primary"
      @click="goToDetail()"
@@ -37,7 +76,7 @@ export default {
 
   },
   created() {
-
+    console.log('create smb')
   },
   mounted() {
 

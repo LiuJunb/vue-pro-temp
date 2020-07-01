@@ -14,6 +14,7 @@
         <!-- 1.InputType.default 默认输入框 -->
         <el-form-item
           v-if="formItem.ItemType === InputType.default"
+          :id="hashPre+formItem.fieldId"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
@@ -65,6 +66,7 @@
         <!-- 2.InputType.select 默认select选着输入框 -->
         <el-form-item
           v-if="formItem.ItemType === InputType.select"
+          :id="hashPre+formItem.fieldId"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
@@ -97,6 +99,7 @@
         <!-- 3.InputType.selectDate -->
         <el-form-item
           v-if="formItem.ItemType === InputType.selectDate"
+          :id="hashPre+formItem.fieldId"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
@@ -118,6 +121,7 @@
         <!-- 4.InputType.selectDateRange -->
         <el-form-item
           v-if="formItem.ItemType === InputType.selectDateRange"
+          :id="hashPre+formItem.fieldId"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
@@ -143,6 +147,7 @@
         <!-- 5.InputType.checkboxs -->
         <el-form-item
           v-if="formItem.ItemType === InputType.checkboxs"
+          :id="hashPre+formItem.fieldId"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
@@ -163,6 +168,7 @@
         <!-- 6.InputType.radios -->
         <el-form-item
           v-if="formItem.ItemType === InputType.radios"
+          :id="hashPre+formItem.fieldId"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
@@ -182,6 +188,7 @@
         <!-- 9.InputType.selectAndInput 默认select选着输入框 -->
         <el-form-item
           v-if="formItem.ItemType === InputType.selectAndInput"
+          :id="hashPre+formItem.fieldId"
           :key="index"
           :required="formItem.required"
           :style="{marginBottom:($attrs.size==='small'||$attrs.size==='mini')? '0px' :'20px'}"
@@ -238,6 +245,7 @@
         <!-- 10.InputType.selectDataAndTime 默认select选着输入框 -->
         <el-form-item
           v-if="formItem.ItemType === InputType.selectDataAndTime"
+          :id="hashPre+formItem.fieldId"
           :key="index"
           :required="formItem.required"
           :style="{marginBottom:($attrs.size==='small'||$attrs.size==='mini')? '0px' :'20px'}"
@@ -284,6 +292,7 @@
         <!-- 自定义item的布局 InputType.custom -->
         <el-form-item
           v-if="formItem.ItemType === InputType.custom"
+          :id="hashPre+formItem.fieldId"
           :key="index"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
@@ -665,6 +674,10 @@ export default {
     showReset: {
       type: Boolean,
       default: true
+    },
+    hashPre: {
+      type: String,
+      default: 'hash_'
     }
 
   },

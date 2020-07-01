@@ -5,6 +5,8 @@
   >
     <!-- grid-view -->
     <el-row
+      v-if="gridData.length>0"
+      :gutter="gutter"
       class="grid-row">
       <template v-for="(itemdata, index) in gridData">
         <!-- xl 大pc， lg 小pc + 笔记本 -->
@@ -26,6 +28,14 @@
         </el-col>
       </template>
     </el-row>
+
+    <!-- 暂无数据 -->
+    <div
+      v-else-if="showEmptyText"
+      class="empty-text"
+    >
+      <slot name="empty-text">暂无数据</slot>
+    </div>
     <!-- 分页器 -->
     <!-- 分页功能 -->
     <el-pagination
@@ -49,6 +59,11 @@ export default {
     width: {
       type: String,
       default: null
+    },
+    // 栅格间隔
+    gutter: {
+      type: Number,
+      default: 0
     },
     itemData: {
       type: Array,
@@ -127,6 +142,10 @@ export default {
     xl: {
       type: Number,
       default: 6
+    },
+    showEmptyText: {
+      type: Boolean,
+      default: false
     }
 
   },
@@ -172,11 +191,20 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import "../../../style/_vars.scss";
 .grid-view{
   // 分页器
   .el-pagination{
     text-align: right;
     margin: 10px;
+  }
+
+  .empty-text{
+    line-height: 60px;
+    text-align: center;
+    color: $tColorContent;
+    font-size: 16px;
+    border: 1px solid $tableBorderColor;
   }
 }
 </style>

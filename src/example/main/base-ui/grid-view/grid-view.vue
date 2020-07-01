@@ -3,6 +3,7 @@
     <b-grid-view
       :itemData="itemData"
       :hasPagination="false"
+      :gutter="8"
       :md="6"
       :lg="4"
       :xl="3"
@@ -18,6 +19,19 @@
 
     <b-grid-view
       :itemData="itemData"
+      @handlePaginatonChange="handlePaginatonChange"
+    >
+      <template v-slot:col-item="slotProps">
+        <div class="gird-col2">
+          {{slotProps.item.name}}
+        </div>
+      </template>
+    </b-grid-view>
+
+    <br>
+    <b-grid-view
+      :itemData="[]"
+      :showEmptyText="true"
       @handlePaginatonChange="handlePaginatonChange"
     >
       <template v-slot:col-item="slotProps">

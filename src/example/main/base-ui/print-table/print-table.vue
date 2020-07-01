@@ -8,9 +8,9 @@
       <!-- 第一行 -->
       <b-row-item>
         <b-col-head
-          name="标题一标题一"
           :style="{fontSize:'14px'}"
           width="100px">
+          标题一标题一
         </b-col-head>
         <b-col-content >内容一标题一</b-col-content>
         <b-col-head >标题一标题一标题一标题一标题一</b-col-head>

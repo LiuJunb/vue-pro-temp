@@ -14,6 +14,8 @@
         :size="item.size"
         :disabled="item.disabled"
         :circle="item.circle"
+        :round="item.round"
+        :plain="item.plain"
         :style="getBtnStyle(item)"
         @click="handleBtnClick(item)">
         <template v-if="item.name">

@@ -2779,7 +2779,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                     {
                       key: index,
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth,
                         prop: formItem.fieldId
@@ -2853,7 +2852,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                     {
                       key: index,
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth,
                         prop: formItem.fieldId
@@ -2901,7 +2899,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                     {
                       key: index,
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth,
                         prop: formItem.fieldId
@@ -2947,7 +2944,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                     {
                       key: index,
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth,
                         prop: formItem.fieldId
@@ -2996,7 +2992,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                     {
                       key: index,
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth,
                         prop: formItem.fieldId
@@ -3039,7 +3034,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                     {
                       key: index,
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth,
                         prop: formItem.fieldId
@@ -3090,7 +3084,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                             : "20px"
                       },
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         required: formItem.required,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth
@@ -3233,7 +3226,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                             : "20px"
                       },
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         required: formItem.required,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth
@@ -3371,7 +3363,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                     {
                       key: index,
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth,
                         prop: formItem.fieldId
@@ -3540,15 +3531,6 @@ var getFormRules = function getFormRules(formItems) {
 
 var advanced_searchvue_type_script_lang_js_this = undefined;
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -4215,10 +4197,6 @@ var advanced_searchvue_type_script_lang_js_this = undefined;
     showReset: {
       type: Boolean,
       default: true
-    },
-    hashPre: {
-      type: String,
-      default: 'hash_'
     }
   },
   data: function data() {
@@ -4353,9 +4331,7 @@ var button_groupvue_type_template_id_2e0cd204_scoped_true_render = function() {
                     icon: item.icon,
                     size: item.size,
                     disabled: item.disabled,
-                    circle: item.circle,
-                    round: item.round,
-                    plain: item.plain
+                    circle: item.circle
                   },
                   on: {
                     click: function($event) {
@@ -4443,8 +4419,6 @@ var hasPermission = function hasPermission(permissions, btnPermission) {
   return result;
 };
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/base-ui/src/components/button-group/src/button-group.vue?vue&type=script&lang=js&
-//
-//
 //
 //
 //
@@ -5951,55 +5925,44 @@ var grid_viewvue_type_template_id_7d3746e8_scoped_true_render = function() {
     "div",
     { staticClass: "grid-view", style: { width: _vm.width } },
     [
-      _vm.gridData.length > 0
-        ? _c(
-            "el-row",
-            { staticClass: "grid-row", attrs: { gutter: _vm.gutter } },
-            [
-              _vm._l(_vm.gridData, function(itemdata, index) {
-                return [
-                  _c(
-                    "el-col",
-                    {
-                      key: index,
-                      attrs: {
-                        xs: _vm.xs,
-                        sm: _vm.sm,
-                        md: _vm.md,
-                        lg: _vm.lg,
-                        xl: _vm.xl
-                      }
-                    },
+      _c(
+        "el-row",
+        { staticClass: "grid-row" },
+        [
+          _vm._l(_vm.gridData, function(itemdata, index) {
+            return [
+              _c(
+                "el-col",
+                {
+                  key: index,
+                  attrs: {
+                    xs: _vm.xs,
+                    sm: _vm.sm,
+                    md: _vm.md,
+                    lg: _vm.lg,
+                    xl: _vm.xl
+                  }
+                },
+                [
+                  _vm._t(
+                    "col-item",
                     [
-                      _vm._t(
-                        "col-item",
-                        [
-                          _c("div", { staticClass: "grid-col" }, [
-                            _vm._v(
-                              "\n              " +
-                                _vm._s(index) +
-                                "\n          "
-                            )
-                          ])
-                        ],
-                        { item: itemdata }
-                      )
+                      _c("div", { staticClass: "grid-col" }, [
+                        _vm._v(
+                          "\n              " + _vm._s(index) + "\n          "
+                        )
+                      ])
                     ],
-                    2
+                    { item: itemdata }
                   )
-                ]
-              })
-            ],
-            2
-          )
-        : _vm.showEmptyText
-        ? _c(
-            "div",
-            { staticClass: "empty-text" },
-            [_vm._t("empty-text", [_vm._v("暂无数据")])],
-            2
-          )
-        : _vm._e(),
+                ],
+                2
+              )
+            ]
+          })
+        ],
+        2
+      ),
       _vm._v(" "),
       _vm.hasPagination
         ? _c(
@@ -6074,16 +6037,6 @@ grid_viewvue_type_template_id_7d3746e8_scoped_true_render._withStripped = true
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ var grid_viewvue_type_script_lang_js_ = ({
   name: 'BGridView',
   components: {},
@@ -6092,11 +6045,6 @@ grid_viewvue_type_template_id_7d3746e8_scoped_true_render._withStripped = true
     width: {
       type: String,
       default: null
-    },
-    // 栅格间隔
-    gutter: {
-      type: Number,
-      default: 0
     },
     itemData: {
       type: Array,
@@ -6170,10 +6118,6 @@ grid_viewvue_type_template_id_7d3746e8_scoped_true_render._withStripped = true
     xl: {
       type: Number,
       default: 6
-    },
-    showEmptyText: {
-      type: Boolean,
-      default: false
     }
   },
   data: function data() {
@@ -6997,7 +6941,6 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                 {
                   key: index,
                   attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
                     label: formItem.labelName,
                     "label-width": formItem.labelWidth,
                     prop: formItem.fieldId
@@ -7008,11 +6951,6 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                     "el-input",
                     _vm._b(
                       {
-                        on: {
-                          input: function($event) {
-                            return _vm.handleInputChange($event, formItem)
-                          }
-                        },
                         model: {
                           value: _vm.formData[formItem.fieldId],
                           callback: function($$v) {
@@ -7057,533 +6995,6 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                   )
                 ],
                 1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          formItem.ItemType === _vm.InputType.select
-            ? _c(
-                "el-form-item",
-                {
-                  key: index,
-                  attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
-                    label: formItem.labelName,
-                    "label-width": formItem.labelWidth,
-                    prop: formItem.fieldId
-                  }
-                },
-                [
-                  _c(
-                    "el-select",
-                    _vm._b(
-                      {
-                        attrs: { filterable: "" },
-                        on: {
-                          input: function($event) {
-                            return _vm.handleSelectChange($event, formItem)
-                          }
-                        },
-                        model: {
-                          value: _vm.formData[formItem.fieldId],
-                          callback: function($$v) {
-                            _vm.$set(_vm.formData, formItem.fieldId, $$v)
-                          },
-                          expression: "formData[formItem.fieldId]"
-                        }
-                      },
-                      "el-select",
-                      formItem,
-                      false
-                    ),
-                    _vm._l(formItem.selectList, function(item, index) {
-                      return _c("el-option", {
-                        key: index,
-                        attrs: { label: item.label, value: item.value }
-                      })
-                    }),
-                    1
-                  )
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          formItem.ItemType === _vm.InputType.selectDate
-            ? _c(
-                "el-form-item",
-                {
-                  key: index,
-                  attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
-                    label: formItem.labelName,
-                    "label-width": formItem.labelWidth,
-                    prop: formItem.fieldId
-                  }
-                },
-                [
-                  _c(
-                    "el-date-picker",
-                    _vm._b(
-                      {
-                        attrs: { type: formItem.type ? formItem.type : "date" },
-                        on: {
-                          input: function($event) {
-                            return _vm.handleDateSelectChange($event, formItem)
-                          }
-                        },
-                        model: {
-                          value: _vm.formData[formItem.fieldId],
-                          callback: function($$v) {
-                            _vm.$set(_vm.formData, formItem.fieldId, $$v)
-                          },
-                          expression: "formData[formItem.fieldId]"
-                        }
-                      },
-                      "el-date-picker",
-                      formItem,
-                      false
-                    )
-                  )
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          formItem.ItemType === _vm.InputType.selectDateRange
-            ? _c(
-                "el-form-item",
-                {
-                  key: index,
-                  attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
-                    label: formItem.labelName,
-                    "label-width": formItem.labelWidth,
-                    prop: formItem.fieldId
-                  }
-                },
-                [
-                  _c(
-                    "el-date-picker",
-                    _vm._b(
-                      {
-                        attrs: {
-                          type: formItem.type ? formItem.type : "daterange",
-                          "range-separator": "至",
-                          "start-placeholder": "开始日期",
-                          "end-placeholder": "结束日期"
-                        },
-                        on: {
-                          input: function($event) {
-                            return _vm.handleDateSelectChange($event, formItem)
-                          }
-                        },
-                        model: {
-                          value: _vm.formData[formItem.fieldId],
-                          callback: function($$v) {
-                            _vm.$set(_vm.formData, formItem.fieldId, $$v)
-                          },
-                          expression: "formData[formItem.fieldId]"
-                        }
-                      },
-                      "el-date-picker",
-                      formItem,
-                      false
-                    )
-                  )
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          formItem.ItemType === _vm.InputType.checkboxs
-            ? _c(
-                "el-form-item",
-                {
-                  key: index,
-                  attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
-                    label: formItem.labelName,
-                    "label-width": formItem.labelWidth,
-                    prop: formItem.fieldId
-                  }
-                },
-                [
-                  _c(
-                    "el-checkbox-group",
-                    {
-                      style: formItem.style,
-                      on: {
-                        change: function($event) {
-                          return _vm.handleSelectChange($event, formItem)
-                        }
-                      },
-                      model: {
-                        value: _vm.formData[formItem.fieldId],
-                        callback: function($$v) {
-                          _vm.$set(_vm.formData, formItem.fieldId, $$v)
-                        },
-                        expression: "formData[formItem.fieldId]"
-                      }
-                    },
-                    _vm._l(formItem.checkboxList, function(cbox, index) {
-                      return _c("el-checkbox", {
-                        key: index,
-                        attrs: { label: cbox.label, name: formItem.fieldId }
-                      })
-                    }),
-                    1
-                  )
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          formItem.ItemType === _vm.InputType.radios
-            ? _c(
-                "el-form-item",
-                {
-                  key: index,
-                  attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
-                    label: formItem.labelName,
-                    "label-width": formItem.labelWidth,
-                    prop: formItem.fieldId
-                  }
-                },
-                [
-                  _c(
-                    "el-radio-group",
-                    {
-                      style: formItem.style,
-                      on: {
-                        change: function($event) {
-                          return _vm.handleSelectChange($event, formItem)
-                        }
-                      },
-                      model: {
-                        value: _vm.formData[formItem.fieldId],
-                        callback: function($$v) {
-                          _vm.$set(_vm.formData, formItem.fieldId, $$v)
-                        },
-                        expression: "formData[formItem.fieldId]"
-                      }
-                    },
-                    _vm._l(formItem.radioList, function(rad, index) {
-                      return _c("el-radio", {
-                        key: index,
-                        attrs: { label: rad.label }
-                      })
-                    }),
-                    1
-                  )
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          formItem.ItemType === _vm.InputType.selectAndInput
-            ? _c(
-                "el-form-item",
-                {
-                  key: index,
-                  staticClass: "liujun",
-                  style: {
-                    marginBottom:
-                      _vm.$attrs.size === "small" || _vm.$attrs.size === "mini"
-                        ? "0px"
-                        : "20px"
-                  },
-                  attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
-                    required: formItem.required,
-                    label: formItem.labelName,
-                    "label-width": formItem.labelWidth
-                  }
-                },
-                [
-                  _c(
-                    "el-row",
-                    { style: formItem.style },
-                    [
-                      _c(
-                        "el-form-item",
-                        {
-                          attrs: {
-                            label: formItem.formItem_2.labelName,
-                            "label-width": formItem.formItem_2.labelWidth,
-                            prop: formItem.formItem_2.fieldId
-                          }
-                        },
-                        [
-                          _c(
-                            "el-input",
-                            _vm._b(
-                              {
-                                on: {
-                                  input: function($event) {
-                                    return _vm.handleInputChange(
-                                      $event,
-                                      formItem.formItem_2
-                                    )
-                                  }
-                                },
-                                model: {
-                                  value:
-                                    _vm.formData[formItem.formItem_2.fieldId],
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.formData,
-                                      formItem.formItem_2.fieldId,
-                                      $$v
-                                    )
-                                  },
-                                  expression:
-                                    "formData[formItem.formItem_2.fieldId]"
-                                }
-                              },
-                              "el-input",
-                              formItem.formItem_2,
-                              false
-                            ),
-                            [
-                              _c(
-                                "el-form-item",
-                                {
-                                  style: { margin: "-1px" },
-                                  attrs: {
-                                    slot: "prepend",
-                                    prop: formItem.formItem_1.fieldId
-                                  },
-                                  slot: "prepend"
-                                },
-                                [
-                                  _c(
-                                    "el-select",
-                                    _vm._b(
-                                      {
-                                        attrs: { filterable: "" },
-                                        on: {
-                                          input: function($event) {
-                                            return _vm.handleSelectChange(
-                                              $event,
-                                              formItem.formItem_1
-                                            )
-                                          }
-                                        },
-                                        model: {
-                                          value:
-                                            _vm.formData[
-                                              formItem.formItem_1.fieldId
-                                            ],
-                                          callback: function($$v) {
-                                            _vm.$set(
-                                              _vm.formData,
-                                              formItem.formItem_1.fieldId,
-                                              $$v
-                                            )
-                                          },
-                                          expression:
-                                            "formData[formItem.formItem_1.fieldId]"
-                                        }
-                                      },
-                                      "el-select",
-                                      formItem.formItem_1,
-                                      false
-                                    ),
-                                    _vm._l(
-                                      formItem.formItem_1.selectList,
-                                      function(itemData, index) {
-                                        return _c("el-option", {
-                                          key: index,
-                                          attrs: {
-                                            label: itemData.label,
-                                            value: itemData.value
-                                          }
-                                        })
-                                      }
-                                    ),
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          formItem.ItemType === _vm.InputType.selectDataAndTime
-            ? _c(
-                "el-form-item",
-                {
-                  key: index,
-                  staticClass: "liujun",
-                  style: {
-                    marginBottom:
-                      _vm.$attrs.size === "small" || _vm.$attrs.size === "mini"
-                        ? "0px"
-                        : "20px"
-                  },
-                  attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
-                    required: formItem.required,
-                    label: formItem.labelName,
-                    "label-width": formItem.labelWidth
-                  }
-                },
-                [
-                  _c(
-                    "el-row",
-                    { style: formItem.style },
-                    [
-                      _c(
-                        "el-col",
-                        { attrs: { span: 11 } },
-                        [
-                          _c(
-                            "el-form-item",
-                            {
-                              style: { marginRight: "0px" },
-                              attrs: { prop: formItem.formItem_1.fieldId }
-                            },
-                            [
-                              _c(
-                                "el-date-picker",
-                                _vm._b(
-                                  {
-                                    style: formItem.formItem_2.style
-                                      ? formItem.formItem_2.style
-                                      : { width: "100%" },
-                                    attrs: { type: "date" },
-                                    on: {
-                                      input: function($event) {
-                                        return _vm.handleDateSelectChange(
-                                          $event,
-                                          formItem
-                                        )
-                                      }
-                                    },
-                                    model: {
-                                      value:
-                                        _vm.formData[
-                                          formItem.formItem_1.fieldId
-                                        ],
-                                      callback: function($$v) {
-                                        _vm.$set(
-                                          _vm.formData,
-                                          formItem.formItem_1.fieldId,
-                                          $$v
-                                        )
-                                      },
-                                      expression:
-                                        "formData[formItem.formItem_1.fieldId]"
-                                    }
-                                  },
-                                  "el-date-picker",
-                                  formItem.formItem_2,
-                                  false
-                                )
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "el-col",
-                        { staticClass: "line", attrs: { span: 2 } },
-                        [_vm._v("-")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "el-col",
-                        { attrs: { span: 11 } },
-                        [
-                          _c(
-                            "el-form-item",
-                            { attrs: { prop: formItem.formItem_2.fieldId } },
-                            [
-                              _c(
-                                "el-time-picker",
-                                _vm._b(
-                                  {
-                                    style: formItem.formItem_2.style
-                                      ? formItem.formItem_2.style
-                                      : { width: "100%" },
-                                    on: {
-                                      input: function($event) {
-                                        return _vm.handleDateSelectChange(
-                                          $event,
-                                          formItem
-                                        )
-                                      }
-                                    },
-                                    model: {
-                                      value:
-                                        _vm.formData[
-                                          formItem.formItem_2.fieldId
-                                        ],
-                                      callback: function($$v) {
-                                        _vm.$set(
-                                          _vm.formData,
-                                          formItem.formItem_2.fieldId,
-                                          $$v
-                                        )
-                                      },
-                                      expression:
-                                        "formData[formItem.formItem_2.fieldId]"
-                                    }
-                                  },
-                                  "el-time-picker",
-                                  formItem.formItem_2,
-                                  false
-                                )
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          formItem.ItemType === _vm.InputType.custom
-            ? _c(
-                "el-form-item",
-                {
-                  key: index,
-                  attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
-                    label: formItem.labelName,
-                    "label-width": formItem.labelWidth,
-                    prop: formItem.fieldId
-                  }
-                },
-                [
-                  _vm._t(
-                    formItem.customSlot,
-                    [_c("span", [_vm._v("请完成自定布局")])],
-                    { row: formItem, data: _vm.formData }
-                  )
-                ],
-                2
               )
             : _vm._e()
         ]
@@ -7634,292 +7045,6 @@ advanced_inputvue_type_template_id_0e2243a4_scoped_true_render._withStripped = t
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/*
- *@description: 高级的表单输入组件
- *@author: liujun
- *@email: liujun2son@163.com
- *@date: 2020-06-23 10:58:18
- *@version V0.1.0
- *@API:
- *@ 参数
- *  formItems: []
- *  formData: {}
- *@ 事件
- *  this.$emit('handleFormItemChange', value, formItem)
-*/
 
 /* harmony default export */ var advanced_inputvue_type_script_lang_js_ = ({
   name: 'BAdvancedInput',
@@ -7937,10 +7062,6 @@ advanced_inputvue_type_template_id_0e2243a4_scoped_true_render._withStripped = t
       default: function _default() {
         return {};
       }
-    },
-    hashPre: {
-      type: String,
-      default: 'hash_'
     }
   },
   data: function data() {
@@ -7953,8 +7074,6 @@ advanced_inputvue_type_template_id_0e2243a4_scoped_true_render._withStripped = t
   created: function created() {},
   mounted: function mounted() {},
   methods: {
-    // ====copy advanced-search
-
     /**
      * {
      *  username:'刘军'
@@ -7967,23 +7086,7 @@ advanced_inputvue_type_template_id_0e2243a4_scoped_true_render._withStripped = t
         // this.formData.username = fieldIds.username
         _this.formData[key] = fieldIds[key];
       });
-    },
-    handleInputChange: function handleInputChange(value, formItem) {
-      // console.log('val=', value)
-      this.handleFormItemChange(value, formItem);
-    },
-    handleSelectChange: function handleSelectChange(value, formItem) {
-      // console.log('sel val=', value, formItem)
-      this.handleFormItemChange(value, formItem);
-    },
-    handleDateSelectChange: function handleDateSelectChange(value, formItem) {
-      // console.log('date sel val=', value, formItem)
-      this.handleFormItemChange(value, formItem);
-    },
-    handleFormItemChange: function handleFormItemChange(value, formItem) {
-      this.$emit('handleFormItemChange', value, formItem);
-    } // ====copy advanced-search
-
+    }
   }
 });
 // CONCATENATED MODULE: ./src/base-ui/src/components/advanced-input/src/advanced-input.vue?vue&type=script&lang=js&

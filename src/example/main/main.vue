@@ -35,12 +35,18 @@
           </b-aside-menu>
         </el-aside>
         <el-container class="scrollbar__wrap">
+          pp
           <el-main>
             <b-smart-breadcrumb
               :menuList="menuList"
               :otherList="otherList">
             </b-smart-breadcrumb>
-            <router-view/>
+            <keep-alive
+              :include="['SmartBreadcrumb']"
+            >
+              <router-view/>
+            </keep-alive>
+
           </el-main>
           <el-footer></el-footer>
         </el-container>

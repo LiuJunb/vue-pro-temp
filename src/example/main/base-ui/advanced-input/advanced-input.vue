@@ -25,7 +25,22 @@
       </b-advanced-input>
 
       <div>custom other layout</div>
-
+      <b-advanced-input
+        :formItems="formItem3"
+        :formData="formData"
+        class="cus-width"
+      >
+      </b-advanced-input>
+      <h5>testse</h5>
+      <h5>testse</h5>
+      <h5>testse</h5>
+      <h5>testse</h5>
+      <h5>testse</h5>
+      <h5>testse</h5>
+      <h5>testse</h5>
+      <h5>testse</h5>
+      <h5>testse</h5>
+      <h5>testse</h5>
       <!-- 自定提交表单按钮 -->
       <el-form-item>
         <slot
@@ -60,7 +75,8 @@ import {
 } from '@/base-ui/src'
 import {
   formItem1,
-  formItem2
+  formItem2,
+  formItem3
 } from './page-config'
 const {
   getFormFieldIds,
@@ -81,6 +97,7 @@ export default {
 
       formItem1,
       formItem2,
+      formItem3,
 
       formData: getFormFieldIds([...formItem1, ...formItem2]),
       formRules: getFormRules([...formItem1, ...formItem2])
@@ -100,11 +117,19 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$refs[this.formName].validate((valid) => {
+      this.$refs[this.formName].validate((valid, object) => {
         if (valid) {
           console.log(this.formData)
         } else {
-          console.log('error submit!!')
+          console.log('error submit!!', object) // {user1:'', user2: Array(1)}
+          const keys = Object.keys(object) || []
+          if (keys.length >= 1) {
+            console.log('error=', keys[0])
+            setTimeout(() => {
+              window.location.hash = ''
+              window.location.hash = `hash_${keys[0]}`
+            })
+          }
           return false
         }
       })

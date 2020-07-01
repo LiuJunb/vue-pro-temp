@@ -18,6 +18,7 @@
        label-width="90px"
        :inline="true"
        size="mini"
+       :formItems="adSearchDefaultConfig"
        @handleSubmit="handleSubmit"
        @handleReset="handleReset"
     >
@@ -122,6 +123,7 @@
 
 <script>
 import {
+  adSearchDefaultConfig,
   adSearchConfig,
   adLogin,
   adForm,
@@ -141,6 +143,7 @@ export default {
   },
   data: function() {
     return {
+      adSearchDefaultConfig,
       adSearchConfig,
       adLogin,
       adForm,

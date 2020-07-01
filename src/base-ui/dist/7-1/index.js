@@ -5951,55 +5951,44 @@ var grid_viewvue_type_template_id_7d3746e8_scoped_true_render = function() {
     "div",
     { staticClass: "grid-view", style: { width: _vm.width } },
     [
-      _vm.gridData.length > 0
-        ? _c(
-            "el-row",
-            { staticClass: "grid-row", attrs: { gutter: _vm.gutter } },
-            [
-              _vm._l(_vm.gridData, function(itemdata, index) {
-                return [
-                  _c(
-                    "el-col",
-                    {
-                      key: index,
-                      attrs: {
-                        xs: _vm.xs,
-                        sm: _vm.sm,
-                        md: _vm.md,
-                        lg: _vm.lg,
-                        xl: _vm.xl
-                      }
-                    },
+      _c(
+        "el-row",
+        { staticClass: "grid-row", attrs: { gutter: _vm.gutter } },
+        [
+          _vm._l(_vm.gridData, function(itemdata, index) {
+            return [
+              _c(
+                "el-col",
+                {
+                  key: index,
+                  attrs: {
+                    xs: _vm.xs,
+                    sm: _vm.sm,
+                    md: _vm.md,
+                    lg: _vm.lg,
+                    xl: _vm.xl
+                  }
+                },
+                [
+                  _vm._t(
+                    "col-item",
                     [
-                      _vm._t(
-                        "col-item",
-                        [
-                          _c("div", { staticClass: "grid-col" }, [
-                            _vm._v(
-                              "\n              " +
-                                _vm._s(index) +
-                                "\n          "
-                            )
-                          ])
-                        ],
-                        { item: itemdata }
-                      )
+                      _c("div", { staticClass: "grid-col" }, [
+                        _vm._v(
+                          "\n              " + _vm._s(index) + "\n          "
+                        )
+                      ])
                     ],
-                    2
+                    { item: itemdata }
                   )
-                ]
-              })
-            ],
-            2
-          )
-        : _vm.showEmptyText
-        ? _c(
-            "div",
-            { staticClass: "empty-text" },
-            [_vm._t("empty-text", [_vm._v("暂无数据")])],
-            2
-          )
-        : _vm._e(),
+                ],
+                2
+              )
+            ]
+          })
+        ],
+        2
+      ),
       _vm._v(" "),
       _vm.hasPagination
         ? _c(
@@ -6034,14 +6023,6 @@ grid_viewvue_type_template_id_7d3746e8_scoped_true_render._withStripped = true
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/base-ui/src/components/grid-view/src/grid-view.vue?vue&type=script&lang=js&
 
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -6170,10 +6151,6 @@ grid_viewvue_type_template_id_7d3746e8_scoped_true_render._withStripped = true
     xl: {
       type: Number,
       default: 6
-    },
-    showEmptyText: {
-      type: Boolean,
-      default: false
     }
   },
   data: function data() {

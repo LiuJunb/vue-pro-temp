@@ -2779,7 +2779,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                     {
                       key: index,
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth,
                         prop: formItem.fieldId
@@ -2853,7 +2852,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                     {
                       key: index,
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth,
                         prop: formItem.fieldId
@@ -2901,7 +2899,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                     {
                       key: index,
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth,
                         prop: formItem.fieldId
@@ -2947,7 +2944,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                     {
                       key: index,
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth,
                         prop: formItem.fieldId
@@ -2996,7 +2992,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                     {
                       key: index,
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth,
                         prop: formItem.fieldId
@@ -3039,7 +3034,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                     {
                       key: index,
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth,
                         prop: formItem.fieldId
@@ -3090,7 +3084,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                             : "20px"
                       },
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         required: formItem.required,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth
@@ -3233,7 +3226,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                             : "20px"
                       },
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         required: formItem.required,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth
@@ -3371,7 +3363,6 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                     {
                       key: index,
                       attrs: {
-                        id: _vm.hashPre + formItem.fieldId,
                         label: formItem.labelName,
                         "label-width": formItem.labelWidth,
                         prop: formItem.fieldId
@@ -3540,15 +3531,6 @@ var getFormRules = function getFormRules(formItems) {
 
 var advanced_searchvue_type_script_lang_js_this = undefined;
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -4215,10 +4197,6 @@ var advanced_searchvue_type_script_lang_js_this = undefined;
     showReset: {
       type: Boolean,
       default: true
-    },
-    hashPre: {
-      type: String,
-      default: 'hash_'
     }
   },
   data: function data() {
@@ -4353,9 +4331,7 @@ var button_groupvue_type_template_id_2e0cd204_scoped_true_render = function() {
                     icon: item.icon,
                     size: item.size,
                     disabled: item.disabled,
-                    circle: item.circle,
-                    round: item.round,
-                    plain: item.plain
+                    circle: item.circle
                   },
                   on: {
                     click: function($event) {
@@ -4443,8 +4419,6 @@ var hasPermission = function hasPermission(permissions, btnPermission) {
   return result;
 };
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/base-ui/src/components/button-group/src/button-group.vue?vue&type=script&lang=js&
-//
-//
 //
 //
 //
@@ -5951,55 +5925,44 @@ var grid_viewvue_type_template_id_7d3746e8_scoped_true_render = function() {
     "div",
     { staticClass: "grid-view", style: { width: _vm.width } },
     [
-      _vm.gridData.length > 0
-        ? _c(
-            "el-row",
-            { staticClass: "grid-row", attrs: { gutter: _vm.gutter } },
-            [
-              _vm._l(_vm.gridData, function(itemdata, index) {
-                return [
-                  _c(
-                    "el-col",
-                    {
-                      key: index,
-                      attrs: {
-                        xs: _vm.xs,
-                        sm: _vm.sm,
-                        md: _vm.md,
-                        lg: _vm.lg,
-                        xl: _vm.xl
-                      }
-                    },
+      _c(
+        "el-row",
+        { staticClass: "grid-row" },
+        [
+          _vm._l(_vm.gridData, function(itemdata, index) {
+            return [
+              _c(
+                "el-col",
+                {
+                  key: index,
+                  attrs: {
+                    xs: _vm.xs,
+                    sm: _vm.sm,
+                    md: _vm.md,
+                    lg: _vm.lg,
+                    xl: _vm.xl
+                  }
+                },
+                [
+                  _vm._t(
+                    "col-item",
                     [
-                      _vm._t(
-                        "col-item",
-                        [
-                          _c("div", { staticClass: "grid-col" }, [
-                            _vm._v(
-                              "\n              " +
-                                _vm._s(index) +
-                                "\n          "
-                            )
-                          ])
-                        ],
-                        { item: itemdata }
-                      )
+                      _c("div", { staticClass: "grid-col" }, [
+                        _vm._v(
+                          "\n              " + _vm._s(index) + "\n          "
+                        )
+                      ])
                     ],
-                    2
+                    { item: itemdata }
                   )
-                ]
-              })
-            ],
-            2
-          )
-        : _vm.showEmptyText
-        ? _c(
-            "div",
-            { staticClass: "empty-text" },
-            [_vm._t("empty-text", [_vm._v("暂无数据")])],
-            2
-          )
-        : _vm._e(),
+                ],
+                2
+              )
+            ]
+          })
+        ],
+        2
+      ),
       _vm._v(" "),
       _vm.hasPagination
         ? _c(
@@ -6074,16 +6037,6 @@ grid_viewvue_type_template_id_7d3746e8_scoped_true_render._withStripped = true
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ var grid_viewvue_type_script_lang_js_ = ({
   name: 'BGridView',
   components: {},
@@ -6092,11 +6045,6 @@ grid_viewvue_type_template_id_7d3746e8_scoped_true_render._withStripped = true
     width: {
       type: String,
       default: null
-    },
-    // 栅格间隔
-    gutter: {
-      type: Number,
-      default: 0
     },
     itemData: {
       type: Array,
@@ -6170,10 +6118,6 @@ grid_viewvue_type_template_id_7d3746e8_scoped_true_render._withStripped = true
     xl: {
       type: Number,
       default: 6
-    },
-    showEmptyText: {
-      type: Boolean,
-      default: false
     }
   },
   data: function data() {
@@ -6997,7 +6941,6 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                 {
                   key: index,
                   attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
                     label: formItem.labelName,
                     "label-width": formItem.labelWidth,
                     prop: formItem.fieldId
@@ -7066,7 +7009,6 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                 {
                   key: index,
                   attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
                     label: formItem.labelName,
                     "label-width": formItem.labelWidth,
                     prop: formItem.fieldId
@@ -7114,7 +7056,6 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                 {
                   key: index,
                   attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
                     label: formItem.labelName,
                     "label-width": formItem.labelWidth,
                     prop: formItem.fieldId
@@ -7155,7 +7096,6 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                 {
                   key: index,
                   attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
                     label: formItem.labelName,
                     "label-width": formItem.labelWidth,
                     prop: formItem.fieldId
@@ -7201,7 +7141,6 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                 {
                   key: index,
                   attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
                     label: formItem.labelName,
                     "label-width": formItem.labelWidth,
                     prop: formItem.fieldId
@@ -7244,7 +7183,6 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                 {
                   key: index,
                   attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
                     label: formItem.labelName,
                     "label-width": formItem.labelWidth,
                     prop: formItem.fieldId
@@ -7294,7 +7232,6 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                         : "20px"
                   },
                   attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
                     required: formItem.required,
                     label: formItem.labelName,
                     "label-width": formItem.labelWidth
@@ -7434,7 +7371,6 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                         : "20px"
                   },
                   attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
                     required: formItem.required,
                     label: formItem.labelName,
                     "label-width": formItem.labelWidth
@@ -7570,7 +7506,6 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                 {
                   key: index,
                   attrs: {
-                    id: _vm.hashPre + formItem.fieldId,
                     label: formItem.labelName,
                     "label-width": formItem.labelWidth,
                     prop: formItem.fieldId
@@ -7897,15 +7832,6 @@ advanced_inputvue_type_template_id_0e2243a4_scoped_true_render._withStripped = t
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /*
  *@description: 高级的表单输入组件
@@ -7937,10 +7863,6 @@ advanced_inputvue_type_template_id_0e2243a4_scoped_true_render._withStripped = t
       default: function _default() {
         return {};
       }
-    },
-    hashPre: {
-      type: String,
-      default: 'hash_'
     }
   },
   data: function data() {
