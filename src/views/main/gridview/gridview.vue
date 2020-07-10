@@ -1,0 +1,189 @@
+<template>
+  <div class="gridview">
+    <!-- 高级搜索 -->
+    <b-advanced-search
+       ref='advanced-search'
+       label-width="90px"
+       :inline="true"
+       :formItems="adSearchConfig"
+       @handleSubmit="handleSubmitClick"
+    >
+     <template v-slot:url="slotProps">
+       <el-input
+        v-model="slotProps.data[slotProps.row.fieldId]"
+        v-bind="slotProps.row">
+        <template slot="prepend">Http://</template>
+      </el-input>
+     </template>
+    </b-advanced-search>
+    <!-- 分界线 -->
+    <b-divider-line :style="{margin:'0px -20px'}"></b-divider-line>
+    <!-- 按钮组 -->
+    <b-button-group
+      :style="{margin:'15px 0px'}"
+      :permissions="permissions"
+      :btnList="btnListConfig"
+      @handleBtnClick="handleBtnListClick">
+      <template v-slot:upload-1="slotProps">
+        <el-upload
+          :style="{display: 'inline-block',margin:'0px 10px'}"
+          action="https://jsonplaceholder.typicode.com/posts/"
+          >
+          <el-button
+            v-bind="slotProps.item"
+          >
+            {{slotProps.item.name}}
+          </el-button>
+        </el-upload>
+      </template>
+    </b-button-group>
+    <!-- 九宫格 -->
+    <!-- gridview -->
+    <b-grid-view
+      :md="8"
+      :lg="12"
+      :xl="24"
+      width="100%"
+      :showEmptyText="true"
+      :itemData="tabData"
+      :paginationConf="paginationConfig"
+      @handlePaginatonChange="handlePaginatonClick"
+    >
+      <template v-slot:col-item="slotProps">
+        <div class="gird-col">
+          {{slotProps.item.name}}
+        </div>
+      </template>
+    </b-grid-view>
+  </div>
+</template>
+
+<script>
+import {
+  adSearchConfig,
+  btnListConfig
+} from './page-config'
+import {
+// CurSearchParams
+} from '@/config/index.js'
+
+import {
+  TableList
+} from '@/mixins/index.js'
+// import {
+
+// } from '@/enum/index.js'
+export default {
+  name: 'Gridview',
+  components: {
+
+  },
+  mixins: [TableList],
+  props: {
+    msg: {
+      type: String,
+      default: 'Gridview'
+    }
+  },
+  data: function() {
+    return {
+      adSearchConfig,
+      btnListConfig,
+
+      pageListActions: 'main_gridview/list', // actionName 这个action name是根据store/modules/下的文件夹路劲命名 todo
+      sortBy: 'id', // todo
+      // 这里的权限应该是从后台获取的，这里暂时写死 todo
+      permissions: [
+        'pp.list'
+      ]
+
+      // tabData1: [
+      // ],
+      // paginationConfig1: { ...PaginatonDefaultConfig },
+
+      // isFirstRequest: true,
+      // curSearchParams: { ...CurSearchParams }
+    }
+  },
+  computed: {
+    // tabData() {
+    //   const list = this.$store.getters[this.pageListActions]
+    //   return list
+    // },
+    // paginationConfig() {
+    //   const paginatonConf = this.$store.getters[this.pageListActions + 'PaginatonConfig']
+    //   return paginatonConf
+    // }
+  },
+  watch: {
+
+  },
+  created() {
+    // 不需要缓存
+    // this.getList({ ...CurSearchParams }, null)
+  },
+  mounted() {
+  },
+  methods: {
+
+    // 搜索参数，data参数
+    // getList(searchParams, valuse) {
+    //   if (valuse && Object.keys(valuse).length > 0) {
+    //     searchParams.data = { ...valuse }
+    //   } else {
+    //     // valuse 为 null
+    //     searchParams.data = {}
+    //     // 重置表单
+    //     if (this.$refs['advanced-search']) {
+    //       this.$refs['advanced-search'].onReset()
+    //     }
+    //   }
+    //   searchParams.data.sortBy = this.sortBy
+    //   // searchParams.data的数据需要过滤掉 null， undefined, '', [] 的情况
+    //   searchParams.data = filterNullValue(searchParams.data)
+    //   // 可以解构多层
+    //   this.curSearchParams = { ...searchParams }
+    //   this.$store.dispatch(this.pageListActions, searchParams)
+    //     .then((res) => {
+    //       this.isFirstRequest = false
+    //     })
+    // },
+
+    // // 高级搜索
+    // handleSubmitClick(valuse) {
+    //   // console.log(valuse)
+    //   // 需要缓存
+    //   this.curSearchParams.pageNum = 1
+    //   this.getList(this.curSearchParams, valuse)
+    // },
+
+    // // 按钮组
+    // handleBtnListClick(item) {
+    //   // console.log(item)
+    //   // 刷新(不需要缓存)
+    //   if (item._name === '刷新') {
+    //     this.getList({ ...CurSearchParams }, null)
+    //   }
+    // },
+
+    // handlePaginatonClick(pagination) {
+    //   // console.log(pagination)
+    //   this.curSearchParams.pageNum = pagination['current-page']
+    //   this.curSearchParams.pageSize = pagination['page-size']
+    //   // 需要缓存
+    //   this.getList(this.curSearchParams, { ...this.curSearchParams.data })
+    // }
+  }
+
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+.gridview{
+  .gird-col{
+    border: 1px solid pink;
+    height: 250px;
+  }
+}
+</style>

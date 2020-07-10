@@ -1,7 +1,5 @@
 import BaseUI from 'BaseUI'
 const { SearchType } = BaseUI.AdvancedSearch
-const colWidth = '280px' // 220 280
-const labelWidth = '90px' // 130px
 export const adSearchConfig = [
   {
     ItemType: SearchType.custom,
@@ -9,9 +7,10 @@ export const adSearchConfig = [
     fieldId: 'url',
     defaultValue: undefined,
     labelName: '网址',
-    labelWidth: labelWidth,
+    // labelWidth: '70px',
+
     style: {
-      width: colWidth
+      width: '280px'
     },
     rules: [
       { required: false, message: '请输入自定义名称', trigger: 'blur' }
@@ -65,9 +64,8 @@ export const adSearchConfig = [
 
     defaultValue: undefined,
     labelName: '用户名称',
-    labelWidth: labelWidth,
     style: {
-      width: colWidth
+      width: '280px'
     },
     rules: [
       { required: false, message: '请输入用户名称', trigger: 'blur' }
@@ -84,10 +82,10 @@ export const adSearchConfig = [
       { required: false, message: '请选择性别', trigger: 'change' }
     ],
     placeholder: null,
-    labelWidth: labelWidth,
     style: {
-      width: colWidth
+      width: '280px'
     },
+
     selectList: [
       {
         label: '男',

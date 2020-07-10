@@ -29,7 +29,8 @@ vue-temp-cli addStore example -d src/store/main/example
 vue-temp-cli addService example -d src/service/main/example
 
 vue-temp-cli addPSS example -d src/views/main/example
-vue-temp-cli addTablePSS example2 -d src/views/main/example2
+vue-temp-cli addPSS statistical -d src/views/main/statistical
+vue-temp-cli addTablePSS gridview -d src/views/main/gridview
 
 vue-temp-cli addCom xxx -d src/components/xxx
 

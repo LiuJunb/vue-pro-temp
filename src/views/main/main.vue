@@ -91,10 +91,10 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('main/list', { id: 1 })
-      .then((res) => {
+    // this.$store.dispatch('main/list', { id: 'a' })
+    //   .then((res) => {
 
-      })
+    //   })
   },
   mounted() {
     this.initMenuSelect()
@@ -196,28 +196,28 @@ export default {
 
   //===========重写菜单的样式=========
   // 最外层菜单的ul
-  // /deep/ .el-aside,
-  // /deep/ .el-menu{
-  //   background: $bgColorF1;
-  // }
-  // // 最外层菜单的ul
-  // /deep/ .b-el-menu-vertical{
-  //   .el-menu-item:hover{
-  //     background-color: #cee2ff ;
-  //     &::before{
-  //       background: #3988FF !important;
-  //     }
-  //   }
-  //   // 菜单选中，聚焦，悬浮的背景样式
-  //   .el-menu-item:focus,
-  //   .el-menu-item.is-active{
-  //     background-color: $menuSelColor;
-  //     color: white;
-  //     &::before{
-  //       background: #3988FF !important;
-  //     }
-  //   }
-  // }
+  /deep/ .el-aside,
+  /deep/ .el-menu{
+    background: $bgColorF1;
+  }
+  // 最外层菜单的ul
+  /deep/ .b-el-menu-vertical{
+    .el-menu-item:hover{
+      background-color: #cee2ff ;
+      &::before{
+        background: #3988FF !important;
+      }
+    }
+    // 菜单选中，聚焦，悬浮的背景样式
+    .el-menu-item:focus,
+    .el-menu-item.is-active{
+      background-color: $menuSelColor;
+      color: white;
+      &::before{
+        background: #3988FF !important;
+      }
+    }
+  }
   //===========重写菜单的样式=========
 
 }

@@ -1,7 +1,7 @@
 import BaseUI from 'BaseUI'
 const { SearchType } = BaseUI.AdvancedSearch
-const colWidth = '280px' // 220 280
-const labelWidth = '90px' // 130px
+const colWidth = '200px'
+const labelWidth = '90px'
 export const adSearchConfig = [
   {
     ItemType: SearchType.custom,
@@ -10,6 +10,7 @@ export const adSearchConfig = [
     defaultValue: undefined,
     labelName: '网址',
     labelWidth: labelWidth,
+
     style: {
       width: colWidth
     },
@@ -65,9 +66,8 @@ export const adSearchConfig = [
 
     defaultValue: undefined,
     labelName: '用户名称',
-    labelWidth: labelWidth,
     style: {
-      width: colWidth
+      width: '280px'
     },
     rules: [
       { required: false, message: '请输入用户名称', trigger: 'blur' }
@@ -84,10 +84,10 @@ export const adSearchConfig = [
       { required: false, message: '请选择性别', trigger: 'change' }
     ],
     placeholder: null,
-    labelWidth: labelWidth,
     style: {
-      width: colWidth
+      width: '280px'
     },
+
     selectList: [
       {
         label: '男',
@@ -124,5 +124,38 @@ export const adSearchConfig = [
       ],
       placeholder: null
     }
+  },
+  {
+    ItemType: SearchType.selectDateRange,
+    fieldId: 'createDate',
+    defaultValue: null,
+    labelName: '创建时间',
+    valueFormat: 'yyyy-MM-dd',
+    // labelWidth: '150px',
+    rules: [
+      { required: false, message: '请选择时间', trigger: 'change' }
+    ],
+    placeholder: null,
+    style: {
+      width: '230px'
+    }
+  },
+  {
+    ItemType: SearchType.selectDate,
+    fieldId: 'startDate',
+    defaultValue: null,
+    labelName: '时间1',
+    // labelWidth: '150px',
+    valueFormat: 'yyyy-MM-dd',
+    rules: [
+      // { type: 'date', required: false, message: '请选择时间', trigger: 'change' }
+      { type: 'string', required: false, message: '请选择时间', trigger: 'change' }
+    ],
+    placeholder: null,
+    style: {
+      width: '140px'
+    }
+    // todo ...  其它的属性查找 element data-picker 组件属性
   }
+
 ]

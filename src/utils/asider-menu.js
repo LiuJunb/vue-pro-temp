@@ -29,9 +29,18 @@ const menuList = [
         icon: 'el-icon-setting',
         id: 13,
         level: 2,
-        name: '列表3',
+        name: '九宫格页面',
         type: 'menu',
-        url: '/main/example2',
+        url: '/main/gridview',
+        children: []
+      },
+      {
+        icon: 'el-icon-setting',
+        id: 14,
+        level: 2,
+        name: '统计页面',
+        type: 'menu',
+        url: '/main/statistical',
         children: []
       }
     ]

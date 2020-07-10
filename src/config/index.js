@@ -15,20 +15,6 @@ export const OtherList = [
     type: '0',
     parentId: 0,
 
-    parentUrl: '/main/smart-breadcrumb',
-    url: '/main/smart-breadcrumb/detail',
-    name: '详情',
-
-    children: [
-    ]
-  },
-  {
-    icon: '0',
-    id: 0,
-    level: 0,
-    type: '0',
-    parentId: 0,
-
     parentUrl: '/main/example',
     url: '/main/example/detail',
     name: '详情',
@@ -50,10 +36,10 @@ export const PaginatonDefaultConfig = {
 // 页面搜索默认参数
 export const CurSearchParams = {
   pageNum: 1, // 获取第几页
-  pageSize: 10, // 每页展示多少条
-  data: {
-
-  }
+  pageSize: 10 // 每页展示多少条
+  // todo ...
+  // data: {
+  // }
 }
 
 export const getAuthToken = () => {
