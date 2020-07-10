@@ -23,7 +23,7 @@ $fs14:14px;
 $fs12:12px;
 
 $navColor:#F7F9FE; // 导航底色
-$menuColor:#cee2ff; // 菜单选中底色
+$menuSelColor:#1B52A1; // 菜单选中底色
 $btnColor:#5E98FB; // 按钮颜色,主题色
 $activeBtnColor:#3D84FD; // 点击/划入时按钮颜色
 
@@ -59,3 +59,21 @@ $inputHover:#C0C4CC; //input hover 时边框颜色
 // 表格的宽
 $tableWidth:960px;
 // $tableWidth:595px;
+
+
+
+
+@mixin no-scroll-bar {
+  &::-webkit-scrollbar {
+    display:none
+  }
+  -ms-scroll-chaining: chained;
+  -ms-overflow-style: none;
+  -ms-content-zooming: zoom;
+  -ms-scroll-rails: none;
+  -ms-content-zoom-limit-min: 100%;
+  -ms-content-zoom-limit-max: 500%;
+  -ms-scroll-snap-type: proximity;
+  -ms-scroll-snap-points-x: snapList(100%, 200%, 300%, 400%, 500%);
+  -ms-overflow-style: none;
+}

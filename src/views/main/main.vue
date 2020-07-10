@@ -154,18 +154,19 @@ export default {
 
   .el-aside {
     height: $asideHeight;
-    &::-webkit-scrollbar {
-      display:none
-    }
-    -ms-scroll-chaining: chained;
-    -ms-overflow-style: none;
-    -ms-content-zooming: zoom;
-    -ms-scroll-rails: none;
-    -ms-content-zoom-limit-min: 100%;
-    -ms-content-zoom-limit-max: 500%;
-    -ms-scroll-snap-type: proximity;
-    -ms-scroll-snap-points-x: snapList(100%, 200%, 300%, 400%, 500%);
-    -ms-overflow-style: none;
+    @include no-scroll-bar;
+    // &::-webkit-scrollbar {
+    //   display:none
+    // }
+    // -ms-scroll-chaining: chained;
+    // -ms-overflow-style: none;
+    // -ms-content-zooming: zoom;
+    // -ms-scroll-rails: none;
+    // -ms-content-zoom-limit-min: 100%;
+    // -ms-content-zoom-limit-max: 500%;
+    // -ms-scroll-snap-type: proximity;
+    // -ms-scroll-snap-points-x: snapList(100%, 200%, 300%, 400%, 500%);
+    // -ms-overflow-style: none;
   }
   // 面包屑
   .smart-breadcrumb{
@@ -192,5 +193,32 @@ export default {
   .el-container:nth-child(7) .el-aside {
     line-height: 320px;
   }
+
+  //===========重写菜单的样式=========
+  // 最外层菜单的ul
+  // /deep/ .el-aside,
+  // /deep/ .el-menu{
+  //   background: $bgColorF1;
+  // }
+  // // 最外层菜单的ul
+  // /deep/ .b-el-menu-vertical{
+  //   .el-menu-item:hover{
+  //     background-color: #cee2ff ;
+  //     &::before{
+  //       background: #3988FF !important;
+  //     }
+  //   }
+  //   // 菜单选中，聚焦，悬浮的背景样式
+  //   .el-menu-item:focus,
+  //   .el-menu-item.is-active{
+  //     background-color: $menuSelColor;
+  //     color: white;
+  //     &::before{
+  //       background: #3988FF !important;
+  //     }
+  //   }
+  // }
+  //===========重写菜单的样式=========
+
 }
 </style>

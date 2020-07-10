@@ -94,11 +94,12 @@ instance.interceptors.response.use(response => {
     return Promise.reject(error)
   }
 
-  // 判断返回的状态码为400
+  // 判断返回的状态码为403
   if (error.response.status === 403) {
+    // todo ... 跳转到登录页面
     return Promise.reject(error)
   }
-  // 判断返回的状态码为403
+
   return Promise.reject(error)
 })
 

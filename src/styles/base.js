@@ -1,4 +1,5 @@
 export default {
+  // 菜单的宽度
   $navWidth: 230,
   $themeColor: '#5E98FB',
   $successColor: '#31B989',

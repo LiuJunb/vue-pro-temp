@@ -72,7 +72,8 @@ module.exports = {
   configureWebpack: (config) => {
     if (isDevelopment) {
       config.externals = {
-        BaseUI: 'BaseUI'
+        BaseUI: 'BaseUI',
+        echarts: 'echarts'
       }
     } else {
       // 1.排除哪些库不需要打包 import Vue from 'vue'
@@ -82,7 +83,8 @@ module.exports = {
         vuex: 'Vuex',
         'vue-router': 'VueRouter',
         axios: 'axios',
-        BaseUI: 'BaseUI'
+        BaseUI: 'BaseUI',
+        echarts: 'echarts'
       }
       // 2.公共代码的抽取
       config.optimization = {
@@ -175,6 +177,15 @@ module.exports = {
         ws: true,
         changeOrigin: true
       }
+      // '/api': {
+      //   target: 'http://192.168.99.88:8765', // hra 本地
+      //   ws: true,
+      //   changeOrigin: true,
+      //   // pathRewrite: {'^/api' : ''}的含义是重写url地址，把url的地址里面含有 '/api' 这样的 替换成 '',相当于前端给后端一个统一的baseURL
+      //   pathRewrite: {
+      //     '^/api': ''
+      //   }
+      // }
     }
   }
 }

@@ -1,6 +1,10 @@
 // 默认导出config.dev.js的导出的属性
+// 1.开发环境的配置
 export * from './config.dev.js'
+// 2.测试环境的配置
 // export * from './config.pro.js'
+// 3.线上环境的配置
+// export * from './config.real.js'
 
 // 其它菜单配置
 export const OtherList = [
