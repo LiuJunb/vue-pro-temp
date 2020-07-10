@@ -1,9 +1,10 @@
 import axios from 'axios'
 import qs from 'qs'
 import {
-  baseURL
+  baseURL,
+  getAuthToken
 } from '@/config/index.js'
-import { Loading } from 'element-ui'
+import { Loading, Message } from 'element-ui'
 let loading = null
 // 1.创建一个axios的实例
 const instance = axios.create({
@@ -36,14 +37,25 @@ instance.defaults.transformRequest = [function(data, config) {
 
 // 3.拦截请求
 instance.interceptors.request.use(config => {
-  loading = Loading.service({
-    fullscreen: true,
-    // background: 'rgba(0,0,0,0.2)',
-    background: 'transparent',
-    text: '加载中....'
-  })
+  // 不需要显示进度
+  if (config.noLoading) {
+
+    // 显示进度
+  } else {
+    loading = Loading.service({
+      fullscreen: true,
+      // background: 'rgba(0,0,0,0.2)',
+      background: 'transparent',
+      text: '加载中....'
+    })
+  }
+
   // 给所有的请求头：统一添加自定义的 auth_token
-  config.headers.auth_token = '30599484-08eb-42a8-ad5d-06c21399059d'
+  if (getAuthToken()) {
+    config.headers.auth_token = getAuthToken()
+  } else {
+    config.headers.auth_token = '30599484-08eb-42a8-ad5d-06c21399059d'
+  }
   return config
 },
 error => {
@@ -53,11 +65,30 @@ error => {
 // 4.拦截响应
 instance.interceptors.response.use(response => {
   // const data = response.data
-  if (loading) {
+  // console.log(response.config.noLoading)
+  if (loading && !response.config.noLoading) {
     loading.close()
+  }
+  // console.log(response)
+  if (response.data.code === 200 || response.data.code === 0) {
+
+  } else {
+    Message({
+      message: `${response.data.code} ${response.data.msg}`,
+      type: 'error'
+    })
   }
   return response
 }, error => {
+  if (loading) {
+    loading.close()
+  }
+  // console.log(error, 'error')
+  Message({
+    message: `${error.response ? error.response.status : ''}`,
+    // message: `${error}`,
+    type: 'error'
+  })
   // 判断错误url是否为请求接口*/
   if (error.response.status === 404) {
     return Promise.reject(error)

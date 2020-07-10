@@ -51,3 +51,10 @@ export const CurSearchParams = {
 
   }
 }
+
+export const getAuthToken = () => {
+  return window.sessionStorage.getItem('token') || ''
+}
+export const getUserInfo = () => {
+  return JSON.parse(window.sessionStorage.getItem('user')) || ''
+}

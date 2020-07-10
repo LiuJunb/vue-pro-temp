@@ -12,7 +12,7 @@ export default {
   children: [
   ],
   meta: {
-    keepAlive: false, // 是否需要缓存
+    keepAlive: true, // 是否需要缓存
     requireAuth: false // 是否需要登录才能访问
   }
 }

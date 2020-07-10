@@ -91,6 +91,10 @@ export default {
     }
   },
   created() {
+    this.$store.dispatch('main/list', { id: 1 })
+      .then((res) => {
+
+      })
   },
   mounted() {
     this.initMenuSelect()

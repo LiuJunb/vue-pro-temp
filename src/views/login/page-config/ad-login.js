@@ -2,7 +2,12 @@ import BaseUI from 'BaseUI'
 import Regular from '@/regular/index.js'
 const { AdvancedSearch } = BaseUI
 const { SearchType } = AdvancedSearch
-
+/**
+ * 验证用户名
+ * @param {} rule
+ * @param {*} value
+ * @param {*} callback
+ */
 var validateUsername = (rule, value, callback) => {
   const hasBlankSpace = new RegExp(Regular.HasBlankSpace[0])
   const blankSpace = hasBlankSpace.test(value)
@@ -10,8 +15,8 @@ var validateUsername = (rule, value, callback) => {
     callback(new Error('不能输入空格'))
   } else if (value === '') {
     callback(new Error('请输入密码'))
-  } else if (value.length < 6 || value.length > 11) {
-    callback(new Error('密码长度为6-11个字符'))
+  } else if (value.length < 5 || value.length > 11) {
+    callback(new Error('密码长度为5-11个字符'))
   } else {
     callback()
   }
@@ -63,8 +68,8 @@ var validatePassword = (rule, value, callback) => {
     callback(new Error('重复的字母/数组/符号不能出现3次'))
   } else if (isABC || isCBA) {
     callback(new Error('连续数字不超过三个'))
-  } else if (value.length < 8 || value.length > 24) {
-    callback(new Error('密码长度为8-24个字符'))
+  } else if (value.length < 6 || value.length > 24) {
+    callback(new Error('密码长度为6-24个字符'))
   } else {
     callback()
   }
@@ -103,5 +108,18 @@ export const adLogin = [
       { validator: validatePassword, trigger: 'change' }
     ],
     placeholder: '请输入密码'
+  },
+  {
+    ItemType: SearchType.custom,
+    customSlot: 'check',
+    fieldId: 'captcha',
+
+    defaultValue: '',
+    // labelName: '请输入密码',
+
+    rules: [
+      { required: true, message: '请输入验证码', trigger: 'blur' }
+    ],
+    placeholder: '请输入验证码'
   }
 ]
