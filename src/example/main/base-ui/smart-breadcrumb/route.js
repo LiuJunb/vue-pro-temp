@@ -10,5 +10,10 @@ export default {
   level: 2, // 2 级路由（number类型）
   component: SmartBreadcrumb,
   children: [
-  ]
+  ],
+  meta: {
+    title: '列表页',
+    keepAlive: true // 标记列表页需要被缓存
+  }
+
 }

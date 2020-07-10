@@ -18,27 +18,10 @@
     <h3>3</h3>
     <h3>3</h3>
     <h3>3</h3>
+
     <h3>3</h3>
     <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
+    <router-link to="/main/smart-breadcrumb/detail">Go to Bar</router-link>
     <el-button
      type="primary"
      @click="goToDetail()"
@@ -77,12 +60,15 @@ export default {
   },
   created() {
     console.log('create smb')
+    console.log(window.history)
+    console.log(window.history.pushState)
   },
   mounted() {
 
   },
   methods: {
     goToDetail() {
+      console.log(window.history.state.key)
       this.$router.push('/main/smart-breadcrumb/detail')
     }
   }

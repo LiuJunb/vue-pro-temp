@@ -1,6 +1,8 @@
 <template>
   <div class="detail">
     <h1>{{ msg }} Page</h1>
+    <button @click="goback">back</button>
+    <button @click="go">go</button>
   </div>
 </template>
 
@@ -38,7 +40,12 @@ export default {
 
   },
   methods: {
-
+    goback() {
+      this.$router.back()
+    },
+    go() {
+      this.$router.go(-1)
+    }
   }
 
 }

@@ -35,18 +35,17 @@
           </b-aside-menu>
         </el-aside>
         <el-container class="scrollbar__wrap">
-          pp
-          <el-main>
-            <b-smart-breadcrumb
-              :menuList="menuList"
-              :otherList="otherList">
-            </b-smart-breadcrumb>
-            <keep-alive
-              :include="['SmartBreadcrumb']"
-            >
-              <router-view/>
-            </keep-alive>
-
+          <b-smart-breadcrumb
+            :menuList="menuList"
+            :otherList="otherList">
+          </b-smart-breadcrumb>
+          <el-main class="scroll-wrap">
+            <div class="srcoll-view">
+              <keep-alive>
+                <router-view v-if="$route.meta.keepAlive"></router-view>
+              </keep-alive>
+              <router-view v-if="!$route.meta.keepAlive" />
+            </div>
           </el-main>
           <el-footer></el-footer>
         </el-container>
@@ -201,6 +200,19 @@ export default {
     color: #333;
     // text-align: center;
     height: $mainHeight;
+  }
+
+  .scroll-wrap{
+    position: relative;
+
+    height: 100%;
+    overflow: hidden;
+    .srcoll-view{
+      position: relative;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      height: 100%;
+    }
   }
 
   body > .el-container {

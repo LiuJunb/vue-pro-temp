@@ -9,12 +9,18 @@ vue-temp-cli addCom advanced-input -d src/base-ui/src/components/advanced-input/
 脚手架：
 
 1.修改生成的store 添加 //todo ...
-2.添加main 的store
+2.添加main 的 store
 3.修改分页种的高级搜索的配置，抽取出（labelWidth, 和 columnWidth）
 4.修改路由的配置
   meta: {
+    keepalive:true,
+    title:'',
+    savedPosition:{ x:0, y:0 }
     requireAuth: true // 该也买你需要登录才能访问
   }
+5.修改路由的配置(scrollBehier, afterEach)
+6.修改 <keepalive> <router-view></router-view> </keepalive>
+7.指定哪一个网络请求 不需要进度条
 
 后台系统：
   完善登录页面  
