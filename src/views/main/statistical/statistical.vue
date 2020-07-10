@@ -151,7 +151,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .statistical{
-  // 一行分成5分
+  // 背景样式
+  // background: $bgColorF1;
+  // margin: -20px;
+  // padding: 20px;
+  // width: 100%;
+
+  //part1一行分成5分
   @media only screen and (min-width: 1200px) {
     /deep/ .el-col-lg-5{
       width: 20%;
@@ -163,18 +169,22 @@ export default {
       }
   }
   .gird-col-part1{
-    border: 1px solid purple;
     height: 100px;
     margin-bottom: 20px;
-
+    background: white;
+    border-radius: 6px;
+    border: 1px solid $tableBorderColor;
   }
+  // part2
   .section-part2{
     margin-top: 20px;
   }
   .part-container{
-    border: 1px solid red;
     padding: 10px;
     margin-bottom: 15px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid $tableBorderColor;
   }
 }
 </style>

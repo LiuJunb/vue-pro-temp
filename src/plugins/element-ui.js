@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 import {
   Pagination,
-  // Dialog,
+  Dialog,
   // Autocomplete,
   // Dropdown,
   // DropdownMenu,
@@ -82,7 +82,7 @@ import {
 // 引入自定义主题会导致编译变慢
 import '../styles/theme-chalk.scss'
 Vue.use(Pagination)
-// Vue.use(Dialog)
+Vue.use(Dialog)
 // Vue.use(Autocomplete)
 // Vue.use(Dropdown)
 // Vue.use(DropdownMenu)

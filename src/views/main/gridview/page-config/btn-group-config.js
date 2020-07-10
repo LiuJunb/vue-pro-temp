@@ -1,4 +1,4 @@
-import BaseStyle from '@/styles/base.js'
+// import BaseStyle from '@/styles/base.js'
 export const btnListConfig = [
   {
     name: '新建1',
