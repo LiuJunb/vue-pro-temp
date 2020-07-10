@@ -38,16 +38,28 @@
 
           <el-main class="scrollbar__wrap">
               <!-- 二级路由占位符 ：:include=['DashBoard' 'xxx', 'xxx', 'xxx'] -->
-              <keep-alive :include="['Example']">
+              <!-- <keep-alive :include="['Example']"> -->
                 <!-- keep-alive会缓存不活动的组件(包含改组件的子组件)实例，而不是销毁它们 -->
-                <router-view></router-view>
+                <!-- <router-view></router-view> -->
+              <!-- </keep-alive> -->
+              <keep-alive>
+                <router-view
+                  v-if="$route.meta.keepAlive"
+                ></router-view>
               </keep-alive>
+              <router-view
+                v-if="!$route.meta.keepAlive"
+              ></router-view>
           </el-main>
           <el-footer></el-footer>
         </el-container>
       </el-container>
     </el-container>
-    <el-backtop target=".main .scrollbar__wrap"></el-backtop>
+    <el-backtop
+      target=".main .scrollbar__wrap"
+      :right="30"
+      :bottom="100">
+    </el-backtop>
   </div>
 </template>
 

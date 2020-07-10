@@ -19,5 +19,9 @@ export default {
     //     }
     //   ]
     // }
-  ]
+  ],
+  meta: {
+    keepAlive: false, // 是否需要缓存
+    requireAuth: false // 是否需要登录才能访问
+  }
 }
