@@ -2822,6 +2822,25 @@ const conf = require('./build/config')
   }
 ```
 
+# 25.添加测试库
+npm config set registry https://registry.npm.taobao.org --global
+npm config set disturl https://npm.taobao.org/dist --global
+
+https://www.cnblogs.com/zhoumingjie/p/11589469.html
+
+vue ui  -> 当前项目 -> 插件 -> 添加插件 -> @vue/cli-plugin-unit-jest
+
+-> 选中并安装 -> 点击完成按钮(提示正在调用@vue/cli-plugin-unit-jest)
+
+or
+
+cnpm uninstall @vue/cli-plugin-unit-jest --save-dev
+cnpm install @vue/cli-plugin-unit-jest@4.4.1 --save-dev
+yarn add @vue/cli-plugin-unit-jest --dev
+
+
+
+
 
 ### 注意事项
 
