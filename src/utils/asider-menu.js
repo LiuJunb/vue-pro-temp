@@ -42,6 +42,15 @@ const menuList = [
         type: 'menu',
         url: '/main/statistical',
         children: []
+      },
+      {
+        icon: 'el-icon-setting',
+        id: 15,
+        level: 2,
+        name: '测试自动生成的页面',
+        type: 'menu',
+        url: '/main/gen-page',
+        children: []
       }
     ]
   }

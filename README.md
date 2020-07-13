@@ -31,6 +31,8 @@ vue-temp-cli addService example -d src/service/main/example
 vue-temp-cli addPSS example -d src/views/main/example
 vue-temp-cli addPSS statistical -d src/views/main/statistical
 vue-temp-cli addTablePSS gridview -d src/views/main/gridview
+vue-temp-cli addGridPSS gen-page -d src/views/main/gen-page
+vue-temp-cli addHomePSS gen-page -d src/views/main/gen-page
 
 vue-temp-cli addCom xxx -d src/components/xxx
 
@@ -68,8 +70,6 @@ Use Ctrl+C to close it
 
 
 脚手架：
-
-1.修改生成的 store 添加 //todo ...
 
 3.修改分页种的高级搜索的配置，抽取出（labelWidth, 和 columnWidth）
 

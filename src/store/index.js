@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Types from './types.js'
 import otherModules from './load-modules.js'
+// console.log(otherModules)
 Vue.use(Vuex)
 export default new Vuex.Store({
   state: {

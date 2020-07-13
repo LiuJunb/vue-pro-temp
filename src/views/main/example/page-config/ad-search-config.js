@@ -1,7 +1,7 @@
 import BaseUI from 'BaseUI'
 const { SearchType } = BaseUI.AdvancedSearch
+const labelWidth = null // 130px
 const colWidth = '280px' // 220 280
-const labelWidth = '90px' // 130px
 export const adSearchConfig = [
   {
     ItemType: SearchType.custom,

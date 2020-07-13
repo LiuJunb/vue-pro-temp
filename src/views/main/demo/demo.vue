@@ -6,6 +6,7 @@
       ref="demoModal"
       @handleBtnClick="handleBtnClick">
     </demo-modal>
+
   </div>
 </template>
 
@@ -15,11 +16,13 @@
 // } from './page-config'
 import {
   DemoModal
+
 } from '@/components/index.js'
 export default {
   name: 'Demo',
   components: {
     DemoModal
+
   },
   mixins: [],
   props: {

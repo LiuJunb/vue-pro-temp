@@ -1,4 +1,12 @@
 /**
+ * 首字母 大写
+ * @param {*} name  Name
+ */
+const upperCaseFirstName = (name) => {
+  return name.charAt(0).toUpperCase() + name.slice(1)
+}
+
+/**
  * 自动加载 services
  */
 const services = {}
@@ -10,7 +18,21 @@ allServices.keys().forEach((item, index, array) => {
   const module = require(`@/service/${module_path}`) // @/service/login/index.js
   const serviceObj = module.default
   const serviceName = module_path.split('/') // ['login', 'index.js']
-  services[serviceName[serviceName.length - 2] + 'Service'] = serviceObj
+
+  let serviceNames = serviceName[serviceName.length - 2]
+  serviceNames = serviceNames.split('-')
+  let sname = ''
+  // ['login', 'index.js']
+  sname += serviceNames[0]
+  if (serviceNames.length > 1) {
+    // ['login-ab', 'index.js']
+    serviceNames.forEach((ele, index) => {
+      if (index !== 0) {
+        sname += upperCaseFirstName(serviceNames[index])
+      }
+    })
+  }
+  services[sname + 'Service'] = serviceObj
   // const ServiceFunc = module.default // 拿到了 class == func
   // console.log(new ServiceFunc()) // 新建对象
   // const serviceName = module_path.split('/') // [interrogaterecord, index.js]
