@@ -5,7 +5,7 @@ module.exports = {
     // '**/*.{vue,js,jsx}',
     '**/src/basic-comps/*.{vue,js,jsx}',
     '**/src/components/*.{vue,js,jsx}',
-    '**/src/utils/*.{js,jsx}',
+    // '**/src/utils/*.{js,jsx}',
     '!**/node_modules/**',
     '!**/vendor/**',
     '!**/dist/**'
