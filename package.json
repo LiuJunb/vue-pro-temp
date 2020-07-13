@@ -4,13 +4,14 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "local": "node ./server/index.js",
     "build": "vue-cli-service build",
-    "cre": "cre-cli -dir main/warning",
-    "cre2": "cre-cli -dir borading",
     "lint": "vue-cli-service lint",
     "base-ui": "npx webpack --config ./build/webpack_base_ui.config.js",
-    "base-ui-comps": "npx webpack --config ./build/webpack_base_ui_comps_config.js"
+    "base-ui-comps": "npx webpack --config ./build/webpack_base_ui_comps_config.js",
+    "cre": "cre-cli -dir main/warning",
+    "cre2": "cre-cli -dir borading",
+    "local": "node ./server/index.js",
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -22,8 +23,10 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.3.0",
     "@vue/cli-plugin-eslint": "^4.3.0",
+    "@vue/cli-plugin-unit-jest": "^4.4.1",
     "@vue/cli-service": "^4.3.0",
     "@vue/eslint-config-standard": "^5.1.2",
+    "@vue/test-utils": "^1.0.3",
     "argparse": "^1.0.10",
     "babel-eslint": "^10.1.0",
     "chalk": "^4.0.0",
