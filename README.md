@@ -2822,7 +2822,7 @@ const conf = require('./build/config')
   }
 ```
 
-# 25.添加测试库
+# 25.添加测试库 jest + vue-test-utils
 npm config set registry https://registry.npm.taobao.org --global
 npm config set disturl https://npm.taobao.org/dist --global
 
