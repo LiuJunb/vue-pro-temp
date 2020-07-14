@@ -2822,6 +2822,88 @@ const conf = require('./build/config')
   }
 ```
 
+# 25.添加测试库 jest + vue-test-utils
+npm config set registry https://registry.npm.taobao.org --global
+npm config set disturl https://npm.taobao.org/dist --global
+
+https://www.cnblogs.com/zhoumingjie/p/11589469.html
+https://blog.csdn.net/weixin_33910759/article/details/91398095
+
+vue ui  -> 当前项目 -> 插件 -> 添加插件 -> @vue/cli-plugin-unit-jest
+
+-> 选中并安装 -> 点击完成按钮(提示正在调用@vue/cli-plugin-unit-jest)
+
+or
+
+// 安装 并 调用（生成文件）
+vue add @vue/cli-plugin-unit-jest@4.4.1 // 发现没有生成对应的文件
+vue invoke @vue/cli-plugin-unit-jest // 调用之后生成下面的文件
+```
+     jest.config.js
+     tests/unit/example.spec.js
+     .eslintrc.js
+     README.md
+     package-lock.json
+     package.json
+
+```
+jest.config.js
+
+```
+
+module.exports = {
+  preset: '@vue/cli-plugin-unit-jest'
+}
+
+
+```
+
+test/unit/example.spec.js
+```
+
+import { shallowMount } from '@vue/test-utils'
+import HelloWorld from '@/components/HelloWorld.vue'
+
+describe('HelloWorld.vue', () => {
+  it('renders props.msg when passed', () => {
+    const msg = 'new message'
+    const wrapper = shallowMount(HelloWorld, {
+      propsData: { msg }
+    })
+    expect(wrapper.text()).toMatch(msg)
+  })
+})
+
+```
+
+
+eslintrc.js
+```
+
+  overrides: [
+    {
+      files: [
+        '**/__tests__/*.{j,t}s?(x)',
+        '**/tests/unit/**/*.spec.{j,t}s?(x)'
+      ],
+      env: {
+        jest: true
+      }
+    }
+  ]
+
+```
+
+package-lock.json
+
+```
+"test:unit": "vue-cli-service test:unit"
+
+
+"@vue/cli-plugin-unit-jest": "^4.4.1",
+
+```
+
 
 ### 注意事项
 
