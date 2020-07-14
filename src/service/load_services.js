@@ -1,4 +1,5 @@
 /**
+<<<<<<< HEAD
  * 首字母 大写
  * @param {*} name  Name
  */
@@ -7,6 +8,8 @@ const upperCaseFirstName = (name) => {
 }
 
 /**
+=======
+>>>>>>> admin-app
  * 自动加载 services
  */
 const services = {}

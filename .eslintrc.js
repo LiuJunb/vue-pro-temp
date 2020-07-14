@@ -1,17 +1,21 @@
 module.exports = {
   root: true,
+
   env: {
     browser: true,
     node: true,
     es6: true
   },
+
   extends: [
     'plugin:vue/essential',
     '@vue/standard'
   ],
+
   plugins: [
     'vue'
   ],
+
   rules: {
     // 'vue/no-parsing-error':'off',
     // no-console error 代表存在console就会报错， off 代表时关闭，on代表时开启
@@ -243,7 +247,20 @@ module.exports = {
     "vue/prop-name-casing": ["error", "camelCase"], // 属性的名称的命名方式
     
   },
+
   parserOptions: {
     parser: 'babel-eslint'
-  }
+  },
+
+  overrides: [
+    {
+      files: [
+        '**/__tests__/*.{j,t}s?(x)',
+        '**/tests/unit/**/*.spec.{j,t}s?(x)'
+      ],
+      env: {
+        jest: true
+      }
+    }
+  ]
 }

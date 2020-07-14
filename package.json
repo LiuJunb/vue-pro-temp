@@ -4,14 +4,15 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "local": "node ./server/index.js",
     "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "base-ui": "npx webpack --config ./build/webpack_base_ui.config.js",
+    "base-ui-comps": "npx webpack --config ./build/webpack_base_ui_comps_config.js",
     "cre": "cre-cli -dir main/warning",
     "cre2": "cre-cli -dir borading",
     "help": "cre-cli -h",
-    "lint": "vue-cli-service lint",
-    "base-ui": "npx webpack --config ./build/webpack_base_ui.config.js",
-    "base-ui-comps": "npx webpack --config ./build/webpack_base_ui_comps_config.js"
+    "local": "node ./server/index.js",
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
@@ -27,8 +28,10 @@
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@vue/cli-plugin-babel": "^4.3.0",
     "@vue/cli-plugin-eslint": "^4.3.0",
+    "@vue/cli-plugin-unit-jest": "^4.4.1",
     "@vue/cli-service": "^4.3.0",
     "@vue/eslint-config-standard": "^5.1.2",
+    "@vue/test-utils": "^1.0.3",
     "argparse": "^1.0.10",
     "babel-eslint": "^10.1.0",
     "babel-plugin-component": "^1.1.1",
