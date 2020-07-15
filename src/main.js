@@ -7,12 +7,15 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
+// 代码高亮
+import {
+  CodeH
+} from '@/components/index.js'
 // 导入插件
 import '@/plugins/index.js'
 // 导入全局样式
 import '@/styles/global.scss'
-
+Vue.component('code-h', CodeH)
 Vue.config.productionTip = false
 new Vue({
   router,

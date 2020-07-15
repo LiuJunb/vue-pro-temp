@@ -1,3 +1,27 @@
+# 8.添加代码高亮插件
+
+1.安装依赖
+npm install prismjs@1.16.0 --save
+npm install babel-plugin-prismjs@1.0.2 -D
+
+2.配置babel.config.js
+```
+
+    // 代码高亮插件
+    ['prismjs', {
+      languages: ['javascript', 'css', 'markup', 'json', 'bash', 'sass'],
+      plugins: ['line-numbers', 'file-highlight', 'highlight-keywords', 'normalize-whitespace'],
+      theme: 'okaidia',
+      css: true
+    }]
+
+```
+
+3.编写code-h组件
+```
+  
+```
+
 # 7 .主题样式
 
 
