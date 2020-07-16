@@ -77,7 +77,7 @@ export default {
 </script>
 <style lang="scss">
   .horizontal-scroll{
-    overflow: scroll;
+    overflow-y: scroll;
     // 一个屏幕
     max-height: 800px;
   }
