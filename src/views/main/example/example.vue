@@ -96,6 +96,7 @@ import {
 import {
   Sex
 } from '@/enum/index.js'
+import { MessageBox, Message } from 'element-ui'
 export default {
   name: 'Example',
   components: {
@@ -182,14 +183,14 @@ export default {
     //   this.curSearchParams.pageNum = 1
     //   this.getList(this.curSearchParams, valuse)
     // },
-    // // 按钮组
-    // handleBtnListClick(item) {
-    //   // console.log(item)
-    //   // 刷新(不需要缓存)
-    //   if (item._name === '刷新') {
-    //     this.getList({ ...CurSearchParams }, null)
-    //   }
-    // },
+    // 按钮组
+    handleBtnListClick(item) {
+      // console.log(item)
+      // 刷新(不需要缓存)
+      if (item._name === '刷新') {
+        this.getList({ ...CurSearchParams })
+      }
+    },
     handleBtnOperClick(item, row) {
       if (item.name === '查看') {
         // this.$router.push({
@@ -198,6 +199,36 @@ export default {
         //   query: { id: 1 }
         // })
         this.$router.push(`/main/example/detail?id=${1}`)
+      } else if (item.name === '详情') {
+        this.$router.push(`/main/example/detail?id=${1}`)
+      } else if (item.name === '编辑') {
+        // todo ...
+      } else if (item.name === '删除') {
+        MessageBox.confirm('此操作将永久删除该记录, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$store.dispatch(`${this.pageListActions}Delete`, {
+            id: row.id
+          }).then((res) => {
+            if (res.code === 0) {
+              Message({
+                message: `删除成功`,
+                type: 'success'
+              })
+              // 刷新页面（需要缓存）
+              this.getList(this.curSearchParams)
+            } else {
+              Message({
+                message: `删除失败`,
+                type: 'error'
+              })
+            }
+          })
+        }).catch(() => {
+        // 点击取消
+        })
       }
     },
     handleSelectionClick(rows) {
@@ -210,20 +241,6 @@ export default {
     //   // 需要缓存
     //   this.getList(this.curSearchParams, { ...this.curSearchParams.data })
     // }
-  },
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      // 通过 `vm` 访问组件this实例
-      if ((from.params.type && from.params.type === 'detail')) {
-        // 需要缓存(详情返回)
-        vm.getList(vm.curSearchParams, { ...vm.curSearchParams.data })
-      } else {
-        // 不需要缓存（从其它菜单跳转这个页面）
-        if (!vm.isFirstRequest) { // 排除第一次初始化的请求
-          vm.getList({ ...CurSearchParams }, null)
-        }
-      }
-    })
   }
 
 }

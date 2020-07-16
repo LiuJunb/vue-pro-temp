@@ -64,7 +64,7 @@ import {
   btnListConfig
 } from './page-config'
 import {
-// CurSearchParams
+  CurSearchParams
 } from '@/config/index.js'
 
 import {
@@ -157,14 +157,14 @@ export default {
     //   this.getList(this.curSearchParams, valuse)
     // },
 
-    // // 按钮组
-    // handleBtnListClick(item) {
-    //   // console.log(item)
-    //   // 刷新(不需要缓存)
-    //   if (item._name === '刷新') {
-    //     this.getList({ ...CurSearchParams }, null)
-    //   }
-    // },
+    // 按钮组
+    handleBtnListClick(item) {
+      // console.log(item)
+      // 刷新(不需要缓存)
+      if (item._name === '刷新') {
+        this.getList({ ...CurSearchParams })
+      }
+    }
 
     // handlePaginatonClick(pagination) {
     //   // console.log(pagination)
