@@ -15,7 +15,7 @@
     <p><a href="">mockjs</a>：生成随机数据，拦截 Ajax 请求。</p>
 
     <br>
-    <b-title-tag name="2.项目目录结构"></b-title-tag>
+    <b-title-tag name="3.项目目录结构"></b-title-tag>
     <code-h
       lang="json"
       content='
@@ -153,13 +153,11 @@
 
       '></code-h>
     <br>
-    <b-title-tag name="3.xxx"></b-title-tag>
+    <b-title-tag name="4.开始新建项目"></b-title-tag>
     <code-h
       lang="html"
       content='
-        <au-button type="primary" @click="loading = !loading">按钮</au-button>
-        <au-button type="primary" :disabled="true">按钮</au-button>
-        <au-button type="primary" :loading="loading">按钮</au-button>
+
       '></code-h>
   </div>
 </template>

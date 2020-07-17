@@ -3,6 +3,9 @@ vue-temp-cli addPage detail -d src/example/main/base-ui/smart-breadcrumb/detail
 
 vue-temp-cli addPage plugin -d src/example/main/introduction/plugin
 vue-temp-cli addPage router -d src/example/main/introduction/router
+vue-temp-cli addPage newpage -d src/example/main/introduction/newpage
+vue-temp-cli addPage newstore -d src/example/main/introduction/newstore
+vue-temp-cli addPage newservice -d src/example/main/introduction/newservice
 
 
 

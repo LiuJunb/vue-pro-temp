@@ -53,7 +53,7 @@ const menuList = [
         level: 2,
         name: '新建一个页面',
         type: 'menu',
-        url: '/main/code-specification',
+        url: '/main/newpage',
         children: [
         ]
       },
@@ -63,7 +63,7 @@ const menuList = [
         level: 2,
         name: '新建一个组件',
         type: 'menu',
-        url: '/main/code-specification',
+        url: '/main/demo',
         children: [
         ]
       },
@@ -73,7 +73,7 @@ const menuList = [
         level: 2,
         name: '新建store层',
         type: 'menu',
-        url: '/main/code-specification',
+        url: '/main/newstore',
         children: [
         ]
       },
@@ -83,7 +83,7 @@ const menuList = [
         level: 2,
         name: '新建service层',
         type: 'menu',
-        url: '/main/code-specification',
+        url: '/main/newservice',
         children: [
         ]
       },
