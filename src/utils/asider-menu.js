@@ -33,7 +33,7 @@ const menuList = [
         level: 2,
         name: '插件规范',
         type: 'menu',
-        url: '/main/code-specification',
+        url: '/main/plugin',
         children: [
         ]
       },
@@ -43,7 +43,7 @@ const menuList = [
         level: 2,
         name: '路由规范',
         type: 'menu',
-        url: '/main/code-specification',
+        url: '/main/router',
         children: [
         ]
       },

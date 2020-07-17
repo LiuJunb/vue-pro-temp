@@ -4,11 +4,11 @@ import AllRoute from '@/example/load-routes.js'
 const aRoutes = AllRoute.filter((route) => {
   return route.level === 1
 })
-// 获取一级路由
+// 获取二级路由
 const bRoutes = AllRoute.filter((route) => {
   return route.level === 2
 })
-// 获取一级路由
+// 获取三级路由
 const cRoutes = AllRoute.filter((route) => {
   return route.level === 3
 })
@@ -27,6 +27,6 @@ aRoutes.forEach(element1 => {
     }
   })
 })
-// console.log(aRoutes)
+console.log(aRoutes)
 export default aRoutes
 

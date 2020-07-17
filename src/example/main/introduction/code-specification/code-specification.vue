@@ -7,6 +7,7 @@
       content='
       1.项目中的文件夹、文件统一使用小写命名。
         如果有多个单词则使用（-）中划线来连接。建议命名不要超过3个单词
+
         // 推荐（文件夹、文件）命名
         button  button-group
         button.vue button-group.vue findpro-modal.vue
@@ -25,8 +26,10 @@
         如果有多个单词也是每个单词首字母大写。建议命名不要超过3个单词
 
         Button ButtonGroup FindProModal
+
       3.新建的组件放到一个目录里面
         例如：
+
         button
           button.vue
     '>
@@ -40,6 +43,7 @@
       content='
       1.basic-comps 独立组件模块，该模块编写的独立组件，该模块的组件之前不能互相引用,
         并且编写的组件统一在index.js中导出
+
         basic-comps
           button
             button.vue
@@ -47,12 +51,14 @@
 
       2.components 非独立组件模块，该模块编写非独立的组件（组合组件和业务组件）。
         1）该模块的组件之前能互相引用，引用时直接指定要引用的单个组件
+
           import Icon from "./icon/icon.vue" // 正确
           import { Icon } from "@/components/index.js" // 错误
 
         2）该模块的组件可以引用basic-comps模块的组件，反过来则不行
 
       2.config 配置模块，该模块提供 index.js 统一导出所有的配置
+
         config
           config.mock.js // mock环境的配置
           config.dev.js // 开发环境的配置
@@ -62,6 +68,7 @@
           index.js 统一导出所有的配置
 
       3.enum 枚举 推荐的定义方式
+
         export const Sex = {
           Man: {
             value: "男",
@@ -80,14 +87,19 @@
       4.mixins 混合模块，该模块提供 index.js 统一导出所有的混合
         1)如果一个组件使用到多个混合时，注意多个混合之间的属性相同的情况
          例如：
+
           button
             button.vue // 引入了A-mixin.js 和 B-mixin.js, 注意这两个混合之间是否有重复的属性，重复属性会出现覆盖的问题
+
         2）建议每个混合中的属性都添加 前缀
 
       5.router,service 和 views 模块
+
         使用自动加载,这三个模块的目录结构推荐是基本一样
 
-      6.xx 模块
+      6.views 模块,建议只编写页面组件
+
+      7.xxx 模块
 
     '>
     </code-h>
@@ -95,131 +107,115 @@
     <br>
     <b-title-tag name="3.组件编写规范"></b-title-tag>
     <br>
+    <p>1.组件模板的规范</p>
+    <code-h
+      lang="html"
+      content='
+      1.标签的属性必须在单独一行
+      2.v-bind: 和 : 统一使用:
+      3.v-on 和 @ 统一使用@
+      3.模板中引用组件时使用字母小写加 - ,
+        例如：<pascal-case></pascal-case>
+      4.禁止templent上使用this
+      5.规范标签上属性的顺序,并且每要给属性占一行，例如：
+      <pascal-case
+        v-if
+        v-for
+        :class
+        :style
+        :isShow
+        :defalutValue
+        :data
+        :otherAttr
+        @handleXxxClick
+        @handleXxxChange
+        @handleXxxInput
+      >
+      </pascal-case>
+      6.点击事件默认以handle开头,并且放到属性的最后
+
+    '>
+    </code-h>
+    <p>2.组件名的规范 </p>
     <code-h
       lang="js"
       content='
-      1.组件模板的规范
+      1.组件名首字母大写
+        Button PascalCase ...
+    '>
+    </code-h>
+    <p>3.组件属性的规范</p>
+    <code-h
+      lang="js"
+      content='
+      1.组件的属性名使用驼峰命名, 要指定类型和默认值
+        例如：
+        props: {
+          type: {
+            type: String,
+            default: "card"
+          },
+          defaultActiveName: {
+            type: String,
+            default: "first"
+          }
+        },
+    '>
+    </code-h>
+    <p>4.组件生命周期和属性顺序的规范</p>
+         例如：
+    <code-h
+      lang="js"
+      content='
 
-      2.组件名的规范
+      export default {
+        name: "DemoComp",
+        components: {
+        },
+        mixins: [],
+        props: {
+          msg: {
+            type: String,
+            default: "Demo"
+          }
+        },
+        data: function() {
+          return {
 
-      3.组件属性的规范
+          }
+        },
+        computed: {
 
-      4.组件生命周期和属性顺序的规范
+        },
+        watch: {
+
+        },
+        created() {
+
+        },
+        mounted() {
+
+        },
+        methods: {
+
+        }
+
+      }
+      </script>
 
     '>
     </code-h>
 
     <br>
-    <b-title-tag name="1.命名规范"></b-title-tag>
+    <b-title-tag name="1.Xxx规范"></b-title-tag>
     <br>
     <code-h
       lang="js"
       content='
-      1.项目中的文件夹、文件统一使用小写命名。
-        如果有多个单词则使用（-）中划线来连接。建议命名不要超过3个单词
-      2.组件名称的命名使用单词首字母大写。
-        如果有多个单词也是每个单词首字母大写。建议命名不要超过3个单词
-      3.
+      1.
     '>
     </code-h>
 
-    <br>
-    <b-title-tag name="1.命名规范"></b-title-tag>
-    <br>
-    <code-h
-      lang="js"
-      content='
-      1.项目中的文件夹、文件统一使用小写命名。
-        如果有多个单词则使用（-）中划线来连接。建议命名不要超过3个单词
-      2.组件名称的命名使用单词首字母大写。
-        如果有多个单词也是每个单词首字母大写。建议命名不要超过3个单词
-      3.
-    '>
-    </code-h>
-
-    <br>
-    <b-title-tag name="1.命名规范"></b-title-tag>
-    <br>
-    <code-h
-      lang="js"
-      content='
-      1.项目中的文件夹、文件统一使用小写命名。
-        如果有多个单词则使用（-）中划线来连接。建议命名不要超过3个单词
-      2.组件名称的命名使用单词首字母大写。
-        如果有多个单词也是每个单词首字母大写。建议命名不要超过3个单词
-      3.
-    '>
-    </code-h>
-
-    <br>
-    <b-title-tag name="1.命名规范"></b-title-tag>
-    <br>
-    <code-h
-      lang="js"
-      content='
-      1.项目中的文件夹、文件统一使用小写命名。
-        如果有多个单词则使用（-）中划线来连接。建议命名不要超过3个单词
-      2.组件名称的命名使用单词首字母大写。
-        如果有多个单词也是每个单词首字母大写。建议命名不要超过3个单词
-      3.
-    '>
-    </code-h>
-
-    <br>
-    <b-title-tag name="1.命名规范"></b-title-tag>
-    <br>
-    <code-h
-      lang="js"
-      content='
-      1.项目中的文件夹、文件统一使用小写命名。
-        如果有多个单词则使用（-）中划线来连接。建议命名不要超过3个单词
-      2.组件名称的命名使用单词首字母大写。
-        如果有多个单词也是每个单词首字母大写。建议命名不要超过3个单词
-      3.
-    '>
-    </code-h>
-
-    <br>
-    <b-title-tag name="1.命名规范"></b-title-tag>
-    <br>
-    <code-h
-      lang="js"
-      content='
-      1.项目中的文件夹、文件统一使用小写命名。
-        如果有多个单词则使用（-）中划线来连接。建议命名不要超过3个单词
-      2.组件名称的命名使用单词首字母大写。
-        如果有多个单词也是每个单词首字母大写。建议命名不要超过3个单词
-      3.
-    '>
-    </code-h>
-
-    <br>
-    <b-title-tag name="1.命名规范"></b-title-tag>
-    <br>
-    <code-h
-      lang="js"
-      content='
-      1.项目中的文件夹、文件统一使用小写命名。
-        如果有多个单词则使用（-）中划线来连接。建议命名不要超过3个单词
-      2.组件名称的命名使用单词首字母大写。
-        如果有多个单词也是每个单词首字母大写。建议命名不要超过3个单词
-      3.
-    '>
-    </code-h>
-
-    <br>
-    <b-title-tag name="1.命名规范"></b-title-tag>
-    <br>
-    <code-h
-      lang="js"
-      content='
-      1.项目中的文件夹、文件统一使用小写命名。
-        如果有多个单词则使用（-）中划线来连接。建议命名不要超过3个单词
-      2.组件名称的命名使用单词首字母大写。
-        如果有多个单词也是每个单词首字母大写。建议命名不要超过3个单词
-      3.
-    '>
-    </code-h>
   </div>
 </template>
 

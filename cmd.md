@@ -1,6 +1,9 @@
 vue-temp-cli addPage advanced-input -d src/example/main/base-ui/advanced-input
 vue-temp-cli addPage detail -d src/example/main/base-ui/smart-breadcrumb/detail
 
+vue-temp-cli addPage plugin -d src/example/main/introduction/plugin
+vue-temp-cli addPage router -d src/example/main/introduction/router
+
 
 
 vue-temp-cli addCom advanced-input -d src/base-ui/src/components/advanced-input/src

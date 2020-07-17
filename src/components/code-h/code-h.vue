@@ -79,7 +79,7 @@ export default {
   .horizontal-scroll{
     overflow-y: scroll;
     // 一个屏幕
-    max-height: 800px;
+    // max-height: 800px;
   }
   .line-numbers-rows {
     span {
