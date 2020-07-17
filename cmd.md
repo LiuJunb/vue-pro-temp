@@ -7,6 +7,13 @@ vue-temp-cli addPage newpage -d src/example/main/introduction/newpage
 vue-temp-cli addPage newstore -d src/example/main/introduction/newstore
 vue-temp-cli addPage newservice -d src/example/main/introduction/newservice
 
+vue-temp-cli addPage mockjs -d src/example/main/introduction/mockjs
+vue-temp-cli addPage elementstyle -d src/example/main/introduction/elementstyle
+vue-temp-cli addPage hyzs -d src/example/main/introduction/hyzs
+vue-temp-cli addPage permissions -d src/example/main/introduction/permissions
+vue-temp-cli addPage theme -d src/example/main/introduction/theme
+vue-temp-cli addPage proxy -d src/example/main/introduction/proxy
+
 
 
 vue-temp-cli addCom advanced-input -d src/base-ui/src/components/advanced-input/src

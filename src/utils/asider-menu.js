@@ -51,27 +51,27 @@ const menuList = [
         icon: 'el-icon-setting',
         id: 15,
         level: 2,
-        name: '新建一个页面',
+        name: '新建demo页面',
         type: 'menu',
         url: '/main/newpage',
         children: [
         ]
       },
-      {
-        icon: 'el-icon-setting',
-        id: 16,
-        level: 2,
-        name: '新建一个组件',
-        type: 'menu',
-        url: '/main/demo',
-        children: [
-        ]
-      },
+      // {
+      //   icon: 'el-icon-setting',
+      //   id: 16,
+      //   level: 2,
+      //   name: '新建一个组件',
+      //   type: 'menu',
+      //   url: '/main/demo',
+      //   children: [
+      //   ]
+      // },
       {
         icon: 'el-icon-setting',
         id: 17,
         level: 2,
-        name: '新建store层',
+        name: '新建demo页面store层',
         type: 'menu',
         url: '/main/newstore',
         children: [
@@ -81,7 +81,7 @@ const menuList = [
         icon: 'el-icon-setting',
         id: 18,
         level: 2,
-        name: '新建service层',
+        name: '新建demo页面service层',
         type: 'menu',
         url: '/main/newservice',
         children: [
@@ -93,7 +93,7 @@ const menuList = [
         level: 2,
         name: 'mockjs使用',
         type: 'menu',
-        url: '/main/code-specification',
+        url: '/main/mockjs',
         children: [
         ]
       },
@@ -103,7 +103,7 @@ const menuList = [
         level: 2,
         name: '按钮权限',
         type: 'menu',
-        url: '/main/code-specification',
+        url: '/main/permissions',
         children: [
         ]
       },
@@ -113,7 +113,7 @@ const menuList = [
         level: 2,
         name: '重写element样式',
         type: 'menu',
-        url: '/main/code-specification',
+        url: '/main/elementstyle',
         children: [
         ]
       },
@@ -123,7 +123,7 @@ const menuList = [
         level: 2,
         name: '自定主题',
         type: 'menu',
-        url: '/main/code-specification',
+        url: '/main/theme',
         children: [
         ]
       },
@@ -133,7 +133,7 @@ const menuList = [
         level: 2,
         name: '配置代理',
         type: 'menu',
-        url: '/main/code-specification',
+        url: '/main/proxy',
         children: [
         ]
       },
@@ -143,7 +143,7 @@ const menuList = [
         level: 2,
         name: 'hyzs-cli 脚手架',
         type: 'menu',
-        url: '/main/code-specification',
+        url: '/main/hyzs',
         children: [
         ]
       }
