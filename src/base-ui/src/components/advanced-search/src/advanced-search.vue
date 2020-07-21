@@ -309,7 +309,10 @@
       </template>
 
       <!-- 自定提交表单按钮 -->
-      <el-form-item v-if="showBtn">
+      <el-form-item
+        v-if="showBtn"
+        label="  "
+      >
         <slot
           name="form-subit"
           :refForm="this"
@@ -326,6 +329,14 @@
             @click="onReset">
             重置
           </el-button>
+          <el-button
+            v-if="!(showItemCounts>=1000)"
+            type="text"
+            @click="changeArrow">
+            <i :class="getArrowClass"></i>
+            {{arrowDirection=='down'?'收起':'展开'}}
+          </el-button>
+
         </slot>
       </el-form-item>
 
@@ -675,9 +686,17 @@ export default {
       type: Boolean,
       default: true
     },
+    showItemCounts: {
+      type: Number,
+      default: 6 // 1000
+    },
     hashPre: {
       type: String,
       default: 'hash_'
+    },
+    defaultArrowDirection: {
+      type: String,
+      default: 'down' // down / up
     }
 
   },
@@ -686,11 +705,17 @@ export default {
       InputType,
       formName: 'adsForm',
       formData: getFormFieldIds(this.formItems),
-      formRules: getFormRules(this.formItems)
+      formRules: getFormRules(this.formItems),
+      arrowDirection: this.defaultArrowDirection
     }
   },
   computed: {
-
+    getArrowClass() {
+      return {
+        'el-icon-d-arrow-left': this.arrowDirection === 'down',
+        'el-icon-d-arrow-right': this.arrowDirection === 'up'
+      }
+    }
   },
   watch: {
     formItems: (bewV, oldV) => {
@@ -732,6 +757,14 @@ export default {
       this.$refs[this.formName].resetFields()
       this.$emit('handleReset', '')
     },
+    // 监听点击收起和展开的点击事件
+    changeArrow() {
+      if (this.arrowDirection === 'down') {
+        this.arrowDirection = 'up'
+      } else {
+        this.arrowDirection = 'down'
+      }
+    },
     handleInputChange(value, formItem) {
       // console.log('val=', value)
       this.handleFormItemChange(value, formItem)
@@ -757,6 +790,11 @@ export default {
 .advanced-search{
   .line{
     text-align: center;
+  }
+
+  .el-icon-d-arrow-left,
+  .el-icon-d-arrow-right{
+    transform: rotate(90deg);
   }
 
   // .liujun{
