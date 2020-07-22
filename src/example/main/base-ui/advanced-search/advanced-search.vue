@@ -176,7 +176,7 @@ export default {
       })
     },
     handleSubmit(formData) {
-      console.log(new Date(formData.data1).toLocaleString())
+      // console.log(new Date(formData.data1).toLocaleString())
       console.log(formData)
     },
     handleReset() {

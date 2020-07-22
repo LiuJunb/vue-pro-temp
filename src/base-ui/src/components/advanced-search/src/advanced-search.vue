@@ -10,12 +10,17 @@
       class="b-search-form-inline"
       v-bind="$attrs"
       >
+      <!-- <b-advanced-input
+
+      >
+      </b-advanced-input> -->
       <template v-for="(formItem, index) in formItems">
         <!-- 1.InputType.default 默认输入框 -->
         <el-form-item
-          v-if="formItem.ItemType === InputType.default"
+          v-if="formItem.ItemType === InputType.default && index<showItemCounts"
           :id="hashPre+formItem.fieldId"
           :key="index"
+          :style="[{ display: index < showItemCounts ? 'inline-block' : 'none' }]"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
@@ -65,9 +70,10 @@
 
         <!-- 2.InputType.select 默认select选着输入框 -->
         <el-form-item
-          v-if="formItem.ItemType === InputType.select"
+          v-if="formItem.ItemType === InputType.select && index<showItemCounts"
           :id="hashPre+formItem.fieldId"
           :key="index"
+          :style="[{ display: index < showItemCounts ? 'inline-block' : 'none' }]"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
@@ -98,9 +104,10 @@
 
         <!-- 3.InputType.selectDate -->
         <el-form-item
-          v-if="formItem.ItemType === InputType.selectDate"
+          v-if="formItem.ItemType === InputType.selectDate && index<showItemCounts"
           :id="hashPre+formItem.fieldId"
           :key="index"
+          :style="[{ display: index < showItemCounts ? 'inline-block' : 'none' }]"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
@@ -120,9 +127,10 @@
 
         <!-- 4.InputType.selectDateRange -->
         <el-form-item
-          v-if="formItem.ItemType === InputType.selectDateRange"
+          v-if="formItem.ItemType === InputType.selectDateRange && index<showItemCounts"
           :id="hashPre+formItem.fieldId"
           :key="index"
+          :style="[{ display: index < showItemCounts ? 'inline-block' : 'none' }]"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
@@ -146,9 +154,10 @@
 
         <!-- 5.InputType.checkboxs -->
         <el-form-item
-          v-if="formItem.ItemType === InputType.checkboxs"
+          v-if="formItem.ItemType === InputType.checkboxs && index<showItemCounts"
           :id="hashPre+formItem.fieldId"
           :key="index"
+          :style="[{ display: index < showItemCounts ? 'inline-block' : 'none' }]"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
@@ -167,9 +176,10 @@
 
         <!-- 6.InputType.radios -->
         <el-form-item
-          v-if="formItem.ItemType === InputType.radios"
+          v-if="formItem.ItemType === InputType.radios && index<showItemCounts"
           :id="hashPre+formItem.fieldId"
           :key="index"
+          :style="[{ display: index < showItemCounts ? 'inline-block' : 'none' }]"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
@@ -187,11 +197,14 @@
 
         <!-- 9.InputType.selectAndInput 默认select选着输入框 -->
         <el-form-item
-          v-if="formItem.ItemType === InputType.selectAndInput"
+          v-if="formItem.ItemType === InputType.selectAndInput && index<showItemCounts"
           :id="hashPre+formItem.fieldId"
           :key="index"
           :required="formItem.required"
-          :style="{marginBottom:($attrs.size==='small'||$attrs.size==='mini')? '0px' :'20px'}"
+          :style="[
+            { marginBottom:($attrs.size==='small'||$attrs.size==='mini')? '0px' :'20px'},
+            { display: index < showItemCounts ? 'inline-block' : 'none' }
+          ]"
           class="liujun"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth">
@@ -244,11 +257,14 @@
 
         <!-- 10.InputType.selectDataAndTime 默认select选着输入框 -->
         <el-form-item
-          v-if="formItem.ItemType === InputType.selectDataAndTime"
+          v-if="formItem.ItemType === InputType.selectDataAndTime && index<showItemCounts"
           :id="hashPre+formItem.fieldId"
           :key="index"
           :required="formItem.required"
-          :style="{marginBottom:($attrs.size==='small'||$attrs.size==='mini')? '0px' :'20px'}"
+          :style="[
+            {marginBottom:($attrs.size==='small'||$attrs.size==='mini')? '0px' :'20px'},
+            { display: index < showItemCounts ? 'inline-block' : 'none' }
+          ]"
           class="liujun"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth">
@@ -291,9 +307,10 @@
 
         <!-- 自定义item的布局 InputType.custom -->
         <el-form-item
-          v-if="formItem.ItemType === InputType.custom"
+          v-if="formItem.ItemType === InputType.custom && index<showItemCounts"
           :id="hashPre+formItem.fieldId"
           :key="index"
+          :style="[{ display: index < showItemCounts ? 'inline-block' : 'none' }]"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
@@ -312,6 +329,7 @@
       <el-form-item
         v-if="showBtn"
         label="  "
+        :label-width="searchItemLabelwidth"
       >
         <slot
           name="form-subit"
@@ -330,7 +348,7 @@
             重置
           </el-button>
           <el-button
-            v-if="!(showItemCounts>=1000)"
+            v-if="showArrow"
             type="text"
             @click="changeArrow">
             <i :class="getArrowClass"></i>
@@ -365,10 +383,17 @@ import {
   getFormFieldIds,
   getFormRules
 } from '../../../utils/input-type.js'
+
+// vue 不会被打包，因为 webpck.components 配置了externals
+// import vue from 'vue'
+
+// BAdvancedInput 不会被打包，因为 webpck.components 配置了externals
+// import BAdvancedInput from 'components/advanced-input'
+
 export default {
   name: 'BAdvancedSearch',
   components: {
-
+    // BAdvancedInput
   },
   mixins: [],
   props: {
@@ -678,25 +703,40 @@ export default {
       type: Boolean,
       default: true
     },
+    // 是否显示 搜素按钮
     showSearch: {
       type: Boolean,
       default: true
     },
+    // 是否显示 重置按钮
     showReset: {
       type: Boolean,
       default: true
     },
-    showItemCounts: {
-      type: Number,
-      default: 6 // 1000
+    // 是否显示：收起，展开
+    showArrow: {
+      type: Boolean,
+      default: true
     },
+    // 收起时显示多少个item， 默认6个
+    defaultShowItemCounts: {
+      type: Number,
+      default: 6
+    },
+    // 标签 id 的前缀
     hashPre: {
       type: String,
       default: 'hash_'
     },
+    // 默认显示收起文本
     defaultArrowDirection: {
       type: String,
       default: 'down' // down / up
+    },
+    // 搜素 按钮距离左边的间距
+    searchItemLabelwidth: {
+      type: String,
+      default: null
     }
 
   },
@@ -706,7 +746,8 @@ export default {
       formName: 'adsForm',
       formData: getFormFieldIds(this.formItems),
       formRules: getFormRules(this.formItems),
-      arrowDirection: this.defaultArrowDirection
+      arrowDirection: this.defaultArrowDirection,
+      showItemCounts: this.formItems.length
     }
   },
   computed: {
@@ -760,9 +801,12 @@ export default {
     // 监听点击收起和展开的点击事件
     changeArrow() {
       if (this.arrowDirection === 'down') {
+        // 点击收起,显示6个
         this.arrowDirection = 'up'
+        this.showItemCounts = this.defaultShowItemCounts
       } else {
         this.arrowDirection = 'down'
+        this.showItemCounts = this.formItems.length
       }
     },
     handleInputChange(value, formItem) {
