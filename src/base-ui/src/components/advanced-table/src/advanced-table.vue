@@ -55,6 +55,7 @@
       v-if="hasPagination"
       v-bind="pagination"
       :layout="pagination.layout?pagination.layout:'total, sizes, prev, pager, next, jumper'"
+      :background="true"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange">
     </el-pagination>

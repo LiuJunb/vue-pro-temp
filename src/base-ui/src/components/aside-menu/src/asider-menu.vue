@@ -37,6 +37,10 @@
           <!-- 一级菜单 -->
           <i :class="[iconClass,menu.icon]"></i>
           <span slot="title">{{menu.name}}</span>
+          <i
+            v-if="showLinkIcon(menu.url)"
+            :class="[iconClass,'el-icon-link','menu__icon-link']"
+          ></i>
         </el-menu-item>
         <!-- else 是二级菜单-->
         <el-submenu
@@ -57,6 +61,10 @@
               :index="bmenu.id+''">
               <!-- <i :class="bmenu.icon"></i> -->
               {{bmenu.name}}
+              <i
+                v-if="showLinkIcon(bmenu.url)"
+                :class="[iconClass,'el-icon-link','menu__icon-link']"
+              ></i>
             </el-menu-item>
             <!-- else 三级目录-->
             <el-submenu
@@ -76,6 +84,10 @@
                 :index="cmenu.id+''">
                 <!-- <i :class="bmenu.icon"></i> -->
                 {{cmenu.name}}
+                <i
+                  v-if="showLinkIcon(cmenu.url)"
+                  :class="[iconClass,'el-icon-link','menu__icon-link']"
+                ></i>
               </el-menu-item>
             </el-submenu>
           </template>
@@ -100,9 +112,9 @@
     width：200 菜单的宽
     collapse：false 是否收起
     showBtn:true 是否显示折叠 button
+    iconClass:'' 指定icon使用自定字体图标 font-family: "iconfont";的值
   @slot
     v-slot: menu-btn 自定义按钮
-
   @ 事件
   this.$emit('handleClickCurrentMenu', menu)
  *
@@ -242,6 +254,18 @@ export default {
           width: this.width + 'px'
         }
       }
+    },
+    // url 是否是 url
+    showLinkIcon() {
+      return (url) => {
+        // 代表是 超链接
+        if (url.indexOf('http://') !== -1) {
+          return true
+        // 代表是路由
+        } else {
+          return false
+        }
+      }
     }
   },
   watch: {
@@ -262,6 +286,7 @@ export default {
         // 没有找到，不需要更新选中菜单
       }
     }
+
   },
   methods: {
     // id 是字符串类型
@@ -276,8 +301,17 @@ export default {
       // console.log('select=', key, keyPath)
       const menu = MenuUtils.getMenuByKey('id', parseInt(key), this.menuList)
       if (menu.url) {
+        // 属于点击不同的item
         if (menu.url !== this.$route.path) {
-          this.$router.push(menu.url)
+          // 代表是 超链接
+          if (menu.url.indexOf('http://') !== -1) {
+            window.open(menu.url)
+            // this.$router.back()
+          // 代表是路由
+          } else {
+            this.$router.push(menu.url)
+          }
+        // 点击本身item
         } else {
           this.$emit('handleClickCurrentMenu', menu)
         }
@@ -307,6 +341,17 @@ export default {
       font-size: 26px;
     }
   }
+
+  // 超链接图标
+  .menu__icon-link {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    margin-top: -5px;
+    transition: transform .3s;
+    font-size: 12px;
+  }
+
   // 菜单展开的样式
   // .b-el-menu-vertical:not(.el-menu--collapse) {
   //   width: 200px;
