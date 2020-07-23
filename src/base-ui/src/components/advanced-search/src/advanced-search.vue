@@ -448,7 +448,7 @@ export default {
             ItemType: InputType.default,
             fieldId: 'user4',
             defaultValue: undefined,
-            labelName: '活动4-活动4-活动4',
+            labelName: '活动4',
             rules: [
               { required: false, message: '请输入活动名称', trigger: 'blur' },
               { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
@@ -472,7 +472,6 @@ export default {
             style: {
               width: '150px'
             },
-
             selectList: [
               {
                 label: '区域一',
@@ -620,7 +619,8 @@ export default {
             rules: [
               { type: 'date', required: false, message: '请选择时间', trigger: 'change' }
             ],
-            placeholder: null
+            placeholder: null,
+            valueFormat: 'yyyy-MM-dd'
             // style: {
             //   width: '100%'
             // }

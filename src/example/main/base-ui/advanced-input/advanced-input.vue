@@ -1,5 +1,14 @@
 <template>
   <div class="advanced-input">
+
+    <b-title-tag name="b-advanced-search 组件"></b-title-tag>
+    <code-h
+      lang="html"
+      content='
+      <b-aside-menu
+        :width="230">
+      </b-aside-menu>
+    '></code-h>
     <br>
     <h4>1.自定义表单组件：advanced-input</h4>
     <el-form

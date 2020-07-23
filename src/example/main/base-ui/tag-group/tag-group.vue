@@ -1,5 +1,14 @@
 <template>
   <div class="tag-group">
+
+    <b-title-tag name="b-advanced-search 组件"></b-title-tag>
+    <code-h
+      lang="html"
+      content='
+      <b-aside-menu
+        :width="230">
+      </b-aside-menu>
+    '></code-h>
     <b-tag-group
       :tagList="tagList"
     >

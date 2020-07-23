@@ -1,5 +1,14 @@
 <template>
   <div class="button-group">
+
+    <b-title-tag name="b-advanced-search 组件"></b-title-tag>
+    <code-h
+      lang="html"
+      content='
+      <b-aside-menu
+        :width="230">
+      </b-aside-menu>
+    '></code-h>
     <br>
     <!-- 默认 -->
     <b-button-group

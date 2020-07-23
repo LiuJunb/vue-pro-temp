@@ -1,5 +1,15 @@
 <template>
   <div class="print-table">
+
+    <b-title-tag name="b-advanced-search 组件"></b-title-tag>
+    <code-h
+      lang="html"
+      content='
+      <b-aside-menu
+        :width="230">
+      </b-aside-menu>
+    '></code-h>
+
     <!--  -->
     <h4>1.新建默认的表格,固定宽(共8列)</h4>
     <b-print-table

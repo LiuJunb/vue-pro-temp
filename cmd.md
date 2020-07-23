@@ -35,9 +35,9 @@ vue-temp-cli addCom advanced-input -d src/base-ui/src/components/advanced-input/
 6.修改 <keepalive> <router-view></router-view> </keepalive>
 7.指定哪一个网络请求 不需要进度条
 
-8.分页器添加 背景
 
-9.
+8.分页器添加 背景
+9.处理不需要缓存页面的滚动
 
 后台系统：
   完善登录页面  
