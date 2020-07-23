@@ -39,7 +39,7 @@
           <span slot="title">{{menu.name}}</span>
           <i
             v-if="showLinkIcon(menu.url)"
-            :class="[iconClass,'el-icon-link','menu__icon-link']"
+            :class="['el-icon-link','menu__icon-link']"
           ></i>
         </el-menu-item>
         <!-- else 是二级菜单-->
@@ -63,7 +63,7 @@
               {{bmenu.name}}
               <i
                 v-if="showLinkIcon(bmenu.url)"
-                :class="[iconClass,'el-icon-link','menu__icon-link']"
+                :class="['el-icon-link','menu__icon-link']"
               ></i>
             </el-menu-item>
             <!-- else 三级目录-->
@@ -86,7 +86,7 @@
                 {{cmenu.name}}
                 <i
                   v-if="showLinkIcon(cmenu.url)"
-                  :class="[iconClass,'el-icon-link','menu__icon-link']"
+                  :class="['el-icon-link','menu__icon-link']"
                 ></i>
               </el-menu-item>
             </el-submenu>
@@ -219,7 +219,7 @@ export default {
     },
     defaultSelect: {
       type: String,
-      default: '11'
+      default: ''
     },
     width: {
       type: Number,

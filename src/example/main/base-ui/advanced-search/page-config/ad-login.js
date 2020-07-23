@@ -74,7 +74,7 @@ export const adLogin = [
     fieldId: 'username',
 
     defaultValue: '',
-    // labelName: '用户名',
+    // labelName: '',
     // prefixIcon: 'el-icon-user',
     'prefix-icon': 'el-icon-user',
     clearable: true,

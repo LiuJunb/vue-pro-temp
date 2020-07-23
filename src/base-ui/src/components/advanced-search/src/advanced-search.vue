@@ -20,7 +20,7 @@
           v-if="formItem.ItemType === InputType.default && index<showItemCounts"
           :id="hashPre+formItem.fieldId"
           :key="index"
-          :style="[{ display: index < showItemCounts ? 'inline-block' : 'none' }]"
+          :style="[{ display: index < showItemCounts ? 'null' : 'none' }]"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
@@ -73,7 +73,7 @@
           v-if="formItem.ItemType === InputType.select && index<showItemCounts"
           :id="hashPre+formItem.fieldId"
           :key="index"
-          :style="[{ display: index < showItemCounts ? 'inline-block' : 'none' }]"
+          :style="[{ display: index < showItemCounts ? 'null' : 'none' }]"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
@@ -107,7 +107,7 @@
           v-if="formItem.ItemType === InputType.selectDate && index<showItemCounts"
           :id="hashPre+formItem.fieldId"
           :key="index"
-          :style="[{ display: index < showItemCounts ? 'inline-block' : 'none' }]"
+          :style="[{ display: index < showItemCounts ? 'null' : 'none' }]"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
@@ -130,7 +130,7 @@
           v-if="formItem.ItemType === InputType.selectDateRange && index<showItemCounts"
           :id="hashPre+formItem.fieldId"
           :key="index"
-          :style="[{ display: index < showItemCounts ? 'inline-block' : 'none' }]"
+          :style="[{ display: index < showItemCounts ? 'null' : 'none' }]"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
@@ -157,7 +157,7 @@
           v-if="formItem.ItemType === InputType.checkboxs && index<showItemCounts"
           :id="hashPre+formItem.fieldId"
           :key="index"
-          :style="[{ display: index < showItemCounts ? 'inline-block' : 'none' }]"
+          :style="[{ display: index < showItemCounts ? 'null' : 'none' }]"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
@@ -179,7 +179,7 @@
           v-if="formItem.ItemType === InputType.radios && index<showItemCounts"
           :id="hashPre+formItem.fieldId"
           :key="index"
-          :style="[{ display: index < showItemCounts ? 'inline-block' : 'none' }]"
+          :style="[{ display: index < showItemCounts ? 'null' : 'none' }]"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
@@ -203,7 +203,7 @@
           :required="formItem.required"
           :style="[
             { marginBottom:($attrs.size==='small'||$attrs.size==='mini')? '0px' :'20px'},
-            { display: index < showItemCounts ? 'inline-block' : 'none' }
+            { display: index < showItemCounts ? 'null' : 'none' }
           ]"
           class="liujun"
           :label="formItem.labelName"
@@ -263,7 +263,7 @@
           :required="formItem.required"
           :style="[
             {marginBottom:($attrs.size==='small'||$attrs.size==='mini')? '0px' :'20px'},
-            { display: index < showItemCounts ? 'inline-block' : 'none' }
+            { display: index < showItemCounts ? 'null' : 'none' }
           ]"
           class="liujun"
           :label="formItem.labelName"
@@ -310,7 +310,7 @@
           v-if="formItem.ItemType === InputType.custom && index<showItemCounts"
           :id="hashPre+formItem.fieldId"
           :key="index"
-          :style="[{ display: index < showItemCounts ? 'inline-block' : 'none' }]"
+          :style="[{ display: index < showItemCounts ? 'null' : 'none' }]"
           :label="formItem.labelName"
           :label-width="formItem.labelWidth"
           :prop="formItem.fieldId">
@@ -716,7 +716,7 @@ export default {
     // 是否显示：收起，展开
     showArrow: {
       type: Boolean,
-      default: true
+      default: false
     },
     // 收起时显示多少个item， 默认6个
     defaultShowItemCounts: {
@@ -747,7 +747,7 @@ export default {
       formData: getFormFieldIds(this.formItems),
       formRules: getFormRules(this.formItems),
       arrowDirection: this.defaultArrowDirection,
-      showItemCounts: this.formItems.length
+      showItemCounts: this.formItems.length // 默认显示所有
     }
   },
   computed: {

@@ -183,23 +183,39 @@
 
       "></code-h>
 
-      <h4>属性：</h4>
-    <code-h
-      lang="html"
-      content='
-      @ 参数
-        menuList:[] 菜单列表
-        defaultSelect："1-11-111" 默认选中
-        width：200 菜单的宽
-        collapse：false 是否收起
-        showBtn:true 是否显示折叠 button
-        iconClass:"" 指定icon使用自定字体图标 font-family: "iconfont";的值
-      @slot
-        v-slot: menu-btn 自定义按钮
-      @ 事件
-      this.$emit("handleClickCurrentMenu", menu) 监听点击本身的菜单
+    <h4>BAsiderMenu 的 Props：</h4>
+    <b-advanced-table
+      stripe
+      :border="true"
+      :hasPagination="false"
+      style="width: 100%"
+      :tabColumn="tabColumnProps"
+      :tabData="tabDataProps"
+    >
+    </b-advanced-table>
 
-      '></code-h>
+    <h4>BAsiderMenu 的 Slot：</h4>
+    <b-advanced-table
+      stripe
+      :border="true"
+      :hasPagination="false"
+      style="width: 900px"
+      :tabColumn="tabColumnSlot"
+      :tabData="tabDataSlot"
+    >
+    </b-advanced-table>
+
+    <h4>BAsiderMenu 的 Event：</h4>
+    <b-advanced-table
+      stripe
+      :border="true"
+      :hasPagination="false"
+      style="width: 900px"
+      :tabColumn="tabColumnEvent"
+      :tabData="tabDataEvent"
+    >
+    </b-advanced-table>
+
   </div>
 </template>
 
@@ -216,11 +232,15 @@
  *@ 事件
  *
 */
+import {
+  TableColumnMixin
+} from '@/mixins/index.js'
 export default {
   name: 'BAsiderMenu',
   components: {
 
   },
+  mixins: [TableColumnMixin],
   props: {
     btnName: {
       type: String,
@@ -313,7 +333,85 @@ export default {
           url: 'http://www.baidu.com',
           children: []
         }
+      ],
+      tabDataProps: [
+        {
+          attr: 'menuList',
+          des: '菜单列表',
+          type: 'Array',
+          select: ' ',
+          default: ' '
+          // func:''
+        },
+        {
+          attr: 'defaultSelect',
+          des: '默认选中菜单的 id',
+          type: 'String',
+          select: '',
+          default: `
+          [
+            {
+              icon: "el-icon-document",
+              id: 3,
+              level: 1,
+              name: "超链接菜单",
+              parentId: 0,
+              type: "menu",
+              url: "http://www.baidu.com",
+              children: []
+            }
+            ...
+          ]
+          `
+          // func:''
+        },
+        {
+          attr: 'width',
+          des: '菜单的宽',
+          type: 'Number',
+          select: '',
+          default: '220px'
+          // func:''
+        },
+        {
+          attr: 'collapse',
+          des: '是否收起菜单',
+          type: 'Boolean',
+          select: 'true,false',
+          default: 'false'
+          // func:''
+        },
+        {
+          attr: 'showBtn',
+          des: '是否显示折叠的按钮',
+          type: 'Boolean',
+          select: 'true,false',
+          default: 'true'
+          // func:''
+        },
+        {
+          attr: 'iconClass',
+          des: '指定icon使用自定字体图标 font-family: "iconfont";的值',
+          type: 'String',
+          select: '',
+          default: 'null'
+          // func:''
+        }
+      ],
+      tabDataSlot: [
+        {
+          name: 'menu-btn',
+          des: '自定义折叠按钮'
+        }
+      ],
+      tabDataEvent: [
+        {
+          name: 'handleClickCurrentMenu',
+          des: '监听重复点击当前的菜单',
+          func: 'func( menu )'
+        }
       ]
+
     }
   }
 

@@ -10,16 +10,53 @@
       :statusList="statusList"
     >
     </b-status-text>
+
+    <h4>BAsiderMenu 的 Props：</h4>
+    <b-advanced-table
+      stripe
+      :border="true"
+      :hasPagination="false"
+      style="width: 100%"
+      :tabColumn="tabColumnProps"
+      :tabData="tabDataProps"
+    >
+    </b-advanced-table>
+
+    <h4>BAsiderMenu 的 Slot：</h4>
+    <b-advanced-table
+      stripe
+      :border="true"
+      :hasPagination="false"
+      style="width: 900px"
+      :tabColumn="tabColumnSlot"
+      :tabData="tabDataSlot"
+    >
+    </b-advanced-table>
+
+    <h4>BAsiderMenu 的 Event：</h4>
+    <b-advanced-table
+      stripe
+      :border="true"
+      :hasPagination="false"
+      style="width: 900px"
+      :tabColumn="tabColumnEvent"
+      :tabData="tabDataEvent"
+    >
+    </b-advanced-table>
+
   </div>
 </template>
 
 <script>
+import {
+  TableColumnMixin
+} from '@/mixins/index.js'
 export default {
   name: 'StatusText',
   components: {
 
   },
-  mixins: [],
+  mixins: [TableColumnMixin],
   props: {
     msg: {
       type: String,
@@ -41,7 +78,31 @@ export default {
           color: 'green',
           id: '' // todo ...
         }
-      }
+      },
+      tabDataProps: [
+        {
+          attr: 'menuList',
+          des: '菜单列表',
+          type: 'Array',
+          select: ' ',
+          default: ' '
+          // func:''
+        }
+      ],
+      tabDataSlot: [
+        {
+          name: 'menu-btn',
+          des: '自定义折叠按钮'
+        }
+      ],
+      tabDataEvent: [
+        {
+          name: 'handleClickCurrentMenu',
+          des: '监听重复点击当前的菜单',
+          func: 'func( menu )'
+        }
+      ]
+
     }
   },
   computed: {

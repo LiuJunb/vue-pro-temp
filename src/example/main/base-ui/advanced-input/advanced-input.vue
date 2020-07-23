@@ -66,6 +66,38 @@
       </el-form-item>
     </el-form>
 
+    <h4>BAsiderMenu 的 Props：</h4>
+    <b-advanced-table
+      stripe
+      :border="true"
+      :hasPagination="false"
+      style="width: 100%"
+      :tabColumn="tabColumnProps"
+      :tabData="tabDataProps"
+    >
+    </b-advanced-table>
+
+    <h4>BAsiderMenu 的 Slot：</h4>
+    <b-advanced-table
+      stripe
+      :border="true"
+      :hasPagination="false"
+      style="width: 900px"
+      :tabColumn="tabColumnSlot"
+      :tabData="tabDataSlot"
+    >
+    </b-advanced-table>
+
+    <h4>BAsiderMenu 的 Event：</h4>
+    <b-advanced-table
+      stripe
+      :border="true"
+      :hasPagination="false"
+      style="width: 900px"
+      :tabColumn="tabColumnEvent"
+      :tabData="tabDataEvent"
+    >
+    </b-advanced-table>
   </div>
 </template>
 
@@ -73,6 +105,9 @@
 import {
   AdvancedInput
 } from '@/base-ui/src'
+import {
+  TableColumnMixin
+} from '@/mixins/index.js'
 import {
   formItem1,
   formItem2,
@@ -87,7 +122,7 @@ export default {
   components: {
 
   },
-  mixins: [],
+  mixins: [TableColumnMixin],
   props: {
 
   },
@@ -100,7 +135,31 @@ export default {
       formItem3,
 
       formData: getFormFieldIds([...formItem1, ...formItem2]),
-      formRules: getFormRules([...formItem1, ...formItem2])
+      formRules: getFormRules([...formItem1, ...formItem2]),
+      tabDataProps: [
+        {
+          attr: 'menuList',
+          des: '菜单列表',
+          type: 'Array',
+          select: ' ',
+          default: ' '
+          // func:''
+        }
+      ],
+      tabDataSlot: [
+        {
+          name: 'menu-btn',
+          des: '自定义折叠按钮'
+        }
+      ],
+      tabDataEvent: [
+        {
+          name: 'handleClickCurrentMenu',
+          des: '监听重复点击当前的菜单',
+          func: 'func( menu )'
+        }
+      ]
+
     }
   },
   computed: {
