@@ -145,6 +145,11 @@
           ],
           clearable: false,
           placeholder: null,
+          tooltip: `
+            1.Left Center 提示文字<br/>
+            2.第二行信息提示文字<br/>
+            3.第3行信息提示文字
+          `,
           // 可继续添加 element-ui  select 组件的其它的属性
           selectList: [
             {
@@ -171,6 +176,11 @@
           ],
           clearable: true,
           placeholder: null,
+          //   tooltip: `
+          //   1.Left Center 提示文字<br/>
+          //   2.第二行信息提示文字<br/>
+          //   3.第3行信息提示文字
+          //  `,
           // 可继续添加 element-ui  select 组件的其它的属性
           selectList: [
             {
@@ -186,10 +196,12 @@
       ]
     "></code-h>
 
-    <h4>4.使用select and input组件</h4>
+    <h4>5.使用select and input组件</h4>
     <b-advanced-search
        :inline="true"
        :formItems="expFormItems3"
+       @handleSubmit="handleSubmit"
+       @handleReset="handleReset"
        @handleFormItemChange="handleFormItemChange"
     >
     </b-advanced-search>
@@ -223,6 +235,11 @@
           style: {
             width: '100px'
           },
+          //   tooltip: `
+          //   1.Left Center 提示文字<br/>
+          //   2.第二行信息提示文字<br/>
+          //   3.第3行信息提示文字
+          //  `,
           // 可继续添加 element-ui  select 组件的其它的属性
           selectList: [
             {
@@ -251,10 +268,12 @@
     ]
     "></code-h>
 
-    <h4>5.使用 checkboxs 组件</h4>
+    <h4>6.使用 checkboxs 组件</h4>
     <b-advanced-search
        :inline="true"
        :formItems="expFormItems4"
+       @handleSubmit="handleSubmit"
+       @handleReset="handleReset"
        @handleFormItemChange="handleFormItemChange"
     >
     </b-advanced-search>
@@ -302,31 +321,259 @@
     ]
     "></code-h>
 
-    <b-divider-line></b-divider-line>
-
-    <h4>2.默认</h4>
-    <!-- 默认 -->
+    <h4>7.使用 radios 组件</h4>
     <b-advanced-search
-       label-width="90px"
        :inline="true"
-       size="mini"
-       :formItems="adSearchDefaultConfig"
+       :formItems="expFormItems5"
        @handleSubmit="handleSubmit"
        @handleReset="handleReset"
+       @handleFormItemChange="handleFormItemChange"
     >
     </b-advanced-search>
+    <code-h
+      lang="html"
+      content='
+      <b-advanced-search
+        :inline="true"
+        :formItems="expFormItems5"
+        @handleSubmit="handleSubmit"
+        @handleReset="handleReset"
+        @handleFormItemChange="handleFormItemChange"
+      >
+      </b-advanced-search>
+    '></code-h>
+    <code-h
+      lang="js"
+      content="
+      expFormItems5 = [
+        {
+          ItemType: SearchType.radios,
+          fieldId: 'radios_11',
+          defaultValue: '',
+          labelName: '请选择活动资源',
+          labelWidth: '150px',
+          style: {
+            width: '100%'
+          },
+          radioList: [
+            {
+              label: '线上品牌商赞助'
+            },
+            {
+              label: '线下场地免费'
+            }
+          ],
+          rules: [
+            { required: false, message: '请选择活动资源', trigger: 'change' }
+          ],
+          placeholder: null,
+          // 可继续添加 element-ui  radios 组件的其它的属性
+        }
+      ]
+    "></code-h>
 
-   <b-divider-line></b-divider-line>
-
-    <!-- 自定义配置 -->
-    <h4>3.自定义配置</h4>
+    <h4>8.使用 selectDate 组件</h4>
     <b-advanced-search
-       label-width="90px"
        :inline="true"
-       :formItems="adSearchConfig"
+       :formItems="expFormItems6"
        @handleSubmit="handleSubmit"
+       @handleReset="handleReset"
+       @handleFormItemChange="handleFormItemChange"
     >
-     <template v-slot:custom1="slotProps">
+    </b-advanced-search>
+    <code-h
+      lang="html"
+      content='
+      <b-advanced-search
+        :inline="true"
+        :formItems="expFormItems6"
+        @handleSubmit="handleSubmit"
+        @handleReset="handleReset"
+        @handleFormItemChange="handleFormItemChange"
+      >
+      </b-advanced-search>
+    '></code-h>
+    <code-h
+      lang="js"
+      content="
+      expFormItems6 = [
+        {
+          ItemType: SearchType.selectDate,
+          fieldId: 'startDate',
+          defaultValue: null,
+          labelName: '时间1',
+          // labelWidth: '150px',
+          valueFormat: 'yyyy-MM-dd',
+          rules: [
+            { type: 'string', required: false, message: '请选择时间', trigger: 'change' }
+          ],
+          placeholder: null,
+          style: {
+            width: '150px'
+          }
+          // 可继续添加 element-ui  DatePicker 组件的其它的属性
+        },
+        {
+          ItemType: SearchType.selectDate,
+          fieldId: 'dateTime',
+          // defaultValue:String
+          defaultValue: null,
+          labelName: '时间2',
+          // 指定组件的类型
+          type: 'datetime',
+          rules: [
+            { type: 'string', required: false, message: '请选择时间', trigger: 'change' }
+          ],
+          placeholder: null,
+          valueFormat: 'yyyy-MM-dd HH:mm:ss'
+          // style: {
+          //   width: '100%'
+          // }
+          // 可继续添加 element-ui  DatePicker 组件的其它的属性
+        }
+      ]
+    "></code-h>
+
+    <h4>9.使用 selectDateRange 组件</h4>
+    <b-advanced-search
+       :inline="true"
+       :formItems="expFormItems7"
+       @handleSubmit="handleSubmit"
+       @handleReset="handleReset"
+       @handleFormItemChange="handleFormItemChange"
+    >
+    </b-advanced-search>
+    <code-h
+      lang="html"
+      content='
+      <b-advanced-search
+        :inline="true"
+        :formItems="expFormItems7"
+        @handleSubmit="handleSubmit"
+        @handleReset="handleReset"
+        @handleFormItemChange="handleFormItemChange"
+      >
+      </b-advanced-search>
+    '></code-h>
+    <code-h
+      lang="js"
+      content="
+      expFormItems7 = [
+        {
+          ItemType: SearchType.selectDateRange,
+          fieldId: 'startDateTime1',
+          defaultValue: ['2020-03-08', '2020-03-09'],
+          labelName: '时间范围daterange',
+          // labelWidth: '150px',
+          valueFormat: 'yyyy-MM-dd',
+
+          type: 'daterange',
+          rules: [
+            { type: 'array', required: false, message: '请选择时间', trigger: 'change' }
+          ],
+          placeholder: null,
+          style: {
+            width: '260px'
+          }
+          // 可继续添加 element-ui  DatePicker 组件的其它的属性
+        },
+        {
+          ItemType: SearchType.selectDateRange,
+          fieldId: 'startDateTime2',
+          // defaultValue: null, // ok
+          defaultValue: ['2020-03-08 01:22:00', '2020-03-09 01:22:00'],
+          labelName: '时间范围datetimerange',
+
+          type: 'datetimerange',
+          valueFormat: 'yyyy-MM-dd HH:mm:ss',
+          rules: [
+            { type: 'array', required: false, message: '请选择时间', trigger: 'change' }
+          ],
+          placeholder: null,
+          style: {
+            width: '360px'
+          }
+          // 可继续添加 element-ui  DatePicker 组件的其它的属性
+        }
+      ]
+    "></code-h>
+
+    <h4>10.使用 selectDataAndTime 组件</h4>
+    <b-advanced-search
+       :inline="true"
+       :formItems="expFormItems8"
+       @handleSubmit="handleSubmit"
+       @handleReset="handleReset"
+       @handleFormItemChange="handleFormItemChange"
+    >
+    </b-advanced-search>
+    <code-h
+      lang="html"
+      content='
+      <b-advanced-search
+        :inline="true"
+        :formItems="expFormItems8"
+        @handleSubmit="handleSubmit"
+        @handleReset="handleReset"
+        @handleFormItemChange="handleFormItemChange"
+      >
+      </b-advanced-search>
+    '></code-h>
+    <code-h
+      lang="js"
+      content="
+      expFormItems8 = [
+        {
+          ItemType: SearchType.selectDataAndTime,
+          labelName: '活动时间',
+          required: false, // 显示红点
+          labelWidth: '90px',
+          style: {
+            width: '320px'
+          },
+          formItem_1: {
+            fieldId: 'data1',
+            defaultValue: null,
+            valueFormat: 'yyyy-MM-dd',
+            rules: [
+              { type: 'string', required: false, message: '请选择日期', trigger: 'change' }
+            ],
+            // labelWidth: '10px',
+            // style: {
+            //   width: '160px'
+            // },
+            placeholder: null
+            // 可继续添加 element-ui  DatePicker 组件的其它的属性
+
+          },
+          formItem_2: {
+            fieldId: 'data2',
+            defaultValue: null,
+            valueFormat: 'HH:mm:ss',
+            rules: [
+              { type: 'string', required: false, message: '请选择时间', trigger: 'change' }
+            ],
+            // labelWidth: '10px',
+            // style: {
+            //   width: '160px'
+            // },
+            placeholder: null
+            // 可继续添加 element-ui  TimePicker 组件的其它的属性
+          }
+        }
+      ]
+    "></code-h>
+
+    <h4>11.使用 custom 自定义组件</h4>
+    <b-advanced-search
+       :inline="true"
+       :formItems="expFormItems9"
+       @handleSubmit="handleSubmit"
+       @handleReset="handleReset"
+       @handleFormItemChange="handleFormItemChange"
+    >
+      <!-- 自定义表单组件 -->
+      <template v-slot:custom1="slotProps">
        <el-input
         v-model="slotProps.data[slotProps.row.fieldId]"
         v-bind="slotProps.row"
@@ -336,6 +583,276 @@
      </template>
 
     </b-advanced-search>
+    <code-h
+      lang="html"
+      content='
+      <b-advanced-search
+        :inline="true"
+        :formItems="expFormItems9"
+        @handleSubmit="handleSubmit"
+        @handleReset="handleReset"
+        @handleFormItemChange="handleFormItemChange"
+      >
+        <!-- 自定义表单组件{data:formData,row:formItem} -->
+        <template v-slot:custom1="slotProps">
+        <el-input
+          v-model="slotProps.data[slotProps.row.fieldId]"
+          v-bind="slotProps.row"
+          >
+          <template slot="prepend">Http://</template>
+        </el-input>
+      </template>
+
+      </b-advanced-search>
+    '></code-h>
+    <code-h
+      lang="js"
+      content="
+      expFormItems9 = [
+        {
+          ItemType: SearchType.custom,
+          customSlot: 'custom1', // 插槽名称
+          fieldId: 'custom1',
+
+          defaultValue: undefined,
+          labelName: '名称1',
+          // labelWidth: '130px',
+          // style: {
+          //   width: '260px'
+          // },
+          rules: [
+            { required: false, message: '请输入自定义名称', trigger: 'blur' }
+          ],
+          placeholder: '请输入内容'
+        }
+      ]
+    "></code-h>
+
+    <h4>12.多种表单组件组合（1）</h4>
+    <p>自动分配：labelWidth 和 表单组件的宽度</p>
+    <b-advanced-search
+       :inline="true"
+       :formItems="expFormItems10"
+       @handleSubmit="handleSubmit"
+       @handleReset="handleReset"
+       @handleFormItemChange="handleFormItemChange"
+    >
+      <!-- 自定义表单组件{data:formData,row:formItem} -->
+      <template v-slot:custom1="slotProps">
+        <el-input
+          v-model="slotProps.data[slotProps.row.fieldId]"
+          v-bind="slotProps.row"
+          >
+          <template slot="prepend">Http://</template>
+        </el-input>
+      </template>
+    </b-advanced-search>
+    <code-h
+      lang="html"
+      content='
+      <b-advanced-search
+        :inline="true"
+        :formItems="expFormItems10"
+        @handleSubmit="handleSubmit"
+        @handleReset="handleReset"
+        @handleFormItemChange="handleFormItemChange"
+      >
+        <!-- 自定义表单组件{data:formData,row:formItem} -->
+        <template v-slot:custom1="slotProps">
+        <el-input
+          v-model="slotProps.data[slotProps.row.fieldId]"
+          v-bind="slotProps.row"
+          >
+          <template slot="prepend">Http://</template>
+        </el-input>
+      </template>
+
+      </b-advanced-search>
+    '></code-h>
+    <code-h
+      lang="js"
+      content="
+      expFormItems10 = [
+      {
+        ItemType: SearchType.default,
+        fieldId: 'user',
+        defaultValue: undefined,
+        labelName: '活动',
+        // labelWidth: '90px',
+        // style: {
+        //   width: '280px'
+        // },
+        tooltip: `
+        1.Left Center 提示文字<br/>
+        2.第二行信息提示文字<br/>
+        3.第3行信息提示文字
+      `,
+        rules: [
+          { required: false, message: '请输入活动名称', trigger: 'blur' },
+          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+        ],
+        placeholder: null
+        // 可继续添加 element-ui  input 组件的其它的属性
+      },
+      {
+        ItemType: SearchType.select,
+        fieldId: 'region1',
+        defaultValue: null,
+        labelName: '活动区域1',
+        // labelWidth: '90px',
+        // style: {
+        //   width: '150px'
+        // },
+        rules: [
+          { required: false, message: '请选择活动区域（单选）', trigger: 'change' }
+        ],
+        clearable: true,
+        placeholder: null,
+        // tooltip: `
+        //   1.Left Center 提示文字<br/>
+        //   2.第二行信息提示文字<br/>
+        //   3.第3行信息提示文字
+        // `,
+        // 可继续添加 element-ui  select 组件的其它的属性
+        selectList: [
+          {
+            label: '区域一',
+            value: 'shanghai'
+          },
+          {
+            label: '区域二',
+            value: 'beijing'
+          }
+        ]
+      },
+      {
+        ItemType: SearchType.selectDate,
+        fieldId: 'startDate',
+        defaultValue: null,
+        labelName: '时间date',
+        // labelWidth: '150px',
+        // style: {
+        //   width: '150px'
+        // },
+        valueFormat: 'yyyy-MM-dd',
+        rules: [
+          { type: 'string', required: false, message: '请选择时间', trigger: 'change' }
+        ],
+        placeholder: null
+
+      },
+      {
+        ItemType: SearchType.selectDateRange,
+        fieldId: 'startDateTime1',
+        defaultValue: ['2020-03-08', '2020-03-09'],
+        labelName: '时间范围daterange',
+        // labelWidth: '150px',
+        // style: {
+        //   width: '260px'
+        // },
+        valueFormat: 'yyyy-MM-dd',
+
+        type: 'daterange',
+        rules: [
+          { type: 'array', required: false, message: '请选择时间', trigger: 'change' }
+        ],
+        placeholder: null
+
+      },
+      {
+        ItemType: SearchType.custom,
+        customSlot: 'custom1', // 插槽名称
+        fieldId: 'custom1',
+
+        defaultValue: undefined,
+        labelName: '名称1',
+        // labelWidth: '130px',
+        // style: {
+        //   width: '260px'
+        // },
+        rules: [
+          { required: false, message: '请输入自定义名称', trigger: 'blur' }
+        ],
+        placeholder: '请输入内容'
+      }
+      ]
+    "></code-h>
+
+    <h4>13.多种表单组件组合（2）</h4>
+    <p>统一指定：label-width="90px" 的宽度 </p>
+    <b-advanced-search
+       :inline="true"
+       label-width="90px"
+       :formItems="expFormItems10"
+       @handleSubmit="handleSubmit"
+       @handleReset="handleReset"
+       @handleFormItemChange="handleFormItemChange"
+    >
+      <!-- 自定义表单组件{data:formData,row:formItem} -->
+      <template v-slot:custom1="slotProps">
+        <el-input
+          v-model="slotProps.data[slotProps.row.fieldId]"
+          v-bind="slotProps.row"
+          >
+          <template slot="prepend">Http://</template>
+        </el-input>
+      </template>
+    </b-advanced-search>
+    <code-h
+      lang="html"
+      content='
+      <b-advanced-search
+        :inline="true"
+        label-width="90px"
+        :formItems="expFormItems10"
+        @handleSubmit="handleSubmit"
+        @handleReset="handleReset"
+        @handleFormItemChange="handleFormItemChange"
+      >
+        <!-- 自定义表单组件{data:formData,row:formItem} -->
+        <template v-slot:custom1="slotProps">
+        <el-input
+          v-model="slotProps.data[slotProps.row.fieldId]"
+          v-bind="slotProps.row"
+          >
+          <template slot="prepend">Http://</template>
+        </el-input>
+      </template>
+
+      </b-advanced-search>
+    '></code-h>
+
+    <h4>14.表单item的收起和展开</h4>
+    <b-advanced-search
+       label-width="90px"
+       :inline="true"
+
+       :showArrow="true"
+       :defaultShowItemCounts="6"
+
+       size="mini"
+       :formItems="adSearchDefaultConfig"
+       @handleSubmit="handleSubmit"
+       @handleReset="handleReset"
+    >
+    </b-advanced-search>
+    <code-h
+      lang="html"
+      content='
+      <b-advanced-search
+        label-width="90px"
+        :inline="true"
+
+        :showArrow="true"
+        :defaultShowItemCounts="6"
+
+        size="mini"
+        :formItems="adSearchDefaultConfig"
+        @handleSubmit="handleSubmit"
+        @handleReset="handleReset"
+      >
+      </b-advanced-search>
+    '></code-h>
 
     <b-divider-line></b-divider-line>
     <h4>4.登录表单</h4>
@@ -355,7 +872,24 @@
           </el-button>
       </template>
     </b-advanced-search>
-    <b-divider-line></b-divider-line>
+        <code-h
+      lang="html"
+      content='
+      <b-advanced-search
+        label-width="90px"
+        :inline="true"
+
+        :showArrow="true"
+        :defaultShowItemCounts="6"
+
+        size="mini"
+        :formItems="adSearchDefaultConfig"
+        @handleSubmit="handleSubmit"
+        @handleReset="handleReset"
+      >
+      </b-advanced-search>
+    '></code-h>
+
     <h4>5.普通表单1</h4>
     <!-- 普通表单1 -->
     <b-advanced-search
@@ -379,7 +913,23 @@
           </el-button>
       </template>
     </b-advanced-search>
-    <b-divider-line></b-divider-line>
+        <code-h
+      lang="html"
+      content='
+      <b-advanced-search
+        label-width="90px"
+        :inline="true"
+
+        :showArrow="true"
+        :defaultShowItemCounts="6"
+
+        size="mini"
+        :formItems="adSearchDefaultConfig"
+        @handleSubmit="handleSubmit"
+        @handleReset="handleReset"
+      >
+      </b-advanced-search>
+    '></code-h>
     <h4>6.普通表单2</h4>
     <!-- 普通表单2 -->
     <b-advanced-search
@@ -409,6 +959,24 @@
           </el-button>
       </template>
     </b-advanced-search>
+
+    <code-h
+      lang="html"
+      content='
+      <b-advanced-search
+        label-width="90px"
+        :inline="true"
+
+        :showArrow="true"
+        :defaultShowItemCounts="6"
+
+        size="mini"
+        :formItems="adSearchDefaultConfig"
+        @handleSubmit="handleSubmit"
+        @handleReset="handleReset"
+      >
+      </b-advanced-search>
+    '></code-h>
 
     <h4>BAsiderMenu 的 Props：</h4>
     <b-advanced-table

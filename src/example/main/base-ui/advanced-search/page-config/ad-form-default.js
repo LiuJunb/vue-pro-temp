@@ -58,7 +58,7 @@ export const adSearchDefaultConfig = [
       { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
     ],
 
-    labelWidth: '150px',
+    // labelWidth: '150px',
     placeholder: null
   },
   {

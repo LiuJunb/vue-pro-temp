@@ -49,6 +49,7 @@
             v-model="formData[formItem.fieldId]"
             v-bind="formItem"
             @input="handleInputChange($event,formItem)">
+            <!-- tooltip -->
             <template
               v-if="formItem.tooltip"
               slot="prefix">
@@ -93,6 +94,24 @@
             filterable
             v-bind="formItem"
             @input="handleSelectChange($event,formItem)">
+
+            <!-- tooltip -->
+            <template
+              v-if="formItem.tooltip"
+              slot="prefix">
+              <el-tooltip
+                effect="light"
+                placement="top">
+                <div
+                  slot="content"
+                  v-html="formItem.tooltip">
+                  <!-- 1.Left Center 提示文字<br/>
+                  2.第二行信息提示文字<br/>
+                  2.第3行信息提示文字 -->
+                </div>
+                <i class="el-icon-question"></i>
+              </el-tooltip>
+            </template>
             <el-option
               v-for="(item,index) in formItem.selectList"
               :key="index"
@@ -247,8 +266,26 @@
                         :label="itemData.label"
                         :value="itemData.value">
                       </el-option>
+                      <!-- tooltip -->
+                      <template
+                        v-if="formItem.formItem_1.tooltip"
+                        slot="prefix">
+                        <el-tooltip
+                          effect="light"
+                          placement="top">
+                          <div
+                            slot="content"
+                            v-html="formItem.formItem_1.tooltip">
+                            <!-- 1.Left Center 提示文字<br/>
+                            2.第二行信息提示文字<br/>
+                            2.第3行信息提示文字 -->
+                          </div>
+                          <i class="el-icon-question"></i>
+                        </el-tooltip>
+                      </template>
                   </el-select>
                 </el-form-item>
+
               </el-input>
             </el-form-item>
           </el-row>
@@ -279,9 +316,9 @@
                 <el-date-picker
                   v-model="formData[formItem.formItem_1.fieldId]"
                   type="date"
-                  :style="formItem.formItem_2.style?formItem.formItem_2.style:{width: '100%'}"
+                  :style="formItem.formItem_1.style?formItem.formItem_1.style:{width: '100%'}"
 
-                  v-bind="formItem.formItem_2"
+                  v-bind="formItem.formItem_1"
                   @input="handleDateSelectChange($event,formItem)">
                 </el-date-picker>
             </el-form-item>
@@ -836,6 +873,19 @@ export default {
     text-align: center;
   }
 
+  /deep/ .el-form-item{
+    .el-form-item__content{
+      [tooltip]{
+        .el-select__tags{
+          margin-left: 15px;
+        }
+      }
+
+    }
+
+  }
+
+  // 旋转收起，展开的样式
   .el-icon-d-arrow-left,
   .el-icon-d-arrow-right{
     transform: rotate(90deg);
