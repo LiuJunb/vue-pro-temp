@@ -73,6 +73,7 @@ export default {
   },
   mixins: [],
   props: {
+    // 按钮组的配置
     btnList: {
       type: Array,
       default: function() {
@@ -129,17 +130,19 @@ export default {
         ]
       }
     },
+    // 按钮的居中
     pull: {
       type: String,
       default: 'left' // left, right, center
     },
+    // 按钮组的宽度
     maxWidth: {
       type: String,
       default: function() {
         return '100%'
       }
     },
-    // 用户所拥有的权限
+    // 用户所拥有的权限，一般登录之后获取（如果不传递，默认会去sessionStorage找permissions属性）
     permissions: {
       type: Array,
       default: function() {

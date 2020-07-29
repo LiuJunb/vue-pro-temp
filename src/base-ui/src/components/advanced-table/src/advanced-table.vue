@@ -96,6 +96,7 @@ export default {
   },
   mixins: [],
   props: {
+    // table 头部的样式
     headerCellStyle: {
       type: Object,
       default: function() {
@@ -104,24 +105,29 @@ export default {
         }
       }
     },
+    // 是否需要序号
     hasIndex: {
       type: Boolean,
       default: true
     },
+    // 是否需要可勾选的行
     hasSelection: {
       type: Boolean,
       default: false
     },
+    // 勾选列的配置，也是el-table-column的配置
     selectionAttr: {
       type: Object,
       default: function() {
         return {}
       }
     },
+    // 是否需要分页器
     hasPagination: {
       type: Boolean,
       default: true
     },
+    // table的列的配置
     tabColumn: {
       type: Array,
       default: function() {
@@ -146,6 +152,7 @@ export default {
         ]
       }
     },
+    // table每一列的数据
     tabData: {
       type: Array,
       default: function() {
@@ -198,6 +205,7 @@ export default {
         ]
       }
     },
+    // 初始化或者更新分页器的配置
     paginationConf: {
       type: Object,
       default: function() {

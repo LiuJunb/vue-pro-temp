@@ -54,6 +54,21 @@ export default {
           label: '回调参数'
         }
       ],
+      tabColumnMethods: [
+        {
+          prop: 'name',
+          label: '事件名称',
+          width: '180px'
+        },
+        {
+          prop: 'des',
+          label: '说明'
+        },
+        {
+          prop: 'func',
+          label: '参数'
+        }
+      ],
 
       tabDataProps: [
         {
@@ -72,6 +87,13 @@ export default {
         }
       ],
       tabDataEvent: [
+        {
+          name: '刘军',
+          des: 100,
+          func: 'dd'
+        }
+      ],
+      tabDataMethods: [
         {
           name: '刘军',
           des: 100,
