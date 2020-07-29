@@ -2698,7 +2698,7 @@ var menu_utils_getMenuByKey = function getMenuByKey(key, value) {
     },
     defaultSelect: {
       type: String,
-      default: '11'
+      default: ''
     },
     width: {
       type: Number,
@@ -2980,13 +2980,47 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                           formItem,
                           false
                         ),
-                        _vm._l(formItem.selectList, function(item, index) {
-                          return _c("el-option", {
-                            key: index,
-                            attrs: { label: item.label, value: item.value }
+                        [
+                          formItem.tooltip
+                            ? _c(
+                                "template",
+                                { slot: "prefix" },
+                                [
+                                  _c(
+                                    "el-tooltip",
+                                    {
+                                      attrs: {
+                                        effect: "light",
+                                        placement: "top"
+                                      }
+                                    },
+                                    [
+                                      _c("div", {
+                                        attrs: { slot: "content" },
+                                        domProps: {
+                                          innerHTML: _vm._s(formItem.tooltip)
+                                        },
+                                        slot: "content"
+                                      }),
+                                      _vm._v(" "),
+                                      _c("i", {
+                                        staticClass: "el-icon-question"
+                                      })
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm._l(formItem.selectList, function(item, index) {
+                            return _c("el-option", {
+                              key: index,
+                              attrs: { label: item.label, value: item.value }
+                            })
                           })
-                        }),
-                        1
+                        ],
+                        2
                       )
                     ],
                     1
@@ -3316,19 +3350,59 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                                           formItem.formItem_1,
                                           false
                                         ),
-                                        _vm._l(
-                                          formItem.formItem_1.selectList,
-                                          function(itemData, index) {
-                                            return _c("el-option", {
-                                              key: index,
-                                              attrs: {
-                                                label: itemData.label,
-                                                value: itemData.value
-                                              }
-                                            })
-                                          }
-                                        ),
-                                        1
+                                        [
+                                          _vm._l(
+                                            formItem.formItem_1.selectList,
+                                            function(itemData, index) {
+                                              return _c("el-option", {
+                                                key: index,
+                                                attrs: {
+                                                  label: itemData.label,
+                                                  value: itemData.value
+                                                }
+                                              })
+                                            }
+                                          ),
+                                          _vm._v(" "),
+                                          formItem.formItem_1.tooltip
+                                            ? _c(
+                                                "template",
+                                                { slot: "prefix" },
+                                                [
+                                                  _c(
+                                                    "el-tooltip",
+                                                    {
+                                                      attrs: {
+                                                        effect: "light",
+                                                        placement: "top"
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("div", {
+                                                        attrs: {
+                                                          slot: "content"
+                                                        },
+                                                        domProps: {
+                                                          innerHTML: _vm._s(
+                                                            formItem.formItem_1
+                                                              .tooltip
+                                                          )
+                                                        },
+                                                        slot: "content"
+                                                      }),
+                                                      _vm._v(" "),
+                                                      _c("i", {
+                                                        staticClass:
+                                                          "el-icon-question"
+                                                      })
+                                                    ]
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            : _vm._e()
+                                        ],
+                                        2
                                       )
                                     ],
                                     1
@@ -3393,8 +3467,8 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                                     "el-date-picker",
                                     _vm._b(
                                       {
-                                        style: formItem.formItem_2.style
-                                          ? formItem.formItem_2.style
+                                        style: formItem.formItem_1.style
+                                          ? formItem.formItem_1.style
                                           : { width: "100%" },
                                         attrs: { type: "date" },
                                         on: {
@@ -3422,7 +3496,7 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                                         }
                                       },
                                       "el-date-picker",
-                                      formItem.formItem_2,
+                                      formItem.formItem_1,
                                       false
                                     )
                                   )
@@ -4073,6 +4147,43 @@ var advanced_searchvue_type_script_lang_js_this = undefined;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /*
  *@description:
@@ -4159,7 +4270,7 @@ var advanced_searchvue_type_script_lang_js_this = undefined;
           ItemType: InputType.default,
           fieldId: 'user4',
           defaultValue: undefined,
-          labelName: '活动4-活动4-活动4',
+          labelName: '活动4',
           rules: [{
             required: false,
             message: '请输入活动名称',
@@ -4326,7 +4437,8 @@ var advanced_searchvue_type_script_lang_js_this = undefined;
             message: '请选择时间',
             trigger: 'change'
           }],
-          placeholder: null // style: {
+          placeholder: null,
+          valueFormat: 'yyyy-MM-dd' // style: {
           //   width: '100%'
           // }
 
@@ -4982,6 +5094,7 @@ var advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render = function() 
         "el-table",
         _vm._b(
           {
+            ref: "elTable",
             attrs: {
               data: _vm.tableData,
               "header-cell-style": _vm.headerCellStyle
@@ -4995,9 +5108,15 @@ var advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render = function() 
         [
           _vm.hasSelection
             ? [
-                _c("el-table-column", {
-                  attrs: { type: "selection", width: "55" }
-                })
+                _c(
+                  "el-table-column",
+                  _vm._b(
+                    { attrs: { type: "selection", width: "55" } },
+                    "el-table-column",
+                    _vm.selectionAttr,
+                    false
+                  )
+                )
               ]
             : _vm._e(),
           _vm._v(" "),
@@ -5180,6 +5299,8 @@ advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render._withStripped = t
 //
 //
 //
+//
+//
 
 /*
  *@description:
@@ -5214,6 +5335,12 @@ advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render._withStripped = t
     hasSelection: {
       type: Boolean,
       default: false
+    },
+    selectionAttr: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
     },
     hasPagination: {
       type: Boolean,
@@ -5346,6 +5473,14 @@ advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render._withStripped = t
       // console.log(this.pagination)
 
       this.$emit('handlePaginatonChange', this.pagination);
+    },
+    // 返回el-table的对象
+    getElTable: function getElTable() {
+      if (this.$refs.elTable) {
+        return this.$refs.elTable;
+      }
+
+      return null;
     }
   }
 });
@@ -7345,13 +7480,42 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                       formItem,
                       false
                     ),
-                    _vm._l(formItem.selectList, function(item, index) {
-                      return _c("el-option", {
-                        key: index,
-                        attrs: { label: item.label, value: item.value }
+                    [
+                      formItem.tooltip
+                        ? _c(
+                            "template",
+                            { slot: "prefix" },
+                            [
+                              _c(
+                                "el-tooltip",
+                                {
+                                  attrs: { effect: "light", placement: "top" }
+                                },
+                                [
+                                  _c("div", {
+                                    attrs: { slot: "content" },
+                                    domProps: {
+                                      innerHTML: _vm._s(formItem.tooltip)
+                                    },
+                                    slot: "content"
+                                  }),
+                                  _vm._v(" "),
+                                  _c("i", { staticClass: "el-icon-question" })
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm._l(formItem.selectList, function(item, index) {
+                        return _c("el-option", {
+                          key: index,
+                          attrs: { label: item.label, value: item.value }
+                        })
                       })
-                    }),
-                    1
+                    ],
+                    2
                   )
                 ],
                 1
@@ -7640,19 +7804,57 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                                       formItem.formItem_1,
                                       false
                                     ),
-                                    _vm._l(
-                                      formItem.formItem_1.selectList,
-                                      function(itemData, index) {
-                                        return _c("el-option", {
-                                          key: index,
-                                          attrs: {
-                                            label: itemData.label,
-                                            value: itemData.value
-                                          }
-                                        })
-                                      }
-                                    ),
-                                    1
+                                    [
+                                      _vm._l(
+                                        formItem.formItem_1.selectList,
+                                        function(itemData, index) {
+                                          return _c("el-option", {
+                                            key: index,
+                                            attrs: {
+                                              label: itemData.label,
+                                              value: itemData.value
+                                            }
+                                          })
+                                        }
+                                      ),
+                                      _vm._v(" "),
+                                      formItem.formItem_1.tooltip
+                                        ? _c(
+                                            "template",
+                                            { slot: "prefix" },
+                                            [
+                                              _c(
+                                                "el-tooltip",
+                                                {
+                                                  attrs: {
+                                                    effect: "light",
+                                                    placement: "top"
+                                                  }
+                                                },
+                                                [
+                                                  _c("div", {
+                                                    attrs: { slot: "content" },
+                                                    domProps: {
+                                                      innerHTML: _vm._s(
+                                                        formItem.formItem_1
+                                                          .tooltip
+                                                      )
+                                                    },
+                                                    slot: "content"
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("i", {
+                                                    staticClass:
+                                                      "el-icon-question"
+                                                  })
+                                                ]
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    2
                                   )
                                 ],
                                 1
@@ -7710,8 +7912,8 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                                 "el-date-picker",
                                 _vm._b(
                                   {
-                                    style: formItem.formItem_2.style
-                                      ? formItem.formItem_2.style
+                                    style: formItem.formItem_1.style
+                                      ? formItem.formItem_1.style
                                       : { width: "100%" },
                                     attrs: { type: "date" },
                                     on: {
@@ -7739,7 +7941,7 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                                     }
                                   },
                                   "el-date-picker",
-                                  formItem.formItem_2,
+                                  formItem.formItem_1,
                                   false
                                 )
                               )
@@ -7852,6 +8054,42 @@ advanced_inputvue_type_template_id_0e2243a4_scoped_true_render._withStripped = t
 
 
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //

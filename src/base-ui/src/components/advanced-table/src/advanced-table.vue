@@ -2,6 +2,7 @@
   <div class="advanced-table">
     <!-- 表格功能 -->
      <el-table
+      ref="elTable"
       :data="tableData"
       v-bind="$attrs"
       :header-cell-style="headerCellStyle"
@@ -10,7 +11,8 @@
       <template v-if="hasSelection">
         <el-table-column
           type="selection"
-          width="55">
+          width="55"
+          v-bind="selectionAttr">
         </el-table-column>
       </template>
      <!-- 第二列的索引 -->
@@ -109,6 +111,12 @@ export default {
     hasSelection: {
       type: Boolean,
       default: false
+    },
+    selectionAttr: {
+      type: Object,
+      default: function() {
+        return {}
+      }
     },
     hasPagination: {
       type: Boolean,
@@ -259,6 +267,14 @@ export default {
       // console.log(`当前页: ${val}`)
       // console.log(this.pagination)
       this.$emit('handlePaginatonChange', this.pagination)
+    },
+
+    // 返回el-table的对象
+    getElTable() {
+      if (this.$refs.elTable) {
+        return this.$refs.elTable
+      }
+      return null
     }
   }
 

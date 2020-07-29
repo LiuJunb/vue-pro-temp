@@ -39,5 +39,9 @@ vue-temp-cli addCom advanced-input -d src/base-ui/src/components/advanced-input/
 8.分页器添加 背景
 9.处理不需要缓存页面的滚动
 
+10.logs 不能提交
+11.coverage 不能提交
+
+
 后台系统：
   完善登录页面  

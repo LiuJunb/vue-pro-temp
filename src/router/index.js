@@ -19,7 +19,7 @@ const router = new VueRouter({
     if (scrollDom == null) {
       scrollDom = document.querySelector('.main .srcoll-view')
     }
-    scrollDom.scrollTop = 582
+    scrollDom.scrollTop = 0
   },
   mode: 'history',
   base: process.env.BASE_URL,

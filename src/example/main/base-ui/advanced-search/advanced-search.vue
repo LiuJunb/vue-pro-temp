@@ -854,7 +854,6 @@
       </b-advanced-search>
     '></code-h>
 
-    <b-divider-line></b-divider-line>
     <h4>4.登录表单</h4>
     <!-- 登录表单 -->
     <b-advanced-search
@@ -876,19 +875,61 @@
       lang="html"
       content='
       <b-advanced-search
-        label-width="90px"
-        :inline="true"
-
-        :showArrow="true"
-        :defaultShowItemCounts="6"
-
-        size="mini"
-        :formItems="adSearchDefaultConfig"
+        :formItems="adLogin"
+        :style="{width:"300px"}"
         @handleSubmit="handleSubmit"
-        @handleReset="handleReset"
       >
+      <template v-slot:form-subit="slotProps">
+            <el-button
+              type="primary"
+              :style="{width:"100%"}"
+              @click="slotProps.refForm.onSubmit()"
+              >
+              登录
+            </el-button>
+        </template>
       </b-advanced-search>
     '></code-h>
+
+    <code-h
+      lang="js"
+      content="
+      export const adLogin = [
+        {
+          ItemType: SearchType.default,
+          fieldId: 'username',
+
+          defaultValue: '',
+          // labelName: '',
+          // prefixIcon: 'el-icon-user',
+          'prefix-icon': 'el-icon-user',
+          clearable: true,
+
+          rules: [
+            { required: false, message: '请输入用户名', trigger: 'blur' },
+            // { min: 11, max: 11, message: '长度在11个字符', trigger: 'change' },
+            { validator: validateUsername, trigger: 'change' }
+          ],
+          placeholder: '请输入用户名'
+        },
+        {
+          ItemType: SearchType.default,
+          fieldId: 'password',
+
+          defaultValue: '',
+          // labelName: '请输入密码',
+          prefixIcon: 'el-icon-lock',
+          // showPassword: true, // 跟下面的一样
+          'show-password': true,
+
+          rules: [
+            { required: true, message: '请输入密码', trigger: 'blur' },
+            { validator: validatePassword, trigger: 'change' }
+          ],
+          placeholder: '请输入密码'
+        }
+      ]
+      "></code-h>
 
     <h4>5.普通表单1</h4>
     <!-- 普通表单1 -->
@@ -913,23 +954,174 @@
           </el-button>
       </template>
     </b-advanced-search>
-        <code-h
+
+    <code-h
       lang="html"
       content='
       <b-advanced-search
-        label-width="90px"
-        :inline="true"
-
-        :showArrow="true"
-        :defaultShowItemCounts="6"
-
-        size="mini"
-        :formItems="adSearchDefaultConfig"
+        :formItems="adForm"
+        label-position="left"
+        :style="{width:"400px"}"
         @handleSubmit="handleSubmit"
-        @handleReset="handleReset"
       >
+      <template v-slot:form-subit="slotProps">
+            <el-button
+              type="primary"
+              @click="slotProps.refForm.onSubmit()"
+              >
+              保存
+            </el-button>
+            <el-button
+              type="default"
+              @click="slotProps.refForm.onReset()"
+              >
+              重置
+            </el-button>
+        </template>
       </b-advanced-search>
     '></code-h>
+
+    <code-h
+      lang="js"
+      content="
+      const adForm = [
+        {
+          ItemType: SearchType.default,
+          fieldId: 'username',
+
+          defaultValue: '',
+          labelName: '用户名',
+          clearable: true,
+          // labelWidth: '100px',
+          style: {
+            width: '100%'
+          },
+          rules: [
+            { required: false, message: '请输入用户名', trigger: 'blur' }
+          ],
+          placeholder: '请输入用户名'
+        },
+        {
+          ItemType: SearchType.default,
+          fieldId: 'password_1',
+
+          defaultValue: '',
+          labelName: '请输入密码',
+          // labelWidth: '100px',
+          style: {
+            width: '100%'
+          },
+          rules: [
+            { required: false, message: '请输入密码', trigger: 'blur' }
+          ],
+          placeholder: '请输入密码'
+        },
+        {
+          ItemType: SearchType.default,
+          fieldId: 'password_2',
+
+          defaultValue: '',
+          labelName: '确认密码',
+          labelWidth: '100px',
+          style: {
+            width: '300px'
+          },
+          rules: [
+            { required: false, message: '请输入密码', trigger: 'blur' }
+          ],
+          placeholder: '请输入密码'
+        },
+        {
+          ItemType: SearchType.select,
+          fieldId: 'select_1',
+          defaultValue: '',
+          labelName: '选择城市',
+          selectList: [
+            {
+              label: '广州',
+              value: 1
+            },
+            {
+              label: '深圳',
+              value: 2
+            }
+          ],
+          style: {
+            width: '100%'
+          },
+          rules: [
+            { required: false, message: '请输入密码', trigger: 'blur' }
+          ],
+          placeholder: '请输入密码'
+        },
+        {
+          ItemType: SearchType.radios,
+          fieldId: 'select_2',
+          defaultValue: '',
+          labelName: '选择性别',
+          radioList: [
+            {
+              label: '男'
+            },
+            {
+              label: '女'
+            }
+          ],
+          labelWidth: '100px',
+          style: {
+            width: '300px'
+          },
+          rules: [
+            { required: false, message: '请输入密码', trigger: 'blur' }
+          ],
+          placeholder: '请输入密码'
+        },
+        {
+          ItemType: SearchType.checkboxs,
+          fieldId: 'select_3',
+          defaultValue: [],
+          labelName: '选择爱好',
+          checkboxList: [
+            {
+              label: '游戏'
+            },
+            {
+              label: '跑步'
+            },
+            {
+              label: '听歌'
+            }
+          ],
+          labelWidth: '100px',
+          style: {
+            width: '300px'
+          },
+          rules: [
+            { required: false, message: '请输入密码', trigger: 'blur' }
+          ],
+          placeholder: '请输入密码'
+        },
+        {
+          ItemType: SearchType.default,
+          fieldId: 'textarea_1',
+          defaultValue: '',
+          labelName: '请输入内容',
+
+          type: 'textarea',
+          maxlength: '30',
+          'show-word-limit': true,
+          style: {
+            width: '100%'
+          },
+          rules: [
+            { required: false, message: '请输入密码', trigger: 'blur' }
+          ],
+          placeholder: '请输入密码'
+        }
+      ]
+
+      "></code-h>
+
     <h4>6.普通表单2</h4>
     <!-- 普通表单2 -->
     <b-advanced-search
@@ -963,22 +1155,37 @@
     <code-h
       lang="html"
       content='
-      <b-advanced-search
-        label-width="90px"
-        :inline="true"
+        <b-advanced-search
+          :formItems="adForm2"
+          label-position="right"
+          :inline="true"
+          @handleSubmit="handleSubmit"
+        >
+        <template v-slot:form-subit="slotProps">
+              <el-button
+                type="primary"
+                @click="slotProps.refForm.onSubmit()"
+                >
+                保存
+              </el-button>
+              <el-button
+                type="default"
+                @click="slotProps.refForm.onReset()"
+                >
+                重置
+              </el-button>
+              <el-button
+                type="default"
+                @click="handleInitData(slotProps.refForm)"
+                >
+                回显
+              </el-button>
+          </template>
+        </b-advanced-search>
 
-        :showArrow="true"
-        :defaultShowItemCounts="6"
-
-        size="mini"
-        :formItems="adSearchDefaultConfig"
-        @handleSubmit="handleSubmit"
-        @handleReset="handleReset"
-      >
-      </b-advanced-search>
     '></code-h>
 
-    <h4>BAsiderMenu 的 Props：</h4>
+    <h4>BAdvancedSearch 的 Props：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -989,7 +1196,7 @@
     >
     </b-advanced-table>
 
-    <h4>BAsiderMenu 的 Slot：</h4>
+    <h4>BAdvancedSearch 的 Slot：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -1000,7 +1207,7 @@
     >
     </b-advanced-table>
 
-    <h4>BAsiderMenu 的 Event：</h4>
+    <h4>BAdvancedSearch 的 Event：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -1010,6 +1217,28 @@
       :tabData="tabDataEvent"
     >
     </b-advanced-table>
+
+    <h4>formItems 的 Props：</h4>
+    <b-advanced-table
+      stripe
+      :border="true"
+      :hasPagination="false"
+      style="width: 100%"
+      :tabColumn="tabColumnProps"
+      :tabData="tabDataFormItemsProps"
+    >
+    </b-advanced-table>
+
+    <!-- <h4>formItems 的 Slot：</h4>
+    <b-advanced-table
+      stripe
+      :border="true"
+      :hasPagination="false"
+      style="width: 900px"
+      :tabColumn="tabColumnSlot"
+      :tabData="tabDataFormItemsSlot"
+    >
+    </b-advanced-table> -->
 
   </div>
 </template>
@@ -1070,25 +1299,163 @@ export default {
       adForm2,
       tabDataProps: [
         {
-          attr: 'menuList',
-          des: '菜单列表',
+          attr: 'formItems',
+          des: '表单的item配置',
           type: 'Array',
           select: ' ',
           default: ' '
+          // func:''
+        },
+        {
+          attr: 'width',
+          des: '整个表单的宽',
+          type: 'String',
+          select: ' ',
+          default: '100%'
+          // func:''
+        },
+        {
+          attr: 'showBtn',
+          des: '是否显示搜索和重置按钮',
+          type: 'Boolean',
+          select: ' ',
+          default: 'true'
+          // func:''
+        },
+        {
+          attr: 'showSearch',
+          des: '是否显示 搜素按钮',
+          type: 'Boolean',
+          select: ' ',
+          default: 'true'
+          // func:''
+        },
+        {
+          attr: 'showReset',
+          des: '是否显示 重置按钮',
+          type: 'Boolean',
+          select: ' ',
+          default: 'true'
+          // func:''
+        },
+        {
+          attr: 'showArrow',
+          des: '是否显示：收起，展开 按钮',
+          type: 'Boolean',
+          select: ' ',
+          default: 'false'
+          // func:''
+        },
+        {
+          attr: 'defaultShowItemCounts',
+          des: '收起时显示多少个item，默认6个（使用该属性，showArrow必须设置为true）',
+          type: 'Number',
+          select: ' ',
+          default: '6'
+          // func:''
+        },
+        {
+          attr: 'hashPre',
+          des: '给每个 标签 id 属性值添加的前缀',
+          type: 'String',
+          select: ' ',
+          default: 'hash_'
+          // func:''
+        },
+        {
+          attr: 'defaultArrowDirection',
+          des: '默认显示收起文本',
+          type: 'String',
+          select: ' ',
+          default: 'down'
+          // func:''
+        },
+        {
+          attr: 'searchItemLabelwidth',
+          des: '搜素 按钮距离左边的间距',
+          type: 'String',
+          select: ' ',
+          default: 'null'
           // func:''
         }
       ],
       tabDataSlot: [
         {
-          name: 'menu-btn',
-          des: '自定义折叠按钮'
+          name: 'form-subit',
+          des: '自定义搜索和重置的按钮'
         }
       ],
       tabDataEvent: [
         {
-          name: 'handleClickCurrentMenu',
-          des: '监听重复点击当前的菜单',
-          func: 'func( menu )'
+          name: 'handleSubmit',
+          des: '监听搜索的点击事件',
+          func: 'func( formData )'
+        },
+        {
+          name: 'handleReset',
+          des: '监听重置的点击事件',
+          func: 'func( this )'
+        },
+        {
+          name: 'handleFormItemChange',
+          des: '监听表单中item的点击事件',
+          func: 'func( value, formItem )'
+        }
+      ],
+      tabDataFormItemsProps: [
+        {
+          attr: 'ItemType',
+          des: '指定item组件的类型，默认是input输入框组件',
+          type: 'Number',
+          select: ' ',
+          default: ' '
+          // func:''
+        },
+        {
+          attr: 'fieldId',
+          des: '指定表单组件的id，提交表单时通过该id获取表单的值',
+          type: 'String',
+          select: ' ',
+          default: ' '
+          // func:''
+        },
+        {
+          attr: 'defaultValue',
+          des: '指定表单组件默认值',
+          type: '',
+          select: ' ',
+          default: ' '
+          // func:''
+        },
+        {
+          attr: 'labelName',
+          des: '指定表单组件label的名称',
+          type: 'String',
+          select: ' ',
+          default: ' '
+          // func:''
+        },
+        {
+          attr: 'customSlot',
+          des: '自定义item的插槽名称',
+          type: 'String',
+          select: ' ',
+          default: ' '
+          // func:''
+        },
+        {
+          attr: '....',
+          des: '',
+          type: '',
+          select: ' ',
+          default: ' '
+          // func:''
+        }
+      ],
+      tabDataFormItemsSlot: [
+        {
+          name: 'form-subit',
+          des: '自定义搜索和重置的按钮'
         }
       ]
 

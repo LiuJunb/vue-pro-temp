@@ -434,6 +434,7 @@ export default {
   },
   mixins: [],
   props: {
+    // 表单的item配置
     formItems: {
       type: Array,
       default: function() {
@@ -732,10 +733,12 @@ export default {
         ]
       }
     },
+    // 整个表单的宽
     width: {
       type: String,
       default: '100%'
     },
+    // 是否显示搜索和重置按钮
     showBtn: {
       type: Boolean,
       default: true
@@ -750,17 +753,17 @@ export default {
       type: Boolean,
       default: true
     },
-    // 是否显示：收起，展开
+    // 是否显示：收起，展开 按钮
     showArrow: {
       type: Boolean,
       default: false
     },
-    // 收起时显示多少个item， 默认6个
+    // 收起时显示多少个item，默认6个（使用该属性，showArrow必须设置为true）
     defaultShowItemCounts: {
       type: Number,
       default: 6
     },
-    // 标签 id 的前缀
+    // 给每个 标签 id 属性值添加的前缀
     hashPre: {
       type: String,
       default: 'hash_'
