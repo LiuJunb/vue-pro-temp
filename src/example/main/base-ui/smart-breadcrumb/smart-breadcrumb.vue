@@ -1,35 +1,74 @@
 <template>
   <div class="smart-breadcrumb">
-
-    <b-title-tag name="b-advanced-search 组件"></b-title-tag>
+    <b-title-tag name="b-smart-breadcrumb 组件"></b-title-tag>
+    <h4>1.基本使用</h4>
+    <b-smart-breadcrumb
+      :menuList="menuList"
+      :otherList="otherList">
+    </b-smart-breadcrumb>
     <code-h
       lang="html"
       content='
-      <b-aside-menu
-        :width="230">
-      </b-aside-menu>
+      <b-smart-breadcrumb
+        :menuList="menuList"
+        :otherList="otherList">
+      </b-smart-breadcrumb>
     '></code-h>
+    <code-h
+      lang="js"
+      content="
+      menuList = [
+        {
+          icon: 'el-icon-location',
+          id: 1,
+          level: 1,
+          name: 'Vue项目架构介绍',
+          type: 'dir',
+          url: '/main',
+          children: [
+            {
+              icon: 'el-icon-setting',
+              id: 11,
+              level: 2,
+              name: '简介',
+              type: 'menu',
+              url: '/main/introduce',
+              children: []
+            },
+            {
+              icon: 'el-icon-setting',
+              id: 12,
+              level: 2,
+              name: '代码规范',
+              type: 'menu',
+              url: '/main/code-specification',
+              children: [
+              ]
+            }
+          ]
+        }
+      ]
+
+      otherList = [
+      {
+
+        parentUrl: '/main/smart-breadcrumb',
+        url: '/main/smart-breadcrumb/detail',
+        name: '详情',
+
+        children: [
+        ]
+      }
+    ]
+      "></code-h>
+
+    <!--
     顶部
     <h3>3</h3>
     <h3>3</h3>
     <h3>3</h3>
     <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
-    <h3>3</h3>
 
-    <h3>3</h3>
-    <h3>3</h3>
     <router-link to="/main/smart-breadcrumb/detail">Go to Bar</router-link>
     <el-button
      type="primary"
@@ -37,8 +76,9 @@
     >
       goToDetail
     </el-button>
+    -->
 
-    <h4>BAsiderMenu 的 Props：</h4>
+    <h4>BSmartBreadcrumb 的 Props：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -49,7 +89,7 @@
     >
     </b-advanced-table>
 
-    <h4>BAsiderMenu 的 Slot：</h4>
+    <h4>BSmartBreadcrumb 的 Slot：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -60,7 +100,7 @@
     >
     </b-advanced-table>
 
-    <h4>BAsiderMenu 的 Event：</h4>
+    <h4>BSmartBreadcrumb 的 Event：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -81,6 +121,12 @@
 import {
   TableColumnMixin
 } from '@/mixins/index.js'
+import {
+  menuList
+} from '@/utils/asider-menu.js'
+import {
+  otherList
+} from '@/config/index.js'
 export default {
   name: 'SmartBreadcrumb',
   components: {
@@ -95,6 +141,8 @@ export default {
   },
   data: function() {
     return {
+      menuList,
+      otherList,
       tabDataProps: [
         {
           attr: 'menuList',

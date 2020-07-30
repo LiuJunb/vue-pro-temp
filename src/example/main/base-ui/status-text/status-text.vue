@@ -1,14 +1,8 @@
 <template>
   <div class="status-text">
 
-    <b-title-tag name="b-advanced-search 组件"></b-title-tag>
-    <code-h
-      lang="html"
-      content='
-      <b-aside-menu
-        :width="230">
-      </b-aside-menu>
-    '></code-h>
+    <b-title-tag name="b-status-text 组件"></b-title-tag>
+    <h4>1.基本使用</h4>
     <b-status-text
       value="0"
       :statusList="statusList"
@@ -20,7 +14,41 @@
     >
     </b-status-text>
 
-    <h4>BAsiderMenu 的 Props：</h4>
+    <code-h
+      lang="html"
+      content='
+    <b-status-text
+      value="0"
+      :statusList="statusList"
+    >
+    </b-status-text>
+    <b-status-text
+      value="1"
+      :statusList="statusList"
+    >
+    </b-status-text>
+    '></code-h>
+
+    <code-h
+      lang="js"
+      content="
+      statusList: {
+        No: {
+          value: '0',
+          label: '否',
+          color: 'red',
+          id: '' // todo ...
+        },
+        Yes: {
+          value: '1',
+          label: '是',
+          color: 'green',
+          id: '' // todo ...
+        }
+      },
+      "></code-h>
+
+    <h4>BStatusText 的 Props：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -31,7 +59,7 @@
     >
     </b-advanced-table>
 
-    <h4>BAsiderMenu 的 Slot：</h4>
+    <h4>BStatusText 的 Slot：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -42,7 +70,7 @@
     >
     </b-advanced-table>
 
-    <h4>BAsiderMenu 的 Event：</h4>
+    <h4>BStatusText 的 Event：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -90,26 +118,34 @@ export default {
       },
       tabDataProps: [
         {
-          attr: 'menuList',
-          des: '菜单列表',
-          type: 'Array',
+          attr: 'value',
+          des: '当前的值',
+          type: 'String',
+          select: ' ',
+          default: ' '
+          // func:''
+        },
+        {
+          attr: 'statusList',
+          des: '所有状态的列表',
+          type: 'Object',
           select: ' ',
           default: ' '
           // func:''
         }
       ],
       tabDataSlot: [
-        {
-          name: 'menu-btn',
-          des: '自定义折叠按钮'
-        }
+        // {
+        //   name: 'menu-btn',
+        //   des: '自定义折叠按钮'
+        // }
       ],
       tabDataEvent: [
-        {
-          name: 'handleClickCurrentMenu',
-          des: '监听重复点击当前的菜单',
-          func: 'func( menu )'
-        }
+        // {
+        //   name: 'handleClickCurrentMenu',
+        //   des: '监听重复点击当前的菜单',
+        //   func: 'func( menu )'
+        // }
       ]
 
     }

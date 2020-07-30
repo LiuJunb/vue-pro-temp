@@ -1,7 +1,7 @@
 <template>
   <div class="advanced-table">
 
-    <b-title-tag name="b-advanced-search 组件"></b-title-tag>
+    <b-title-tag name="b-advanced-table 组件"></b-title-tag>
     <h4>1.表格的基本使用</h4>
     <b-advanced-table
       style="width: 100%"
@@ -235,6 +235,112 @@
       ],
       "></code-h>
 
+    <h4>6.树形数据的表格</h4>
+    <b-advanced-table
+      stripe
+      :border="true"
+      style="width: 100%"
+      row-key="id"
+      :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
+      :tabColumn="tabColumn2"
+      :tabData="tabData1"
+    >
+      <template v-slot:date="slotProps">
+        <a href="#">{{slotProps.row.date}}</a>
+      </template>
+    </b-advanced-table>
+
+    <code-h
+      lang="html"
+      content='
+      <b-advanced-table
+        stripe
+        :border="true"
+        style="width: 100%"
+        row-key="id"
+        :tree-props="{children: "children", hasChildren: "hasChildren"}"
+        :tabColumn="tabColumn2"
+        :tabData="tabData1"
+      >
+        <template v-slot:date="slotProps">
+          <a href="#">{ {slotProps.row.date}}</a>
+        </template>
+      </b-advanced-table>
+    '></code-h>
+    <code-h
+      lang="js"
+      content="
+      tabData1: [
+        {
+          id: 1,
+          name: '刘军',
+          age: 100,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-03',
+          children: [
+            {
+              id: 11,
+              name: '小军1',
+              age: 101,
+              sex: '男',
+              content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+              address: '上海市普陀区金沙江路 1518 弄',
+              date: '2016-05-03'
+            },
+            {
+              id: 12,
+              name: '小军2',
+              age: 102,
+              sex: '男',
+              content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+              address: '上海市普陀区金沙江路 1518 弄',
+              date: '2016-05-03'
+            },
+            {
+              id: 13,
+              name: '小军3',
+              age: 102,
+              sex: '男',
+              content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+              address: '上海市普陀区金沙江路 1518 弄',
+              date: '2016-05-03',
+              children: [
+                {
+                  id: 111,
+                  name: '小军31',
+                  age: 1002,
+                  sex: '男',
+                  content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+                  address: '上海市普陀区金沙江路 1518 弄',
+                  date: '2016-05-03'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 2,
+          name: '小军',
+          age: 10,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-03'
+        },
+        {
+          id: 3,
+          name: '大军',
+          age: 50,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-03'
+        }
+      ],
+      "></code-h>
+
     <h4>BAdvancedTable 的 Props：</h4>
     <b-advanced-table
       stripe
@@ -385,6 +491,75 @@ export default {
           date: '2016-05-03'
         },
         {
+          name: '大军',
+          age: 50,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-03'
+        }
+      ],
+      tabData1: [
+        {
+          id: 1,
+          name: '刘军',
+          age: 100,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-03',
+          children: [
+            {
+              id: 11,
+              name: '小军1',
+              age: 101,
+              sex: '男',
+              content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+              address: '上海市普陀区金沙江路 1518 弄',
+              date: '2016-05-03'
+            },
+            {
+              id: 12,
+              name: '小军2',
+              age: 102,
+              sex: '男',
+              content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+              address: '上海市普陀区金沙江路 1518 弄',
+              date: '2016-05-03'
+            },
+            {
+              id: 13,
+              name: '小军3',
+              age: 102,
+              sex: '男',
+              content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+              address: '上海市普陀区金沙江路 1518 弄',
+              date: '2016-05-03',
+              children: [
+                {
+                  id: 111,
+                  name: '小军31',
+                  age: 1002,
+                  sex: '男',
+                  content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+                  address: '上海市普陀区金沙江路 1518 弄',
+                  date: '2016-05-03'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 2,
+          name: '小军',
+          age: 10,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-03'
+        },
+        {
+          id: 3,
           name: '大军',
           age: 50,
           sex: '男',

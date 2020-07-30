@@ -23,6 +23,7 @@ export default {
   },
   mixins: [],
   props: {
+    // tag组的配置列表
     tagList: {
       type: Array,
       default: function() {
@@ -66,6 +67,7 @@ export default {
         ]
       }
     },
+    // 组件的宽
     width: {
       type: String,
       default: null

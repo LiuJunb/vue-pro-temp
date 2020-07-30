@@ -62,6 +62,7 @@ export default {
   },
   mixins: [],
   props: {
+    // icon组 的配置列表
     iconList: {
       type: Array,
       default: function() {
@@ -120,17 +121,19 @@ export default {
         ]
       }
     },
+    // icon 组的居中
     pull: {
       type: String,
       default: 'left' // left, right, center
     },
+    // icon 组的最大宽
     maxWidth: {
       type: String,
       default: function() {
         return '100%'
       }
     },
-    // 用户所拥有的权限
+    // 用户所拥有的权限（不传递时，默认会去sessionStorage中查找permissions属性）
     permissions: {
       type: Array,
       default: function() {
@@ -140,6 +143,7 @@ export default {
         ]
       }
     },
+    // icon 标签添加一个 class
     iconClass: {
       type: String,
       default: null

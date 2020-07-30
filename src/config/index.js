@@ -4,11 +4,6 @@ export * from './config.dev.js'
 
 export const otherList = [
   {
-    icon: '0',
-    id: 0,
-    level: 0,
-    type: '0',
-    parentId: 0,
 
     parentUrl: '/main/smart-breadcrumb',
     url: '/main/smart-breadcrumb/detail',

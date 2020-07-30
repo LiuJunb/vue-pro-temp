@@ -12,10 +12,12 @@ export default {
   },
   mixins: [],
   props: {
+    // 当前的值
     value: {
       type: String,
       default: ''
     },
+    // 所有状态的列表
     statusList: {
       type: Object,
       default: function() {

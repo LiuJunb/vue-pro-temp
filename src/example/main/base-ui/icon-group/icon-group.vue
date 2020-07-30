@@ -9,6 +9,7 @@
         :width="230">
       </b-aside-menu>
     '></code-h>
+
     <br>
     <b-icon-group
       :iconList="iconList1"
@@ -223,26 +224,58 @@ export default {
       ],
       tabDataProps: [
         {
-          attr: 'menuList',
-          des: '菜单列表',
+          attr: 'iconList',
+          des: 'icon组 的配置列表',
           type: 'Array',
+          select: ' ',
+          default: ' '
+          // func:''
+        },
+        {
+          attr: 'pull',
+          des: 'icon 组的居中',
+          type: 'String',
+          select: ' ',
+          default: ' '
+          // func:''
+        },
+        {
+          attr: 'maxWidth',
+          des: 'icon 组的最大宽',
+          type: 'String',
+          select: ' ',
+          default: '100%'
+          // func:''
+        },
+        {
+          attr: 'permissions',
+          des: '用户所拥有的权限（不传递时，默认会去sessionStorage中查找permissions属性）',
+          type: 'Array',
+          select: ' ',
+          default: '[]'
+          // func:''
+        },
+        {
+          attr: 'iconClass',
+          des: 'icon 标签添加一个 class',
+          type: 'String',
           select: ' ',
           default: ' '
           // func:''
         }
       ],
       tabDataSlot: [
-        {
-          name: 'menu-btn',
-          des: '自定义折叠按钮'
-        }
+        // {
+        //   name: 'menu-btn',
+        //   des: '自定义折叠按钮'
+        // }
       ],
       tabDataEvent: [
-        {
-          name: 'handleClickCurrentMenu',
-          des: '监听重复点击当前的菜单',
-          func: 'func( menu )'
-        }
+        // {
+        //   name: 'handleClickCurrentMenu',
+        //   des: '监听重复点击当前的菜单',
+        //   func: 'func( menu )'
+        // }
       ]
 
     }

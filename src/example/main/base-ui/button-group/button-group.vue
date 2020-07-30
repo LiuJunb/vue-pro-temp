@@ -1,7 +1,7 @@
 <template>
   <div class="button-group">
 
-    <b-title-tag name="b-advanced-search 组件"></b-title-tag>
+    <b-title-tag name="b-button-group 组件"></b-title-tag>
     <h4>1.基本使用</h4>
     <b-button-group
       :btnList="btnList"

@@ -29,6 +29,7 @@ export default {
   },
   mixins: [],
   props: {
+    // 在菜单列表的页面
     menuList: {
       type: Array,
       default: function() {
