@@ -37,10 +37,12 @@ export default {
       type: String,
       default: null
     },
+    // 占据多少列
     cols: {
       type: Number,
       default: null
     },
+    // 占据多少行
     rows: {
       type: Number,
       default: null

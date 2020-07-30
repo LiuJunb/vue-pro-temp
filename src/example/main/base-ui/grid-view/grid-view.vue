@@ -1,14 +1,8 @@
 <template>
   <div class="grid-view">
 
-    <b-title-tag name="b-advanced-search 组件"></b-title-tag>
-    <code-h
-      lang="html"
-      content='
-      <b-aside-menu
-        :width="230">
-      </b-aside-menu>
-    '></code-h>
+    <b-title-tag name="b-grid-view 组件"></b-title-tag>
+    <h4>1.基本的使用</h4>
     <b-grid-view
       :itemData="itemData"
       :hasPagination="false"
@@ -24,22 +18,97 @@
       </template>
     </b-grid-view>
 
-    <br>
+    <code-h
+      lang="html"
+      content='
+      <b-grid-view
+        :itemData="itemData"
+        :hasPagination="false"
+        :gutter="8"
+        :md="6"
+        :lg="4"
+        :xl="3"
+      >
+        <template v-slot:col-item="slotProps">
+          <div class="gird-col1">
+            { {slotProps.item.name}}
+          </div>
+        </template>
+      </b-grid-view>
+    '></code-h>
+    <code-h
+      lang="js"
+      content="
+            itemData: [
+        {
+          name: '大军',
+          age: '11',
+          sex: '男',
+          address: 'abc',
+          email: '113345321@123'
+        },
+        {
+          name: '小军1',
+          age: '11',
+          sex: '男',
+          address: 'abc',
+          email: '113345321@123'
+        },
+        {
+          name: '小军2',
+          age: '11',
+          sex: '男',
+          address: 'abc',
+          email: '113345321@123'
+        },
+        {
+          name: '小军3',
+          age: '11',
+          sex: '男',
+          address: 'abc',
+          email: '113345321@123'
+        },
+        {
+          name: '小军4',
+          age: '11',
+          sex: '男',
+          address: 'abc',
+          email: '113345321@123'
+        },
+        {
+          name: '小军3',
+          age: '11',
+          sex: '男',
+          address: 'abc',
+          email: '113345321@123'
+        },
+        {
+          name: '小军4',
+          age: '11',
+          sex: '男',
+          address: 'abc',
+          email: '113345321@123'
+        },
+        {
+          name: '小军3',
+          age: '11',
+          sex: '男',
+          address: 'abc',
+          email: '113345321@123'
+        },
+        {
+          name: '小军4',
+          age: '11',
+          sex: '男',
+          address: 'abc',
+          email: '113345321@123'
+        }
+      ],
+      "></code-h>
 
+    <h4>2.带分页器</h4>
     <b-grid-view
       :itemData="itemData"
-      @handlePaginatonChange="handlePaginatonChange"
-    >
-      <template v-slot:col-item="slotProps">
-        <div class="gird-col2">
-          {{slotProps.item.name}}
-        </div>
-      </template>
-    </b-grid-view>
-
-    <br>
-    <b-grid-view
-      :itemData="[]"
       :showEmptyText="true"
       @handlePaginatonChange="handlePaginatonChange"
     >
@@ -50,9 +119,53 @@
       </template>
     </b-grid-view>
 
-    <br>
+    <code-h
+      lang="html"
+      content='
+      <b-grid-view
+        :itemData="itemData"
+        :showEmptyText="true"
+        @handlePaginatonChange="handlePaginatonChange"
+      >
+        <template v-slot:col-item="slotProps">
+          <div class="gird-col2">
+            { {slotProps.item.name}}
+          </div>
+        </template>
+      </b-grid-view>
+    '></code-h>
 
-    <h4>BAsiderMenu 的 Props：</h4>
+    <h4>3.带分页器没数据时</h4>
+    <b-grid-view
+      :itemData="[]"
+      :paginationConf="paginationConf"
+      :showEmptyText="true"
+      @handlePaginatonChange="handlePaginatonChange"
+    >
+      <template v-slot:col-item="slotProps">
+        <div class="gird-col2">
+          {{slotProps.item.name}}
+        </div>
+      </template>
+    </b-grid-view>
+
+    <code-h
+      lang="html"
+      content='
+      <b-grid-view
+        :itemData="[]"
+        :showEmptyText="true"
+        @handlePaginatonChange="handlePaginatonChange"
+      >
+        <template v-slot:col-item="slotProps">
+          <div class="gird-col2">
+            { {slotProps.item.name}}
+          </div>
+        </template>
+      </b-grid-view>
+    '></code-h>
+
+    <h4>BGridView 的 Props：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -63,7 +176,7 @@
     >
     </b-advanced-table>
 
-    <h4>BAsiderMenu 的 Slot：</h4>
+    <h4>BGridView 的 Slot：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -74,7 +187,7 @@
     >
     </b-advanced-table>
 
-    <h4>BAsiderMenu 的 Event：</h4>
+    <h4>BGridView 的 Event：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -174,27 +287,122 @@ export default {
           email: '113345321@123'
         }
       ],
+      paginationConf: {
+        'current-page': 1, // 重 1 开始
+        'page-sizes': [100, 200, 300, 400],
+        'page-size': 100,
+        layout: 'total, sizes, prev, pager, next, jumper',
+        total: 400
+      },
       tabDataProps: [
         {
-          attr: 'menuList',
-          des: '菜单列表',
+          attr: 'width',
+          des: '组件的宽',
+          type: 'String',
+          select: ' ',
+          default: 'null'
+          // func:''
+        },
+        {
+          attr: 'gutter',
+          des: '栅格间隔',
+          type: 'Number',
+          select: ' ',
+          default: '0'
+          // func:''
+        },
+        {
+          attr: '栅格系统的数据',
+          des: 'itemData',
           type: 'Array',
           select: ' ',
-          default: ' '
+          default: '[]'
+          // func:''
+        },
+        {
+          attr: 'hasPagination',
+          des: '是否有分页器',
+          type: 'Boolean',
+          select: ' ',
+          default: 'true'
+          // func:''
+        },
+        {
+          attr: 'paginationConf',
+          des: '分页器的配置',
+          type: 'Object',
+          select: ' ',
+          default: `
+          {
+            'current-page': 1, // 重 1 开始
+            'page-sizes': [100, 200, 300, 400],
+            'page-size': 100,
+            layout: 'total, sizes, prev, pager, next, jumper',
+            total: 400
+          }
+          `
+          // func:''
+        },
+        {
+          attr: 'xs',
+          des: '',
+          type: 'Number',
+          select: ' ',
+          default: '24'
+          // func:''
+        },
+        {
+          attr: 'sm',
+          des: '',
+          type: 'Number',
+          select: ' ',
+          default: '24'
+          // func:''
+        },
+        {
+          attr: 'md',
+          des: '',
+          type: 'Number',
+          select: ' ',
+          default: '24'
+          // func:''
+        },
+        {
+          attr: 'lg',
+          des: '',
+          type: 'Number',
+          select: ' ',
+          default: '8'
+          // func:''
+        },
+        {
+          attr: 'xl',
+          des: '',
+          type: 'Number',
+          select: ' ',
+          default: '6'
+          // func:''
+        },
+        {
+          attr: 'showEmptyText',
+          des: '没数据时是否显示空文本',
+          type: 'Boolean',
+          select: ' ',
+          default: 'false'
           // func:''
         }
       ],
       tabDataSlot: [
-        {
-          name: 'menu-btn',
-          des: '自定义折叠按钮'
-        }
+        // {
+        //   name: 'menu-btn',
+        //   des: '自定义折叠按钮'
+        // }
       ],
       tabDataEvent: [
         {
-          name: 'handleClickCurrentMenu',
-          des: '监听重复点击当前的菜单',
-          func: 'func( menu )'
+          name: 'handlePaginatonChange',
+          des: '监听分页器的点击事件',
+          func: 'func( pagination )'
         }
       ]
 

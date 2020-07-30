@@ -134,10 +134,10 @@ export default {
           {
             icon: 'el-icon-location',
             id: 1,
-            level: 1,
+            level: 1, // 没用到
             name: '导航一',
             parentId: 0,
-            type: 'dir',
+            type: 'dir', // 没用到
             url: '/main/xxx/xxx',
             children: [
               {

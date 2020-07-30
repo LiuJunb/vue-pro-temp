@@ -2,8 +2,64 @@
   <div class="print-table">
 
     <b-title-tag name="b-advanced-search 组件"></b-title-tag>
+    <h4>1.基本使用</h4>
     <code-h
       lang="html"
+      content='
+      <b-aside-menu
+        :width="230">
+      </b-aside-menu>
+    '></code-h>
+    <code-h
+      lang="js"
+      content='
+      <b-aside-menu
+        :width="230">
+      </b-aside-menu>
+    '></code-h>
+
+    <h4>1.基本使用</h4>
+    <code-h
+      lang="html"
+      content='
+      <b-aside-menu
+        :width="230">
+      </b-aside-menu>
+    '></code-h>
+    <code-h
+      lang="js"
+      content='
+      <b-aside-menu
+        :width="230">
+      </b-aside-menu>
+    '></code-h>
+
+    <h4>1.基本使用</h4>
+    <code-h
+      lang="html"
+      content='
+      <b-aside-menu
+        :width="230">
+      </b-aside-menu>
+    '></code-h>
+    <code-h
+      lang="js"
+      content='
+      <b-aside-menu
+        :width="230">
+      </b-aside-menu>
+    '></code-h>
+
+    <h4>1.基本使用</h4>
+    <code-h
+      lang="html"
+      content='
+      <b-aside-menu
+        :width="230">
+      </b-aside-menu>
+    '></code-h>
+    <code-h
+      lang="js"
       content='
       <b-aside-menu
         :width="230">
@@ -120,7 +176,7 @@
       </b-row-item>
     </b-print-table>
 
-    <h4>BAsiderMenu 的 Props：</h4>
+    <h4>BPrintTable 的 Props：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -131,7 +187,7 @@
     >
     </b-advanced-table>
 
-    <h4>BAsiderMenu 的 Slot：</h4>
+    <h4>BPrintTable 的 Slot：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -142,7 +198,7 @@
     >
     </b-advanced-table>
 
-    <h4>BAsiderMenu 的 Event：</h4>
+    <h4>BPrintTable 的 Event：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -181,26 +237,42 @@ export default {
       logo,
       tabDataProps: [
         {
-          attr: 'menuList',
-          des: '菜单列表',
-          type: 'Array',
+          attr: 'width',
+          des: '表格的宽',
+          type: 'String',
           select: ' ',
-          default: ' '
+          default: '960px'
+          // func:''
+        },
+        {
+          attr: 'border',
+          des: '边框大小',
+          type: 'String',
+          select: ' ',
+          default: '1'
+          // func:''
+        },
+        {
+          attr: 'cellpadding',
+          des: '规定单元边沿与其内容之间的空白',
+          type: 'String',
+          select: ' ',
+          default: '6'
           // func:''
         }
       ],
       tabDataSlot: [
         {
-          name: 'menu-btn',
-          des: '自定义折叠按钮'
+          name: 'default',
+          des: '自定义内容'
         }
       ],
       tabDataEvent: [
-        {
-          name: 'handleClickCurrentMenu',
-          des: '监听重复点击当前的菜单',
-          func: 'func( menu )'
-        }
+        // {
+        //   name: 'handleClickCurrentMenu',
+        //   des: '监听重复点击当前的菜单',
+        //   func: 'func( menu )'
+        // }
       ]
 
     }

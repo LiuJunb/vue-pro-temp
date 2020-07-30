@@ -28,14 +28,17 @@ export default {
   },
   mixins: [],
   props: {
+    // 表格的宽
     width: {
       type: String,
       default: '960px'
     },
+    // 边框大小
     border: {
       type: String,
       default: '1'
     },
+    // 规定单元边沿与其内容之间的空白
     cellpadding: {
       type: String,
       default: '6'

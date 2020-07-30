@@ -55,9 +55,9 @@
     <!-- 分页功能 -->
     <el-pagination
       v-if="hasPagination"
+      :background="pagination.background===false?pagination.background:true"
       v-bind="pagination"
       :layout="pagination.layout?pagination.layout:'total, sizes, prev, pager, next, jumper'"
-      :background="true"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange">
     </el-pagination>

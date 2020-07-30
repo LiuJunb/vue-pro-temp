@@ -40,6 +40,7 @@
     <!-- 分页功能 -->
     <el-pagination
       v-if="hasPagination"
+      :background="pagination.background===false?pagination.background:true"
       v-bind="pagination"
       :layout="pagination.layout?pagination.layout:'total, sizes, prev, pager, next, jumper'"
       @size-change="handleSizeChange"
@@ -56,6 +57,7 @@ export default {
   },
   mixins: [],
   props: {
+    // 组件的宽
     width: {
       type: String,
       default: null
@@ -65,6 +67,7 @@ export default {
       type: Number,
       default: 0
     },
+    // 栅格系统的数据
     itemData: {
       type: Array,
       default: function() {
@@ -107,10 +110,12 @@ export default {
         ]
       }
     },
+    // 是否有分页器
     hasPagination: {
       type: Boolean,
       default: true
     },
+    // 分页器的配置
     paginationConf: {
       type: Object,
       default: function() {
@@ -143,6 +148,7 @@ export default {
       type: Number,
       default: 6
     },
+    // 没数据时是否显示空文本
     showEmptyText: {
       type: Boolean,
       default: false

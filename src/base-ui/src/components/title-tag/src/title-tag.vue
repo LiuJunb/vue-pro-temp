@@ -25,18 +25,22 @@ export default {
   },
   mixins: [],
   props: {
+    // 组件的宽
     width: {
       type: String,
       default: null
     },
+    // 标题
     name: {
       type: String,
       default: '标题'
     },
+    // 字体大小
     fontSize: {
       type: String,
       default: '16px'
     },
+    // 字体颜色
     color: {
       type: String,
       default: null
