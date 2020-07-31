@@ -19,11 +19,12 @@ const router = new VueRouter({
   routes,
   scrollBehavior(to, from, savedPosition) {
     // 回到需要做缓存的页面时，回复滚动的位置
-    if (to.meta.keepAlive) {
-      if (scrollDom === null) {
-        scrollDom = document.querySelector('.main .scrollbar__wrap')
-      } else {
+    if (scrollDom === null) {
+      scrollDom = document.querySelector('.main .scrollbar__wrap')
+      if (to.meta.keepAlive && scrollDom) {
         scrollDom.scrollTop = to.meta.savedPosition ? to.meta.savedPosition.y : 0
+      } else {
+        if (scrollDom) { scrollDom.scrollTop = 0 }
       }
     }
   }
@@ -51,6 +52,11 @@ router.afterEach((to, from) => {
     from.meta.savedPosition = {
       x: 0,
       y: scrollDom ? scrollDom.scrollTop : 0
+    }
+  } else {
+    from.meta.savedPosition = {
+      x: 0,
+      y: 0
     }
   }
 })
