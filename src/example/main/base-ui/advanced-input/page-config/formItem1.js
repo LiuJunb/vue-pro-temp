@@ -43,7 +43,7 @@ const formItem1 = [
       }
     ],
     rules: [
-      { required: true, message: '性别', trigger: 'blur' }
+      { required: true, message: '性别', trigger: 'change' }
     ],
     placeholder: null
   }

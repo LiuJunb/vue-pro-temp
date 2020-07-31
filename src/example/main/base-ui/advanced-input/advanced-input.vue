@@ -569,63 +569,183 @@
 
       "></code-h>
 
-    <h4>1.基本的使用</h4>
+    <h4>3.自定义item</h4>
+    <el-form
+      :ref="form3Name"
+      :inline="true"
+      label-width="120px"
+      :style="{width:'500px'}"
+      :model="form3Data"
+      :rules="form3Rules">
+      <b-advanced-input
+        :formItems="form3Item"
+        :formData="form3Data"
+      >
+      <!-- 自定义item -->
+      <template v-slot:custom3="slotProps">
+        <el-input-number
+         v-model="slotProps.data[slotProps.row.fieldId]"
+         v-bind="slotProps.row"
+        >
+        </el-input-number>
+      </template>
+      </b-advanced-input>
+      <!-- 提交表单按钮 -->
+      <el-form-item
+       :style="{width:'100%', textAlign: 'center'}"
+      >
+        <el-button
+          type="primary"
+          @click="onSubmit3">
+          保存
+        </el-button>
+        <el-button
+          type="default"
+          @click="onReset3">
+          重置
+        </el-button>
+        <el-button
+          type="default"
+          @click="onInit3">
+          init
+        </el-button>
+      </el-form-item>
+    </el-form>
+
     <code-h
       lang="html"
       content='
-      <b-aside-menu
-        :width="230">
-      </b-aside-menu>
+    <el-form
+      :ref="form3Name"
+      :inline="true"
+      label-width="120px"
+      :style="{width:"500px"}"
+      :model="form3Data"
+      :rules="form3Rules">
+      <b-advanced-input
+        :formItems="form3Item"
+        :formData="form3Data"
+      >
+      <!-- 自定义item -->
+      <template v-slot:custom3="slotProps">
+        <el-input-number
+         v-model="slotProps.data[slotProps.row.fieldId]"
+         v-bind="slotProps.row"
+        >
+        </el-input-number>
+      </template>
+      </b-advanced-input>
+      <!-- 提交表单按钮 -->
+      <el-form-item
+       :style=" { width:"100%", textAlign: "center"}"
+      >
+        <el-button
+          type="primary"
+          @click="onSubmit3">
+          保存
+        </el-button>
+        <el-button
+          type="default"
+          @click="onReset3">
+          重置
+        </el-button>
+        <el-button
+          type="default"
+          @click="onInit3">
+          init
+        </el-button>
+      </el-form-item>
+    </el-form>
     '></code-h>
     <code-h
       lang="js"
-      content='
-      <b-aside-menu
-        :width="230">
-      </b-aside-menu>
-    '></code-h>
+      content="
+      import BaseUI from 'BaseUI'
+      const {
+        InputType,
+        getFormFieldIds,
+        getFormRules
+      } = BaseUI.AdvancedInput
 
-    <br>
-    <h4>1.自定义表单组件：advanced-input</h4>
+      const colWidth = '360px'
+      const form3Item = [
+        {
+          ItemType: InputType.default,
+          fieldId: 'u3',
+          defaultValue: undefined,
+          labelName: '活动1',
+
+          rules: [
+            { required: true, message: '请输入活动名称', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          placeholder: null,
+          style: {
+            width: colWidth
+          }
+        },
+        {
+          ItemType: InputType.default,
+          fieldId: 'n3',
+          type: 'textarea',
+          defaultValue: undefined,
+          labelName: '用户名',
+
+          rules: [
+            { required: true, message: '用户名', trigger: 'blur' }
+          ],
+          placeholder: null,
+          style: {
+            width: colWidth
+          }
+        },
+        {
+          ItemType: InputType.custom,
+          customSlot: 'custom3', // 插槽名称
+          fieldId: 'custom3',
+
+          defaultValue: undefined,
+          labelName: '自定义item',
+          min: 1,
+          max: 10,
+          // labelWidth: '130px',
+          style: {
+            width: colWidth
+          },
+          controlsPosition: 'right',
+          rules: [
+            { required: false, message: '请输入自定义名称', trigger: 'blur' }
+          ],
+          placeholder: '请输入内容'
+        }
+      ]
+      "></code-h>
+
+    <h4>4.自定义复杂组合表单</h4>
     <el-form
       :ref="formName"
       :inline="true"
       :model="formData"
       :rules="formRules">
-
-      <div>custom other layout</div>
-
+      <div>这里可以添加其它布局</div>
       <b-advanced-input
         :formItems="formItem1"
         :formData="formData"
       >
       </b-advanced-input>
-
-      <div>custom other layout</div>
-
+      <div>这里可以添加其它布局</div>
       <b-advanced-input
         :formItems="formItem2"
         :formData="formData"
       >
       </b-advanced-input>
-
-      <div>custom other layout</div>
+      <div>这里可以添加其它布局</div>
       <b-advanced-input
         :formItems="formItem3"
         :formData="formData"
         class="cus-width"
       >
       </b-advanced-input>
-      <h5>testse</h5>
-      <h5>testse</h5>
-      <h5>testse</h5>
-      <h5>testse</h5>
-      <h5>testse</h5>
-      <h5>testse</h5>
-      <h5>testse</h5>
-      <h5>testse</h5>
-      <h5>testse</h5>
-      <h5>testse</h5>
       <!-- 自定提交表单按钮 -->
       <el-form-item>
         <slot
@@ -651,7 +771,183 @@
       </el-form-item>
     </el-form>
 
-    <h4>BAsiderMenu 的 Props：</h4>
+    <code-h
+      lang="html"
+      content='
+      <el-form
+          :ref="formName"
+          :inline="true"
+          :model="formData"
+          :rules="formRules">
+          <div>这里可以添加其它布局</div>
+          <b-advanced-input
+            :formItems="formItem1"
+            :formData="formData"
+          >
+          </b-advanced-input>
+          <div>这里可以添加其它布局</div>
+          <b-advanced-input
+            :formItems="formItem2"
+            :formData="formData"
+          >
+          </b-advanced-input>
+          <div>这里可以添加其它布局</div>
+          <b-advanced-input
+            :formItems="formItem3"
+            :formData="formData"
+            class="cus-width"
+          >
+          </b-advanced-input>
+          <!-- 自定提交表单按钮 -->
+          <el-form-item>
+            <slot
+              name="form-subit"
+              :refForm="this"
+              >
+              <el-button
+                type="primary"
+                @click="onSubmit">
+                查询
+              </el-button>
+              <el-button
+                type="default"
+                @click="onReset">
+                重置
+              </el-button>
+              <el-button
+                type="default"
+                @click="onInit">
+                init
+              </el-button>
+            </slot>
+          </el-form-item>
+        </el-form>
+
+    '></code-h>
+    <code-h
+      lang="js"
+      content="
+      const formItem1 = [
+        {
+          ItemType: InputType.default,
+          fieldId: 'user1',
+          defaultValue: undefined,
+          labelName: '活动1',
+
+          rules: [
+            { required: true, message: '请输入活动名称', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          placeholder: null
+        },
+        {
+          ItemType: InputType.default,
+          fieldId: 'name',
+          defaultValue: undefined,
+          labelName: '用户名',
+
+          rules: [
+            { required: true, message: '用户名', trigger: 'blur' }
+          ],
+          placeholder: null
+        },
+        {
+          ItemType: InputType.select,
+          fieldId: 'sex',
+          defaultValue: undefined,
+          labelName: '性别',
+          clearable: true,
+          selectList: [
+            {
+              label: '男',
+              value: '男'
+            },
+            {
+              label: '女',
+              value: '女'
+            }
+          ],
+          rules: [
+            { required: true, message: '性别', trigger: 'change' }
+          ],
+          placeholder: null
+        }
+      ]
+
+      const formItem2 = [
+        {
+          ItemType: InputType.default,
+          fieldId: 'user2',
+          defaultValue: undefined,
+          labelName: '输入描述',
+
+          type: 'textarea',
+          autosize: { minRows: 2, maxRows: 4 },
+
+          rules: [
+            { required: true, message: '请输入活动名称', trigger: 'blur' }
+          ],
+          placeholder: null
+        }
+      ]
+
+      const formItem3 = [
+        {
+          ItemType: InputType.default,
+          fieldId: 'cus-des',
+          defaultValue: undefined,
+          labelName: 'input-des',
+
+          type: 'textarea',
+          autosize: { minRows: 3, maxRows: 5 },
+          rules: [
+            { required: false, message: '请输入活动名称', trigger: 'blur' }
+          ],
+          placeholder: null
+          // todo ...  其它的属性查找 element input 组件熟悉
+        },
+        {
+          ItemType: InputType.select,
+          fieldId: 'cus-tag',
+          defaultValue: undefined,
+          labelName: 'input-tags',
+
+          clearable: true,
+          multiple: true,
+          filterable: true,
+          allowCreate: true,
+          defaultFirstOption: true,
+
+          selectList: [
+            {
+              label: '男',
+              value: '男'
+            },
+            {
+              label: '女',
+              value: '女'
+            }
+          ],
+          rules: [
+            { required: false, message: '性别', trigger: 'change' }
+          ],
+          placeholder: null
+          // todo ...  其它的属性查找 element select 组件熟悉
+        }
+      ]
+      //======================
+      data(){
+        return {
+          formItem1,
+          formItem2,
+          formItem3,
+          formData: getFormFieldIds([...formItem1, ...formItem2, ...formItem3]),
+          formRules: getFormRules([...formItem1, ...formItem2, ...formItem3]),
+        }
+      }
+      "></code-h>
+
+    <h4>AdvancedInput 的 Props：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -662,7 +958,7 @@
     >
     </b-advanced-table>
 
-    <h4>BAsiderMenu 的 Slot：</h4>
+    <h4>AdvancedInput 的 Slot：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -673,7 +969,7 @@
     >
     </b-advanced-table>
 
-    <h4>BAsiderMenu 的 Event：</h4>
+    <h4>AdvancedInput 的 Event：</h4>
     <b-advanced-table
       stripe
       :border="true"
@@ -699,7 +995,9 @@ import {
   formItem3,
 
   form1Item,
-  form2Item
+  form2Item,
+  form3Item
+
 } from './page-config'
 const {
   getFormFieldIds,
@@ -721,9 +1019,8 @@ export default {
       formItem1,
       formItem2,
       formItem3,
-
-      formData: getFormFieldIds([...formItem1, ...formItem2]),
-      formRules: getFormRules([...formItem1, ...formItem2]),
+      formData: getFormFieldIds([...formItem1, ...formItem2, ...formItem3]),
+      formRules: getFormRules([...formItem1, ...formItem2, ...formItem3]),
 
       // ======
       form1Name: 'form1Name',
@@ -737,27 +1034,49 @@ export default {
       form2Data: getFormFieldIds([...form2Item]),
       form2Rules: getFormRules([...form2Item]),
 
+      // ======
+      form3Name: 'form3Name',
+      form3Item: form3Item,
+      form3Data: getFormFieldIds([...form3Item]),
+      form3Rules: getFormRules([...form3Item]),
+
       tabDataProps: [
         {
-          attr: 'menuList',
-          des: '菜单列表',
+          attr: 'formItems',
+          des: '表单项配置',
           type: 'Array',
           select: ' ',
-          default: ' '
+          default: '[]'
+          // func:''
+        },
+        {
+          attr: 'formData',
+          des: '表单的值-双向绑定',
+          type: 'Object',
+          select: ' ',
+          default: '{}'
+          // func:''
+        },
+        {
+          attr: 'hashPre',
+          des: '表单标签 id 的前缀',
+          type: 'String',
+          select: ' ',
+          default: 'hash_'
           // func:''
         }
       ],
       tabDataSlot: [
-        {
-          name: 'menu-btn',
-          des: '自定义折叠按钮'
-        }
+        // {
+        //   name: 'menu-btn',
+        //   des: '自定义折叠按钮'
+        // }
       ],
       tabDataEvent: [
         {
-          name: 'handleClickCurrentMenu',
-          des: '监听重复点击当前的菜单',
-          func: 'func( menu )'
+          name: 'handleFormItemChange',
+          des: '监听item的点击事件',
+          func: 'func( value, formItem )'
         }
       ]
 
@@ -881,6 +1200,46 @@ export default {
       this.form2Data.n2 = '刘军'
       this.form2Data.s2 = '男1'
       console.log(this.form2Item)
+    },
+    // ================
+    onSubmit3() {
+      this.$refs[this.form3Name].validate((valid, object) => {
+        if (valid) {
+          console.log(this.form3Data)
+        } else {
+          console.log('error submit!!', object) // {user1:'', user2: Array(1)}
+          const keys = Object.keys(object) || []
+          if (keys.length >= 1) {
+            console.log('error=', keys[0])
+            setTimeout(() => {
+              window.location.hash = ''
+              window.location.hash = `hash_${keys[0]}`
+            })
+          }
+          return false
+        }
+      })
+    },
+    onReset3() {
+      this.$refs[this.form3Name].resetFields()
+    },
+    onInit3() {
+      // 1.初始化表单其它的数据
+      this.form3Item[2].selectList = [
+        {
+          label: '男1',
+          value: '男1'
+        },
+        {
+          label: '女1',
+          value: '女1'
+        }
+      ]
+      // 2.初始化表单的值
+      this.form3Data.u3 = 'web'
+      this.form3Data.n3 = '刘军'
+      this.form3Data.custom3 = 5
+      console.log(this.form3Item)
     }
   }
 
@@ -890,6 +1249,18 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .advanced-input{
+
+  /deep/ .cus-width{
+
+    .el-form-item__content,
+    .el-form-item{
+      width: 100%;
+    }
+
+    .el-select{
+      width: 60%;
+    }
+  }
 
 }
 </style>

@@ -40,7 +40,7 @@ const formItem3 = [
       }
     ],
     rules: [
-      { required: false, message: '性别', trigger: 'blur' }
+      { required: false, message: '性别', trigger: 'change' }
     ],
     placeholder: null
     // todo ...  其它的属性查找 element select 组件熟悉

@@ -362,6 +362,7 @@ export default {
   },
   mixins: [],
   props: {
+    // 表单项配置
     formItems: {
       type: Array,
       default: function() {
@@ -370,6 +371,7 @@ export default {
         ]
       }
     },
+    // 表单的值-双向绑定
     formData: {
       type: Object,
       default: function() {
@@ -378,6 +380,7 @@ export default {
         }
       }
     },
+    // 表单标签 id 的前缀
     hashPre: {
       type: String,
       default: 'hash_'
