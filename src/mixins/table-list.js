@@ -1,5 +1,6 @@
 import {
-  CurSearchParams
+  CurSearchParams,
+  PaginatonDefaultConfig
 } from '@/config/index.js'
 import {
   filterNullValue
@@ -8,8 +9,10 @@ import {
 export default {
   data: function() {
     return {
-      // 备份一个分页参数
+      // 备份一个分页参数,提供给其它页面使用
       CurSearchParams: { ...CurSearchParams },
+      PaginatonDefaultConfig: { ...PaginatonDefaultConfig },
+
       isFirstRequest: true,
       curSearchParams: { ...CurSearchParams }
     }
@@ -60,23 +63,6 @@ export default {
           this.$refs['advanced-search'].onReset()
         }
       }
-      this.curSearchParams = searchParams
-      // todo ........
-      // if (valuse && Object.keys(valuse).length > 0) {
-      //   searchParams.data = { ...valuse }
-      // } else {
-      //   // valuse 为 null
-      //   searchParams.data = {}
-      //   // 重置表单
-      //   if (this.$refs['advanced-search']) {
-      //     this.$refs['advanced-search'].onReset()
-      //   }
-      // }
-      // searchParams.data.sortBy = this.sortBy
-      // // searchParams.data的数据需要过滤掉 null， undefined, '', [] 的情况
-      // searchParams.data = filterNullValue(searchParams.data)
-      // todo ........
-
       // 可以解构多层
       this.curSearchParams = { ...searchParams }
       this.$store.dispatch(this.pageListActions, searchParams)
