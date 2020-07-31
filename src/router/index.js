@@ -13,13 +13,15 @@ const routes = [
 let scrollDom = null
 const router = new VueRouter({
   scrollBehavior(to, from, savedPosition) {
-  // keep-alive 返回缓存页面后记录浏览位置
-    console.log(from, to, savedPosition)
-    // return { x: 0, y: 500 }
-    if (scrollDom == null) {
-      scrollDom = document.querySelector('.main .srcoll-view')
+    // 回到需要做缓存的页面时，回复滚动的位置
+    if (scrollDom === null) {
+      scrollDom = document.querySelector('.main .scrollbar__wrap')
+      if (to.meta.keepAlive && scrollDom) {
+        scrollDom.scrollTop = to.meta.savedPosition ? to.meta.savedPosition.y : 0
+      } else {
+        if (scrollDom) { scrollDom.scrollTop = 0 }
+      }
     }
-    scrollDom.scrollTop = 0
   },
   mode: 'history',
   base: process.env.BASE_URL,
@@ -34,14 +36,20 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach((to, from) => {
-  // ... todo
-  console.log('-------------')
-  console.log(to, from)
-  if (scrollDom === null) {
-    scrollDom = document.querySelector('.main .srcoll-view')
+  // 需要做缓存的页面，记录from页面的滚动位置
+  if (from.meta.keepAlive) {
+    if (scrollDom === null) {
+      scrollDom = document.querySelector('.main .scrollbar__wrap')
+    }
+    from.meta.savedPosition = {
+      x: 0,
+      y: scrollDom ? scrollDom.scrollTop : 0
+    }
   } else {
-    console.log('afterEach.afterEach=', scrollDom.scrollTop)
+    from.meta.savedPosition = {
+      x: 0,
+      y: 0
+    }
   }
-  console.log('-------------')
 })
 export default router

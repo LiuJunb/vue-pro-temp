@@ -179,6 +179,16 @@ const menuList = [
       },
       {
         icon: 'el-icon-setting',
+        id: 32,
+        level: 2,
+        name: 'b-advanced-input',
+        type: 'menu',
+        url: '/main/advanced-input',
+        children: [
+        ]
+      },
+      {
+        icon: 'el-icon-setting',
         id: 23,
         level: 2,
         name: 'b-button-group',
@@ -266,17 +276,9 @@ const menuList = [
         url: '/main/print-table',
         children: [
         ]
-      },
-      {
-        icon: 'el-icon-setting',
-        id: 32,
-        level: 2,
-        name: 'b-advanced-input',
-        type: 'menu',
-        url: '/main/advanced-input',
-        children: [
-        ]
       }
+
+      // 33
 
     ]
   },

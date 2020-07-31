@@ -46,7 +46,13 @@
         }
       ]
 
-      ItemType：指定item组件的类型，默认是input输入框组件。
+      InputType:
+        default, select,
+        selectAndInput, checkboxs,
+        radios, selectDate, selectDateRange,
+        selectDateRange, custom
+
+      ItemType：指定item组件的类型，默认default是input输入框组件。
       fieldId： 指定表单组件的id，提交表单时通过该id获取表单的值
       defaultValue: 指定表单组件默认值
       labelName: 指定表单组件label的名称

@@ -386,13 +386,20 @@ export default {
   data: function() {
     return {
       InputType
+      // FormItems: this.formItems
     }
   },
   computed: {
 
   },
   watch: {
-
+    // formItems: {
+    //   handler(val, old) {
+    //     this.FormItems = val
+    //   },
+    //   deep: true,
+    //   immediate: true
+    // }
   },
   created() {
 
@@ -437,6 +444,20 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .advanced-input{
+  .line{
+    text-align: center;
+  }
 
+  /deep/ .el-form-item{
+    .el-form-item__content{
+      [tooltip]{
+        .el-select__tags{
+          margin-left: 15px;
+        }
+      }
+
+    }
+
+  }
 }
 </style>
