@@ -1,11 +1,23 @@
 <template>
   <div class="elementstyle">
-    <b-title-tag name="1."></b-title-tag>
-    <p>3.xx )</p>
+    <b-title-tag name="1.重写element-ui的样式"></b-title-tag>
     <code-h
-      lang="scss"
+      lang="css"
       content='
+    .advanced-input{
 
+      <!-- 使用样式的穿透技术 /deep/ ，重写element-ui的样式 -->
+      /deep/ .cus-width{
+        .el-form-item__content,
+        .el-form-item{
+          width: 100%;
+        }
+        .el-select{
+          width: 60%;
+        }
+      }
+
+    }
     '></code-h>
 
   </div>

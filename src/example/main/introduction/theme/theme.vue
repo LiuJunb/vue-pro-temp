@@ -1,11 +1,18 @@
 <template>
   <div class="theme">
-    <b-title-tag name="1."></b-title-tag>
-    <p>3.xx )</p>
+    <b-title-tag name="修改element-ui主题"></b-title-tag>
+    <p>1.修改theme-chalk.scss文件</p>
     <code-h
-      lang="scss"
+      lang="css"
       content='
-
+      /* 改变element-ui的主题色变量 */
+      $--color-primary: #409EFF;
+      $--color-success: #67C23A;
+      $--color-warning: #E6A23C;
+      $--color-danger: #F56C6C;
+      .....
+      .....
+      .....
     '></code-h>
   </div>
 </template>

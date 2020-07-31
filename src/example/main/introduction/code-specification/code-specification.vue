@@ -207,7 +207,53 @@
     </code-h>
 
     <br>
-    <b-title-tag name="1.Xxx规范"></b-title-tag>
+    <b-title-tag name="5.编写对话的规范"></b-title-tag>
+    <code-h
+      lang="html"
+      content='
+      <user-modal
+        ref="userModal"
+
+        :title="userModalTitle"
+        :treeDatas="treeDatas"
+        :userData="userData"
+        :allRole="allRole"
+
+        width="800px"
+        @handleBtnClick="handleModalClick"
+        >
+      </user-modal>
+    '>
+    </code-h>
+    <code-h
+      lang="json"
+      content='
+      1.确定对话框的 props 属性有哪些
+      2.对话框需要的数据必须是外部传递进去
+      3.对话框里的事件一定要emit出来
+      4.对话框里要有初始化数据的方法
+      5.对话框里要有重置数据的方法
+    '>
+    </code-h>
+    <b-title-tag name="5.编写页面按钮的规范"></b-title-tag>
+    <br>
+    <code-h
+      lang="js"
+      content='
+      1.项目里面使用到的按钮建议全部使用:b-button-group 和 b-icon-group 组件
+      2.按钮的配置建议抽取到 page-config 中
+      3.按钮的权限建议抽取到 permissions 中
+    '>
+    </code-h>
+    <b-title-tag name="6.Xxx规范"></b-title-tag>
+    <br>
+    <code-h
+      lang="js"
+      content='
+      1.
+    '>
+    </code-h>
+    <b-title-tag name="7.Xxx规范"></b-title-tag>
     <br>
     <code-h
       lang="js"
