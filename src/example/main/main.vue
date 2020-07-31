@@ -36,6 +36,7 @@
         </el-aside>
         <el-container class="scrollbar__wrap">
           <b-smart-breadcrumb
+            :style="{margin:'10px 20px 0px 20px'}"
             :menuList="menuList"
             :otherList="otherList">
           </b-smart-breadcrumb>
