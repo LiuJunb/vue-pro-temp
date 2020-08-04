@@ -14,7 +14,7 @@ export default {
   props: {
     // 当前的值
     value: {
-      type: String,
+      type: [String, Number],
       default: ''
     },
     // 所有状态的列表

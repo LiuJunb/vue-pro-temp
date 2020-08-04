@@ -120,7 +120,7 @@ export default {
         {
           attr: 'value',
           des: '当前的值',
-          type: 'String',
+          type: 'String,Number',
           select: ' ',
           default: ' '
           // func:''

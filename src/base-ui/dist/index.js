@@ -182,7 +182,7 @@ $({ target: 'Array', proto: true, forced: [].forEach != forEach }, {
 var global = __webpack_require__(0);
 var DOMIterables = __webpack_require__(80);
 var forEach = __webpack_require__(56);
-var createNonEnumerableProperty = __webpack_require__(7);
+var createNonEnumerableProperty = __webpack_require__(8);
 
 for (var COLLECTION_NAME in DOMIterables) {
   var Collection = global[COLLECTION_NAME];
@@ -200,61 +200,6 @@ for (var COLLECTION_NAME in DOMIterables) {
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(2);
-var definePropertyModule = __webpack_require__(8);
-var createPropertyDescriptor = __webpack_require__(39);
-
-module.exports = DESCRIPTORS ? function (object, key, value) {
-  return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
-} : function (object, key, value) {
-  object[key] = value;
-  return object;
-};
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var DESCRIPTORS = __webpack_require__(2);
-var IE8_DOM_DEFINE = __webpack_require__(41);
-var anObject = __webpack_require__(9);
-var toPrimitive = __webpack_require__(34);
-
-var nativeDefineProperty = Object.defineProperty;
-
-// `Object.defineProperty` method
-// https://tc39.github.io/ecma262/#sec-object.defineproperty
-exports.f = DESCRIPTORS ? nativeDefineProperty : function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPrimitive(P, true);
-  anObject(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return nativeDefineProperty(O, P, Attributes);
-  } catch (error) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(4);
-
-module.exports = function (it) {
-  if (!isObject(it)) {
-    throw TypeError(String(it) + ' is not an object');
-  } return it;
-};
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 var DESCRIPTORS = __webpack_require__(2);
@@ -269,7 +214,7 @@ var fails = __webpack_require__(1);
 var create = __webpack_require__(86);
 var getOwnPropertyNames = __webpack_require__(50).f;
 var getOwnPropertyDescriptor = __webpack_require__(30).f;
-var defineProperty = __webpack_require__(8).f;
+var defineProperty = __webpack_require__(9).f;
 var trim = __webpack_require__(89).trim;
 
 var NUMBER = 'Number';
@@ -334,6 +279,61 @@ if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumb
   NumberPrototype.constructor = NumberWrapper;
   redefine(global, NUMBER, NumberWrapper);
 }
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var DESCRIPTORS = __webpack_require__(2);
+var definePropertyModule = __webpack_require__(9);
+var createPropertyDescriptor = __webpack_require__(39);
+
+module.exports = DESCRIPTORS ? function (object, key, value) {
+  return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
+} : function (object, key, value) {
+  object[key] = value;
+  return object;
+};
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var DESCRIPTORS = __webpack_require__(2);
+var IE8_DOM_DEFINE = __webpack_require__(41);
+var anObject = __webpack_require__(10);
+var toPrimitive = __webpack_require__(34);
+
+var nativeDefineProperty = Object.defineProperty;
+
+// `Object.defineProperty` method
+// https://tc39.github.io/ecma262/#sec-object.defineproperty
+exports.f = DESCRIPTORS ? nativeDefineProperty : function defineProperty(O, P, Attributes) {
+  anObject(O);
+  P = toPrimitive(P, true);
+  anObject(Attributes);
+  if (IE8_DOM_DEFINE) try {
+    return nativeDefineProperty(O, P, Attributes);
+  } catch (error) { /* empty */ }
+  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported');
+  if ('value' in Attributes) O[P] = Attributes.value;
+  return O;
+};
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__(4);
+
+module.exports = function (it) {
+  if (!isObject(it)) {
+    throw TypeError(String(it) + ' is not an object');
+  } return it;
+};
 
 
 /***/ }),
@@ -450,7 +450,7 @@ if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumb
 
 var global = __webpack_require__(0);
 var getOwnPropertyDescriptor = __webpack_require__(30).f;
-var createNonEnumerableProperty = __webpack_require__(7);
+var createNonEnumerableProperty = __webpack_require__(8);
 var redefine = __webpack_require__(43);
 var setGlobal = __webpack_require__(35);
 var copyConstructorProperties = __webpack_require__(67);
@@ -591,7 +591,7 @@ module.exports = function (input, PREFERRED_STRING) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(0);
-var createNonEnumerableProperty = __webpack_require__(7);
+var createNonEnumerableProperty = __webpack_require__(8);
 
 module.exports = function (key, value) {
   try {
@@ -715,7 +715,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(0);
-var createNonEnumerableProperty = __webpack_require__(7);
+var createNonEnumerableProperty = __webpack_require__(8);
 var has = __webpack_require__(3);
 var setGlobal = __webpack_require__(35);
 var inspectSource = __webpack_require__(44);
@@ -1136,7 +1136,7 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 var NATIVE_WEAK_MAP = __webpack_require__(65);
 var global = __webpack_require__(0);
 var isObject = __webpack_require__(4);
-var createNonEnumerableProperty = __webpack_require__(7);
+var createNonEnumerableProperty = __webpack_require__(8);
 var objectHas = __webpack_require__(3);
 var sharedKey = __webpack_require__(46);
 var hiddenKeys = __webpack_require__(36);
@@ -1222,7 +1222,7 @@ module.exports = false;
 var has = __webpack_require__(3);
 var ownKeys = __webpack_require__(68);
 var getOwnPropertyDescriptorModule = __webpack_require__(30);
-var definePropertyModule = __webpack_require__(8);
+var definePropertyModule = __webpack_require__(9);
 
 module.exports = function (target, source) {
   var keys = ownKeys(source);
@@ -1242,7 +1242,7 @@ module.exports = function (target, source) {
 var getBuiltIn = __webpack_require__(49);
 var getOwnPropertyNamesModule = __webpack_require__(50);
 var getOwnPropertySymbolsModule = __webpack_require__(71);
-var anObject = __webpack_require__(9);
+var anObject = __webpack_require__(10);
 
 // all object keys, includes non-enumerable and symbols
 module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
@@ -1478,7 +1478,7 @@ module.exports = NATIVE_SYMBOL
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(2);
-var defineProperty = __webpack_require__(8).f;
+var defineProperty = __webpack_require__(9).f;
 
 var FunctionPrototype = Function.prototype;
 var FunctionPrototypeToString = FunctionPrototype.toString;
@@ -1608,7 +1608,7 @@ module.exports = function ($this, dummy, Wrapper) {
 /* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(9);
+var anObject = __webpack_require__(10);
 var aPossiblePrototype = __webpack_require__(85);
 
 // `Object.setPrototypeOf` method
@@ -1651,7 +1651,7 @@ module.exports = function (it) {
 /* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(9);
+var anObject = __webpack_require__(10);
 var defineProperties = __webpack_require__(87);
 var enumBugKeys = __webpack_require__(37);
 var hiddenKeys = __webpack_require__(36);
@@ -1736,8 +1736,8 @@ module.exports = Object.create || function create(O, Properties) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(2);
-var definePropertyModule = __webpack_require__(8);
-var anObject = __webpack_require__(9);
+var definePropertyModule = __webpack_require__(9);
+var anObject = __webpack_require__(10);
 var objectKeys = __webpack_require__(61);
 
 // `Object.defineProperties` method
@@ -2369,7 +2369,7 @@ asider_menuvue_type_template_id_e8603edc_scoped_true_render._withStripped = true
 var es_array_index_of = __webpack_require__(82);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
-var es_number_constructor = __webpack_require__(10);
+var es_number_constructor = __webpack_require__(7);
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
 function _arrayLikeToArray(arr, len) {
@@ -2625,9 +2625,11 @@ var menu_utils_getMenuByKey = function getMenuByKey(key, value) {
           icon: 'el-icon-location',
           id: 1,
           level: 1,
+          // 没用到
           name: '导航一',
           parentId: 0,
           type: 'dir',
+          // 没用到
           url: '/main/xxx/xxx',
           children: [{
             icon: 'el-icon-setting',
@@ -4211,6 +4213,7 @@ var advanced_searchvue_type_script_lang_js_this = undefined;
   },
   mixins: [],
   props: {
+    // 表单的item配置
     formItems: {
       type: Array,
       default: function _default() {
@@ -4515,10 +4518,12 @@ var advanced_searchvue_type_script_lang_js_this = undefined;
         }];
       }
     },
+    // 整个表单的宽
     width: {
       type: String,
       default: '100%'
     },
+    // 是否显示搜索和重置按钮
     showBtn: {
       type: Boolean,
       default: true
@@ -4533,17 +4538,17 @@ var advanced_searchvue_type_script_lang_js_this = undefined;
       type: Boolean,
       default: true
     },
-    // 是否显示：收起，展开
+    // 是否显示：收起，展开 按钮
     showArrow: {
       type: Boolean,
       default: false
     },
-    // 收起时显示多少个item， 默认6个
+    // 收起时显示多少个item，默认6个（使用该属性，showArrow必须设置为true）
     defaultShowItemCounts: {
       type: Number,
       default: 6
     },
-    // 标签 id 的前缀
+    // 给每个 标签 id 属性值添加的前缀
     hashPre: {
       type: String,
       default: 'hash_'
@@ -4856,6 +4861,7 @@ var hasPermission = function hasPermission(permissions, btnPermission) {
 //
 //
 //
+//
 
 /*
  *@description:
@@ -4875,6 +4881,7 @@ var hasPermission = function hasPermission(permissions, btnPermission) {
   components: {},
   mixins: [],
   props: {
+    // 按钮组的配置
     btnList: {
       type: Array,
       default: function _default() {
@@ -4924,18 +4931,20 @@ var hasPermission = function hasPermission(permissions, btnPermission) {
         }];
       }
     },
+    // 按钮的居中
     pull: {
       type: String,
       default: 'left' // left, right, center
 
     },
+    // 按钮组的宽度
     maxWidth: {
       type: String,
       default: function _default() {
         return '100%';
       }
     },
-    // 用户所拥有的权限
+    // 用户所拥有的权限，一般登录之后获取（如果不传递，默认会去sessionStorage找permissions属性）
     permissions: {
       type: Array,
       default: function _default() {
@@ -5197,10 +5206,13 @@ var advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render = function() 
             _vm._b(
               {
                 attrs: {
+                  background:
+                    _vm.pagination.background === false
+                      ? _vm.pagination.background
+                      : true,
                   layout: _vm.pagination.layout
                     ? _vm.pagination.layout
-                    : "total, sizes, prev, pager, next, jumper",
-                  background: true
+                    : "total, sizes, prev, pager, next, jumper"
                 },
                 on: {
                   "size-change": _vm.handleSizeChange,
@@ -5320,6 +5332,7 @@ advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render._withStripped = t
   components: {},
   mixins: [],
   props: {
+    // table 头部的样式
     headerCellStyle: {
       type: Object,
       default: function _default() {
@@ -5328,24 +5341,29 @@ advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render._withStripped = t
         };
       }
     },
+    // 是否需要序号
     hasIndex: {
       type: Boolean,
       default: true
     },
+    // 是否需要可勾选的行
     hasSelection: {
       type: Boolean,
       default: false
     },
+    // 勾选列的配置，也是el-table-column的配置
     selectionAttr: {
       type: Object,
       default: function _default() {
         return {};
       }
     },
+    // 是否需要分页器
     hasPagination: {
       type: Boolean,
       default: true
     },
+    // table的列的配置
     tabColumn: {
       type: Array,
       default: function _default() {
@@ -5368,6 +5386,7 @@ advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render._withStripped = t
         }];
       }
     },
+    // table每一列的数据
     tabData: {
       type: Array,
       default: function _default() {
@@ -5410,6 +5429,7 @@ advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render._withStripped = t
         }];
       }
     },
+    // 初始化或者更新分页器的配置
     paginationConf: {
       type: Object,
       default: function _default() {
@@ -5536,6 +5556,7 @@ status_textvue_type_template_id_e4d61fc0_scoped_true_render._withStripped = true
 
 
 
+
 //
 //
 //
@@ -5547,10 +5568,12 @@ status_textvue_type_template_id_e4d61fc0_scoped_true_render._withStripped = true
   components: {},
   mixins: [],
   props: {
+    // 当前的值
     value: {
-      type: String,
+      type: [String, Number],
       default: ''
     },
+    // 所有状态的列表
     statusList: {
       type: Object,
       default: function _default() {
@@ -5689,6 +5712,7 @@ tag_groupvue_type_template_id_39f7fa68_scoped_true_render._withStripped = true
   components: {},
   mixins: [],
   props: {
+    // tag组的配置列表
     tagList: {
       type: Array,
       default: function _default() {
@@ -5731,6 +5755,7 @@ tag_groupvue_type_template_id_39f7fa68_scoped_true_render._withStripped = true
         ];
       }
     },
+    // 组件的宽
     width: {
       type: String,
       default: null
@@ -5848,6 +5873,7 @@ var MenuUtils = aside_menu.MenuUtils;
   components: {},
   mixins: [],
   props: {
+    // 在菜单列表的页面
     menuList: {
       type: Array,
       default: function _default() {
@@ -6270,18 +6296,22 @@ title_tagvue_type_template_id_7d316c4c_scoped_true_render._withStripped = true
   components: {},
   mixins: [],
   props: {
+    // 组件的宽
     width: {
       type: String,
       default: null
     },
+    // 标题
     name: {
       type: String,
       default: '标题'
     },
+    // 字体大小
     fontSize: {
       type: String,
       default: '16px'
     },
+    // 字体颜色
     color: {
       type: String,
       default: null
@@ -6392,6 +6422,10 @@ var grid_viewvue_type_template_id_7d3746e8_scoped_true_render = function() {
             _vm._b(
               {
                 attrs: {
+                  background:
+                    _vm.pagination.background === false
+                      ? _vm.pagination.background
+                      : true,
                   layout: _vm.pagination.layout
                     ? _vm.pagination.layout
                     : "total, sizes, prev, pager, next, jumper"
@@ -6469,11 +6503,13 @@ grid_viewvue_type_template_id_7d3746e8_scoped_true_render._withStripped = true
 //
 //
 //
+//
 /* harmony default export */ var grid_viewvue_type_script_lang_js_ = ({
   name: 'BGridView',
   components: {},
   mixins: [],
   props: {
+    // 组件的宽
     width: {
       type: String,
       default: null
@@ -6483,6 +6519,7 @@ grid_viewvue_type_template_id_7d3746e8_scoped_true_render._withStripped = true
       type: Number,
       default: 0
     },
+    // 栅格系统的数据
     itemData: {
       type: Array,
       default: function _default() {
@@ -6519,10 +6556,12 @@ grid_viewvue_type_template_id_7d3746e8_scoped_true_render._withStripped = true
         }];
       }
     },
+    // 是否有分页器
     hasPagination: {
       type: Boolean,
       default: true
     },
+    // 分页器的配置
     paginationConf: {
       type: Object,
       default: function _default() {
@@ -6556,6 +6595,7 @@ grid_viewvue_type_template_id_7d3746e8_scoped_true_render._withStripped = true
       type: Number,
       default: 6
     },
+    // 没数据时是否显示空文本
     showEmptyText: {
       type: Boolean,
       default: false
@@ -6762,6 +6802,7 @@ icon_groupvue_type_template_id_653cd9a4_scoped_true_render._withStripped = true
   components: {},
   mixins: [],
   props: {
+    // icon组 的配置列表
     iconList: {
       type: Array,
       default: function _default() {
@@ -6813,18 +6854,20 @@ icon_groupvue_type_template_id_653cd9a4_scoped_true_render._withStripped = true
         }];
       }
     },
+    // icon 组的居中
     pull: {
       type: String,
       default: 'left' // left, right, center
 
     },
+    // icon 组的最大宽
     maxWidth: {
       type: String,
       default: function _default() {
         return '100%';
       }
     },
-    // 用户所拥有的权限
+    // 用户所拥有的权限（不传递时，默认会去sessionStorage中查找permissions属性）
     permissions: {
       type: Array,
       default: function _default() {
@@ -6833,6 +6876,7 @@ icon_groupvue_type_template_id_653cd9a4_scoped_true_render._withStripped = true
         ];
       }
     },
+    // icon 标签添加一个 class
     iconClass: {
       type: String,
       default: null
@@ -7000,14 +7044,17 @@ print_tablevue_type_template_id_0cbf5b2c_scoped_true_render._withStripped = true
   components: {},
   mixins: [],
   props: {
+    // 表格的宽
     width: {
       type: String,
       default: '960px'
     },
+    // 边框大小
     border: {
       type: String,
       default: '1'
     },
+    // 规定单元边沿与其内容之间的空白
     cellpadding: {
       type: String,
       default: '6'
@@ -7316,10 +7363,12 @@ col_contentvue_type_template_id_4d124bb0_scoped_true_render._withStripped = true
       type: String,
       default: null
     },
+    // 占据多少列
     cols: {
       type: Number,
       default: null
     },
+    // 占据多少行
     rows: {
       type: Number,
       default: null
@@ -8414,18 +8463,21 @@ advanced_inputvue_type_template_id_0e2243a4_scoped_true_render._withStripped = t
   components: {},
   mixins: [],
   props: {
+    // 表单项配置
     formItems: {
       type: Array,
       default: function _default() {
         return [];
       }
     },
+    // 表单的值-双向绑定
     formData: {
       type: Object,
       default: function _default() {
         return {};
       }
     },
+    // 表单标签 id 的前缀
     hashPre: {
       type: String,
       default: 'hash_'
@@ -8433,11 +8485,19 @@ advanced_inputvue_type_template_id_0e2243a4_scoped_true_render._withStripped = t
   },
   data: function data() {
     return {
-      InputType: InputType
+      InputType: InputType // FormItems: this.formItems
+
     };
   },
   computed: {},
-  watch: {},
+  watch: {// formItems: {
+    //   handler(val, old) {
+    //     this.FormItems = val
+    //   },
+    //   deep: true,
+    //   immediate: true
+    // }
+  },
   created: function created() {},
   mounted: function mounted() {},
   methods: {
