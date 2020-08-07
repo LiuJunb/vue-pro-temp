@@ -1,10 +1,13 @@
 
 // 按需打包base-ui的组件库
 const path = require('path')
+const webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const friendlyFommater = require('eslint-friendly-formatter')
 const nodeExternals = require('webpack-node-externals')
-
+const packageJson = require('../src/base-ui/package.json')
+// console.log(packageJson)
+// console.log(packageJson.version)
 const config = require('./config')
 // console.log(config.components)
 module.exports = {
@@ -41,7 +44,8 @@ module.exports = {
     path: path.resolve(__dirname, '../src/base-ui/dist/'),
     // publicPath: '/dist/',
     pathinfo: false,
-    filename: '[name].js',
+    // filename: '[name].js',
+    filename: `[name]-${packageJson.version}.js`,
     libraryTarget: 'commonjs2'
   },
   stats: {
@@ -132,7 +136,12 @@ module.exports = {
     sideEffects: false
   },
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new webpack.BannerPlugin(`
+    BaseUI v${packageJson.version}
+    (c) 2020-2021 Liu Jun
+    Released under the MIT License.
+    `)
   ]
 
 }

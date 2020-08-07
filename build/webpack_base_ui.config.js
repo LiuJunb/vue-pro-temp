@@ -2,11 +2,14 @@
 // 全量打包base-ui的组件库
 const path = require('path')
 const config = require('./config')
-// const webpack = require('webpack')
+const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const friendlyFommater = require('eslint-friendly-formatter')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const packageJson = require('../src/base-ui/package.json')
+console.log(packageJson)
+console.log(packageJson.version)
 
 function resolve(dir) {
   return path.resolve(__dirname, dir)
@@ -28,7 +31,8 @@ module.exports = {
    */
   output: {
     path: resolve('../src/base-ui/dist'),
-    filename: '[name].js',
+    // filename: '[name].js',
+    filename: `[name]-${packageJson.version}.js`,
     library: 'BaseUI',
     libraryTarget: 'umd',
     libraryExport: 'default',
@@ -131,7 +135,12 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'style.css'
-    })
+      filename: `style-${packageJson.version}.css`
+    }),
+    new webpack.BannerPlugin(`
+BaseUI v${packageJson.version}
+(c) 2020-2021 Liu Jun
+Released under the MIT License.
+    `)
   ]
 }
