@@ -20,3 +20,6 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+
+// 集成qiankun插件
+require('./plugins/qiankun.js')

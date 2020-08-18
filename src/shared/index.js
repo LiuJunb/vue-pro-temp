@@ -26,9 +26,13 @@ class Shared {
     // })
   }
 
+  /**
+   * 只有调用 setGlobalState 的方法，该方法才会被调用
+   * @param {*} callback
+   */
   onGlobalStateChange(callback) {
     onGlobalStateChange((value, prev) => {
-      console.log('[onGlobalStateChange - master]:', value, prev)
+      // console.log('[onGlobalStateChange - master]:', value, prev)
       callback(value, prev)
     })
   }
