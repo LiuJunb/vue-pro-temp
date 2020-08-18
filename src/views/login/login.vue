@@ -90,7 +90,8 @@ export default {
       this.login(params)
     },
     login(params) {
-      this.$router.push(`/main/demo`)
+      // this.$router.push(`/main/demo`)
+      this.$router.push(`/demo`)
 
       // this.$store.dispatch('login/login', params)
       //   .then((res) => {

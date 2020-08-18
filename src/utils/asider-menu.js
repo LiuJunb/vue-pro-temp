@@ -5,7 +5,7 @@ const menuList = [
     level: 1,
     name: '项目简介',
     type: 'dir',
-    url: '/main',
+    url: '',
     children: [
       {
         icon: 'el-icon-setting',
@@ -13,7 +13,7 @@ const menuList = [
         level: 2,
         name: 'Demo页面',
         type: 'menu',
-        url: '/main/demo',
+        url: '/demo',
         children: []
       },
       {
@@ -22,7 +22,7 @@ const menuList = [
         level: 2,
         name: '基础表格页',
         type: 'menu',
-        url: '/main/example',
+        url: '/example',
         children: []
       },
       {
@@ -31,7 +31,7 @@ const menuList = [
         level: 2,
         name: '九宫格页面',
         type: 'menu',
-        url: '/main/gridview',
+        url: '/gridview',
         children: []
       },
       {
@@ -40,7 +40,7 @@ const menuList = [
         level: 2,
         name: '统计页面',
         type: 'menu',
-        url: '/main/statistical',
+        url: '/statistical',
         children: []
       },
       {
@@ -49,7 +49,7 @@ const menuList = [
         level: 2,
         name: '测试自动生成的页面',
         type: 'menu',
-        url: '/main/gen-page',
+        url: '/login',
         children: []
       }
     ]

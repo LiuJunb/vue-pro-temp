@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <el-container>
-      <el-header>
+      <el-header :style="isShowLayout">
         <el-row :gutter="20">
           <el-col :span="3">
             <b-logo
@@ -20,7 +20,9 @@
         </el-row>
       </el-header>
       <el-container>
-        <el-aside width="null">
+        <el-aside
+          width="null"
+          :style="isShowLayout">
           <b-aside-menu
             ref='asideMenu'
             :menuList="menuList"
@@ -32,6 +34,7 @@
         <el-container >
           <!-- 面包屑 -->
            <b-smart-breadcrumb
+              :style="isShowLayout"
               :menuList="menuList"
               :otherList="OtherList">
            </b-smart-breadcrumb>
@@ -88,6 +91,16 @@ export default {
       menuList,
       OtherList,
       defaultSelect: null
+    }
+  },
+  computed: {
+    isShowLayout() {
+      // const path = this.$route
+      // console.log(this.$route.path)
+      const paths = ['/login', '/example']
+      return {
+        display: paths.includes(this.$route.path) ? 'none' : null
+      }
     }
   },
   created() {
