@@ -1,4 +1,5 @@
 export default {
   detps: 'detps',
-  initData: 'initData'
+  initData: 'initData',
+  sharedData: 'sharedData'
 }

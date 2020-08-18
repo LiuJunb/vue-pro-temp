@@ -7,6 +7,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import Shared from './shared/index'
 
 // 导入插件
 import '@/plugins/index.js'
@@ -39,22 +40,23 @@ if (window.__POWERED_BY_QIANKUN__) {
   render()
 }
 
-function storeTest(props) {
-  props.onGlobalStateChange &&
-    props.onGlobalStateChange(
-      (value, prev) => {
-        console.log(`[onGlobalStateChange - ${props.name}]:`, value, prev)
-      },
-      true
-    )
-  props.setGlobalState &&
-    props.setGlobalState({
-      ignore: props.a,
-      user: {
-        name: props.a
-      }
-    })
-}
+// function storeTest(props) {
+//   props.onGlobalStateChange &&
+//     props.onGlobalStateChange(
+//       (value, prev) => {
+//         console.log(`[onGlobalStateChange-app1 - ${props.name}]:`, value, prev)
+//       },
+//       true
+//     )
+//   props.setGlobalState &&
+//     props.setGlobalState({
+//       // ignore: props.a,
+//       ignore: 'te',
+//       user: {
+//         name: props.a
+//       }
+//     })
+// }
 
 /**
  * bootstrap 只会在微应用初始化的时候调用一次，下次微应用重新进入时会直接调用 mount 钩子，不会再重复触发 bootstrap。
@@ -70,7 +72,8 @@ export async function mount(props) {
   console.log('vue app mount')
   console.log(props)
   // ReactDOM.render(<App />, document.getElementById('react15Root'));
-  storeTest(props)
+  // storeTest(props)
+  Shared.setProps(props)
   render(props)
 }
 /**

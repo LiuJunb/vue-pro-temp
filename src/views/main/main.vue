@@ -81,6 +81,7 @@ import {
   OtherList
 } from '@/config/index.js'
 import logo3_img from '@/assets/logo3.png'
+import Shared from '@/shared/index'
 const { MenuUtils } = AsiderMenu
 export default {
   name: 'Main',
@@ -117,6 +118,21 @@ export default {
   },
   mounted() {
     this.initMenuSelect()
+
+    Shared.onGlobalStateChange((value, prev) => {
+      console.log('[onGlobalStateChange - master]:', value, prev)
+    })
+    setTimeout(() => {
+      Shared.setGlobalState(() => {
+        return {
+          ignore: 'liujun',
+          pushPath: '/login',
+          user: {
+            name: 'liujun'
+          }
+        }
+      })
+    }, 2000)
   },
 
   methods: {
