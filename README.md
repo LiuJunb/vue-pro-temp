@@ -69,11 +69,12 @@ Use Ctrl+C to close it
 
 
 
-脚手架：
+ ## 4.集成 qiankun 2.0.21
+  1.
+  npm i qiankun@2.0.21 -S
 
-3.修改分页种的高级搜索的配置，抽取出（labelWidth, 和 columnWidth）
+  2.
+  qiankun.js
 
+  3.
 
-后台系统：
-  完善登录页面  
-  
