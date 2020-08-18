@@ -1,5 +1,6 @@
 
 const path = require('path')
+const packageName = require('./package.json').name
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
@@ -70,6 +71,11 @@ module.exports = {
     }
   },
   configureWebpack: (config) => {
+    // 集成qiankun
+    config.output.library = packageName
+    config.output.libraryTarget = 'umd'
+    config.output.jsonpFunction = 'webpackJsonp_' + packageName
+
     if (isDevelopment) {
       config.externals = {
         BaseUI: 'BaseUI',
@@ -171,6 +177,18 @@ module.exports = {
   },
   // 代理 http
   devServer: {
+    // 监听端口
+    port: 8081,
+    // overlay: {
+    //   warnings: false,
+    //   errors: false
+    // },
+    // 关闭主机检查，使微应用可以被 fetch
+    // disableHostCheck: true,
+    // 配置跨域请求头，解决开发环境的跨域问题
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    },
     proxy: {
       '/station': {
         target: 'http://172.16.119.213:9090',

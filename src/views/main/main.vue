@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <el-container>
-      <el-header>
+      <el-header :style="isShowLayout">
         <el-row :gutter="20">
           <el-col :span="3">
             <b-logo
@@ -20,7 +20,9 @@
         </el-row>
       </el-header>
       <el-container>
-        <el-aside width="null">
+        <el-aside
+          width="null"
+          :style="isShowLayout">
           <b-aside-menu
             ref='asideMenu'
             :menuList="menuList"
@@ -32,11 +34,15 @@
         <el-container >
           <!-- 面包屑 -->
            <b-smart-breadcrumb
+              :style="isShowLayout"
               :menuList="menuList"
               :otherList="OtherList">
            </b-smart-breadcrumb>
 
-          <el-main class="scrollbar__wrap">
+          <el-main
+            class="scrollbar__wrap"
+            :style="isShowLayoutBorder"
+          >
               <!-- 二级路由占位符 ：:include=['DashBoard' 'xxx', 'xxx', 'xxx'] -->
               <!-- <keep-alive :include="['Example']"> -->
                 <!-- keep-alive会缓存不活动的组件(包含改组件的子组件)实例，而不是销毁它们 -->
@@ -88,6 +94,19 @@ export default {
       menuList,
       OtherList,
       defaultSelect: null
+    }
+  },
+  computed: {
+    isShowLayout() {
+      return {
+        display: window.__POWERED_BY_QIANKUN__ ? 'none' : null
+      }
+    },
+    isShowLayoutBorder() {
+      return {
+        margin: window.__POWERED_BY_QIANKUN__ ? '0px' : '0px 0px 20px 20px',
+        padding: window.__POWERED_BY_QIANKUN__ ? '20px' : '20px'
+      }
     }
   },
   created() {

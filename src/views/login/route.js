@@ -1,8 +1,8 @@
 // import Login from './login.vue'
 const Login = () => import(/* webpackChunkName: "login" */ './login.vue')
 export default {
-  path: '/login',
-  name: 'login',
+  path: '/login1',
+  name: 'login1',
   pname: '', // 父亲路由的名称
   level: 1, // 一级路由
   component: Login,

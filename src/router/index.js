@@ -15,7 +15,8 @@ let scrollDom = null
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
+  // base: process.env.BASE_URL,
+  base: window.__POWERED_BY_QIANKUN__ ? '/app1' : process.env.BASE_URL,
   routes,
   scrollBehavior(to, from, savedPosition) {
     // 回到需要做缓存的页面时，回复滚动的位置
