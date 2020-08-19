@@ -4,8 +4,8 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 import Vue from 'vue'
-// import App from './App.vue'
-import App from './views/main/main.vue'
+import App from './App.vue'
+// import App from './views/main/main.vue'
 import router from './router'
 import store from './store'
 

@@ -5,7 +5,7 @@ registerMicroApps([
     name: 'react app', // app name registered
     entry: '//localhost:7100',
     container: '#appContainer',
-    activeRule: '/yourActiveRule'
+    activeRule: '/app1'
   }
   // {
   //   name: 'vue app',

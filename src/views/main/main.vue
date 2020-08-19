@@ -39,7 +39,10 @@
               :otherList="OtherList">
            </b-smart-breadcrumb>
 
-          <el-main class="scrollbar__wrap">
+          <el-main
+            class="scrollbar__wrap"
+            :style="isShowLayoutBorder"
+          >
               <!-- 二级路由占位符 ：:include=['DashBoard' 'xxx', 'xxx', 'xxx'] -->
               <!-- <keep-alive :include="['Example']"> -->
                 <!-- keep-alive会缓存不活动的组件(包含改组件的子组件)实例，而不是销毁它们 -->
@@ -96,11 +99,14 @@ export default {
   },
   computed: {
     isShowLayout() {
-      // const path = this.$route
-      // console.log(this.$route.path)
-      const paths = ['/login', '/example']
       return {
-        display: paths.includes(this.$route.path) ? 'none' : null
+        display: window.__POWERED_BY_QIANKUN__ ? 'none' : null
+      }
+    },
+    isShowLayoutBorder() {
+      return {
+        margin: window.__POWERED_BY_QIANKUN__ ? '0px' : '0px 0px 20px 20px',
+        padding: window.__POWERED_BY_QIANKUN__ ? '20px' : '20px'
       }
     }
   },
@@ -112,18 +118,27 @@ export default {
   },
   mounted() {
     this.initMenuSelect()
-    Shared.onGlobalStateChange((value, prev) => {
-      console.log('[onGlobalStateChange2 - master]:', value, prev)
-    })
-    Shared.setGlobalState(() => {
-      return {
-        ignore: 'master',
-        pushPath: '',
-        user: {
-          name: 'master'
+
+    // Shared.onGlobalStateChange((value, prev) => {
+    //   console.log('[onGlobalStateChange1 - child]:', value, prev)
+    // })
+    // Shared.onGlobalStateChange((value, prev) => {
+    //   console.log('[onGlobalStateChange2 - child]:', value, prev)
+    // })
+    setTimeout(() => {
+      Shared.setGlobalState(() => {
+        return {
+          ignore: 'liujun',
+          pushPath: {
+            appName: 'vue-parent',
+            path: '/login'
+          },
+          user: {
+            name: 'liujun'
+          }
         }
-      }
-    })
+      })
+    }, 2000)
   },
 
   methods: {
