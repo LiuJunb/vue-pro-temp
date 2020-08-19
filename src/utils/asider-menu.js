@@ -51,6 +51,34 @@ const menuList = [
         type: 'menu',
         url: '/login',
         children: []
+      },
+      {
+        icon: 'el-icon-setting',
+        id: 16,
+        level: 2,
+        name: '子系统',
+        type: 'menu',
+        url: '/app1',
+        children: []
+      }
+    ]
+  },
+  {
+    icon: 'el-icon-location',
+    id: 2,
+    level: 1,
+    name: '用户管理系统',
+    type: 'dir',
+    url: '',
+    children: [
+      {
+        icon: 'el-icon-setting',
+        id: 26,
+        level: 2,
+        name: '角色管理',
+        type: 'menu',
+        url: '/app1/main/demo',
+        children: []
       }
     ]
   }

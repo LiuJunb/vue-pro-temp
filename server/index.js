@@ -12,7 +12,7 @@ const proxyOption = {
   changeOrigin: true
 }
 // 端口可以自己定义
-var port = process.env.PORT || 8010
+var port = process.env.PORT || 8080
 var app = express()
 // 开启 gzip 压缩
 app.use(compression())

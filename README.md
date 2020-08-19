@@ -76,5 +76,17 @@ Use Ctrl+C to close it
   2.
   qiankun.js
 
-  3.
+  3.shared.js
 
+  4.main.vue
+
+  5.注意：
+
+  1.父亲 和 儿子的一级路由不能相同
+
+
+待决解问题：
+
+1.应用之间的跳转
+2.应用之间的通讯
+3.兼容到ie几？

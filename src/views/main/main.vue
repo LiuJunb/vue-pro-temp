@@ -56,6 +56,8 @@
               <router-view
                 v-if="!$route.meta.keepAlive"
               ></router-view>
+              <!-- 子应用 -->
+              <div id="appContainer"></div>
           </el-main>
           <el-footer></el-footer>
         </el-container>
@@ -81,7 +83,7 @@ import {
   OtherList
 } from '@/config/index.js'
 import logo3_img from '@/assets/logo3.png'
-import Shared from '@/shared/index'
+// import Shared from '@/shared/index'
 const { MenuUtils } = AsiderMenu
 export default {
   name: 'Main',
@@ -104,9 +106,10 @@ export default {
       }
     },
     isShowLayoutBorder() {
+      const paths = ['/login', '/example']
       return {
-        margin: window.__POWERED_BY_QIANKUN__ ? '0px' : '0px 0px 20px 20px',
-        padding: window.__POWERED_BY_QIANKUN__ ? '20px' : '20px'
+        margin: paths.includes(this.$route.path) ? '0px' : '0px 0px 20px 20px',
+        padding: paths.includes(this.$route.path) ? '0px' : '0px'
       }
     }
   },
@@ -118,27 +121,23 @@ export default {
   },
   mounted() {
     this.initMenuSelect()
-
+    // const that = this
     // Shared.onGlobalStateChange((value, prev) => {
-    //   console.log('[onGlobalStateChange1 - child]:', value, prev)
+    //   console.log('[onGlobalStateChange-parent1 - master]:', value, prev)
+    // if (value.pushPath === '/login') {
+    //   console.log('login=', value.pushPath)
+    //   that.$router.push(`/login`)
+    // }
     // })
-    // Shared.onGlobalStateChange((value, prev) => {
-    //   console.log('[onGlobalStateChange2 - child]:', value, prev)
-    // })
-    setTimeout(() => {
-      Shared.setGlobalState(() => {
-        return {
-          ignore: 'liujun',
-          pushPath: {
-            appName: 'vue-parent',
-            path: '/login'
-          },
-          user: {
-            name: 'liujun'
-          }
-        }
-      })
-    }, 2000)
+    // Shared.setGlobalState(() => {
+    //   return {
+    //     ignore: 'master',
+    //     pushPath: '',
+    //     user: {
+    //       name: 'master'
+    //     }
+    //   })
+    // }, 2000)
   },
 
   methods: {
@@ -216,7 +215,7 @@ export default {
   // 可以滚动的内容
   .el-main {
     margin: 0px 0px 20px 20px;
-    padding: 20px;
+    padding: 0px;
     background-color: white;
     // text-align: center;
     height: $mainHeight;

@@ -29,7 +29,8 @@
       <router-view
         v-if="!$route.meta.keepAlive"
       ></router-view>
-      <div id=""></div>
+      <!-- 子应用 -->
+      <div id="appContainer"></div>
     </el-container>
   </div>
 </template>
