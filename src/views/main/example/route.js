@@ -10,9 +10,9 @@ export default {
   level: 2, // x 级路由（number类型）
   component: Example,
   children: [
-  ],
-  meta: {
-    keepAlive: true, // 是否需要缓存
-    requireAuth: false // 是否需要登录才能访问
-  }
+  ]
+  // meta: {
+  //   keepAlive: true, // 是否需要缓存
+  //   requireAuth: false // 是否需要登录才能访问
+  // }
 }

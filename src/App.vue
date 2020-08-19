@@ -26,14 +26,7 @@
 
     <div class="content">
       <!-- 内容布局 -->
-      <keep-alive>
-        <router-view
-          v-if="$route.meta.keepAlive"
-        ></router-view>
-      </keep-alive>
-      <router-view
-        v-if="!$route.meta.keepAlive"
-      ></router-view>
+      <router-view></router-view>
       <!-- 子应用 -->
       <div id="appContainer"></div>
     </div>

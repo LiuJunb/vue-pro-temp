@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="app-main">
     <el-container>
       <!-- <el-header :style="isShowLayout">
         <el-row :gutter="20">
@@ -62,7 +62,7 @@
       </el-container>
     </el-container>
     <el-backtop
-      target=".main .scrollbar__wrap"
+      target=".app-main .scrollbar__wrap"
       :right="30"
       :bottom="100">
     </el-backtop>
@@ -154,7 +154,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.main{
+.app-main{
  height: 100%;
   .el-container{
     height: 100%;

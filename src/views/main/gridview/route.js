@@ -10,5 +10,9 @@ export default {
   level: 2, // todo 级路由（number类型）
   component: Gridview,
   children: [
-  ]
+  ],
+  meta: {
+    keepAlive: true, // 是否需要缓存
+    requireAuth: false // 是否需要登录才能访问
+  }
 }
