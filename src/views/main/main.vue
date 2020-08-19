@@ -21,8 +21,7 @@
       </el-header>
       <el-container>
         <el-aside
-          width="null"
-          :style="isShowLayout">
+          width="null">
           <b-aside-menu
             ref='asideMenu'
             :menuList="menuList"
@@ -34,14 +33,12 @@
         <el-container >
           <!-- 面包屑 -->
            <b-smart-breadcrumb
-              :style="isShowLayout"
               :menuList="menuList"
               :otherList="OtherList">
            </b-smart-breadcrumb>
 
           <el-main
             class="scrollbar__wrap"
-            :style="isShowLayoutBorder"
           >
               <!-- 二级路由占位符 ：:include=['DashBoard' 'xxx', 'xxx', 'xxx'] -->
               <!-- <keep-alive :include="['Example']"> -->
@@ -101,12 +98,6 @@ export default {
     isShowLayout() {
       return {
         display: window.__POWERED_BY_QIANKUN__ ? 'none' : null
-      }
-    },
-    isShowLayoutBorder() {
-      return {
-        margin: window.__POWERED_BY_QIANKUN__ ? '0px' : '0px 0px 20px 20px',
-        padding: window.__POWERED_BY_QIANKUN__ ? '20px' : '20px'
       }
     }
   },
