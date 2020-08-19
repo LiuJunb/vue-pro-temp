@@ -1,11 +1,12 @@
 // 该文件在main.js的最底部引入
 import { registerMicroApps, start } from 'qiankun'
+const appContainer = document.querySelector('#appContainer')
 registerMicroApps([
   {
     name: 'vue-app', // app name registered
     entry: '//192.168.99.115:8081',
     // container: '#appContainer',
-    container: document.querySelector('#appContainer'),
+    container: appContainer,
     activeRule: '/app1'
   }
   // {
@@ -14,5 +15,11 @@ registerMicroApps([
   //   container: '#appContainer',
   //   activeRule: '/yourActiveRule2'
   // }
-])
+],
+{
+  afterMount: (app) => {
+    appContainer.firstChild.style = 'height:100%'
+  }
+}
+)
 start()

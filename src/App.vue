@@ -1,5 +1,8 @@
 <template>
-  <div id="app">
+  <div
+    id="app"
+    class="parent-app"
+  >
     <div class="header">
       <!-- 头部布局 -->
       <el-header
@@ -84,7 +87,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#app {
+.parent-app {
   height: 100%;
   // 不能滚动
   overflow: hidden;
@@ -104,5 +107,10 @@ export default {
     height: $mainHeight;
   }
 
+}
+
+#appContainer,
+#appContainer>div{
+  height: 100%;
 }
 </style>
