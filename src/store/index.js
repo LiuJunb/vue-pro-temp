@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     detps: [],
-    initData: {}
+    initData: {},
+    sharedData: {}
   },
   mutations: {
     [Types.detps](state, payload) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     },
     [Types.initData](state, payload) {
       state.initData = payload
+    },
+    [Types.sharedData](state, payload) {
+      state.sharedData = payload
     }
   },
   actions: {
@@ -23,6 +27,9 @@ export default new Vuex.Store({
     },
     initData(context, payload) {
       context.commit(Types.initData, payload)
+    },
+    sharedData(context, payload) {
+      context.commit(Types.sharedData, payload)
     }
   },
   getters: {
@@ -31,6 +38,9 @@ export default new Vuex.Store({
     },
     initData(state, getters, rootState, rootGetters) {
       return state.initData
+    },
+    sharedData(state, getters, rootState, rootGetters) {
+      return state.sharedData
     }
   },
   modules: {

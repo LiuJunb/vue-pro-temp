@@ -20,6 +20,7 @@ const cdn = {
 }
 // https://cli.vuejs.org/zh/config/
 module.exports = {
+  // publicPath: '/',
   productionSourceMap: false, // 仅仅在dev环境使用SourceMap
   css: {
     loaderOptions: {
@@ -70,6 +71,7 @@ module.exports = {
     }
   },
   configureWebpack: (config) => {
+    // config.output.publicPath = '//192.168.99.115:8080'
     if (isDevelopment) {
       config.externals = {
         BaseUI: 'BaseUI',

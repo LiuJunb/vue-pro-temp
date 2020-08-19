@@ -39,7 +39,10 @@
               :otherList="OtherList">
            </b-smart-breadcrumb>
 
-          <el-main class="scrollbar__wrap">
+          <el-main
+            class="scrollbar__wrap"
+            :style="isShowLayoutBorder"
+          >
               <!-- 二级路由占位符 ：:include=['DashBoard' 'xxx', 'xxx', 'xxx'] -->
               <!-- <keep-alive :include="['Example']"> -->
                 <!-- keep-alive会缓存不活动的组件(包含改组件的子组件)实例，而不是销毁它们 -->
@@ -53,6 +56,8 @@
               <router-view
                 v-if="!$route.meta.keepAlive"
               ></router-view>
+              <!-- 子应用 -->
+              <div id="appContainer"></div>
           </el-main>
           <el-footer></el-footer>
         </el-container>
@@ -102,6 +107,13 @@ export default {
       return {
         display: paths.includes(this.$route.path) ? 'none' : null
       }
+    },
+    isShowLayoutBorder() {
+      const paths = ['/login', '/example']
+      return {
+        margin: paths.includes(this.$route.path) ? '0px' : '0px 0px 20px 20px',
+        padding: paths.includes(this.$route.path) ? '0px' : '0px'
+      }
     }
   },
   created() {
@@ -112,9 +124,14 @@ export default {
   },
   mounted() {
     this.initMenuSelect()
-    Shared.onGlobalStateChange((value, prev) => {
-      console.log('[onGlobalStateChange2 - master]:', value, prev)
-    })
+    // const that = this
+    // Shared.onGlobalStateChange((value, prev) => {
+    //   console.log('[onGlobalStateChange-parent1 - master]:', value, prev)
+    // if (value.pushPath === '/login') {
+    //   console.log('login=', value.pushPath)
+    //   that.$router.push(`/login`)
+    // }
+    // })
     Shared.setGlobalState(() => {
       return {
         ignore: 'master',
@@ -201,7 +218,7 @@ export default {
   // 可以滚动的内容
   .el-main {
     margin: 0px 0px 20px 20px;
-    padding: 20px;
+    padding: 0px;
     background-color: white;
     // text-align: center;
     height: $mainHeight;
