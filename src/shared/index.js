@@ -78,14 +78,16 @@ class Shared {
    * @param {*} callback
    */
   onGlobalStateChange(callback) {
-    this.props.onGlobalStateChange((value, prev) => {
+    if (this.props) {
+      this.props.onGlobalStateChange((value, prev) => {
       // console.log('[onGlobalStateChange - master]:', value, prev)
       // 先把数存到store中
-      this.saveSharedData(value)
-      // console.log(this.getSharedData())
-      callback(value, prev)
+        this.saveSharedData(value)
+        // console.log(this.getSharedData())
+        callback(value, prev)
       // this.pushToPath(value)
-    })
+      })
+    }
   }
 
   setGlobalState(callback) {
@@ -96,7 +98,7 @@ class Shared {
     //     name: 'master'
     //   }
     // })
-    this.props.setGlobalState(callback() || {})
+    if (this.props) { this.props.setGlobalState(callback() || {}) }
   }
 }
 
