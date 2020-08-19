@@ -13,7 +13,7 @@ const menuList = [
         level: 2,
         name: 'Demo页面',
         type: 'menu',
-        url: '/demo',
+        url: '/main/demo',
         children: []
       },
       {
@@ -22,7 +22,7 @@ const menuList = [
         level: 2,
         name: '基础表格页',
         type: 'menu',
-        url: '/example',
+        url: '/main/example',
         children: []
       },
       {
@@ -31,7 +31,7 @@ const menuList = [
         level: 2,
         name: '九宫格页面',
         type: 'menu',
-        url: '/gridview',
+        url: '/main/gridview',
         children: []
       },
       {
@@ -40,7 +40,7 @@ const menuList = [
         level: 2,
         name: '统计页面',
         type: 'menu',
-        url: '/statistical',
+        url: '/main/statistical',
         children: []
       },
       {

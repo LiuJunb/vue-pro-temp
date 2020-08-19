@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: '/gridview'
+    redirect: '/main/demo'
   },
   ...ARoutes
 ]

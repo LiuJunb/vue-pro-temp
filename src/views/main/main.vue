@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <el-container>
-      <el-header :style="isShowLayout">
+      <!-- <el-header :style="isShowLayout">
         <el-row :gutter="20">
           <el-col :span="3">
             <b-logo
@@ -18,11 +18,10 @@
             admin
           </el-col>
         </el-row>
-      </el-header>
+      </el-header> -->
       <el-container>
         <el-aside
-          width="null"
-          :style="isShowLayout">
+          width="null">
           <b-aside-menu
             ref='asideMenu'
             :menuList="menuList"
@@ -41,7 +40,6 @@
 
           <el-main
             class="scrollbar__wrap"
-            :style="isShowLayoutBorder"
           >
               <!-- 二级路由占位符 ：:include=['DashBoard' 'xxx', 'xxx', 'xxx'] -->
               <!-- <keep-alive :include="['Example']"> -->
@@ -101,15 +99,10 @@ export default {
   },
   computed: {
     isShowLayout() {
+      // const paths = ['/main/demo', '/main/gridview']
       return {
-        display: window.__POWERED_BY_QIANKUN__ ? 'none' : null
-      }
-    },
-    isShowLayoutBorder() {
-      const paths = ['/login', '/example']
-      return {
-        margin: paths.includes(this.$route.path) ? '0px' : '0px 0px 20px 20px',
-        padding: paths.includes(this.$route.path) ? '0px' : '0px'
+        // display: paths.includes(this.$route.path) ? 'none' : null
+        display: 'none'
       }
     }
   },
@@ -215,7 +208,7 @@ export default {
   // 可以滚动的内容
   .el-main {
     margin: 0px 0px 20px 20px;
-    padding: 0px;
+    padding: 20px;
     background-color: white;
     // text-align: center;
     height: $mainHeight;
