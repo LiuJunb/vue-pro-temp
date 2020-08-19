@@ -12,12 +12,24 @@ const proxyOption = {
   changeOrigin: true
 }
 // 端口可以自己定义
-var port = process.env.PORT || 8010
+var port = process.env.PORT || 8081
 var app = express()
 // 开启 gzip 压缩
 app.use(compression())
 // url使用 history 模式
 app.use(history())
+
+// 解决跨域问题
+app.all('*', function(req, res, next) { // 解决跨域问题
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Content-Length, Authorization, Accept,X-Requested-With')
+  res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS')
+  if (req.method === 'OPTIONS') {
+    res.send(200)
+  } else {
+    next()
+  }
+})
 // 反向代理(http://localhost:8010/station/xxxx -> proxyPath+'/station/xxxx' )
 app.use('/station', proxyMiddlewar(proxyOption))
 // 处理静态资源

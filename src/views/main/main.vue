@@ -119,14 +119,17 @@ export default {
   mounted() {
     this.initMenuSelect()
 
-    Shared.onGlobalStateChange((value, prev) => {
-      console.log('[onGlobalStateChange - master]:', value, prev)
-    })
+    // Shared.onGlobalStateChange((value, prev) => {
+    //   console.log('[onGlobalStateChange1 - child]:', value, prev)
+    // })
     setTimeout(() => {
       Shared.setGlobalState(() => {
         return {
           ignore: 'liujun',
-          pushPath: '/login',
+          pushPath: {
+            appName: 'vue-parent',
+            path: '/login'
+          },
           user: {
             name: 'liujun'
           }
