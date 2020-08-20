@@ -630,7 +630,7 @@ export default {
         {
           attr: 'permissions',
           des: '用户所拥有的权限（不传递时，默认会去sessionStorage中查找permissions属性）',
-          type: 'Array',
+          type: 'Array<String>',
           select: ' ',
           default: '[]'
           // func:''

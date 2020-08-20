@@ -312,8 +312,8 @@ export default {
           // func:''
         },
         {
-          attr: '栅格系统的数据',
-          des: 'itemData',
+          attr: 'itemData',
+          des: '栅格系统的数据',
           type: 'Array',
           select: ' ',
           default: '[]'

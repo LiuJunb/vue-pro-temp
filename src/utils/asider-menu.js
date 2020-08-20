@@ -259,6 +259,16 @@ const menuList = [
       },
       {
         icon: 'el-icon-setting',
+        id: 33,
+        level: 2,
+        name: 'b-grid-item',
+        type: 'menu',
+        url: '/main/grid-item',
+        children: [
+        ]
+      },
+      {
+        icon: 'el-icon-setting',
         id: 30,
         level: 2,
         name: 'b-icon-group',
@@ -278,7 +288,7 @@ const menuList = [
         ]
       }
 
-      // 33
+      // 34
 
     ]
   },

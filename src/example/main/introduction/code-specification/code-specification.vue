@@ -41,8 +41,8 @@
     <code-h
       lang="js"
       content='
-      1.basic-comps 独立组件模块，该模块编写的独立组件，该模块的组件之前不能互相引用,
-        并且编写的组件统一在index.js中导出
+      1.basic-comps 独立组件模块，该模块编写的独立组件，该模块的组件不能引用components
+        模块的组件,反过来则可以，并且编写的组件统一在index.js中导出。
 
         basic-comps
           button

@@ -10,6 +10,7 @@ import DividerLine from './components/divider-line'
 import Logo from './components/logo'
 import TitleTag from './components/title-tag'
 import GridView from './components/grid-view'
+import GridItem from './components/grid-item'
 import IconGroup from './components/icon-group'
 import PrintTable from './components/print-table'
 import RowItem from './components/row-item'
@@ -34,6 +35,7 @@ export {
   Logo,
   TitleTag,
   GridView,
+  GridItem,
   IconGroup,
   PrintTable,
   RowItem,
@@ -60,6 +62,7 @@ const BaseUI = {
   Logo,
   TitleTag,
   GridView,
+  GridItem,
   IconGroup,
   PrintTable,
   RowItem,
@@ -84,6 +87,7 @@ export const components = [
   Logo,
   TitleTag,
   GridView,
+  GridItem,
   IconGroup,
   PrintTable,
   RowItem,
