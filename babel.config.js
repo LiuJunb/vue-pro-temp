@@ -1,4 +1,6 @@
 module.exports = {
+  // babel不用编译node_module下的文件
+  exclude: /node_modules/,
   presets: [
     '@vue/cli-plugin-babel/preset',
     // polyfill 配置ie兼容
