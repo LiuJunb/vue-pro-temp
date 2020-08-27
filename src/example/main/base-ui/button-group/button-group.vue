@@ -175,7 +175,7 @@
       ],
       "></code-h>
 
-    <h4>2.（默认1）按钮添加授权标识</h4>
+    <h4>5.（默认1）按钮添加授权标识</h4>
     <b-button-group
       :permissions="permissions"
       :btnList="btnList1">
@@ -196,98 +196,168 @@
       </template>
     </b-button-group>
 
+    <h4>6.配置可以下拉的按钮</h4>
+    <b-button-group
+      :btnList="btnList4"
+      @handleDropdownItemClick="handleDropdownItemClick"
+    >
+    </b-button-group>
+
     <code-h
       lang="html"
       content='
-      // 如果用不传递permissions属性（b-button-group默认获取sessionStorage中查找permissions属性的值）
       <b-button-group
-        :permissions="permissions"
-        :btnList="btnList1">
-        <template v-slot:upload-1="slotProps">
-          <el-upload
-            :style="{display: "inline-block",margin:"0px 10px"}"
-            action="https://jsonplaceholder.typicode.com/posts/"
-            >
-            <el-button
-              :type="slotProps.item.type"
-              :icon="slotProps.item.icon"
-              :size="slotProps.item.size"
-              :disabled="slotProps.item.disabled"
-            >
-              { {slotProps.item.name}}
-            </el-button>
-          </el-upload>
-        </template>
+        :btnList="btnList4"
+        @handleDropdownItemClick="handleDropdownItemClick"
+      >
+      </b-button-group>
+    '></code-h>
+    <code-h
+      lang="js"
+      content="
+      btnList4: [
+        {
+          name: '默认1',
+          bgColor: '',
+          btnPerm: ''
+        },
+        {
+          name: '默认2',
+          bgColor: '',
+          btnPerm: ''
+        },
+        {
+          name: '操作1',
+          bgColor: '',
+          btnPerm: '',
+          dropdown: true,
+          slotName: 'operation',
+          selectList: [
+            {
+              label: 'liujun1',
+              btnPerm: 'x'
+            },
+            {
+              label: 'liujun2',
+              btnPerm: '',
+              icon: 'el-icon-plus'
+            },
+            {
+              label: 'liujun3',
+              btnPerm: ''
+            }
+          ]
+
+        },
+        {
+          name: '操作2',
+          bgColor: '',
+          btnPerm: '',
+          type: 'primary',
+          size: 'mini',
+          dropdown: true,
+          // slotName: 'operation',
+          selectList: [
+            {
+              label: 'liujun1',
+              btnPerm: '',
+              disabled: true,
+              divided: true
+              // icon:'el-icon-plus'
+              // 就只有这个五个属性
+            },
+            {
+              label: 'liujun2',
+              btnPerm: ''
+            },
+            {
+              label: 'liujun3',
+              btnPerm: ''
+            }
+          ]
+
+        }
+      ],
+      "></code-h>
+
+    <h4>7.自定义下拉按钮</h4>
+    <p>自定义拉下框的下拉列表 item 显示的权限需要自行处理</p>
+    <b-button-group
+      :btnList="btnList5"
+      @handleDropdownItemClick="handleDropdownItemClick"
+    >
+    <template v-slot:operation="slotProps">
+      <el-dropdown
+        class="btn-dropdown"
+        split-button
+        type="primary"
+      >
+        <span class="el-dropdown-link">
+          {{slotProps.item.name}}
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>黄金糕</el-dropdown-item>
+          <el-dropdown-item>狮子头</el-dropdown-item>
+          <el-dropdown-item>螺蛳粉</el-dropdown-item>
+          <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+          <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </template>
+    </b-button-group>
+
+    <code-h
+      lang="html"
+      content='
+      <b-button-group
+        :btnList="btnList5"
+        @handleDropdownItemClick="handleDropdownItemClick"
+      >
+      <template v-slot:operation="slotProps">
+        <el-dropdown
+          class="btn-dropdown"
+          split-button
+          type="primary"
+        >
+          <span class="el-dropdown-link">
+            { {slotProps.item.name}}
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>黄金糕</el-dropdown-item>
+            <el-dropdown-item>狮子头</el-dropdown-item>
+            <el-dropdown-item>螺蛳粉</el-dropdown-item>
+            <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+            <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </template>
       </b-button-group>
 
     '></code-h>
     <code-h
       lang="js"
       content="
-      btnList1: [
+    btnList5: [
         {
           name: '默认1',
           bgColor: '',
-          // 添加了授权标识
-          btnPerm: 'pp.list1'
-        },
-        {
-          name: '默认2',
-          bgColor: '',
-          size: 'mini',
           btnPerm: ''
         },
         {
-          icon: 'el-icon-search',
-          bgColor: '',
-          btnPerm: ''
-        },
-        {
-          name: '查询',
-          icon: 'el-icon-search',
-          bgColor: '',
-          btnPerm: ''
-        },
-        {
-          name: '上传1',
-          upload: true, // upload, slotName是必须的
-          slotName: 'upload-1', //
-          icon: 'el-icon-upload',
-          type: 'primary',
-          btnPerm: ''
-        },
-        {
-          name: '上传2',
-          upload: true, // upload, slotName是必须的
-          slotName: 'upload-2', //
-          icon: 'el-icon-upload',
-          btnPerm: ''
-        },
-        {
-          name: '新建',
-          disabled: false,
-          icon: 'search',
-          type: 'primary',
-          bgColor: 'green',
-          btnPerm: ''
-        },
-        {
-          name: '保存',
-          type: 'primary'
-        },
-        {
-          name: '导出',
-          disabled: true,
-          type: 'primary',
-          bgColor: '',
-          btnPerm: ''
+          name: '操作',
+          dropdown: true,
+          slotName: 'operation',
+          selectList: [
+            {
+              label: 'liujun1',
+              btnPerm: ''
+            },
+            {
+              label: 'liujun2',
+              btnPerm: ''
+            }
+          ]
         }
-      ],
-
-      // 用户拥有的所有权限
-      permissions: [
-        'pp.list',
-        'pp.detail'
       ],
       "></code-h>
 
@@ -509,6 +579,89 @@ export default {
           float: 'right'
         }
       ],
+      btnList4: [
+        {
+          name: '默认1',
+          bgColor: '',
+          btnPerm: ''
+        },
+        {
+          name: '默认2',
+          bgColor: '',
+          btnPerm: ''
+        },
+        {
+          name: '操作1',
+          bgColor: '',
+          btnPerm: '',
+          dropdown: true,
+          slotName: 'operation',
+          selectList: [
+            {
+              label: 'liujun1',
+              btnPerm: 'x'
+            },
+            {
+              label: 'liujun2',
+              btnPerm: '',
+              icon: 'el-icon-plus'
+            },
+            {
+              label: 'liujun3',
+              btnPerm: ''
+            }
+          ]
+
+        },
+        {
+          name: '操作2',
+          bgColor: '',
+          btnPerm: '',
+          type: 'primary',
+          size: 'mini',
+          dropdown: true,
+          // slotName: 'operation',
+          selectList: [
+            {
+              label: 'liujun1',
+              btnPerm: '',
+              disabled: true,
+              divided: true
+            },
+            {
+              label: 'liujun2',
+              btnPerm: ''
+            },
+            {
+              label: 'liujun3',
+              btnPerm: ''
+            }
+          ]
+
+        }
+      ],
+      btnList5: [
+        {
+          name: '默认1',
+          bgColor: '',
+          btnPerm: ''
+        },
+        {
+          name: '操作',
+          dropdown: true,
+          slotName: 'operation',
+          selectList: [
+            {
+              label: 'liujun1',
+              btnPerm: ''
+            },
+            {
+              label: 'liujun2',
+              btnPerm: ''
+            }
+          ]
+        }
+      ],
       tabDataProps: [
         {
           attr: 'btnList',
@@ -554,6 +707,11 @@ export default {
           name: 'handleBtnClick',
           des: '监听按钮的点击事件',
           func: 'func( item )'
+        },
+        {
+          name: 'handleDropdownItemClick',
+          des: '监听下拉按钮的点击事件',
+          func: 'func( {e, item } )'
         }
       ],
       tabDataBtnListProps: [
@@ -622,6 +780,14 @@ export default {
           // func:''
         },
         {
+          attr: 'dropdown',
+          des: '是否是下拉的按钮',
+          type: 'Boolean',
+          select: ' ',
+          default: ' '
+          // func:''
+        },
+        {
           attr: 'slotName',
           des: '上传按钮对应的插槽(如果upload=true，必须要设置这个插槽的名称)',
           type: 'String',
@@ -680,6 +846,9 @@ export default {
   methods: {
     handleBtnClick(item) {
       console.log(item)
+    },
+    handleDropdownItemClick(item) {
+      console.log(item)
     }
   }
 
@@ -689,5 +858,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .button-group{
+  .btn-dropdown{
+    display: inline-block;
+    margin: 0px 10px;
+  }
 }
 </style>

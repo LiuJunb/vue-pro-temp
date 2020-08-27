@@ -7,7 +7,9 @@
       v-for="(item, index) in btnList">
 
       <el-button
-        v-if="showBtn(item)&&!item.upload"
+        v-if="showBtn(item)
+        &&!item.upload
+        &&!item.dropdown"
         :key="index"
         class="b-btn-ground"
         :type="item.type"
@@ -48,6 +50,40 @@
         </el-upload>
       </slot>
 
+      <slot
+        v-else-if="showBtn(item)&&item.dropdown"
+        :name='item.slotName'
+        :item="item"
+      >
+        <el-dropdown
+          class="btn-dropdown"
+          @command="handleDropdownItemClick($event, item)"
+        >
+          <el-button
+            :size="item.size"
+            :type="item.type"
+          >
+            {{item.name}}<i class="el-icon-arrow-down el-icon--right"></i>
+          </el-button>
+          <el-dropdown-menu slot="dropdown">
+            <template
+              v-for="(dropItem, index) in item.selectList"
+            >
+            <el-dropdown-item
+              v-if="showBtn(dropItem)"
+              :key="index"
+              :command="dropItem.label"
+              :disabled="dropItem.disabled"
+              :divided="dropItem.divided"
+              :icon="dropItem.icon"
+            >
+              {{dropItem.label}}
+            </el-dropdown-item>
+            </template>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </slot>
+
     </template>
   </el-row>
 </template>
@@ -63,7 +99,8 @@
  *@ 参数
  *
  *@ 事件
- *   this.$emit('handleBtnClick', item)
+ *   this.$emit('handleBtnClick', item) // 按钮的点击事件
+ *   this.$emit('handleDropdownItemClick', {event, item}) // 下拉框的点击事件
 */
 import { hasPermission } from '../../../utils/permission.js'
 export default {
@@ -240,6 +277,9 @@ export default {
 
   },
   methods: {
+    handleDropdownItemClick(e, item) {
+      this.$emit('handleDropdownItemClick', { e, item })
+    },
     handleBtnClick(item) {
       // console.log('value=', item)
       this.$emit('handleBtnClick', item)
@@ -272,10 +312,10 @@ export default {
   .b-btn-ground:focus{
     opacity: 0.7;
   }
-  .btn-upload{
+  .btn-upload,
+  .btn-dropdown{
     display: inline-block;
     margin: 0px 10px;
-
   }
 }
 </style>

@@ -213,9 +213,17 @@ export default {
         const otherMenu = MenuUtils.getMenuByKey('url', currrentPath, this.otherList)
         if (otherMenu) {
           MenuUtils.getMenuByKey('url', otherMenu.parentUrl, this.menuList, resultArrs)
+          // 如果找到
           if (resultArrs.length > 0) {
             resultArrs.push(otherMenu)
             this.breadcrumbs = resultArrs
+          // 如果没有找到
+          } else {
+            MenuUtils.getMenuByKey('url', otherMenu.parentUrl, this.otherList, resultArrs)
+            if (resultArrs.length > 0) {
+              resultArrs.push(otherMenu)
+              this.breadcrumbs = resultArrs
+            }
           }
         }
       }

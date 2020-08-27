@@ -50,7 +50,7 @@
           index.js // 统一导出组件
 
       2.components 非独立组件模块，该模块编写非独立的组件（组合组件和业务组件）。
-        1）该模块的组件之前能互相引用，引用时直接指定要引用的单个组件
+        1）该模块的组件之间能互相引用，引用时直接指定要引用的单个组件
 
           import Icon from "./icon/icon.vue" // 正确
           import { Icon } from "@/components/index.js" // 错误

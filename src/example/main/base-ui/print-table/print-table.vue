@@ -309,6 +309,61 @@
 
     '></code-h>
 
+    <h4>6.没有边框的表格</h4>
+    <b-print-table
+      width="100%"
+      border="0"
+    >
+      <!-- 第一行（第一行有4列，注意 注意 每一行的列数要保持一样） -->
+      <b-row-item>
+        <b-col-head :style="{width:'100px'}">标题1</b-col-head>
+        <b-col-content >内容一</b-col-content>
+        <b-col-head :style="{width:'100px'}">标题2</b-col-head>
+        <b-col-content :style="{color:'red'}">内容一</b-col-content>
+      </b-row-item>
+
+      <!-- 第二行（第二行有4列，注意 注意 每一行的列数要保持一样） -->
+      <b-row-item>
+        <b-col-head :style="{width:'100px'}">标题一</b-col-head>
+        <b-col-content >
+          撒旦撒旦
+        </b-col-content>
+        <b-col-head :style="{width:'100px'}">标题一</b-col-head>
+        <b-col-content >内容一</b-col-content>
+      </b-row-item>
+
+    </b-print-table>
+
+    <code-h
+      lang="html"
+      content='
+    <b-print-table
+      width="100%"
+      border="0"
+    >
+      <!-- 第一行（第一行有4列，注意 注意 每一行的列数要保持一样） -->
+      <b-row-item>
+        <b-col-head :style="{width:"100px"}">标题1</b-col-head>
+        <b-col-content >内容一</b-col-content>
+        <b-col-head :style="{width:"100px"}">标题2</b-col-head>
+        <b-col-content :style="{color:"red"}">内容一</b-col-content>
+      </b-row-item>
+
+      <!-- 第二行（第二行有4列，注意 注意 每一行的列数要保持一样） -->
+      <b-row-item>
+        <b-col-head :style="{width:"100px"}">标题一</b-col-head>
+        <b-col-content >
+          撒旦撒旦
+        </b-col-content>
+        <b-col-head :style="{width:"100px"}">标题一</b-col-head>
+        <b-col-content >内容一</b-col-content>
+      </b-row-item>
+
+    </b-print-table>
+    '></code-h>
+
+   <!-- 属性 -->
+
     <h4>BPrintTable 的 Props：</h4>
     <b-advanced-table
       stripe
