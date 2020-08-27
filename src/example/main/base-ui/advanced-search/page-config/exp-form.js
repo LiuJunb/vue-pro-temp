@@ -133,6 +133,56 @@ export const expFormItems3 = [
       }
       // 可继续添加 element-ui  input 组件的其它的属性
     }
+  },
+  {
+    ItemType: SearchType.inputAndSelect,
+    labelName: '活动时间',
+    required: false, // 显示红点
+    labelWidth: '90px',
+    // style: {
+    //   width: '320px'
+    // },
+    formItem_1: {
+      fieldId: 'i_s1',
+      defaultValue: null,
+      rules: [
+        { type: 'string', required: false, message: '请选择日期', trigger: 'change' }
+      ],
+      // style: {
+      //   width: '180px'
+      // },
+      placeholder: null
+      // 可继续添加 element-ui  DatePicker 组件的其它的属性
+
+    },
+    formItem_2: {
+      fieldId: 'i_s2',
+      defaultValue: null,
+      rules: [
+        { type: 'string', required: false, message: '请选择时间', trigger: 'change' }
+      ],
+      // style: {
+      //   width: '130px'
+      // },
+      clearable: true,
+      placeholder: null,
+      // tooltip: `
+      //   1.Left Center 提示文字<br/>
+      //   2.第二行信息提示文字<br/>
+      //   3.第3行信息提示文字
+      // `,
+      // 可继续添加 element-ui  select 组件的其它的属性
+      selectList: [
+        {
+          label: '区域一',
+          value: 'shanghai'
+        },
+        {
+          label: '区域二',
+          value: 'beijing'
+        }
+      ]
+    }
   }
 ]
 export const expFormItems4 = [

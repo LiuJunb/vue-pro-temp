@@ -316,6 +316,83 @@
           </el-row>
       </el-form-item>
 
+      <!-- 11.InputType.inputAndSelect 默认select选着输入框 -->
+      <el-form-item
+          v-if="formItem.ItemType === InputType.inputAndSelect"
+          :id="hashPre+formItem.fieldId"
+          :key="index"
+          :required="formItem.required"
+          :style="[
+            {marginBottom:($attrs.size==='small'||$attrs.size==='mini')? '0px' :'20px'},
+          ]"
+          class="liujun"
+          :label="formItem.labelName"
+          :label-width="formItem.labelWidth">
+          <el-row :style="[{width:'360px'},formItem.style]">
+            <el-col :span="14">
+              <el-form-item
+                :style="{marginRight:'0px'}"
+                :prop="formItem.formItem_1.fieldId">
+                <el-input
+                  v-model="formData[formItem.formItem_1.fieldId]"
+                  v-bind="formItem.formItem_1"
+                  @input="handleInputChange($event,formItem.formItem_1)">
+                  <!-- tooltip -->
+                  <template
+                    v-if="formItem.formItem_1.tooltip"
+                    slot="prefix">
+                    <el-tooltip
+                      effect="light"
+                      placement="top">
+                      <div
+                        slot="content"
+                        v-html="formItem.formItem_1.tooltip">
+                        <!-- 1.Left Center 提示文字<br/>
+                        2.第二行信息提示文字<br/>
+                        2.第3行信息提示文字 -->
+                      </div>
+                      <i class="el-icon-question"></i>
+                    </el-tooltip>
+                  </template>
+                </el-input>
+            </el-form-item>
+            </el-col>
+            <el-col :span="10">
+              <el-form-item :prop="formItem.formItem_2.fieldId">
+                <el-select
+                  v-model="formData[formItem.formItem_2.fieldId]"
+                  filterable
+                  v-bind="formItem.formItem_2"
+                  @input="handleSelectChange($event,formItem.formItem_2)">
+                  <!-- tooltip -->
+                  <template
+                    v-if="formItem.formItem_2.tooltip"
+                    slot="prefix">
+                    <el-tooltip
+                      effect="light"
+                      placement="top">
+                      <div
+                        slot="content"
+                        v-html="formItem.formItem_2.tooltip">
+                        <!-- 1.Left Center 提示文字<br/>
+                        2.第二行信息提示文字<br/>
+                        2.第3行信息提示文字 -->
+                      </div>
+                      <i class="el-icon-question"></i>
+                    </el-tooltip>
+                  </template>
+                  <el-option
+                    v-for="(item,index) in formItem.formItem_2.selectList"
+                    :key="index"
+                    :label="item.label"
+                    :value="item.value">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+            </el-col>
+          </el-row>
+      </el-form-item>
+
       <!-- 自定义item的布局 InputType.custom -->
       <el-form-item
           v-if="formItem.ItemType === InputType.custom"

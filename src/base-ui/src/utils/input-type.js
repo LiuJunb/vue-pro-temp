@@ -11,7 +11,9 @@ const InputType = {
   checkboxs: 7,
   radios: 9,
 
-  custom: 10
+  custom: 10,
+
+  inputAndSelect: 11
 }
 /**
  *
