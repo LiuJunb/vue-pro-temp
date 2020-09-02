@@ -8,7 +8,8 @@
       :key="index"
       class="b-tag"
       v-bind="tag"
-      :style="tag.style"
+      :style="[tag.style,showPointer ? {cursor: 'pointer'}:'']"
+      @click="handleTagClick(tag)"
       @close="handleClose(tag)">
       {{tag.name}}
     </el-tag>
@@ -16,6 +17,19 @@
 </template>
 
 <script>
+/*
+ *@description: tag 标签
+ *@author: liujun
+ *@email: liujun2son@163.com
+ *@date: 2020-09-02 17:19:05
+ *@version V0.1.0
+ *@API:
+ *@ 参数
+ *
+ *@ 事件
+ *    this.$emit('handleTagClick', tag)
+ *    this.$emit('handleClose', tag)
+*/
 export default {
   name: 'BTagGroup',
   components: {
@@ -71,6 +85,11 @@ export default {
     width: {
       type: String,
       default: null
+    },
+    // 是否显示手指
+    showPointer: {
+      type: Boolean,
+      default: false
     }
   },
   data: function() {
@@ -91,6 +110,9 @@ export default {
 
   },
   methods: {
+    handleTagClick(tag) {
+      this.$emit('handleTagClick', tag)
+    },
     handleClose(tag) {
       this.$emit('handleClose', tag)
     }

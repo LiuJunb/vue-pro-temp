@@ -59,6 +59,8 @@
     <h4>2.修改大小</h4>
     <b-tag-group
       :tagList="tagList2"
+      :showPointer="true"
+      @handleTagClick="handleTagClick"
     >
     </b-tag-group>
     <code-h
@@ -66,6 +68,8 @@
       content='
       <b-tag-group
         :tagList="tagList2"
+        :showPointer="true"
+        @handleTagClick="handleTagClick"
       >
       </b-tag-group>
     '></code-h>
@@ -215,6 +219,14 @@ export default {
           select: ' ',
           default: 'null'
           // func:''
+        },
+        {
+          attr: 'showPointer',
+          des: '是否显示可点击手指图标',
+          type: 'Boolean',
+          select: ' ',
+          default: 'false'
+          // func:''
         }
       ],
       tabDataSlot: [
@@ -226,6 +238,11 @@ export default {
       tabDataEvent: [
         {
           name: 'handleClose',
+          des: '监听tag删除的点击事件',
+          func: 'func( tag )'
+        },
+        {
+          name: 'handleTagClick',
           des: '监听tag的点击事件',
           func: 'func( tag )'
         }
@@ -280,7 +297,9 @@ export default {
 
   },
   methods: {
-
+    handleTagClick(tag) {
+      console.log(tag)
+    }
   }
 
 }

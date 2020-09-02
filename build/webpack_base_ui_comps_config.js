@@ -44,8 +44,8 @@ module.exports = {
     path: path.resolve(__dirname, '../src/base-ui/dist/'),
     // publicPath: '/dist/',
     pathinfo: false,
-    // filename: '[name].js',
-    filename: `[name]-${packageJson.version}.js`,
+    filename: '[name].js',
+    // filename: `[name]-${packageJson.version}.js`,
     libraryTarget: 'commonjs2'
   },
   stats: {

@@ -31,8 +31,8 @@ module.exports = {
    */
   output: {
     path: resolve('../src/base-ui/dist'),
-    // filename: '[name].js',
-    filename: `[name]-${packageJson.version}.js`,
+    filename: '[name].js',
+    // filename: `[name]-${packageJson.version}.js`,
     library: 'BaseUI',
     libraryTarget: 'umd',
     libraryExport: 'default',
@@ -135,7 +135,8 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: `style-${packageJson.version}.css`
+      // filename: `style-${packageJson.version}.css`
+      filename: `style.css`
     }),
     new webpack.BannerPlugin(`
 BaseUI v${packageJson.version}
