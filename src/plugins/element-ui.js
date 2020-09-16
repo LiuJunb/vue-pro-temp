@@ -75,8 +75,8 @@ import {
 // PageHeader,
 // CascaderPanel,
 // Loading,
-// MessageBox,
-// Message,
+MessageBox,
+Message,
 // Notification
 } from 'element-ui'
 // 引入自定义主题会导致编译变慢
@@ -88,12 +88,12 @@ import '../styles/theme-chalk.scss'
 // Vue.use(Loading.directive)
 
 // Vue.prototype.$loading = Loading.service
-// Vue.prototype.$msgbox = MessageBox
+Vue.prototype.$msgbox = MessageBox
 // Vue.prototype.$alert = MessageBox.alert
 // Vue.prototype.$confirm = MessageBox.confirm
 // Vue.prototype.$prompt = MessageBox.prompt
 // Vue.prototype.$notify = Notification
-// Vue.prototype.$message = Message
+Vue.prototype.$message = Message
 // 或者使用下面来注册组件
 // Vue.component(Button.name, Button)
 // Vue.component(Select.name, Select)
