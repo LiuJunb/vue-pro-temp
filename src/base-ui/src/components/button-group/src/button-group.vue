@@ -5,7 +5,6 @@
   >
     <template
       v-for="(item, index) in btnList">
-
       <el-button
         v-if="showBtn(item)
         &&!item.upload
