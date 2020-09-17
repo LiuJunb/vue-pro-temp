@@ -5,12 +5,13 @@
   >
     <template v-for="(item, index) in iconList">
       <section
-        v-if="showBtn(item)"
+        v-if="showBtn(item) && item.type !== 'dropdown'"
         :key="index"
         class="item"
         :style="[getSectionStyle(item)]"
         @click="handleIconClick(item)"
       >
+        <!-- 前面的iocn -->
         <slot name="icon">
           <i
             v-if="item.icon"
@@ -23,12 +24,14 @@
             :src="item.img"
             alt="">
         </slot>
+        <!-- icon的名称 -->
         <span
           v-if="item.name"
           class="name"
           :style="item.nameStyle">
           {{item.name}}
         </span>
+        <!-- icon的二级名称 -->
         <span
           v-if="item.subname"
           class="subname"
@@ -36,6 +39,67 @@
             {{item.subname}}
         </span>
       </section>
+
+      <el-dropdown
+        v-if="showBtn(item) && item.type === 'dropdown'"
+        :key="index"
+        class="item custom-dropdown"
+        :trigger="item.trigger?item.trigger:'hover'"
+        @command="handleDropDropItemClick"
+      >
+      <!-- copy top section-->
+      <section
+        v-if="showBtn(item)"
+        :key="index"
+        class="item ig-pp"
+        :style="[getSectionStyle(item)]"
+        @click="handleIconClick(item)"
+      >
+        <!-- 前面的iocn -->
+        <slot name="icon">
+          <i
+            v-if="item.icon"
+            :class="[iconClass,item.icon, 'i-icon']">
+          </i>
+          <img
+            v-else-if="item.img"
+            class="i-icon"
+            :style="item.imgStyle"
+            :src="item.img"
+            alt="">
+        </slot>
+        <!-- icon的名称 -->
+        <span
+          v-if="item.name"
+          class="name"
+          :style="item.nameStyle">
+          {{item.name}}
+        </span>
+        <!-- icon的二级名称 -->
+        <span
+          v-if="item.subname"
+          class="subname"
+          :style="item.subnameStyle">
+            {{item.subname}}
+        </span>
+      </section>
+      <!-- copy top section-->
+      <el-dropdown-menu slot="dropdown">
+        <template
+          v-for="(dropItem, index) in item.selectList"
+        >
+          <el-dropdown-item
+            v-if="showBtn(dropItem)"
+            :key="dropItem.label+index"
+            v-bind="dropItem"
+            :command="dropItem"
+          >
+            {{dropItem.label}}
+          </el-dropdown-item>
+        </template>
+
+      </el-dropdown-menu>
+    </el-dropdown>
     </template>
   </div>
 </template>
@@ -52,6 +116,7 @@
  *
  *@ 事件
  *    this.$emit('handleIconClick', item)
+ *    this.$emit('handleDropDropItemClick', item)
 */
 import { hasPermission } from '../../../utils/permission.js'
 // import passImg from '@/assets/pwd.png'
@@ -226,6 +291,10 @@ export default {
         // console.log('item', item)
         this.$emit('handleIconClick', item)
       }
+    },
+    handleDropDropItemClick(dropTtem) {
+      // console.log('dropTtem', dropTtem)
+      this.$emit('handleDropDropItemClick', dropTtem)
     }
   }
 
@@ -243,9 +312,7 @@ this
 component
 only
 -->
-<style
-scoped
-lang="scss">
+<style scoped lang="scss">
 .icon-group{
   .item{
     display: inline-block;
@@ -265,5 +332,10 @@ lang="scss">
 
     }
   }
+  .custom-dropdown{
+    margin: 0px;
+    padding: 0px;
+  }
 }
+
 </style>

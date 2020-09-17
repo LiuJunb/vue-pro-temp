@@ -324,6 +324,76 @@
       ],
       "></code-h>
 
+    <h4>8.hover下拉框</h4>
+    <b-icon-group
+      :iconList="iconList8"
+      @handleIconClick="handleIconClick"
+      @handleDropDropItemClick="handleDropDropItemClick"
+    >
+    </b-icon-group>
+    <code-h
+      lang="html"
+      content='
+      <b-icon-group
+        :iconList="iconList8"
+        @handleIconClick="handleIconClick"
+        @handleDropDropItemClick="handleDropDropItemClick"
+      >
+      </b-icon-group>
+    '></code-h>
+    <code-h
+      lang="js"
+      content="
+      iconList8: [
+        {
+          name: '编辑',
+          icon: 'el-icon-edit'
+        },
+        {
+          name: 'Hover下拉',
+          icon: 'el-icon-discover',
+
+          type: 'dropdown',
+          trigger: 'hover', // 默认为 hover
+          selectList: [
+            {
+              label: '黄金糕'
+            },
+            {
+              label: '双皮奶1',
+              disabled: true
+              // ... 查看 el-dropdown-item 的属性
+            },
+            {
+              label: '双皮奶2',
+              divided: true
+            }
+          ]
+        },
+        {
+          name: 'Click下拉带权限',
+          color: 'blue',
+
+          type: 'dropdown',
+          trigger: 'click', // 默认为 hover
+          selectList: [
+            {
+              label: '黄金糕'
+            },
+            {
+              label: '双皮奶1',
+              disabled: true,
+              btnPerm: 'pp-sel'
+            },
+            {
+              label: '双皮奶2',
+              divided: true
+            }
+          ]
+        }
+      ],
+      "></code-h>
+
     <h4>BIconGroup 的 Props：</h4>
     <b-advanced-table
       stripe
@@ -602,10 +672,57 @@ export default {
           color: 'red'
         }
       ],
+      iconList8: [
+        {
+          name: '编辑',
+          icon: 'el-icon-edit'
+        },
+        {
+          name: 'Hover下拉',
+          icon: 'el-icon-discover',
+
+          type: 'dropdown',
+          trigger: 'hover', // 默认为 hover
+          selectList: [
+            {
+              label: '黄金糕'
+            },
+            {
+              label: '双皮奶1',
+              disabled: true
+            },
+            {
+              label: '双皮奶2',
+              divided: true
+            }
+          ]
+        },
+        {
+          name: 'Click下拉带权限',
+          color: 'blue',
+
+          type: 'dropdown',
+          trigger: 'click', // 默认为 hover
+          selectList: [
+            {
+              label: '黄金糕'
+            },
+            {
+              label: '双皮奶1',
+              disabled: true,
+              btnPerm: 'pp-sel'
+            },
+            {
+              label: '双皮奶2',
+              divided: true
+            }
+          ]
+        }
+      ],
       tabDataProps: [
         {
           attr: 'iconList',
-          des: 'icon组件 的配置列表',
+          des: 'icon组件 的配置列表（查看上面对应demo）',
           type: 'Array',
           select: ' ',
           default: ' '
@@ -651,11 +768,16 @@ export default {
         // }
       ],
       tabDataEvent: [
-        // {
-        //   name: 'handleClickCurrentMenu',
-        //   des: '监听重复点击当前的菜单',
-        //   func: 'func( menu )'
-        // }
+        {
+          name: 'handleIconClick',
+          des: '监听icon的点击事件',
+          func: 'func( item )'
+        },
+        {
+          name: 'handleDropDropItemClick',
+          des: '监听dropItem的点击事件',
+          func: 'func( dropItem )'
+        }
       ]
 
     }
@@ -674,6 +796,9 @@ export default {
   },
   methods: {
     handleIconClick(item) {
+      console.log(item)
+    },
+    handleDropDropItemClick(item) {
       console.log(item)
     }
   }
