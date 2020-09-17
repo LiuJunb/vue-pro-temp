@@ -1182,6 +1182,7 @@
     <h4>6.普通表单2</h4>
     <!-- 普通表单2 -->
     <b-advanced-search
+       ref="bAdvancedSearch"
        :formItems="adForm2"
        label-position="right"
        :inline="true"
@@ -1213,6 +1214,7 @@
       lang="html"
       content='
         <b-advanced-search
+          ref="bAdvancedSearch"
           :formItems="adForm2"
           label-position="right"
           :inline="true"
@@ -1241,6 +1243,178 @@
         </b-advanced-search>
 
     '></code-h>
+
+    <code-h
+      lang="js"
+      content="
+      export const adForm2 = [
+
+  {
+    ItemType: SearchType.default,
+    fieldId: 'username',
+
+    defaultValue: '',
+    labelName: '用户名',
+    clearable: true,
+    labelWidth: '100px',
+    style: {
+      width: '300px'
+    },
+    rules: [
+      { required: false, message: '请输入用户名', trigger: 'blur' }
+    ],
+    placeholder: '请输入用户名'
+  },
+  {
+    ItemType: SearchType.default,
+    fieldId: 'password_1',
+
+    defaultValue: '',
+    labelName: '请输入密码',
+    labelWidth: '100px',
+    style: {
+      width: '300px'
+    },
+    rules: [
+      { required: false, message: '请输入密码', trigger: 'blur' }
+    ],
+    placeholder: '请输入密码'
+  },
+  {
+    ItemType: SearchType.select,
+    fieldId: 'select_1',
+    defaultValue: '',
+    labelName: '选择城市',
+    selectList: [
+      {
+        label: '广州',
+        value: 1
+      },
+      {
+        label: '深圳',
+        value: 2
+      }
+    ],
+    labelWidth: '100px',
+    style: {
+      width: '300px'
+    },
+    rules: [
+      { required: false, message: '请输入密码', trigger: 'blur' }
+    ],
+    placeholder: '请输入密码'
+  },
+  {
+    ItemType: SearchType.radios,
+    fieldId: 'select_2',
+    defaultValue: '',
+    labelName: '选择性别',
+    radioList: [
+      {
+        label: '男'
+      },
+      {
+        label: '女'
+      }
+    ],
+    labelWidth: '100px',
+    style: {
+      width: '300px'
+    },
+    rules: [
+      { required: false, message: '请输入密码', trigger: 'blur' }
+    ],
+    placeholder: '请输入密码'
+  },
+  {
+    ItemType: SearchType.checkboxs,
+    fieldId: 'select_3',
+    defaultValue: [],
+    labelName: '选择爱好',
+    checkboxList: [
+      {
+        label: '游戏'
+      },
+      {
+        label: '跑步'
+      },
+      {
+        label: '听歌'
+      }
+    ],
+    labelWidth: '100px',
+    style: {
+      width: '300px'
+    },
+    rules: [
+      { required: false, message: '请输入密码', trigger: 'blur' }
+    ],
+    placeholder: '请输入密码'
+  },
+  {
+    ItemType: SearchType.default,
+    fieldId: 'textarea_1',
+    defaultValue: '',
+    labelName: '请输入内容',
+
+    type: 'textarea',
+    maxlength: '30',
+    'show-word-limit': true,
+    labelWidth: '100px',
+    style: {
+      width: '300px'
+    },
+    rules: [
+      { required: false, message: '请输入密码', trigger: 'blur' }
+    ],
+    placeholder: '请输入密码'
+  }
+]
+      "></code-h>
+
+    <code-h
+      lang="js"
+      content="
+      handleInitData(advancedSearch) {
+        // 1.修改选着城市
+        this.adForm2[2].selectList = [
+          {
+            label: '广州12',
+            value: 1
+          },
+          {
+            label: '深圳12',
+            value: 2
+          }
+        ]
+
+      // 2.回显表单的值 ok
+      // advancedSearch.initFormData({
+      //   username: '刘军',
+      //   password_1: '123',
+      //   select_1: '广州',
+      //   select_2: '男',
+      //   select_3: ['跑步', '听歌'],
+      //   textarea_1: 'haha'
+      // })
+
+      // 3.或者这样回显数据
+      if (this.$refs.bAdvancedSearch) {
+        this.$refs.bAdvancedSearch.initFormData({
+          username: '刘军',
+          password_1: '123',
+          select_1: '广州12',
+          select_2: '男',
+          select_3: ['跑步', '听歌'],
+          textarea_1: 'haha'
+        })
+      }
+      },
+      handleSubmit(formData) {
+        // console.log(new Date(formData.data1).toLocaleString())
+        console.log(formData)
+      },
+      "></code-h>
 
     <h4>BAdvancedSearch 的 Props：</h4>
     <b-advanced-table
@@ -1532,15 +1706,38 @@ export default {
   },
   methods: {
     handleInitData(advancedSearch) {
-    // 回显表单的值
-      advancedSearch.initFormData({
-        username: '刘军',
-        password_1: '123',
-        select_1: '广州',
-        select_2: '男',
-        select_3: ['跑步', '听歌'],
-        textarea_1: 'haha'
-      })
+    // 1.修改选着城市
+      this.adForm2[2].selectList = [
+        {
+          label: '广州12',
+          value: 1
+        },
+        {
+          label: '深圳12',
+          value: 2
+        }
+      ]
+      // 2.回显表单的值 ok
+      // advancedSearch.initFormData({
+      //   username: '刘军',
+      //   password_1: '123',
+      //   select_1: '广州',
+      //   select_2: '男',
+      //   select_3: ['跑步', '听歌'],
+      //   textarea_1: 'haha'
+      // })
+
+      // 3.或者这样回显数据
+      if (this.$refs.bAdvancedSearch) {
+        this.$refs.bAdvancedSearch.initFormData({
+          username: '刘军',
+          password_1: '123',
+          select_1: '广州12',
+          select_2: '男',
+          select_3: ['跑步', '听歌'],
+          textarea_1: 'haha'
+        })
+      }
     },
     handleSubmit(formData) {
       // console.log(new Date(formData.data1).toLocaleString())

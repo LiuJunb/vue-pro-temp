@@ -128,7 +128,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .grid-item{
-
+  transition: all .1s linear;
 }
 .grid-item-animate{
  &:hover {

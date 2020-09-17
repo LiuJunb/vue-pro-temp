@@ -5293,7 +5293,6 @@ var hasPermission = function hasPermission(permissions, btnPermission) {
 //
 //
 //
-//
 
 /*
  *@description:
@@ -7319,7 +7318,7 @@ var icon_groupvue_type_template_id_653cd9a4_scoped_true_render = function() {
     [
       _vm._l(_vm.iconList, function(item, index) {
         return [
-          _vm.showBtn(item)
+          _vm.showBtn(item) && item.type !== "dropdown"
             ? _c(
                 "section",
                 {
@@ -7366,6 +7365,116 @@ var icon_groupvue_type_template_id_653cd9a4_scoped_true_render = function() {
                     : _vm._e()
                 ],
                 2
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.showBtn(item) && item.type === "dropdown"
+            ? _c(
+                "el-dropdown",
+                {
+                  key: index,
+                  staticClass: "item custom-dropdown",
+                  attrs: { trigger: item.trigger ? item.trigger : "hover" },
+                  on: { command: _vm.handleDropDropItemClick }
+                },
+                [
+                  _vm.showBtn(item)
+                    ? _c(
+                        "section",
+                        {
+                          key: index,
+                          staticClass: "item ig-pp",
+                          style: [_vm.getSectionStyle(item)],
+                          on: {
+                            click: function($event) {
+                              return _vm.handleIconClick(item)
+                            }
+                          }
+                        },
+                        [
+                          _vm._t("icon", [
+                            item.icon
+                              ? _c("i", {
+                                  class: [_vm.iconClass, item.icon, "i-icon"]
+                                })
+                              : item.img
+                              ? _c("img", {
+                                  staticClass: "i-icon",
+                                  style: item.imgStyle,
+                                  attrs: { src: item.img, alt: "" }
+                                })
+                              : _vm._e()
+                          ]),
+                          _vm._v(" "),
+                          item.name
+                            ? _c(
+                                "span",
+                                { staticClass: "name", style: item.nameStyle },
+                                [
+                                  _vm._v(
+                                    "\n        " +
+                                      _vm._s(item.name) +
+                                      "\n      "
+                                  )
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          item.subname
+                            ? _c(
+                                "span",
+                                {
+                                  staticClass: "subname",
+                                  style: item.subnameStyle
+                                },
+                                [
+                                  _vm._v(
+                                    "\n          " +
+                                      _vm._s(item.subname) +
+                                      "\n      "
+                                  )
+                                ]
+                              )
+                            : _vm._e()
+                        ],
+                        2
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "el-dropdown-menu",
+                    { attrs: { slot: "dropdown" }, slot: "dropdown" },
+                    [
+                      _vm._l(item.selectList, function(dropItem, index) {
+                        return [
+                          _vm.showBtn(dropItem)
+                            ? _c(
+                                "el-dropdown-item",
+                                _vm._b(
+                                  {
+                                    key: dropItem.label + index,
+                                    attrs: { command: dropItem }
+                                  },
+                                  "el-dropdown-item",
+                                  dropItem,
+                                  false
+                                ),
+                                [
+                                  _vm._v(
+                                    "\n          " +
+                                      _vm._s(dropItem.label) +
+                                      "\n        "
+                                  )
+                                ]
+                              )
+                            : _vm._e()
+                        ]
+                      })
+                    ],
+                    2
+                  )
+                ],
+                1
               )
             : _vm._e()
         ]
@@ -7423,6 +7532,70 @@ icon_groupvue_type_template_id_653cd9a4_scoped_true_render._withStripped = true
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /*
  *@description: 图表按钮组
@@ -7435,6 +7608,7 @@ icon_groupvue_type_template_id_653cd9a4_scoped_true_render._withStripped = true
  *
  *@ 事件
  *    this.$emit('handleIconClick', item)
+ *    this.$emit('handleDropDropItemClick', item)
 */
  // import passImg from '@/assets/pwd.png'
 
@@ -7597,6 +7771,10 @@ icon_groupvue_type_template_id_653cd9a4_scoped_true_render._withStripped = true
         // console.log('item', item)
         this.$emit('handleIconClick', item);
       }
+    },
+    handleDropDropItemClick: function handleDropDropItemClick(dropTtem) {
+      // console.log('dropTtem', dropTtem)
+      this.$emit('handleDropDropItemClick', dropTtem);
     }
   }
 });
