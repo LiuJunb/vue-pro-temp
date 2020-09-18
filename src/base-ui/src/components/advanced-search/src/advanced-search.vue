@@ -877,7 +877,7 @@ export default {
     }
   },
   watch: {
-    formItems: (bewV, oldV) => {
+    formItems(bewV, oldV) {
       this.formData = getFormFieldIds(bewV)
       this.formRules = getFormRules(bewV)
     }

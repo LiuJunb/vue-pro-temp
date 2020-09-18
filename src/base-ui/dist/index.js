@@ -4036,9 +4036,6 @@ var getFormRules = function getFormRules(formItems) {
 
 
 
-
-var advanced_searchvue_type_script_lang_js_this = undefined;
-
 //
 //
 //
@@ -4918,8 +4915,8 @@ var advanced_searchvue_type_script_lang_js_this = undefined;
   },
   watch: {
     formItems: function formItems(bewV, oldV) {
-      advanced_searchvue_type_script_lang_js_this.formData = getFormFieldIds(bewV);
-      advanced_searchvue_type_script_lang_js_this.formRules = getFormRules(bewV);
+      this.formData = getFormFieldIds(bewV);
+      this.formRules = getFormRules(bewV);
     }
   },
   created: function created() {},
@@ -4931,21 +4928,21 @@ var advanced_searchvue_type_script_lang_js_this = undefined;
      * }
      */
     initFormData: function initFormData(fieldIds) {
-      var _this2 = this;
+      var _this = this;
 
       Object.keys(fieldIds).forEach(function (key) {
         // this.formData.username = fieldIds.username
-        _this2.formData[key] = fieldIds[key];
+        _this.formData[key] = fieldIds[key];
       });
     },
     onSubmit: function onSubmit() {
-      var _this3 = this;
+      var _this2 = this;
 
       // console.log(this.formData)
       this.$refs[this.formName].validate(function (valid) {
         if (valid) {
           // console.log(this.formData)
-          _this3.$emit('handleSubmit', _this3.formData);
+          _this2.$emit('handleSubmit', _this2.formData);
         } else {
           console.log('error submit!!');
           return false;
