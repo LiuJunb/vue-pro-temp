@@ -621,7 +621,7 @@
       ]
     "></code-h>
 
-    <h4>11.使用 custom 自定义组件</h4>
+    <h4>11.使用 custom 自定义组件1</h4>
     <b-advanced-search
        :inline="true"
        :formItems="expFormItems9"
@@ -681,6 +681,174 @@
             { required: false, message: '请输入自定义名称', trigger: 'blur' }
           ],
           placeholder: '请输入内容'
+        }
+      ]
+    "></code-h>
+
+    <h4>11.使用 custom 自定义组件2</h4>
+    <b-advanced-search
+       ref="cusAdSearch"
+       :inline="true"
+       :formItems="expFormItems91"
+       @handleSubmit="handleSubmit"
+       @handleReset="handleReset"
+       @handleFormItemChange="handleFormItemChange"
+    >
+      <!-- 自定义表单组件 -->
+      <template v-slot:custom91="slotProps">
+        <!-- radio -->
+        <el-form-item
+          :style="{marginRight:'0px'}"
+          :prop="slotProps.row.formItem_1.fieldId">
+          <el-radio-group
+            v-model="slotProps.data[slotProps.row.formItem_1.fieldId]"
+            :style="slotProps.row.formItem_1.style"
+            @change="handleSelectChange($event,slotProps.row.formItem_1)"
+            >
+            <el-radio
+              v-for="(rad, index) in slotProps.row.formItem_1.radioList"
+              :key="index"
+              :label="rad.label">
+            </el-radio>
+          </el-radio-group>
+        </el-form-item>
+
+        <!-- 输入框 -->
+        <el-form-item
+          :style="{marginLeft:'10px',marginRight:'0px'}"
+          :prop="slotProps.row.formItem_2.fieldId">
+
+          <el-input
+            v-model="slotProps.data[slotProps.row.formItem_2.fieldId]"
+            :style="slotProps.row.formItem_2.style?slotProps.row.formItem_2.style:{width: '100%'}"
+            v-bind="slotProps.row.formItem_2"
+            @focus="handleInputFocus"
+            @input="handleInputChange($event,slotProps.row.formItem_2)"
+            >
+          </el-input>
+        </el-form-item>
+     </template>
+
+    </b-advanced-search>
+
+    <code-h
+      lang="html"
+      content='
+      <b-advanced-search
+        ref="cusAdSearch"
+        :inline="true"
+        :formItems="expFormItems91"
+        @handleSubmit="handleSubmit"
+        @handleReset="handleReset"
+        @handleFormItemChange="handleFormItemChange"
+      >
+        <!-- 自定义表单组件 -->
+        <template v-slot:custom91="slotProps">
+          <!-- radio -->
+          <el-form-item
+            :style="{marginRight:"0px"}"
+            :prop="slotProps.row.formItem_1.fieldId">
+            <el-radio-group
+              v-model="slotProps.data[slotProps.row.formItem_1.fieldId]"
+              :style="slotProps.row.formItem_1.style"
+              @change="handleSelectChange($event,slotProps.row.formItem_1)"
+              >
+              <el-radio
+                v-for="(rad, index) in slotProps.row.formItem_1.radioList"
+                :key="index"
+                :label="rad.label">
+              </el-radio>
+            </el-radio-group>
+          </el-form-item>
+
+          <!-- 输入框 -->
+          <el-form-item
+            :style="{marginLeft:"10px",marginRight:"0px"}"
+            :prop="slotProps.row.formItem_2.fieldId">
+
+            <el-input
+              v-model="slotProps.data[slotProps.row.formItem_2.fieldId]"
+              :style="slotProps.row.formItem_2.style?slotProps.row.formItem_2.style:{width: "100%"}"
+              v-bind="slotProps.row.formItem_2"
+              @focus="handleInputFocus"
+              @input="handleInputChange($event,slotProps.row.formItem_2)"
+              >
+            </el-input>
+          </el-form-item>
+      </template>
+
+      </b-advanced-search>
+
+    '></code-h>
+    <code-h
+      lang="js"
+      content="
+      export const expFormItems91 = [
+        {
+          ItemType: SearchType.custom,
+          customSlot: 'custom91', // 插槽名称
+          labelName: '活动时间',
+          required: false, // 显示红点
+          labelWidth: '90px',
+          style: {
+            width: '320px'
+          },
+
+          formItem_1: {
+            fieldId: 'radios_91',
+            defaultValue: '',
+            labelName: '请选择活动资源',
+            labelWidth: '150px',
+            style: {
+              width: '100%'
+            },
+            radioList: [
+              {
+                label: '相同'
+              },
+              {
+                label: '5日内'
+              },
+              {
+                label: '10日内'
+              }
+            ],
+            rules: [
+              { required: false, message: '请选择活动资源', trigger: 'change' }
+            ],
+            placeholder: null
+          },
+          formItem_2: {
+            fieldId: 'input_91',
+
+            defaultValue: undefined,
+            labelName: '名称1',
+            // labelWidth: '130px',
+            style: {
+              width: '90px'
+            },
+            rules: [
+              { required: false, message: '请输入天数' },
+              {
+                validator: function(rule, value, callback) {
+                  // value = parseInt(value)
+                  console.log(value)
+                  if (value) {
+                    value = (value + ' ').trim()
+                    if (/^\d{0,}$/.test(value) === false) {
+                      callback(new Error('仅支持数字'))
+                    } else {
+                      callback()
+                    }
+                  } else {
+                    callback()
+                  }
+                }
+
+              }
+            ],
+            placeholder: '自定义'
+          }
         }
       ]
     "></code-h>
@@ -1485,6 +1653,7 @@ import {
   expFormItems7,
   expFormItems8,
   expFormItems9,
+  expFormItems91,
   expFormItems10,
   expFormItems11,
   adSearchDefaultConfig,
@@ -1520,6 +1689,7 @@ export default {
       expFormItems7,
       expFormItems8,
       expFormItems9,
+      expFormItems91,
       expFormItems10,
       expFormItems11,
 
@@ -1748,7 +1918,25 @@ export default {
     },
     handleFormItemChange(value, formItem) {
       console.log(value, formItem)
+    },
+    handleSelectChange(value, formItem) {
+      console.log(value, formItem)
+      // 清除 自定义input
+      this.$refs.cusAdSearch.initFormData({
+        input_91: undefined
+      })
+    },
+    handleInputChange(value, formItem) {
+      console.log(value, formItem)
+    },
+    handleInputFocus() {
+      console.log('handleInputFocus')
+      // 清除 radio
+      this.$refs.cusAdSearch.initFormData({
+        radios_91: ''
+      })
     }
+
   }
 
 }

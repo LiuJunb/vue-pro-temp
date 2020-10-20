@@ -341,6 +341,246 @@
       ],
       "></code-h>
 
+    <h4>7.表格嵌套布局</h4>
+    <b-advanced-table
+      stripe
+      :border="true"
+      :hasExpand="true"
+      style="width: 100%"
+      :tabColumn="tabColumn2"
+      :tabData="tabData1"
+    >
+      <template v-slot:date="slotProps">
+        <a href="#">{{slotProps.row.date}}</a>
+      </template>
+    </b-advanced-table>
+
+    <code-h
+      lang="html"
+      content='
+      <b-advanced-table
+        stripe
+        :border="true"
+        :hasExpand="true"
+        style="width: 100%"
+        :tabColumn="tabColumn2"
+        :tabData="tabData1"
+      >
+        <template v-slot:date="slotProps">
+          <a href="#">{ {slotProps.row.date}}</a>
+        </template>
+      </b-advanced-table>
+    '></code-h>
+    <code-h
+      lang="js"
+      content="
+      tabData1: [
+        {
+          id: 1,
+          name: '刘军',
+          age: 100,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-03',
+          children: [
+            {
+              id: 11,
+              name: '小军1',
+              age: 101,
+              sex: '男',
+              content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+              address: '上海市普陀区金沙江路 1518 弄',
+              date: '2016-05-03'
+            },
+            {
+              id: 12,
+              name: '小军2',
+              age: 102,
+              sex: '男',
+              content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+              address: '上海市普陀区金沙江路 1518 弄',
+              date: '2016-05-03'
+            },
+            {
+              id: 13,
+              name: '小军3',
+              age: 102,
+              sex: '男',
+              content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+              address: '上海市普陀区金沙江路 1518 弄',
+              date: '2016-05-03',
+              children: [
+                {
+                  id: 111,
+                  name: '小军31',
+                  age: 1002,
+                  sex: '男',
+                  content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+                  address: '上海市普陀区金沙江路 1518 弄',
+                  date: '2016-05-03'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 2,
+          name: '小军',
+          age: 10,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-03'
+        },
+        {
+          id: 3,
+          name: '大军',
+          age: 50,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-03'
+        }
+      ],
+      "></code-h>
+
+    <h4>8.表格嵌套表格</h4>
+    <b-advanced-table
+      stripe
+      :border="true"
+      :hasExpand="true"
+      style="width: 100%"
+      :tabColumn="tabColumn2"
+      :tabData="tabData1"
+      :rowStyle="{cursor:'pointer'}"
+
+    >
+      <template v-slot:expand="slotProps">
+        <b-advanced-table
+         style="width: 100%; padding-bottom:10px"
+        :tabColumn="tabColumn2"
+        :tabData="slotProps.row.children"
+        :hasPagination="false"
+        :headerCellStyle="{backgroundColor:'#EEF3F9'}"
+        :rowStyle="{backgroundColor:'#F5F6F7',cursor:'pointer'}"
+        @row-click="tableRowClick"
+        >
+        </b-advanced-table>
+      </template>
+
+      <template v-slot:date="slotProps">
+        <a href="#">{{slotProps.row.date}}</a>
+      </template>
+    </b-advanced-table>
+
+    <code-h
+      lang="html"
+      content='
+    <b-advanced-table
+      stripe
+      :border="true"
+      :hasExpand="true"
+      style="width: 100%"
+      :tabColumn="tabColumn2"
+      :tabData="tabData1"
+      :rowStyle="{ cursor:"pointer"}"
+
+    >
+      <template v-slot:expand="slotProps">
+        <b-advanced-table
+         style="width: 100%; padding-bottom:10px"
+        :tabColumn="tabColumn2"
+        :tabData="slotProps.row.children"
+        :hasPagination="false"
+        :headerCellStyle="{ backgroundColor:"#EEF3F9" }"
+        :rowStyle=" { backgroundColor:"#F5F6F7",cursor:"pointer" }"
+        @row-click="tableRowClick"
+        >
+        </b-advanced-table>
+      </template>
+
+      <template v-slot:date="slotProps">
+        <a href="#">{ { slotProps.row.date }}</a>
+      </template>
+    </b-advanced-table>
+
+    '>
+    </code-h>
+    <code-h
+      lang="js"
+      content="
+      tabData1: [
+        {
+          id: 1,
+          name: '刘军',
+          age: 100,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-03',
+          children: [
+            {
+              id: 11,
+              name: '小军1',
+              age: 101,
+              sex: '男',
+              content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+              address: '上海市普陀区金沙江路 1518 弄',
+              date: '2016-05-03'
+            },
+            {
+              id: 12,
+              name: '小军2',
+              age: 102,
+              sex: '男',
+              content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+              address: '上海市普陀区金沙江路 1518 弄',
+              date: '2016-05-03'
+            },
+            {
+              id: 13,
+              name: '小军3',
+              age: 102,
+              sex: '男',
+              content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+              address: '上海市普陀区金沙江路 1518 弄',
+              date: '2016-05-03',
+              children: [
+                {
+                  id: 111,
+                  name: '小军31',
+                  age: 1002,
+                  sex: '男',
+                  content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+                  address: '上海市普陀区金沙江路 1518 弄',
+                  date: '2016-05-03'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 2,
+          name: '小军',
+          age: 10,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-03'
+        },
+        {
+          id: 3,
+          name: '大军',
+          age: 50,
+          sex: '男',
+          content: '理科生是否收到收到是是的撒旦法第三方沙发是否撒旦法撒旦法sad法尔范 多个发给 ',
+          address: '上海市普陀区金沙江路 1518 弄',
+          date: '2016-05-03'
+        }
+      ],
+      "></code-h>
+
     <h4>BAdvancedTable 的 Props：</h4>
     <b-advanced-table
       stripe
@@ -589,6 +829,14 @@ export default {
           // func:''
         },
         {
+          attr: 'hasExpand',
+          des: '是否需要嵌套布局',
+          type: 'Boolean',
+          select: ' ',
+          default: 'false'
+          // func:''
+        },
+        {
           attr: 'hasIndex',
           des: '是否需要序号',
           type: 'Boolean',
@@ -662,10 +910,10 @@ export default {
         }
       ],
       tabDataSlot: [
-        // {
-        //   name: 'menu-btn',
-        //   des: '自定义折叠按钮'
-        // }
+        {
+          name: 'expand',
+          des: '自定义嵌套布局'
+        }
       ],
       tabDataEvent: [
         {
@@ -702,7 +950,9 @@ export default {
 
   },
   methods: {
-
+    tableRowClick(row) {
+      console.log(row)
+    }
   }
 
 }

@@ -6,7 +6,23 @@
       :data="tableData"
       v-bind="$attrs"
       :header-cell-style="headerCellStyle"
+      :row-style="rowStyle"
+      v-on="$listeners"
       @selection-change="handleSelectionChange">
+      <!-- 添加嵌套布局 -->
+      <template v-if="hasExpand">
+        <el-table-column
+          type="expand">
+          <template slot-scope="scope">
+            <slot
+                name="expand"
+                :row="scope.row">
+                {{scope.row}}
+            </slot>
+          </template>
+        </el-table-column>
+      </template>
+
       <!-- 第一列的选择框 -->
       <template v-if="hasSelection">
         <el-table-column
@@ -104,6 +120,20 @@ export default {
           backgroundColor: '#f5f5f9'
         }
       }
+    },
+    //  每一行的样式
+    rowStyle: {
+      type: Object,
+      default: function() {
+        return {
+
+        }
+      }
+    },
+    // 是否有嵌套布局
+    hasExpand: {
+      type: Boolean,
+      default: false
     },
     // 是否需要序号
     hasIndex: {
@@ -297,6 +327,9 @@ export default {
   .el-pagination{
     text-align: right;
     margin: 10px;
+  }
+  /deep/ .el-table__expanded-cell{
+    padding:0px;
   }
 
 }

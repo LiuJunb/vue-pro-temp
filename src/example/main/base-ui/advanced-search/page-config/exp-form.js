@@ -360,6 +360,74 @@ export const expFormItems9 = [
     placeholder: '请输入内容'
   }
 ]
+export const expFormItems91 = [
+  {
+    ItemType: SearchType.custom,
+    customSlot: 'custom91', // 插槽名称
+    labelName: '活动时间',
+    required: false, // 显示红点
+    labelWidth: '90px',
+    style: {
+      width: '320px'
+    },
+
+    formItem_1: {
+      fieldId: 'radios_91',
+      defaultValue: '',
+      labelName: '请选择活动资源',
+      labelWidth: '150px',
+      style: {
+        width: '100%'
+      },
+      radioList: [
+        {
+          label: '相同'
+        },
+        {
+          label: '5日内'
+        },
+        {
+          label: '10日内'
+        }
+      ],
+      rules: [
+        { required: false, message: '请选择活动资源', trigger: 'change' }
+      ],
+      placeholder: null
+    },
+    formItem_2: {
+      fieldId: 'input_91',
+
+      defaultValue: undefined,
+      labelName: '名称1',
+      // labelWidth: '130px',
+      style: {
+        width: '90px'
+      },
+      rules: [
+        { required: false, message: '请输入天数' },
+        {
+          validator: function(rule, value, callback) {
+            // value = parseInt(value)
+            console.log(value)
+            if (value) {
+              value = (value + ' ').trim()
+              if (/^\d{0,}$/.test(value) === false) {
+                callback(new Error('仅支持数字'))
+              } else {
+                callback()
+              }
+            } else {
+              callback()
+            }
+          }
+
+        }
+      ],
+      placeholder: '自定义'
+    }
+  }
+]
 export const expFormItems10 = [
   {
     ItemType: SearchType.default,
