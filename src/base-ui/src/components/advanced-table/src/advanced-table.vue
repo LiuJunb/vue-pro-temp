@@ -17,7 +17,7 @@
             <slot
                 name="expand"
                 :row="scope.row">
-                {{scope.row}}
+                <div class="no-data">没数据</div>
             </slot>
           </template>
         </el-table-column>
@@ -321,6 +321,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import "../../../style/_vars.scss";
 .advanced-table{
 
   // 分页器
@@ -330,6 +331,14 @@ export default {
   }
   /deep/ .el-table__expanded-cell{
     padding:0px;
+  }
+
+  .no-data{
+    line-height: 60px;
+    text-align: center;
+    color: $tColorContent;
+    font-size: 16px;
+    border: 1px solid $tableBorderColor;
   }
 
 }

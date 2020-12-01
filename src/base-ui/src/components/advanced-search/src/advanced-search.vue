@@ -93,6 +93,12 @@
             v-model="formData[formItem.fieldId]"
             filterable
             v-bind="formItem"
+            :remote="formItem.remote?true:false"
+            :remote-method="function(value){
+              if(formItem.remote){
+                 handleSelectChange(value, formItem, formItem.remote)
+              }
+            }"
             @input="handleSelectChange($event,formItem)">
 
             <!-- tooltip -->
@@ -112,12 +118,18 @@
                 <i class="el-icon-question"></i>
               </el-tooltip>
             </template>
-            <el-option
+            <template
               v-for="(item,index) in formItem.selectList"
-              :key="index"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
+            >
+              <!-- 最多只能显示 200 条 -->
+              <el-option
+                v-if="index < (formItem.showCount? formItem.showCount : formItem.selectList.length)"
+                :key="index"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </template>
+
           </el-select>
         </el-form-item>
 
@@ -931,16 +943,16 @@ export default {
       // console.log('val=', value)
       this.handleFormItemChange(value, formItem)
     },
-    handleSelectChange(value, formItem) {
+    handleSelectChange(value, formItem, remote) {
       // console.log('sel val=', value, formItem)
-      this.handleFormItemChange(value, formItem)
+      this.handleFormItemChange(value, formItem, remote)
     },
     handleDateSelectChange(value, formItem) {
       // console.log('date sel val=', value, formItem)
       this.handleFormItemChange(value, formItem)
     },
-    handleFormItemChange(value, formItem) {
-      this.$emit('handleFormItemChange', value, formItem)
+    handleFormItemChange(value, formItem, remote) {
+      this.$emit('handleFormItemChange', value, formItem, remote)
     }
   }
 

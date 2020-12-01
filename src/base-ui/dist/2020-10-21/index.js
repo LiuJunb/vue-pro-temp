@@ -2988,19 +2988,7 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                         "el-select",
                         _vm._b(
                           {
-                            attrs: {
-                              filterable: "",
-                              remote: formItem.remote ? true : false,
-                              "remote-method": function(value) {
-                                if (formItem.remote) {
-                                  _vm.handleSelectChange(
-                                    value,
-                                    formItem,
-                                    formItem.remote
-                                  )
-                                }
-                              }
-                            },
+                            attrs: { filterable: "" },
                             on: {
                               input: function($event) {
                                 return _vm.handleSelectChange($event, formItem)
@@ -3052,20 +3040,10 @@ var advanced_searchvue_type_template_id_b5167094_scoped_true_render = function()
                             : _vm._e(),
                           _vm._v(" "),
                           _vm._l(formItem.selectList, function(item, index) {
-                            return [
-                              index <
-                              (formItem.showCount
-                                ? formItem.showCount
-                                : formItem.selectList.length)
-                                ? _c("el-option", {
-                                    key: index,
-                                    attrs: {
-                                      label: item.label,
-                                      value: item.value
-                                    }
-                                  })
-                                : _vm._e()
-                            ]
+                            return _c("el-option", {
+                              key: index,
+                              attrs: { label: item.label, value: item.value }
+                            })
                           })
                         ],
                         2
@@ -4537,18 +4515,6 @@ var getFormRules = function getFormRules(formItems) {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /*
  *@description:
@@ -5002,16 +4968,16 @@ var getFormRules = function getFormRules(formItems) {
       // console.log('val=', value)
       this.handleFormItemChange(value, formItem);
     },
-    handleSelectChange: function handleSelectChange(value, formItem, remote) {
+    handleSelectChange: function handleSelectChange(value, formItem) {
       // console.log('sel val=', value, formItem)
-      this.handleFormItemChange(value, formItem, remote);
+      this.handleFormItemChange(value, formItem);
     },
     handleDateSelectChange: function handleDateSelectChange(value, formItem) {
       // console.log('date sel val=', value, formItem)
       this.handleFormItemChange(value, formItem);
     },
-    handleFormItemChange: function handleFormItemChange(value, formItem, remote) {
-      this.$emit('handleFormItemChange', value, formItem, remote);
+    handleFormItemChange: function handleFormItemChange(value, formItem) {
+      this.$emit('handleFormItemChange', value, formItem);
     }
   }
 });
@@ -5570,54 +5536,20 @@ var advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render = function() 
     [
       _c(
         "el-table",
-        _vm._g(
-          _vm._b(
-            {
-              ref: "elTable",
-              attrs: {
-                data: _vm.tableData,
-                "header-cell-style": _vm.headerCellStyle,
-                "row-style": _vm.rowStyle
-              },
-              on: { "selection-change": _vm.handleSelectionChange }
+        _vm._b(
+          {
+            ref: "elTable",
+            attrs: {
+              data: _vm.tableData,
+              "header-cell-style": _vm.headerCellStyle
             },
-            "el-table",
-            _vm.$attrs,
-            false
-          ),
-          _vm.$listeners
+            on: { "selection-change": _vm.handleSelectionChange }
+          },
+          "el-table",
+          _vm.$attrs,
+          false
         ),
         [
-          _vm.hasExpand
-            ? [
-                _c("el-table-column", {
-                  attrs: { type: "expand" },
-                  scopedSlots: _vm._u(
-                    [
-                      {
-                        key: "default",
-                        fn: function(scope) {
-                          return [
-                            _vm._t(
-                              "expand",
-                              [
-                                _c("div", { staticClass: "no-data" }, [
-                                  _vm._v("没数据")
-                                ])
-                              ],
-                              { row: scope.row }
-                            )
-                          ]
-                        }
-                      }
-                    ],
-                    null,
-                    true
-                  )
-                })
-              ]
-            : _vm._e(),
-          _vm._v(" "),
           _vm.hasSelection
             ? [
                 _c(
@@ -5816,22 +5748,6 @@ advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render._withStripped = t
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /*
  *@description:
@@ -5859,18 +5775,6 @@ advanced_tablevue_type_template_id_1e0e5d24_scoped_true_render._withStripped = t
           backgroundColor: '#f5f5f9'
         };
       }
-    },
-    //  每一行的样式
-    rowStyle: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    },
-    // 是否有嵌套布局
-    hasExpand: {
-      type: Boolean,
-      default: false
     },
     // 是否需要序号
     hasIndex: {
@@ -8423,19 +8327,7 @@ var advanced_inputvue_type_template_id_0e2243a4_scoped_true_render = function() 
                     "el-select",
                     _vm._b(
                       {
-                        attrs: {
-                          filterable: "",
-                          remote: formItem.remote ? true : false,
-                          "remote-method": function(value) {
-                            if (formItem.remote) {
-                              _vm.handleSelectChange(
-                                value,
-                                formItem,
-                                formItem.remote
-                              )
-                            }
-                          }
-                        },
+                        attrs: { filterable: "" },
                         on: {
                           input: function($event) {
                             return _vm.handleSelectChange($event, formItem)
@@ -9663,12 +9555,6 @@ advanced_inputvue_type_template_id_0e2243a4_scoped_true_render._withStripped = t
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /*
  *@description: 高级的表单输入组件
@@ -9746,16 +9632,16 @@ advanced_inputvue_type_template_id_0e2243a4_scoped_true_render._withStripped = t
       // console.log('val=', value)
       this.handleFormItemChange(value, formItem);
     },
-    handleSelectChange: function handleSelectChange(value, formItem, remote) {
+    handleSelectChange: function handleSelectChange(value, formItem) {
       // console.log('sel val=', value, formItem)
-      this.handleFormItemChange(value, formItem, remote);
+      this.handleFormItemChange(value, formItem);
     },
     handleDateSelectChange: function handleDateSelectChange(value, formItem) {
       // console.log('date sel val=', value, formItem)
       this.handleFormItemChange(value, formItem);
     },
-    handleFormItemChange: function handleFormItemChange(value, formItem, remote) {
-      this.$emit('handleFormItemChange', value, formItem, remote);
+    handleFormItemChange: function handleFormItemChange(value, formItem) {
+      this.$emit('handleFormItemChange', value, formItem);
     } // ====copy advanced-search
 
   }

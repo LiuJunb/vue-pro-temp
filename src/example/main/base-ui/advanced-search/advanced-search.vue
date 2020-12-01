@@ -851,6 +851,24 @@
           }
         }
       ]
+
+    handleSelectChange(value, formItem) {
+      console.log(value, formItem)
+      // 清除 自定义input
+      this.$refs.cusAdSearch.initFormData({
+        input_91: undefined
+      })
+    },
+    handleInputChange(value, formItem) {
+      console.log(value, formItem)
+    },
+    handleInputFocus() {
+      console.log('handleInputFocus')
+      // 清除 radio
+      this.$refs.cusAdSearch.initFormData({
+        radios_91: ''
+      })
+    }
     "></code-h>
 
     <h4>12.多种表单组件组合（1）</h4>

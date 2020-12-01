@@ -454,6 +454,7 @@
       :tabColumn="tabColumn2"
       :tabData="tabData1"
       :rowStyle="{cursor:'pointer'}"
+      @row-click="tableRowClick"
 
     >
       <template v-slot:expand="slotProps">
@@ -464,7 +465,6 @@
         :hasPagination="false"
         :headerCellStyle="{backgroundColor:'#EEF3F9'}"
         :rowStyle="{backgroundColor:'#F5F6F7',cursor:'pointer'}"
-        @row-click="tableRowClick"
         >
         </b-advanced-table>
       </template>
@@ -485,7 +485,7 @@
       :tabColumn="tabColumn2"
       :tabData="tabData1"
       :rowStyle="{ cursor:"pointer"}"
-
+      @row-click="tableRowClick"
     >
       <template v-slot:expand="slotProps">
         <b-advanced-table
@@ -495,7 +495,6 @@
         :hasPagination="false"
         :headerCellStyle="{ backgroundColor:"#EEF3F9" }"
         :rowStyle=" { backgroundColor:"#F5F6F7",cursor:"pointer" }"
-        @row-click="tableRowClick"
         >
         </b-advanced-table>
       </template>
