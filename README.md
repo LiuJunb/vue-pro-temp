@@ -24,10 +24,12 @@ npm run build
 
 ## 2.常用命令
 
+// 新建的页面 名字不能一样
 vue-temp-cli addPage demo -d src/views/main/demo
 vue-temp-cli addStore example -d src/store/main/example
 vue-temp-cli addService example -d src/service/main/example
 
+// 新建的页面名 不能一样
 vue-temp-cli addPSS example -d src/views/main/example
 vue-temp-cli addPSS statistical -d src/views/main/statistical
 vue-temp-cli addTablePSS gridview -d src/views/main/gridview
@@ -35,6 +37,7 @@ vue-temp-cli addGridPSS gen-page -d src/views/main/gen-page
 vue-temp-cli addHomePSS gen-page -d src/views/main/gen-page
 
 vue-temp-cli addCom xxx -d src/components/xxx
+
 
 
 ## 3.打包大小
@@ -67,13 +70,4 @@ Use Ctrl+C to close it
   dist\css\detail.0e433876.css             0.00 KiB         0.02 KiB
   dist\css\demo.0e433876.css               0.00 KiB         0.02 KiB
 
-
-
-脚手架：
-
-3.修改分页种的高级搜索的配置，抽取出（labelWidth, 和 columnWidth）
-
-
-后台系统：
-  完善登录页面  
   
