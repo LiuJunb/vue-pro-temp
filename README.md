@@ -24,6 +24,8 @@ npm run build
 
 ## 2.常用命令
 
+npm install -g @liujunb/vue-temp-cli
+
 // 新建的页面 名字不能一样
 vue-temp-cli addPage demo -d src/views/main/demo
 vue-temp-cli addStore example -d src/store/main/example
