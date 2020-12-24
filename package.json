@@ -6,11 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "base-ui": "npx webpack --config ./build/webpack_base_ui.config.js",
-    "base-ui-comps": "npx webpack --config ./build/webpack_base_ui_comps_config.js",
-    "cre": "cre-cli -dir main/warning",
-    "cre2": "cre-cli -dir borading",
-    "help": "cre-cli -h",
+    "doc": "node ./server/doc.js",
     "local": "node ./server/index.js",
     "test:unit": "vue-cli-service test:unit"
   },
