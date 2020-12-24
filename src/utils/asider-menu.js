@@ -9,9 +9,18 @@ const menuList = [
     children: [
       {
         icon: 'el-icon-setting',
+        id: 16,
+        level: 2,
+        name: '测试basic-comps页面',
+        type: 'menu',
+        url: '/main/basic-comps',
+        children: []
+      },
+      {
+        icon: 'el-icon-setting',
         id: 12,
         level: 2,
-        name: 'Demo页面',
+        name: '测试components页面',
         type: 'menu',
         url: '/main/demo',
         children: []

@@ -17,17 +17,27 @@ npm run serve
 Compiles and minifies for production
 
 ```
+
 npm run build
+```
+
+查看文档
+```
+npm run doc  
 ```
 
 
 
 ## 2.常用命令
 
+
 npm install -g @liujunb/vue-temp-cli
+
+
 
 // 新建的页面 名字不能一样
 vue-temp-cli addPage demo -d src/views/main/demo
+vue-temp-cli addPage basic-comps -d src/views/main/basic-comps
 vue-temp-cli addStore example -d src/store/main/example
 vue-temp-cli addService example -d src/service/main/example
 
